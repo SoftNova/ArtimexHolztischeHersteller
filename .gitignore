@@ -33,6 +33,7 @@ composer.lock
 /var/logs/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
+!var/sessions/.gitkeep
 
 # Parameters
 /app/config/parameters.yml
