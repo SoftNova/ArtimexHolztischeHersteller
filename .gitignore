@@ -31,6 +31,7 @@ composer.lock
 # Cache and logs (Symfony3)
 /var/cache/*
 /var/logs/*
+/var/sessions/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
