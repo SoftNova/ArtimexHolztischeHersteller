@@ -16,7 +16,7 @@ use FOS\UserBundle\Model\UserInterface;
  * @ORM\Entity
  * @ORM\Table(name="AHH_USER")
  */
-class User implements UserInterface
+class User extends BaseUser implements UserInterface
 {
     /**
      * @ORM\Id
@@ -107,7 +107,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime",nullable=true)
      */
-    private $credentialsExpireAt;
+    protected $credentialsExpireAt;
 
     /**
      * @return mixed

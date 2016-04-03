@@ -33,6 +33,12 @@ class Product
      */
     private $cost;
 
+    private $length;
+    private $width;
+    private $height;
+    private $foot;
+
+
     /**
      * @return mixed
      */
