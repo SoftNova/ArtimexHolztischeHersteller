@@ -13,8 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        $translated = $this->get('translator')->trans('app.title');
+        var_dump($translated);
+
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
+        return $this->render('client/homepage.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }

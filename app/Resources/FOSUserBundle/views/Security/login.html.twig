@@ -1,0 +1,37 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/adminLogin.css') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+{% endblock %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 class="text-center login-title">Artimex Administration</h1>
+                <div class="account-wall">
+                    <img class="profile-img" src="" alt="">
+                    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-user" id="username-addon"></span>
+                            <input type="text" class="form-control" placeholder="Username" aria-describedby="username-addon" id="username" name="_username" value="{{ last_username }}" required="required"  />
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-lock" id="password-addon"></span>
+                            <input type="password" class="form-control" placeholder="Password" aria-describedby="password-addonid="password" name="_password" required="required"  />
+                        </div>
+                        <br/>
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock fos_user_content %}
