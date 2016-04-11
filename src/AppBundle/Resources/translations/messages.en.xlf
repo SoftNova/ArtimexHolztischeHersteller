@@ -6,6 +6,11 @@
                 <source>app.title</source>
                 <target>This is the title</target>
             </trans-unit>
+            <trans-unit id="links">
+                 <source>app.account</source>
+                 <target>Account</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
