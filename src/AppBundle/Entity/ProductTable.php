@@ -8,16 +8,74 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Class ProductTable
  * @package AppBundle\Entity
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductTableDAO")
- * @ORM\Table()
+ * @ORM\Table(name="TABLES")
  */
 class ProductTable
 {
+    use ORMBehaviors\Translatable\Translatable;
+    /**
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer", name="ID")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="boolean", name="IS_VISIBLE")
+     */
+    private $isVisible;
+    /**
+     * @ORM\Column(type="datetime", nullable=true, name="FROM_DATE")
+     */
+    private $fromDate;
+    /**
+     * @ORM\Column(type="datetime", nullable=true, name="TO_DATE")
+     */
+    private $toDate;
+
+    /**
+     * @ORM\OneToOne (targetEntity="AppBundle\Entity\ProductTableDrawer")
+     * @ORM\JoinColumn(name="DRAWER_TYPE_ID", referencedColumnName="id")
+     *
+     */
+
+    private $drawerType;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ProductTableLegType")
+     * @ORM\JoinColumn(name="LEG_TYPE_ID", referencedColumnName="id")
+     */
+
+    private $legType;
+
+    /**
+     * @ORM\ManyToMany (targetEntity="AppBundle\Entity\Promotion", inversedBy="tables")
+     * @ORM\JoinTable (name="TABLE_PROMOTIONS")
+     */
+    private $promotions;
+
+    /**
+     * @ORM\OneToMany()
+     */
+    private $images;
+
+    /**
+     * ProductTable constructor.
+     */
+
+    public function __construct()
+    {
+        $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * @return mixed
      */
@@ -85,45 +143,50 @@ class ProductTable
     /**
      * @return mixed
      */
-    public function getStockCost()
+    public function getDrawerType()
     {
-        return $this->stockCost;
+        return $this->drawerType;
     }
 
     /**
-     * @param mixed $stockCost
+     * @param mixed $drawerType
      */
-    public function setStockCost($stockCost)
+    public function setDrawerType($drawerType)
     {
-        $this->stockCost = $stockCost;
+        $this->drawerType = $drawerType;
     }
-    /**
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @return mixed
      */
-    private $isVisible;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $fromDate;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $toDate;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $stockCost;
+    public function getLegType()
+    {
+        return $this->legType;
+    }
 
-    //promotions
-    //stuff for multilang
+    /**
+     * @param mixed $legType
+     */
+    public function setLegType($legType)
+    {
+        $this->legType = $legType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+
+    /**
+     * @param mixed $promotions
+     */
+    public function setPromotions($promotions)
+    {
+        $this->promotions = $promotions;
+    }
 
 
 }
