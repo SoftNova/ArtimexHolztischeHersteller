@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Entity;
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
@@ -42,6 +43,7 @@ class ProductTable
     private $toDate;
 
     /**
+     * @var ProductTableDrawer
      * @ORM\OneToOne (targetEntity="AppBundle\Entity\ProductTableDrawer")
      * @ORM\JoinColumn(name="DRAWER_TYPE_ID", referencedColumnName="id")
      *
@@ -50,6 +52,7 @@ class ProductTable
     private $drawerType;
 
     /**
+     * @var ProductTableLegType
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\ProductTableLegType")
      * @ORM\JoinColumn(name="LEG_TYPE_ID", referencedColumnName="id")
      */
@@ -57,13 +60,18 @@ class ProductTable
     private $legType;
 
     /**
+     * @var Promotion
      * @ORM\ManyToMany (targetEntity="AppBundle\Entity\Promotion", inversedBy="tables")
      * @ORM\JoinTable (name="TABLE_PROMOTIONS")
      */
     private $promotions;
 
     /**
-     * @ORM\OneToMany()
+     * @var Media
+     *
+     * @ORM\OneToMany (targetEntity="Application\Sonata\MediaBundle\Entity\Media", mappedBy="table")
+     * @ORM\JoinColumn (name="IMAGES", referencedColumnName="id")
+     *
      */
     private $images;
 
@@ -74,6 +82,7 @@ class ProductTable
     public function __construct()
     {
         $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: cvisan
  * Date: 4/12/2016
- * Time: 12:20 PM
+ * Time: 3:21 PM
  */
 
 namespace AppBundle\Entity;
@@ -11,12 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
- * Class ProductTableTranslation
+ * Class MaterialTranslation
  * @package AppBundle\Entity
  *
  * @ORM\Entity
  */
-class ProductTableTranslation
+class MaterialTranslation
 {
     use ORMBehaviors\Translatable\Translation;
 
@@ -24,11 +24,6 @@ class ProductTableTranslation
      * @ORM\Column (type="string", length=255, name="NAME")
      */
     protected $name;
-
-    /**
-     * @ORM\Column (type="string", length=255, name="DESCRIPTION")
-     */
-    protected $desc;
 
     /**
      * @return mixed
@@ -45,22 +40,5 @@ class ProductTableTranslation
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getDesc()
-    {
-        return $this->desc;
-    }
-
-    /**
-     * @param mixed $desc
-     */
-    public function setDesc($desc)
-    {
-        $this->desc = $desc;
-    }
-
 
 }
