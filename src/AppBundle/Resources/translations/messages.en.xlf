@@ -10,7 +10,22 @@
                  <source>app.account</source>
                  <target>Account</target>
             </trans-unit>
-
+            <trans-unit id="page1">
+                  <source>app.aboutus</source>
+                  <target>About us</target>
+            </trans-unit>
+            <trans-unit id="page2">
+                   <source>app.product1</source>
+                   <target>Tables</target>
+            </trans-unit>
+            <trans-unit id="page3">
+                   <source>app.contact</source>
+                   <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="companyname">
+                    <source>app.name</source>
+                    <target>Artimex Sport</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
