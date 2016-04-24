@@ -26,6 +26,40 @@
                     <source>app.name</source>
                     <target>Artimex Sport</target>
             </trans-unit>
+            <trans-unit id="aboutus-page">
+                     <source>app.aboutuspage</source>
+                     <target>|
+                             Artimex Sport is one of the most important manufacturers for gymnastic equipment, sport stadium and sport halls for 20 years.
+
+                             We manufacture gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball goals, rugby goal posts and other products for individual training and team sports.
+
+                             Our representative for USA and Canada is Artimex Sport GmbH, with distribution facilities in the mid-Atlantic region. Our goal is to provide the highest level of customer service and support to complement our high quality line of products.
+
+                             All of our Stall Bars are covered by a full 10 year warranty. The type of gymnastics wall bars we produce are recommended to be used for rehabilitation or muscle tone maintenance exercises. You will find videos on our Products pages that illustrate the broad range of exercises that can be done on gymnastic Stall Bars.
+
+                             Prices
+                             Prices are subject to change at any time.
+
+                             Payment
+                             Payment methods:
+                             Advance payment when placing the order (3% discount)
+                             PayPal
+                             Credit cards
+
+
+                             Shipping
+                             Prices Including shipping within USA.
+                             Deliver of your orders will be made via either UPS
+
+                             Return
+                             If you are not completely satisfied with your order, you may contact us for either an exchange or return for refund within 30 days! Please see details on our website.
+
+                             Privacy Policy
+                             Artimex Sport is committed to protecting your privacy. The confidential data you submit is protected using SSL encryption.
+                             All of the customer data we collect is protected against unauthorized access and is never sold, traded or rented for commercial purposes to other organizations. </target>
+             </trans-unit>
+
+
         </body>
     </file>
 </xliff>
