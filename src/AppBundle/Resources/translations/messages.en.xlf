@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="page2">
                    <source>app.product1</source>
-                   <target>Tables</target>
+                   <target>Products</target>
             </trans-unit>
             <trans-unit id="page3">
                    <source>app.contact</source>
@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="aboutus-page">
                      <source>app.aboutuspage</source>
-                     <target>|
+                     <target xml:space="preserve">
                              Artimex Sport is one of the most important manufacturers for gymnastic equipment, sport stadium and sport halls for 20 years.
 
                              We manufacture gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball goals, rugby goal posts and other products for individual training and team sports.
@@ -57,6 +57,7 @@
                              Privacy Policy
                              Artimex Sport is committed to protecting your privacy. The confidential data you submit is protected using SSL encryption.
                              All of the customer data we collect is protected against unauthorized access and is never sold, traded or rented for commercial purposes to other organizations. </target>
+
              </trans-unit>
 
 

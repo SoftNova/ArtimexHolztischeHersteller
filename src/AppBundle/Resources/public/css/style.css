@@ -194,7 +194,7 @@ z-index: 9;
 }
 
 
-.slide-one {background-image: url(bundles/app/img/slider1.jpg)}
+.slide-one {background-image: url("bundles/app/img/slider1.jpg")}
 .slide-two {background-image: url({{ asset ('bundles/app/img/slider2.jpg')}})}
 .slide-three {background-image: url(img/slide-3.jpg)}
 .slide-text {color: #fff;font-size: 18px;font-weight: 200}
