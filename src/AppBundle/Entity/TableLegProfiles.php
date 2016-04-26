@@ -2,33 +2,34 @@
 /**
  * Created by PhpStorm.
  * User: cvisan
- * Date: 4/12/2016
- * Time: 12:27 PM
+ * Date: 4/26/2016
+ * Time: 4:03 PM
  */
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class ProductTableLegType
+ * Class TableLegProfiles
  * @package AppBundle\Entity
- * 
- * @ORM\Entity 
- * @ORM\Table (name="TABLE_LEG_TYPES")
+ *
+ * @ORM\Entity()
+ * @ORM\Table(name="table_leg_profiles")
  */
-class ProductTableLegType
+class TableLegProfiles
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer", name="ID")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", name="LEG_TYPES")
+     * @var
+     * @ORM\Column(type="string", name="profile", nullable="false")
      */
-    private $legTypesByDimention;
+    private $profile;
 
     /**
      * @return mixed
@@ -49,18 +50,17 @@ class ProductTableLegType
     /**
      * @return mixed
      */
-    public function getLegTypesByDimention()
+    public function getProfile()
     {
-        return $this->legTypesByDimention;
+        return $this->profile;
     }
 
     /**
-     * @param mixed $legTypesByDimention
+     * @param mixed $profile
      */
-    public function setLegTypesByDimention($legTypesByDimention)
+    public function setProfile($profile)
     {
-        $this->legTypesByDimention = $legTypesByDimention;
+        $this->profile = $profile;
     }
-
-
+    
 }

@@ -44,21 +44,6 @@ class Media extends BaseMedia
      */
     protected $id;
 
-    /**
-     * @var ProductTable
-     *
-     * @ORM\ManyToOne (targetEntity="AppBundle\Entity\ProductTable", inversedBy="images")
-     * @ORM\JoinColumn(name="TABLE_ID", referencedColumnName="id")
-     */
-    protected $table;
-
-    /**
-     * @var Material
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Material")
-     * @ORM\JoinColumn(name="MATERIAL_ID", referencedColumnName="id")
-     */
-    protected $material;
 
     /**
      * @return mixed
@@ -75,39 +60,5 @@ class Media extends BaseMedia
     {
         $this->id = $id;
     }
-
-    /**
-     * @return ProductTable
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
-
-    /**
-     * @param ProductTable $table
-     */
-    public function setTable($table)
-    {
-        $this->table = $table;
-    }
-
-    /**
-     * @return Material
-     */
-    public function getMaterial()
-    {
-        return $this->material;
-    }
-
-    /**
-     * @param Material $material
-     */
-    public function setMaterial($material)
-    {
-        $this->material = $material;
-    }
-
-
 }
 
