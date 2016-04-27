@@ -28,33 +28,33 @@ class Table
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="base_price", nullable="false")
+     * @ORM\Column(type="decimal", name="base_price", nullable=false)
      */
     private $basePrice;
 
     /**
      * Check whether this object has the possibility of extension.
      * Check @AppBundle\Entity\TableExtensionProperty
-     * @ORM\Column(type="boolean", name="has_extension", nullable="false")
+     * @ORM\Column(type="boolean", name="has_extension", nullable=false)
      */
     private $hasExtension;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER")
-     * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable="true", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $drawerAttribute;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER")
-     * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", onDelete="CASCADE", nullable="false")
+     * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $legAttribute;
     /**
      * @var
-     * @ORM\Column(type="boolean", name="has_distance_to_sides", nullable="false")
+     * @ORM\Column(type="boolean", name="has_distance_to_sides", nullable=false)
      */
     private $hasDistanceToSides;   
 

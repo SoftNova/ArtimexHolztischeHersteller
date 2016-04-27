@@ -27,7 +27,7 @@ class TableLegProfiles
 
     /**
      * @var
-     * @ORM\Column(type="string", name="profile", nullable="false")
+     * @ORM\Column(type="string", name="profile", nullable=false)
      */
     private $profile;
 

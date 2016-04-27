@@ -27,13 +27,13 @@ class TableDrawerAttribute
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="base_price", nullable="false")
+     * @ORM\Column(type="decimal", name="base_price", nullable=false)
      */
     private $basePrice;
 
     /**
      * @var
-     * @ORM\Column(type="integer", name="max_number_of_drawers", nullable="false")
+     * @ORM\Column(type="integer", name="max_number_of_drawers", nullable=false)
      */
     private $maxNumberOfDrawers;
 
