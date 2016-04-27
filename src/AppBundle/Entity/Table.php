@@ -40,15 +40,15 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER")
-     * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
+     * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
     private $drawerAttribute;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER")
-     * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
+     * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
      */
     private $legAttribute;
     /**
@@ -63,8 +63,121 @@ class Table
      * @ORM\Column(type="string", name="message", nullable=true)
      */
     private $message;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBasePrice()
+    {
+        return $this->basePrice;
+    }
+
+    /**
+     * @param mixed $basePrice
+     */
+    public function setBasePrice($basePrice)
+    {
+        $this->basePrice = $basePrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasExtension()
+    {
+        return $this->hasExtension;
+    }
+
+    /**
+     * @param mixed $hasExtension
+     */
+    public function setHasExtension($hasExtension)
+    {
+        $this->hasExtension = $hasExtension;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDrawerAttribute()
+    {
+        return $this->drawerAttribute;
+    }
+
+    /**
+     * @param mixed $drawerAttribute
+     */
+    public function setDrawerAttribute($drawerAttribute)
+    {
+        $this->drawerAttribute = $drawerAttribute;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLegAttribute()
+    {
+        return $this->legAttribute;
+    }
+
+    /**
+     * @param mixed $legAttribute
+     */
+    public function setLegAttribute($legAttribute)
+    {
+        $this->legAttribute = $legAttribute;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasDistanceToSides()
+    {
+        return $this->hasDistanceToSides;
+    }
+
+    /**
+     * @param mixed $hasDistanceToSides
+     */
+    public function setHasDistanceToSides($hasDistanceToSides)
+    {
+        $this->hasDistanceToSides = $hasDistanceToSides;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param mixed $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
     /**
      * for price decimal
      * for date datetime
      */
+
 }

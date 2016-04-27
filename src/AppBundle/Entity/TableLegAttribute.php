@@ -40,17 +40,97 @@ class TableLegAttribute
 
     /**
      * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TableLegProfiles")
-     * @ORM\JoinTable(name="leg_profiles",
-     *     joinColumns={@ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="profile_id", referencedColumnName="id", unique=true)})
+     * @ORM\Column(type="string", name="profiles", nullable=true)
      *
      */
     private $profiles;
 
-    public function __construct()
+    /**
+     * @var
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_leg_attribute")
+     * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
+     */
+    private $table;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
-        $this->profiles = new ArrayCollection();
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBasePrice()
+    {
+        return $this->basePrice;
+    }
+
+    /**
+     * @param mixed $basePrice
+     */
+    public function setBasePrice($basePrice)
+    {
+        $this->basePrice = $basePrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVariance()
+    {
+        return $this->variance;
+    }
+
+    /**
+     * @param mixed $variance
+     */
+    public function setVariance($variance)
+    {
+        $this->variance = $variance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfiles()
+    {
+        return $this->profiles;
+    }
+
+    /**
+     * @param mixed $profiles
+     */
+    public function setProfiles($profiles)
+    {
+        $this->profiles = $profiles;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTable()
+    {
+        return $this->table;
+    }
+
+    /**
+     * @param mixed $table
+     */
+    public function setTable($table)
+    {
+        $this->table = $table;
     }
 
 }

@@ -5,3 +5,19 @@ services:
         arguments: [~, AppBundle\Entity\Product, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Product }
+    admin.table:
+        class: AppBundle\Admin\TableAdmin
+        arguments: [~, AppBundle\Entity\Table, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Table }
+    admin.drawer:
+            class: AppBundle\Admin\TableDrawerAttributeAdmin
+            arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: TableDrawerAttribute }
+    admin.leg:
+          class: AppBundle\Admin\TableLegAttributeAdmin
+          arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: TableLegAttributeAdmin }
+
