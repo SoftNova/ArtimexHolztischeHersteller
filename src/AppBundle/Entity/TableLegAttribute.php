@@ -43,7 +43,7 @@ class TableLegAttribute
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TableLegProfiles")
      * @ORM\JoinTable(name="leg_profiles",
      *     joinColumns={@ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="profile_id", referencedColumnName="id", unique=true)}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="profile_id", referencedColumnName="id", unique=true)})
      *
      */
     private $profiles;

@@ -34,7 +34,6 @@ class Table
 
     /**
      * Check whether this object has the possibility of extension.
-     * Check @AppBundle\Entity\TableExtensionProperty
      * @ORM\Column(type="boolean", name="has_extension", nullable=false)
      */
     private $hasExtension;
@@ -61,7 +60,7 @@ class Table
     // This will probably end up being translatable
     /**
      * @var
-     * @ORM\Column(type="string", name="message", nullable="true")
+     * @ORM\Column(type="string", name="message", nullable=true)
      */
     private $message;
     /**
