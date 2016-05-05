@@ -24,9 +24,6 @@ class AppKernel extends Kernel
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Sonata\MediaBundle\SonataMediaBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle(),
             new AppBundle\AppBundle(),
         ];
 

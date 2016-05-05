@@ -7,7 +7,7 @@
  */
 
 namespace AppBundle\Admin;
-
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -18,5 +18,11 @@ class TablePrimaryMaterialAdmin extends  Admin
     {
         $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'Price per square meter'))
             ->add('primaryMaterial', 'sonata_type_model');
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        
+        $collection->remove('create');
     }
 }
