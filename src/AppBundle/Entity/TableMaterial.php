@@ -35,13 +35,62 @@ class TableMaterial
     /**
      * @var
      * Value, either PricePerSquareMeter or percentage of primary material
-     * @ORM\Column(type="decimal", name="value")
+     * @ORM\Column(type="decimal", name="percentage")
      */
-    private $value;
+    private $percentage;
 
     /**
-     * @var
-     * @ORM\Column(type="boolean", name="is_primary")
+     * @return mixed
      */
-    private $isPrimary;
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentage()
+    {
+        return $this->percentage;
+    }
+
+    /**
+     * @param mixed $percentage
+     */
+    public function setPercentage($percentage)
+    {
+        $this->percentage = $percentage;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+
 }
