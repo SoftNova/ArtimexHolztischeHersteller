@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="table_extension_rule")
  */
-class TableExtensionRule
+class TableExtensionAttribute
 {
 
     /**

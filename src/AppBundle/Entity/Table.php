@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TableDAO")
- * @ORM\Table(name="Table")
+ * @ORM\Table(name="table")
  */
 class Table
 {
