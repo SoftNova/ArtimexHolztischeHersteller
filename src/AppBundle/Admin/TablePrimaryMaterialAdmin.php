@@ -22,7 +22,10 @@ class TablePrimaryMaterialAdmin extends  Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        
-        $collection->remove('create');
+        $em=$this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
+        $hasPrimary=(count($em->findAll())==0) ? false : true;
+        if ($hasPrimary) {
+            $collection->remove('create');
+        }
     }
 }

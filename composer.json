@@ -27,7 +27,8 @@
         "knplabs/doctrine-behaviors": "~1.1",
         "jms/serializer-bundle": "~0.13",
         "sonata-project/easy-extends-bundle": "^2.1",
-        "symfony/assetic-bundle": "^2.8"
+        "symfony/assetic-bundle": "^2.8",
+        "sonata-project/doctrine-extensions": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
