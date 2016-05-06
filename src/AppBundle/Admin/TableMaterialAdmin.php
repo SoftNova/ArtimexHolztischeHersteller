@@ -19,10 +19,12 @@ class TableMaterialAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
 
-        $form->add('translations','a2lix_translations' , array('label' => 'Material name'))
-            ->add('percentage', PercentType::class, array('label'=>'Cost modifier (% of primary material)'
-                                                ,'data'=>100))
-            ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false));
-
+        $form->with('')
+                ->add('translations','a2lix_translations')
+            ->end()
+            ->with('General')
+                ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer'))
+                ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false))
+            ->end();
     }
 }

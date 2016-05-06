@@ -28,13 +28,13 @@ class TableLegAttribute
 
     /**
      * @var
-     * @ORM\Column(name="base_price", type="decimal", nullable=false)
+     * @ORM\Column(name="base_price", type="decimal", nullable=false, precision=9, scale=2)
      */
     private $basePrice;
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="variance", nullable=false)
+     * @ORM\Column(type="decimal", name="variance", nullable=false, precision=9, scale=2)
      */
     private $variance=1;
 

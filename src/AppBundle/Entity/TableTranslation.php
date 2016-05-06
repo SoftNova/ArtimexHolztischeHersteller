@@ -37,7 +37,7 @@ class TableTranslation
     /**
      * @var
      * 
-     * @ORM\Column(type="decimal", name="by_state_variance", nullable=false)
+     * @ORM\Column(type="decimal", name="by_state_variance", nullable=false, precision=9, scale=2)
      */
     protected $byStateVariance;
 

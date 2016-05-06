@@ -29,7 +29,7 @@ class TablePrimaryMaterial
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="price_per_square_meter")
+     * @ORM\Column(type="decimal", name="price_per_square_meter", precision=9, scale=2)
      */
     private $pricePerSquareMeter;
 
@@ -87,6 +87,8 @@ class TablePrimaryMaterial
     {
         $this->primaryMaterial = $primaryMaterial;
     }
+    
+    
 
 
 }

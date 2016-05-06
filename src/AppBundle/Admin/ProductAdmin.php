@@ -22,12 +22,16 @@ class ProductAdmin extends Admin
         $form->with('Translations')
                 ->add('translations','a2lix_translations',
                     array(
+                        'label'=>'',
                         'fields' => array(
+                            'name' => array('field_type'=>'text'),
+                            'description' => array('field_type'=>'text'),
                             'byStateVariance' => array(
-                             'field_type'=>PercentType::class
+                             'field_type'=>PercentType::class, 'type'=>'integer'
                             )
                         )
-                    ))
+                    )
+                )
             ->end()
             ->with('General')
                 ->add('price', MoneyType::class, array('label' => 'Table base price'))

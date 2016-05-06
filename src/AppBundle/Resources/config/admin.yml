@@ -13,9 +13,15 @@ services:
     admin.drawer:
             class: AppBundle\Admin\TableDrawerAttributeAdmin
             arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
+            tags:
+              - { name: sonata.admin, manager_type: orm, label: Table Primary Material }
+            show_in_dashboard: false
     admin.leg:
           class: AppBundle\Admin\TableLegAttributeAdmin
           arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Table Primary Material, group: "No" }
+          show_in_dashboard: false
     admin.material:
           class: AppBundle\Admin\TableMaterialAdmin
           arguments: [~, AppBundle\Entity\TableMaterial, ~]

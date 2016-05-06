@@ -36,7 +36,7 @@ class Table
 
     /**
      * @var
-     * @ORM\Column(type="decimal", name="base_price", nullable=false)
+     * @ORM\Column(type="decimal", name="base_price", nullable=false, precision=9, scale=2)
      */
     private $basePrice;
 

@@ -35,7 +35,7 @@ class TableMaterial
     /**
      * @var
      * Value, either PricePerSquareMeter or percentage of primary material
-     * @ORM\Column(type="decimal", name="percentage")
+     * @ORM\Column(type="decimal", name="percentage", precision=9, scale=2)
      */
     private $percentage;
 
