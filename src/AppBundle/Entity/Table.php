@@ -9,6 +9,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Class TableProduct
@@ -19,6 +20,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Table
 {
+
+    use ORMBehaviors\Translatable\Translatable;
+
+    public function __call($method, $arguments)
+    {
+        return $this->proxyCurrentLocaleTranslation($method, $arguments);
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -56,13 +64,6 @@ class Table
      * @ORM\Column(type="boolean", name="has_distance_to_sides", nullable=false)
      */
     private $hasDistanceToSides;   
-
-    // This will probably end up being translatable
-    /**
-     * @var
-     * @ORM\Column(type="string", name="message", nullable=true)
-     */
-    private $message;
 
     /**
      * @return mixed
@@ -160,24 +161,13 @@ class Table
         $this->hasDistanceToSides = $hasDistanceToSides;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMessage()
+    public function __toString()
     {
-        return $this->message;
+        if($name = $this->translate()->getName()){
+            return $name;
+        }
+        return '';
     }
 
-    /**
-     * @param mixed $message
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    }
-    /**
-     * for price decimal
-     * for date datetime
-     */
 
 }

@@ -8,68 +8,35 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Class Product
  * @package AppBundle\Model
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductDAO")
- * @ORM\Table()
+ * @ORM\Table(name="product")
  */
 class Product
 {
+    use ORMBehaviors\Translatable\Translatable;
+
+    public function __call($method, $arguments)
+    {
+        return $this->proxyCurrentLocaleTranslation($method, $arguments);
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
     private $id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $cost;
-
-    private $length;
-    private $width;
-    private $height;
-    private $foot;
-
 
     /**
-     * @return mixed
+     * @var
+     * @ORM\Column(type="decimal", name="price", nullable=false)
      */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCost()
-    {
-        return $this->cost;
-    }
-
-    /**
-     * @param mixed $cost
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-    }
+    private $price;
 
     /**
      * @return mixed
@@ -78,4 +45,37 @@ class Product
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function __toString()
+    {
+        if($name = $this->translate()->getName()){
+            return $name;
+        }
+        return '';
+    }
+
 }

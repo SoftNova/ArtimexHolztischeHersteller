@@ -8,7 +8,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Class TableMaterial
@@ -19,6 +19,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TableMaterial
 {
+    use ORMBehaviors\Translatable\Translatable;
+
+    public function __call($method, $arguments)
+    {
+        return $this->proxyCurrentLocaleTranslation($method, $arguments);
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,17 +34,18 @@ class TableMaterial
 
     /**
      * @var
-     * @ORM\Column(type="string", name="name")
-     */
-    private $name;
-
-    /**
-     * @var
      * Value, either PricePerSquareMeter or percentage of primary material
      * @ORM\Column(type="decimal", name="percentage")
      */
     private $percentage;
 
+    /**
+     * Check whether this object has the possibility of extension.
+     * @ORM\Column(type="boolean", name="is_tempered", nullable=false)
+     */
+    private $isTempered;
+    
+    // TO DO - ADD SAMPLE PICTURE FOR MATERIALS
     /**
      * @return mixed
      */
@@ -55,21 +62,6 @@ class TableMaterial
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
 
     /**
      * @return mixed
@@ -79,6 +71,7 @@ class TableMaterial
         return $this->percentage;
     }
 
+
     /**
      * @param mixed $percentage
      */
@@ -87,9 +80,28 @@ class TableMaterial
         $this->percentage = $percentage;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsTempered()
+    {
+        return $this->isTempered;
+    }
+
+    /**
+     * @param mixed $isTempered
+     */
+    public function setIsTempered($isTempered)
+    {
+        $this->isTempered = $isTempered;
+    }
+
     public function __toString()
     {
-        return $this->name;
+        if($name = $this->translate()->getName()){
+            return $name;
+       }
+        return '';
     }
 
 

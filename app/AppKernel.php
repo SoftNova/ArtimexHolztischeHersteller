@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new AppBundle\AppBundle(),
         ];
 

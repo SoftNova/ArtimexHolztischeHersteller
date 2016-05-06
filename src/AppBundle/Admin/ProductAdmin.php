@@ -12,21 +12,26 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\PercentType;
 
 class ProductAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add("name")
-            ->add("cost");
+        $form->with('Translations')
+                ->add('translations','a2lix_translations',
+                    array(
+                        'fields' => array(
+                            'byStateVariance' => array(
+                             'field_type'=>PercentType::class
+                            )
+                        )
+                    ))
+            ->end()
+            ->with('General')
+                ->add('price', MoneyType::class, array('label' => 'Table base price'))
+            ->end();
+
     }
-
-    protected function configureListFields(ListMapper $list)
-    {
-        $list->add("name")
-        ->add("cost");
-    }
-
-
 }
