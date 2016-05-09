@@ -30,13 +30,13 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * @ORM\Column(type="decimal", name="price", nullable=false, precision=9, scale=2)
      */
-    private $price;
+    protected $price;
 
     /**
      * @return mixed

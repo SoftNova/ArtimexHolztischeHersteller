@@ -30,20 +30,20 @@ class TableMaterial
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", name="id")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * Value, either PricePerSquareMeter or percentage of primary material
      * @ORM\Column(type="decimal", name="percentage", precision=9, scale=2)
      */
-    private $percentage;
+    protected $percentage;
 
     /**
      * Check whether this object has the possibility of extension.
      * @ORM\Column(type="boolean", name="is_tempered", nullable=false)
      */
-    private $isTempered;
+    protected $isTempered;
     
     // TO DO - ADD SAMPLE PICTURE FOR MATERIALS
     /**

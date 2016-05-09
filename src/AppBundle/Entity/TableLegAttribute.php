@@ -24,26 +24,26 @@ class TableLegAttribute
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * @ORM\Column(name="base_price", type="decimal", nullable=false, precision=9, scale=2)
      */
-    private $basePrice;
+    protected $basePrice;
 
     /**
      * @var
      * @ORM\Column(type="decimal", name="variance", nullable=false, precision=9, scale=2)
      */
-    private $variance=1;
+    protected $variance=1;
 
     /**
      * @var
      * @ORM\Column(type="string", name="profiles", nullable=true)
      *
      */
-    private $profiles;
+    protected $profiles;
 
     /**
      * @var
@@ -51,7 +51,7 @@ class TableLegAttribute
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_leg_attribute")
      * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
      */
-    private $table;
+    protected $table;
 
     /**
      * @return mixed

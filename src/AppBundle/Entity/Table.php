@@ -32,38 +32,38 @@ class Table
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", name="id")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * @ORM\Column(type="decimal", name="base_price", nullable=false, precision=9, scale=2)
      */
-    private $basePrice;
+    protected $basePrice;
 
     /**
      * Check whether this object has the possibility of extension.
      * @ORM\Column(type="boolean", name="has_extension", nullable=false)
      */
-    private $hasExtension;
+    protected $hasExtension;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
      * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
-    private $drawerAttribute;
+    protected $drawerAttribute;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
      * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
      */
-    private $legAttribute;
+    protected $legAttribute;
     /**
      * @var
      * @ORM\Column(type="boolean", name="has_distance_to_sides", nullable=false)
      */
-    private $hasDistanceToSides;   
+    protected $hasDistanceToSides;   
 
     /**
      * @return mixed

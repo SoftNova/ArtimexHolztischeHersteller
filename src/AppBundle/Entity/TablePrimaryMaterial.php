@@ -25,20 +25,20 @@ class TablePrimaryMaterial
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", name="id")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * @ORM\Column(type="decimal", name="price_per_square_meter", precision=9, scale=2)
      */
-    private $pricePerSquareMeter;
+    protected $pricePerSquareMeter;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableMaterial", fetch="EAGER")
      * @ORM\JoinColumn(name="table_material_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $primaryMaterial;
+    protected $primaryMaterial;
 
     /**
      * @return mixed

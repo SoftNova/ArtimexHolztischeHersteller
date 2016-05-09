@@ -32,6 +32,11 @@ services:
           arguments: [~, AppBundle\Entity\TableMaterialTempering, ~]
           tags:
                 - { name: sonata.admin, manager_type: orm, label: Tempering, group: "Tables" }
+    admin.quality:
+          class: AppBundle\Admin\TableTimberQualityAdmin
+          arguments: [~, AppBundle\Entity\TableTimberQuality, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Timber Quality, group: "Tables" }
 
     admin.product:
             class: AppBundle\Admin\ProductAdmin

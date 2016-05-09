@@ -3,20 +3,22 @@
  * Created by PhpStorm.
  * User: cvisan
  * Date: 5/9/2016
- * Time: 3:38 PM
+ * Time: 4:27 PM
  */
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehavior;
+
+
 /**
- * Class TableMaterialTempering
+ * Class TableTimberQuality
  * @package AppBundle\Entity
  *
  * @ORM\Entity()
- * @ORM\Table(name="table_material_tempering")
+ * @ORM\Table(name="table_timber_quality")
  */
-class TableMaterialTempering
+class TableTimberQuality
 {
 
     use ORMBehavior\Translatable\Translatable;
@@ -28,7 +30,7 @@ class TableMaterialTempering
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="id")
      */
     protected $id;
 
@@ -71,7 +73,6 @@ class TableMaterialTempering
         $this->costIncrease = $costIncrease;
     }
 
-    
     public function __toString()
     {
         if($name = $this->translate()->getName()){
@@ -79,5 +80,4 @@ class TableMaterialTempering
         }
         return '';
     }
-
 }

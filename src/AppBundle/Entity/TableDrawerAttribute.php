@@ -23,19 +23,19 @@ class TableDrawerAttribute
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", name="id")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var
      * @ORM\Column(type="decimal", name="base_price", nullable=false, precision=9, scale=2)
      */
-    private $basePrice;
+    protected $basePrice;
 
     /**
      * @var
      * @ORM\Column(type="integer", name="max_number_of_drawers", nullable=false)
      */
-    private $maxNumberOfDrawers;
+    protected $maxNumberOfDrawers;
 
     /**
      * @var
@@ -43,7 +43,7 @@ class TableDrawerAttribute
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_drawer_attribute")
      * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
      */
-    private $table;
+    protected $table;
 
     /**
      * @return mixed
