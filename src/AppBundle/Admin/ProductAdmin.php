@@ -22,12 +22,12 @@ class ProductAdmin extends Admin
         $form->with('Translations')
                 ->add('translations','a2lix_translations',
                     array(
-                        'label'=>'',
+                        'label'=>false,
                         'fields' => array(
                             'name' => array('field_type'=>'text'),
                             'description' => array('field_type'=>'text'),
                             'byStateVariance' => array(
-                             'field_type'=>PercentType::class, 'type'=>'integer'
+                             'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2
                             )
                         )
                     )

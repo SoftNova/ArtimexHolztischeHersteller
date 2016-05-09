@@ -20,10 +20,10 @@ class TableMaterialAdmin extends Admin
     {
 
         $form->with('')
-                ->add('translations','a2lix_translations')
+                ->add('translations','a2lix_translations', array('label'=>false))
             ->end()
             ->with('General')
-                ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer'))
+                ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer', 'scale'=>2))
                 ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false))
             ->end();
     }

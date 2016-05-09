@@ -161,6 +161,10 @@ class Table
         $this->hasDistanceToSides = $hasDistanceToSides;
     }
 
+    public function getMessage(){
+        return $this->translate()->getMessage();
+    }
+    
     public function __toString()
     {
         if($name = $this->translate()->getName()){

@@ -1,36 +1,43 @@
 # ...
 services:
-    admin.category:
-        class: AppBundle\Admin\ProductAdmin
-        arguments: [~, AppBundle\Entity\Product, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Product }
     admin.table:
         class: AppBundle\Admin\TableAdmin
         arguments: [~, AppBundle\Entity\Table, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Table }
+            - { name: sonata.admin, manager_type: orm, label: Table, group: "Tables"  }
+
     admin.drawer:
             class: AppBundle\Admin\TableDrawerAttributeAdmin
             arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
             tags:
-              - { name: sonata.admin, manager_type: orm, label: Table Primary Material }
+              - { name: sonata.admin, manager_type: orm, label: Drawer Attribute, show_in_dashboard: false }
             show_in_dashboard: false
     admin.leg:
           class: AppBundle\Admin\TableLegAttributeAdmin
           arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
           tags:
-              - { name: sonata.admin, manager_type: orm, label: Table Primary Material, group: "No" }
-          show_in_dashboard: false
+              - { name: sonata.admin, manager_type: orm, label: Leg Attribute, show_in_dashboard: false }
     admin.material:
           class: AppBundle\Admin\TableMaterialAdmin
           arguments: [~, AppBundle\Entity\TableMaterial, ~]
           tags:
-                - { name: sonata.admin, manager_type: orm, label: Table Material }
+                - { name: sonata.admin, manager_type: orm, label: Materials, group: "Tables" }
     admin.primary.material:
           class: AppBundle\Admin\TablePrimaryMaterialAdmin
           arguments: [~, AppBundle\Entity\TablePrimaryMaterial, ~]
           tags:
-                - { name: sonata.admin, manager_type: orm, label: Table Primary Material }
+                - { name: sonata.admin, manager_type: orm, label: Primary Material, group: "Tables" }
+    admin.material.tempering:
+          class: AppBundle\Admin\TableMaterialTemperingAdmin
+          arguments: [~, AppBundle\Entity\TableMaterialTempering, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Tempering, group: "Tables" }
+
+    admin.product:
+            class: AppBundle\Admin\ProductAdmin
+            arguments: [~, AppBundle\Entity\Product, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Product , group: "Articles" }
+
 
 
