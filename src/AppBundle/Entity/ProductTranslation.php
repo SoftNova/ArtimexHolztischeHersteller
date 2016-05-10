@@ -30,14 +30,14 @@ class ProductTranslation
 
     /**
      * @var
-     * @ORM\Column(type="string", name="description", nullable=false, length=255)
+     * @ORM\Column(type="string", name="description", length=255, nullable=true)
      */
     protected $description;
 
     /**
      * @var
      *
-     * @ORM\Column(type="string", name="by_state_variance", nullable=false)
+     * @ORM\Column(type="string", name="by_state_variance", nullable=true)
      */
     protected $byStateVariance;
 
@@ -87,5 +87,10 @@ class ProductTranslation
     public function setByStateVariance($byStateVariance)
     {
         $this->byStateVariance = $byStateVariance;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

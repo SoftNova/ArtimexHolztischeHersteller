@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class TableMaterial
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TableMaterialDAO")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TablePrimaryMaterialDAO")
  * @ORM\Table(name="table_primary_material")
  */
 class TablePrimaryMaterial

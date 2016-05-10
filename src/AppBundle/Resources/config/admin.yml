@@ -6,37 +6,54 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Table, group: "Tables"  }
 
-    admin.drawer:
+    admin.table.drawer:
             class: AppBundle\Admin\TableDrawerAttributeAdmin
             arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
             tags:
               - { name: sonata.admin, manager_type: orm, label: Drawer Attribute, show_in_dashboard: false }
             show_in_dashboard: false
-    admin.leg:
+    admin.table.leg:
           class: AppBundle\Admin\TableLegAttributeAdmin
           arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
           tags:
               - { name: sonata.admin, manager_type: orm, label: Leg Attribute, show_in_dashboard: false }
-    admin.material:
+    admin.table.material:
           class: AppBundle\Admin\TableMaterialAdmin
           arguments: [~, AppBundle\Entity\TableMaterial, ~]
           tags:
                 - { name: sonata.admin, manager_type: orm, label: Materials, group: "Tables" }
-    admin.primary.material:
-          class: AppBundle\Admin\TablePrimaryMaterialAdmin
-          arguments: [~, AppBundle\Entity\TablePrimaryMaterial, ~]
-          tags:
-                - { name: sonata.admin, manager_type: orm, label: Primary Material, group: "Tables" }
-    admin.material.tempering:
+
+    admin.table.material.tempering:
           class: AppBundle\Admin\TableMaterialTemperingAdmin
           arguments: [~, AppBundle\Entity\TableMaterialTempering, ~]
           tags:
                 - { name: sonata.admin, manager_type: orm, label: Tempering, group: "Tables" }
-    admin.quality:
+    admin.table.quality:
           class: AppBundle\Admin\TableTimberQualityAdmin
           arguments: [~, AppBundle\Entity\TableTimberQuality, ~]
           tags:
                 - { name: sonata.admin, manager_type: orm, label: Timber Quality, group: "Tables" }
+
+    admin.table.primary.material:
+          class: AppBundle\Admin\TablePrimaryMaterialAdmin
+          arguments: [~, AppBundle\Entity\TablePrimaryMaterial, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Primary Material, group: "Table Rules" }
+    admin.table.width:
+          class: AppBundle\Admin\TableWidthAdmin
+          arguments: [~, AppBundle\Entity\TableWidth, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Surface Width, group: "Table Rules" }
+    admin.table.length:
+          class: AppBundle\Admin\TableLengthAdmin
+          arguments: [~, AppBundle\Entity\TableLength, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Surface Length, group: "Table Rules" }
+    admin.table.height:
+          class: AppBundle\Admin\TableHeightAdmin
+          arguments: [~, AppBundle\Entity\TableHeight, ~]
+          tags:
+                - { name: sonata.admin, manager_type: orm, label: Leg Height, group: "Table Rules" }
 
     admin.product:
             class: AppBundle\Admin\ProductAdmin

@@ -94,9 +94,9 @@ sonata_admin:
 
 a2lix_translation_form:
     locale_provider: default       # [1]
-    locales: [en, fr, de, ro]          # [1-a]
-    default_locale: en             # [1-b]
-    required_locales: []         # [1-c]
+    locales: [admin, en, fr, de, ro]          # [1-a]
+    default_locale: admin             # [1-b]
+    required_locales: [admin]         # [1-c]
     manager_registry: doctrine      # [2]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
 

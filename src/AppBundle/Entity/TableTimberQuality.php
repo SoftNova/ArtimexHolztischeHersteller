@@ -80,4 +80,33 @@ class TableTimberQuality
         }
         return '';
     }
+    public function toAdmin(){
+        return $this->translate('admin')->getName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        $locale="";
+        if (''!=($this->translate('en')->getName())){
+            $locale .= 'En ';
+        }
+
+        if (''!=($this->translate('fr')->getName())){
+            $locale .= 'Fr ';
+        }
+
+        if (''!=($this->translate('de')->getName())){
+            $locale .= 'De ';
+        }
+
+        if (''!=($this->translate('ro')->getName())){
+            $locale .= 'Ro ';
+        }
+        return ($locale!=="") ? $locale : "No languages set";
+    }
+
+
 }

@@ -2,23 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: cvisan
- * Date: 5/5/2016
- * Time: 3:27 PM
+ * Date: 5/10/2016
+ * Time: 10:48 AM
  */
 
 namespace AppBundle\Admin;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-class TablePrimaryMaterialAdmin extends Admin
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+
+class TableLengthAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'Price per square meter'))
-            ->add('primaryMaterial', 'sonata_type_model');
+        $form->add('length_lower_bound', IntegerType::class, array('label'=>'Minimum surface length'))
+            ->add('length_upper_bound', IntegerType::class, array('label'=>'Maximum surface length'));
     }
 
     protected function configureRoutes(RouteCollection $collection)
@@ -35,10 +35,13 @@ class TablePrimaryMaterialAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
-            ->add('primaryMaterial', 'sonata_type_model')
-            ->add('pricePerSquareMeter', MoneyType::class, array(
-                    'label'=>'Price per square meter (€)',
+        $listMapper->add('length_lower_bound', IntegerType::class, array(
+                    'label'=>'Minimum surface length',
+                    'sortable'=>true
+                )
+            )
+            ->add('length_upper_bound', IntegerType::class, array(
+                    'label'=>'Maximum surface length',
                     'sortable'=>true
                 )
             )

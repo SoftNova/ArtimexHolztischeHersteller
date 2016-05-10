@@ -104,5 +104,10 @@ class TableMaterial
         return '';
     }
 
-
+    public function getStringIsTempered(){
+        return (intval($this->isTempered)===0 ? "No" : "Yes");
+    }
+    public function toAdmin(){
+        return $this->translate('admin')->getName();
+    }
 }

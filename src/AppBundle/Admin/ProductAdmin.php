@@ -14,6 +14,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class ProductAdmin extends Admin
 {
@@ -25,9 +26,21 @@ class ProductAdmin extends Admin
                         'label'=>false,
                         'fields' => array(
                             'name' => array('field_type'=>'text'),
-                            'description' => array('field_type'=>'text'),
+                            'description' => array('field_type'=>'text',
+                                'locale_options'=>array(
+                                    'admin'=>array(
+                                        'attr'=>array('readonly' =>true,
+                                            'disabled'=>true)
+                                    )
+                                )),
                             'byStateVariance' => array(
-                             'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2
+                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
+                                'locale_options'=>array(
+                                    'admin'=>array(
+                                        'attr'=>array('readonly' =>true,
+                                            'disabled'=>true)
+                                    )
+                                  )
                             )
                         )
                     )
@@ -38,4 +51,26 @@ class ProductAdmin extends Admin
             ->end();
 
     }
+
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->addIdentifier('translations',null, array(
+                'label'=>'Name [En, Fr, De, Ro]',
+                'sortable'=>true
+                )
+            )
+            ->add('price',null,array(
+                'label'=>'Price (€)'
+            ))
+            ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                )
+            )
+        ;
+    }
+
 }

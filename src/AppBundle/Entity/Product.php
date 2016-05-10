@@ -78,4 +78,8 @@ class Product
         return '';
     }
 
+    public function toAdmin(){
+        return $this->translate('admin')->getName();
+    }
+
 }

@@ -173,5 +173,9 @@ class Table
         return '';
     }
 
+    public function toAdmin(){
+        return $this->translate('admin')->getName();
+    }
+
 
 }
