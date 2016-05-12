@@ -40,7 +40,7 @@ class TableDrawerAttribute
     /**
      * @var
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_drawer_attribute")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="drawerAttribute", cascade={"all"}, fetch="EAGERhi")
      * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
      */
     protected $table;

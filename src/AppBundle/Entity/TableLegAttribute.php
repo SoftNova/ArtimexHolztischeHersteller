@@ -22,7 +22,7 @@ class TableLegAttribute
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="id")
      */
     protected $id;
 
@@ -48,7 +48,7 @@ class TableLegAttribute
     /**
      * @var
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_leg_attribute")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="legAttribute", cascade={"all"})
      * @ORM\JoinColumn(name="table_id", referencedColumnName="id", nullable=false)
      */
     protected $table;

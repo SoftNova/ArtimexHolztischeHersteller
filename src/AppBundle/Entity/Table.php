@@ -48,7 +48,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER", mappedBy="table", cascade={"all"})
      * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
     protected $drawerAttribute;
@@ -61,7 +61,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="table", cascade={"all"})
      * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
      */
     protected $legAttribute;
