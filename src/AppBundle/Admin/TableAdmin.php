@@ -14,14 +14,48 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PercentType;
 
 class TableAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Table')
-               ->add('translations','a2lix_translations', array('label'=>false))
-                ->end()
+            ->add('translations','a2lix_translations',
+                array(
+                    'label'=>false,
+                    'fields' => array(
+                        'name' => array('field_type'=>'text'),
+                        'description' => array('field_type'=>'text',
+                            'locale_options'=>array(
+                                'admin'=>array(
+                                    'attr'=>array('readonly' =>true,
+                                        'disabled'=>true)
+                                )
+                            )
+                        ,'required'=>false),
+                        'byStateVariance' => array(
+                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
+                            'locale_options'=>array(
+                                'admin'=>array(
+                                    'attr'=>array('readonly' =>true,
+                                        'disabled'=>true)
+                                )
+                            )
+                        ,'required'=>false
+                        )
+                        ,'message' =>array('field_type'=>'text',
+                            'locale_options'=>array(
+                                'admin'=>array(
+                                    'attr'=>array('readonly' =>true,
+                                        'disabled'=>true)
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+            ->end()
             ->with('General')
                 ->add('basePrice', MoneyType::class, array('label' => 'Table base price'))
                 ->add('hasExtension', CheckboxType::class, array('label' => 'Does this table offer extensions?', 'required'=>false))

@@ -30,14 +30,14 @@ class TableTranslation
 
     /**
      * @var
-     * @ORM\Column(type="string", name="description", nullable=false, length=255)
+     * @ORM\Column(type="string", name="description", nullable=true, length=255)
      */
     protected $description;
 
     /**
      * @var
      * 
-     * @ORM\Column(type="string", name="by_state_variance", nullable=false)
+     * @ORM\Column(type="string", name="by_state_variance", nullable=true)
      */
     protected $byStateVariance;
 

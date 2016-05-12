@@ -25,16 +25,24 @@ class TableMaterialAdmin extends Admin
             ->end()
             ->with('General')
                 ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer', 'scale'=>2))
+                ->add('scalingPoint', 'number', array('label'=>'Value (in square meters) after which price scaling applies', 'required' => false))
+                ->add('scalingPercentage', PercentType::class, array('label'=>'Value of scaling', 'type'=>'integer', 'scale'=>2, 'required' => false))
                 ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false))
             ->end();
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('translations',null, array(
-                'label'=>'Name [En, Fr, De, Ro]',
-                'sortable'=>true
+            ->addIdentifier('toAdmin', null, array(
+                'label' => 'Admin Name',
+                'sortable' =>true
+            ))
+            ->add('getLocales',null, array(
+                    'label'=>'Available in',
+                    'sortable'=>true,
+                    'parameters'=>array($locales)
                 )
             )
             ->add('percentage', PercentType::class, array(
@@ -44,7 +52,17 @@ class TableMaterialAdmin extends Admin
                  )
             )
             ->add('getStringIsTempered', 'string', array(
-                    'label' => 'Is this material already improved?',
+                    'label' => 'Material improved',
+                    'sortable'=>true
+                )
+            )
+            ->add('scalingPoint', 'string', array(
+                    'label' => 'Scaling point (Square meters)',
+                    'sortable'=>true
+                )
+            )
+            ->add('scalingPercentage', 'string', array(
+                    'label' => 'Scaling variance (%)',
                     'sortable'=>true
                 )
             )

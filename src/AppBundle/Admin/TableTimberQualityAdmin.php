@@ -26,14 +26,16 @@ class TableTimberQualityAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
             ->addIdentifier('toAdmin', null, array(
                 'label' => 'Admin Name',
                 'sortable' =>true
             ))
-            ->add('getLocale',null, array(
-                    'label'=>'Name [En, Fr, De, Ro]',
-                    'sortable'=>true
+            ->add('getLocales',null, array(
+                    'label'=>'Available in',
+                    'sortable'=>true,
+                    'parameters'=>array($locales)
                 )
             )
             ->add('costIncrease', PercentType::class, array(

@@ -44,7 +44,18 @@ class TableMaterial
      * @ORM\Column(type="boolean", name="is_tempered", nullable=false)
      */
     protected $isTempered;
-    
+
+    /**
+     * @var
+     * @ORM\Column(type="decimal", name="scaling_point", precision=9, scale=2, nullable=true)
+     */
+    protected $scalingPoint;
+
+    /**
+     * @var
+     * @ORM\Column(type="decimal", name="scaling_percentage", precision=9, scale=2, nullable=true)
+     */
+    protected $scalingPercentage;
     // TO DO - ADD SAMPLE PICTURE FOR MATERIALS
     /**
      * @return mixed
@@ -96,6 +107,39 @@ class TableMaterial
         $this->isTempered = $isTempered;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getScalingPoint()
+    {
+        return $this->scalingPoint;
+    }
+
+    /**
+     * @param mixed $scalingPoint
+     */
+    public function setScalingPoint($scalingPoint)
+    {
+        $this->scalingPoint = $scalingPoint;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScalingPercentage()
+    {
+        return $this->scalingPercentage;
+    }
+
+    /**
+     * @param mixed $scalingPercentage
+     */
+    public function setScalingPercentage($scalingPercentage)
+    {
+        $this->scalingPercentage = $scalingPercentage;
+    }
+
+
     public function __toString()
     {
         if($name = $this->translate()->getName()){
@@ -109,5 +153,14 @@ class TableMaterial
     }
     public function toAdmin(){
         return $this->translate('admin')->getName();
+    }
+    public function getLocales($locales){
+        $output=array();
+        foreach ($locales as $locale) {
+            if (strcmp($locale,"admin")!==0){
+                $output[$locale] = $this->translate($locale)->getLocale();
+            }
+        }
+        return (implode("-",array_unique($output)));
     }
 }

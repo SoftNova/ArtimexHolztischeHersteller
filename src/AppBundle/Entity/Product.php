@@ -9,7 +9,6 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
 /**
  * Class Product
  * @package AppBundle\Model
@@ -82,4 +81,13 @@ class Product
         return $this->translate('admin')->getName();
     }
 
+    public function getLocales($locales){
+        $output=array();
+        foreach ($locales as $locale) {
+            if (strcmp($locale,"admin")!==0){
+                $output[$locale] = $this->translate($locale)->getLocale();
+            }
+        }
+        return (implode("-",array_unique($output)));
+    }
 }

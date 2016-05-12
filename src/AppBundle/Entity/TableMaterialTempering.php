@@ -82,5 +82,14 @@ class TableMaterialTempering
     public function toAdmin(){
         return $this->translate('admin')->getName();
     }
+    public function getLocales($locales){
+        $output=array();
+        foreach ($locales as $locale) {
+            if (strcmp($locale,"admin")!==0){
+                $output[$locale] = $this->translate($locale)->getLocale();
+            }
+        }
+        return (implode("-",array_unique($output)));
+    }
 
 }

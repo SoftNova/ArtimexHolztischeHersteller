@@ -28,7 +28,7 @@ class TableExtensionAttribute
 
        /**
      * @var
-     * @ORM\Column(type="integer",nullable=false,name="max_number_of_extensions")
+     * @ORM\Column(type="integer",nullable=true,name="max_number_of_extensions")
      */
     private $maxNumberOfExtensions;
 

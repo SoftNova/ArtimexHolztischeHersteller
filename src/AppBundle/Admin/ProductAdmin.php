@@ -12,6 +12,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -32,7 +33,8 @@ class ProductAdmin extends Admin
                                         'attr'=>array('readonly' =>true,
                                             'disabled'=>true)
                                     )
-                                )),
+                                )
+                            ,'required'=>false),
                             'byStateVariance' => array(
                             'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
                                 'locale_options'=>array(
@@ -41,6 +43,7 @@ class ProductAdmin extends Admin
                                             'disabled'=>true)
                                     )
                                   )
+                            ,'required'=>false
                             )
                         )
                     )
@@ -54,10 +57,16 @@ class ProductAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('translations',null, array(
-                'label'=>'Name [En, Fr, De, Ro]',
-                'sortable'=>true
+            ->addIdentifier('toAdmin', null, array(
+                'label' => 'Admin Name',
+                'sortable' =>true
+            ))
+            ->add('getLocales','text', array(
+                    'label'=>'Available in',
+                    'sortable'=>true,
+                    'parameters'=>array($locales)
                 )
             )
             ->add('price',null,array(

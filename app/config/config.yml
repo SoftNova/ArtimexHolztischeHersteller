@@ -22,7 +22,7 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-    default_locale:  "en"
+    default_locale:  "admin"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -94,9 +94,10 @@ sonata_admin:
 
 a2lix_translation_form:
     locale_provider: default       # [1]
-    locales: [admin, en, fr, de, ro]          # [1-a]
+    locales: "%locales%"          # [1-a]
     default_locale: admin             # [1-b]
     required_locales: [admin]         # [1-c]
     manager_registry: doctrine      # [2]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
+
 

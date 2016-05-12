@@ -18,7 +18,7 @@ class TableDrawerAttributeAdmin extends  Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('basePrice', MoneyType::class, array('label' => 'Drawer base price'))
-            ->add('maxNumberOfDrawers', IntegerType::class, array('label' => 'Number of maximum drawers'));
+        $form->add('basePrice', MoneyType::class, array('label' => 'Drawer base price','required'=>false))
+            ->add('maxNumberOfDrawers', IntegerType::class, array('label' => 'Number of maximum drawers','required'=>false));
     }
 }

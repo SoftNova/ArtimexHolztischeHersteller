@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 use Knp\DoctrineBehaviors\Model as ORMBehavior;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Class ProductTranslation
@@ -93,4 +94,6 @@ class ProductTranslation
     {
         return $this->name;
     }
+
+
 }

@@ -84,28 +84,14 @@ class TableTimberQuality
         return $this->translate('admin')->getName();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLocale()
-    {
-        $locale="";
-        if (''!=($this->translate('en')->getName())){
-            $locale .= 'En ';
+    public function getLocales($locales){
+        $output=array();
+        foreach ($locales as $locale) {
+            if (strcmp($locale,"admin")!==0){
+                $output[$locale] = $this->translate($locale)->getLocale();
+            }
         }
-
-        if (''!=($this->translate('fr')->getName())){
-            $locale .= 'Fr ';
-        }
-
-        if (''!=($this->translate('de')->getName())){
-            $locale .= 'De ';
-        }
-
-        if (''!=($this->translate('ro')->getName())){
-            $locale .= 'Ro ';
-        }
-        return ($locale!=="") ? $locale : "No languages set";
+        return (implode("-",array_unique($output)));
     }
 
 
