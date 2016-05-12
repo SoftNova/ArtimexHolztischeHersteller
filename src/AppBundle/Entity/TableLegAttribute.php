@@ -49,7 +49,7 @@ class TableLegAttribute
      * @var
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="table_leg_attribute")
-     * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="table_id", referencedColumnName="id", nullable=false)
      */
     protected $table;
 

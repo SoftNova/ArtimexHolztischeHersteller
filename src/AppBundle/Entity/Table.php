@@ -54,6 +54,12 @@ class Table
     protected $drawerAttribute;
 
     /**
+     * Check whether this object is visible.
+     * @ORM\Column(type="boolean", name="show_in_catalog", nullable=false)
+     */
+    protected $showInCatalog;
+
+    /**
      * @var
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="Table", cascade={"persist"})
      * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
@@ -151,6 +157,23 @@ class Table
     public function getHasDistanceToSides()
     {
         return $this->hasDistanceToSides;
+    }
+
+    /**
+     * @param mixed $showInCatalog
+     */
+    public function setShowInCatalog($showInCatalog)
+    {
+        $this->showInCatalog = $showInCatalog;
+    }
+
+    
+    /**
+     * @return mixed
+     */
+    public function getShowInCatalog()
+    {
+        return $this->showInCatalog;
     }
 
     /**

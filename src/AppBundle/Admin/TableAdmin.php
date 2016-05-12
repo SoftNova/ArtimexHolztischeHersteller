@@ -63,7 +63,6 @@ class TableAdmin extends Admin
             ->end()
             ->with('Drawers')
                 ->add('drawerAttribute', 'sonata_type_admin', array('label'=>false), array(
-                    'add' => 'inline',
                     'edit'=>'inline',
                     'inline'=>'table',
                     'sortable'=>'position'
@@ -71,15 +70,16 @@ class TableAdmin extends Admin
             ->end()
             ->with('Leg Profiles')
                 ->add('legAttribute', 'sonata_type_admin', array('label'=>false), array(
-                    'add' => 'inline',
                     'edit'=>'inline',
                     'inline'=>'table',
                     'sortable'=>'position'
                 ))
             ->end()
-            ;
+            ->with ('Visibility')
+                ->add('showInCatalog', CheckboxType::class, array('label' => 'Should this item be visible in the catalog? (You can enable it later)', 'required'=>false))
+            ->end();
+        ;
 
 
     }
-
 }

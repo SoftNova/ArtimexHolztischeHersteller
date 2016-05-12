@@ -11,7 +11,6 @@ services:
             arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
             tags:
               - { name: sonata.admin, manager_type: orm, label: Drawer Attribute, show_in_dashboard: false }
-            show_in_dashboard: false
     admin.table.leg:
           class: AppBundle\Admin\TableLegAttributeAdmin
           arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
