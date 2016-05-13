@@ -9,24 +9,27 @@
 namespace AppBundle\Admin;
 
 
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProductAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Translations')
-                ->add('translations','a2lix_translations',
+                ->add('translations', TranslationsType::class,
                     array(
                         'label'=>false,
                         'fields' => array(
-                            'name' => array('field_type'=>'text'),
-                            'description' => array('field_type'=>'text',
+                            'name' => array('field_type'=>TextType::class),
+                            'description' => array('field_type'=>TextType::class,
                                 'locale_options'=>array(
                                     'admin'=>array(
                                         'attr'=>array('readonly' =>true,
@@ -35,7 +38,7 @@ class ProductAdmin extends Admin
                                 )
                             ,'required'=>false),
                             'byStateVariance' => array(
-                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
+                            'field_type'=>PercentType::class, 'type'=>IntegerType::class, 'scale'=>2,
                                 'locale_options'=>array(
                                     'admin'=>array(
                                         'attr'=>array('readonly' =>true,
