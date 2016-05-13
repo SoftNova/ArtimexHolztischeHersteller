@@ -12,6 +12,8 @@ use Sonata\AdminBundle\Admin\Admin;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+
 class TableTimberQualityAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
@@ -34,7 +36,7 @@ class TableTimberQualityAdmin extends Admin
             ))
             ->add('getLocales',null, array(
                     'label'=>'Available in',
-                    'sortable'=>true,
+                    
                     'parameters'=>array($locales)
                 )
             )

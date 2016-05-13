@@ -35,7 +35,7 @@ class TableDrawerAttribute
      * @var
      * @ORM\Column(type="integer", name="max_number_of_drawers", nullable=true)
      */
-    protected $maxNumberOfDrawers;
+    protected $maxNumberOfDrawers=0;
 
 
     /**
@@ -75,7 +75,7 @@ class TableDrawerAttribute
      */
     public function getMaxNumberOfDrawers()
     {
-        return $this->maxNumberOfDrawers;
+        return is_null($this->maxNumberOfDrawers) ? 'No' : $this->maxNumberOfDrawers;
     }
 
     /**
@@ -87,6 +87,5 @@ class TableDrawerAttribute
     }
 
 
-    
-    
+
 }

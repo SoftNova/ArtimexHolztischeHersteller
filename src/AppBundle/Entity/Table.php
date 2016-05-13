@@ -48,7 +48,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", mappedBy="table", cascade={"all"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", mappedBy="table", cascade={"all"}, fetch="LAZY")
      * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
     protected $drawerAttribute;
@@ -196,6 +196,9 @@ class Table
         return '';
     }
 
+    /*
+     * General utility function (for admin display mostly)
+     */
     public function toAdmin(){
         return $this->translate('admin')->getName();
     }
@@ -203,11 +206,18 @@ class Table
     public function getLocales($locales){
         $output=array();
         foreach ($locales as $locale) {
-            if (strcmp($locale,"admin")!==0){
-                $output[$locale] = $this->translate($locale)->getLocale();
+            if (strcmp($locale,"admin")!==0) {
+                if (!is_null($this->translate($locale)->getName())) {
+                    $output[] = $this->translate($locale)->getLocale();
+                }
             }
         }
-        return (implode("-",array_unique($output)));
+        return (count($output)>0 ? implode("-",array_unique($output)) : "_Not available");
     }
+
+    
+
+
+
 
 }

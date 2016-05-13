@@ -112,5 +112,10 @@ class TableTranslation
         $this->message = $message;
     }
 
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
     
 }

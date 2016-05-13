@@ -38,7 +38,7 @@ class ProductAdmin extends Admin
                                 )
                             ,'required'=>false),
                             'byStateVariance' => array(
-                            'field_type'=>PercentType::class, 'type'=>IntegerType::class, 'scale'=>2,
+                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
                                 'locale_options'=>array(
                                     'admin'=>array(
                                         'attr'=>array('readonly' =>true,
@@ -67,7 +67,7 @@ class ProductAdmin extends Admin
             ))
             ->add('getLocales','text', array(
                     'label'=>'Available in',
-                    'sortable'=>true,
+                    
                     'parameters'=>array($locales)
                 )
             )

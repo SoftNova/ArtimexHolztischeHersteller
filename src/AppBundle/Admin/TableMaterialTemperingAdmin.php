@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 
 class TableMaterialTemperingAdmin extends Admin
 {
@@ -22,7 +23,7 @@ class TableMaterialTemperingAdmin extends Admin
             ->add('translations',TranslationsType::class, array('label'=>false))
             ->end()
             ->with('General')
-            ->add('costIncrease', PercentType::class, array('label' => 'Cost variance', 'type'=>IntegerType::class, 'scale'=>2))
+            ->add('costIncrease', PercentType::class, array('label' => 'Cost variance', 'type'=>'integer', 'scale'=>2))
             ->end();
     }
 
@@ -36,7 +37,7 @@ class TableMaterialTemperingAdmin extends Admin
             ))
             ->add('getLocales',null, array(
                     'label'=>'Available in',
-                    'sortable'=>true,
+                    
                     'parameters'=>array($locales)
                 )
             )

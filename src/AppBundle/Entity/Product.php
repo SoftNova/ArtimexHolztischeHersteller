@@ -84,10 +84,12 @@ class Product
     public function getLocales($locales){
         $output=array();
         foreach ($locales as $locale) {
-            if (strcmp($locale,"admin")!==0){
-                $output[$locale] = $this->translate($locale)->getLocale();
+            if (strcmp($locale,"admin")!==0) {
+                if (!is_null($this->translate($locale)->getName())) {
+                    $output[] = $this->translate($locale)->getLocale();
+                }
             }
         }
-        return (implode("-",array_unique($output)));
+        return (count($output)>0 ? implode("-",array_unique($output)) : "_Not available");
     }
 }

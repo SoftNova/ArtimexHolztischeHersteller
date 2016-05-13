@@ -21,4 +21,6 @@ class TableDrawerAttributeAdmin extends  Admin
         $form->add('basePrice', MoneyType::class, array('label' => 'Drawer base price','required'=>false))
             ->add('maxNumberOfDrawers', IntegerType::class, array('label' => 'Number of maximum drawers','required'=>false));
     }
+    
+    
 }

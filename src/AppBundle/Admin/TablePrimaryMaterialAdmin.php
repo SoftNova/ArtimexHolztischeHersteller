@@ -13,12 +13,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 class TablePrimaryMaterialAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
         $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'Price per square meter'))
-            ->add('primaryMaterial', TypeModel::class);
+            ->add('primaryMaterial', 'sonata_type_model');
     }
 
     protected function configureRoutes(RouteCollection $collection)

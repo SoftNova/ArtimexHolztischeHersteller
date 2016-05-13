@@ -14,11 +14,13 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Sonata\CoreBundle\Form\Type\BooleanType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+
 
 class TableAdmin extends Admin
 {
@@ -39,7 +41,7 @@ class TableAdmin extends Admin
                             )
                         ,'required'=>false),
                         'byStateVariance' => array(
-                            'field_type'=>PercentType::class, 'type'=>IntegerType::class, 'scale'=>2,
+                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
                             'locale_options'=>array(
                                 'admin'=>array(
                                     'attr'=>array('readonly' =>true,
@@ -86,5 +88,49 @@ class TableAdmin extends Admin
 
 
     }
+
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
+        $listMapper
+            ->addIdentifier('translate.getName', null, array(
+                'label' => 'Admin Name',
+                'locales'=>array('en')
+            ))
+            ->add('getLocales','text', array(
+                    'label'=>'Available in',
+                     
+                    'parameters'=>array($locales)
+                )
+            )
+            ->add('showInCatalog','boolean',array(
+                 'editable' => true,
+                'label'=>'Is visible in catalog'
+            ))
+            ->add('basePrice','currency',array(
+                'currency'=>'€',
+                'editable'=>true
+            ))
+            ->add('hasExtension','boolean',array(
+                'editable'=>true,
+                'label'=>'Offers extensions'
+            ))
+            ->addIdentifier('drawerAttribute.maxNumberOfDrawers', null,array(
+                'label'=>'Offers drawers'
+            ))
+            ->add('hasDistanceToSides','boolean',array(
+                'editable'=>true,
+                'label'=>'Offers distance to sides'
+            ))
+            ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                )
+            )
+        ;
+    }
+
 
 }
