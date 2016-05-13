@@ -18,7 +18,7 @@ class TablePrimaryMaterialAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'Price per square meter'))
-            ->add('primaryMaterial', 'sonata_type_model');
+            ->add('primaryMaterial', TypeModel::class);
     }
 
     protected function configureRoutes(RouteCollection $collection)

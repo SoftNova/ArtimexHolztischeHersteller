@@ -19,10 +19,10 @@ class TableMaterialTemperingAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Translations')
-            ->add('translations','a2lix_translations', array('label'=>false))
+            ->add('translations',TranslationsType::class, array('label'=>false))
             ->end()
             ->with('General')
-            ->add('costIncrease', PercentType::class, array('label' => 'Cost variance', 'type'=>'integer', 'scale'=>2))
+            ->add('costIncrease', PercentType::class, array('label' => 'Cost variance', 'type'=>IntegerType::class, 'scale'=>2))
             ->end();
     }
 
