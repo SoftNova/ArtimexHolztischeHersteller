@@ -45,13 +45,6 @@ class TableLegAttribute
      */
     protected $profiles;
 
-    /**
-     * @var
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="legAttribute", cascade={"all"})
-     * @ORM\JoinColumn(name="table_id", referencedColumnName="id", nullable=false)
-     */
-    protected $table;
 
     /**
      * @return mixed
@@ -117,20 +110,5 @@ class TableLegAttribute
         $this->profiles = $profiles;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
-
-    /**
-     * @param mixed $table
-     */
-    public function setTable($table)
-    {
-        $this->table = $table;
-    }
-
+  
 }

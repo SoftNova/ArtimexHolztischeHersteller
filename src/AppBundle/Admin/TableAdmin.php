@@ -9,25 +9,28 @@
 namespace AppBundle\Admin;
 
 
+use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TableAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Table')
-            ->add('translations','a2lix_translations',
+            ->add('translations',TranslationsType::class,
                 array(
                     'label'=>false,
                     'fields' => array(
-                        'name' => array('field_type'=>'text'),
-                        'description' => array('field_type'=>'text',
+                        'name' => array('field_type'=>TextType::class),
+                        'description' => array('field_type'=>TextType::class,
                             'locale_options'=>array(
                                 'admin'=>array(
                                     'attr'=>array('readonly' =>true,
@@ -36,7 +39,7 @@ class TableAdmin extends Admin
                             )
                         ,'required'=>false),
                         'byStateVariance' => array(
-                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
+                            'field_type'=>PercentType::class, 'type'=>IntegerType::class, 'scale'=>2,
                             'locale_options'=>array(
                                 'admin'=>array(
                                     'attr'=>array('readonly' =>true,

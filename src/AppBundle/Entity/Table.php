@@ -16,7 +16,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @package AppBundle\Entity
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TableDAO")
- * @ORM\Table(name="table")
+ * @ORM\Table(name="table_item")
  */
 class Table
 {
@@ -48,7 +48,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", fetch="EAGER", mappedBy="table", cascade={"all"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", mappedBy="table", cascade={"all"})
      * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
     protected $drawerAttribute;
@@ -61,7 +61,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", fetch="EAGER", mappedBy="table", cascade={"all"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", mappedBy="table", cascade={"all"})
      * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
      */
     protected $legAttribute;

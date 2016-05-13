@@ -37,13 +37,6 @@ class TableDrawerAttribute
      */
     protected $maxNumberOfDrawers;
 
-    /**
-     * @var
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Table", inversedBy="drawerAttribute", cascade={"all"}, fetch="EAGERhi")
-     * @ORM\JoinColumn(name="table_id", referencedColumnName="id")
-     */
-    protected $table;
 
     /**
      * @return mixed
@@ -93,21 +86,7 @@ class TableDrawerAttribute
         $this->maxNumberOfDrawers = $maxNumberOfDrawers;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
 
-    /**
-     * @param mixed $table
-     */
-    public function setTable($table)
-    {
-        $this->table = $table;
-    }
     
     
 }
