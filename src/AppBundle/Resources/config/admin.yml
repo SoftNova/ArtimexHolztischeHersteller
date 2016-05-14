@@ -6,16 +6,6 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Table, group: "Tables"  }
 
-    admin.table.drawer:
-            class: AppBundle\Admin\TableDrawerAttributeAdmin
-            arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
-            tags:
-              - { name: sonata.admin, manager_type: orm, label: Drawer Attribute, show_in_dashboard: false }
-    admin.table.leg:
-          class: AppBundle\Admin\TableLegAttributeAdmin
-          arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
-          tags:
-              - { name: sonata.admin, manager_type: orm, label: Leg Attribute, show_in_dashboard: false }
     admin.table.material:
           class: AppBundle\Admin\TableMaterialAdmin
           arguments: [~, AppBundle\Entity\TableMaterial, ~]
@@ -59,6 +49,24 @@ services:
             arguments: [~, AppBundle\Entity\Product, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Product , group: "Articles" }
+
+    admin.table.drawer:
+            class: AppBundle\Admin\TableDrawerAttributeAdmin
+            arguments: [~, AppBundle\Entity\TableDrawerAttribute, ~]
+            tags:
+              - { name: sonata.admin, manager_type: orm, label: Drawer Attribute, show_in_dashboard: false }
+
+    admin.table.leg:
+          class: AppBundle\Admin\TableLegAttributeAdmin
+          arguments: [~, AppBundle\Entity\TableLegAttribute, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Leg Attribute, show_in_dashboard: false }
+
+    admin.table.image:
+        class: AppBundle\Admin\TableImageAdmin
+        arguments: [~, AppBundle\Entity\TableImage, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Table Image, show_in_dashboard: false }
 
 
 

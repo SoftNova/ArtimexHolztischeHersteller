@@ -8,7 +8,7 @@
 
 namespace AppBundle\Entity;
 
-use Knp\DoctrineBehaviors\Model as ORMBehavior;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,8 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TableTranslation
 {
-    use ORMBehavior\Translatable\Translation;
-
+    use Translation;
 
     /**
      * @var

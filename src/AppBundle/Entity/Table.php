@@ -8,8 +8,10 @@
 
 
 namespace AppBundle\Entity;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Class TableProduct
@@ -21,12 +23,8 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 class Table
 {
 
-    use ORMBehaviors\Translatable\Translatable;
+    use Translatable;
 
-    public function __call($method, $arguments)
-    {
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -34,6 +32,11 @@ class Table
      */
     protected $id;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", length=13, unique=true, nullable=false)
+     */
+    protected $code;
     /**
      * @var
      * @ORM\Column(type="decimal", name="base_price", nullable=false, precision=9, scale=2)
@@ -48,7 +51,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", mappedBy="table", cascade={"all"}, fetch="LAZY")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableDrawerAttribute", cascade={"all"}, fetch="LAZY")
      * @ORM\JoinColumn(name="drawer_attribute_id", referencedColumnName="id", nullable=true)
      */
     protected $drawerAttribute;
@@ -61,7 +64,7 @@ class Table
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", mappedBy="table", cascade={"all"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableLegAttribute", cascade={"all"})
      * @ORM\JoinColumn(name="leg_attribute_id", referencedColumnName="id", nullable=false)
      */
     protected $legAttribute;
@@ -69,8 +72,25 @@ class Table
      * @var
      * @ORM\Column(type="boolean", name="has_distance_to_sides", nullable=false)
      */
-    protected $hasDistanceToSides;   
+    protected $hasDistanceToSides;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TableImage",
+     *     mappedBy="tableItem",
+     *     cascade={"all"},
+     *     orphanRemoval=true
+     * )
+     */
+    protected $images;
+
+    protected $translations;
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $this->images=new ArrayCollection();
+    }
     /**
      * @return mixed
      */
@@ -160,11 +180,52 @@ class Table
     }
 
     /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+
+    /**
      * @param mixed $showInCatalog
      */
     public function setShowInCatalog($showInCatalog)
     {
         $this->showInCatalog = $showInCatalog;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param TableImage $image
+     */
+    public function addImage(TableImage $image)
+    {
+        $this->images->add($image);
+    }
+
+    /**
+     * @param TableImage $image
+     */
+    public function removeImage(TableImage $image)
+    {
+        $this->images->removeElement($image);
     }
 
     
@@ -184,40 +245,26 @@ class Table
         $this->hasDistanceToSides = $hasDistanceToSides;
     }
 
-    public function getMessage(){
-        return $this->translate()->getMessage();
+    /*
+     * General utility function (for admin display mostly)
+     */
+    public function getLocales(){
+        $locales = implode("-",$this->getTranslations()->getKeys());
+        $locales = (strpos($locales,"admin")!==false) ? substr($locales,6):$locales;
+        return (strlen($locales)===0) ? '-' : $locales;
     }
-    
     public function __toString()
     {
-        if($name = $this->translate()->getName()){
+        if($name = $this->getName()){
             return $name;
         }
         return '';
     }
-
-    /*
-     * General utility function (for admin display mostly)
-     */
-    public function toAdmin(){
-        return $this->translate('admin')->getName();
+    public function adminName(){
+        if($this->getTranslations()->containsKey('admin')){
+            return $this->getTranslations()->get('admin');
+        };
     }
-
-    public function getLocales($locales){
-        $output=array();
-        foreach ($locales as $locale) {
-            if (strcmp($locale,"admin")!==0) {
-                if (!is_null($this->translate($locale)->getName())) {
-                    $output[] = $this->translate($locale)->getLocale();
-                }
-            }
-        }
-        return (count($output)>0 ? implode("-",array_unique($output)) : "_Not available");
-    }
-
-    
-
-
 
 
 }

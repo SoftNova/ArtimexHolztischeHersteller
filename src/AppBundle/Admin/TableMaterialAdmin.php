@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 class TableMaterialAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
@@ -35,37 +36,33 @@ class TableMaterialAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('toAdmin', null, array(
+            ->addIdentifier('adminName.name', null, array(
                 'label' => 'Admin Name',
-                'sortable' =>true
             ))
-            ->add('getLocales',null, array(
+            ->add('locales',null, array(
                     'label'=>'Available in',
-                    
-                    'parameters'=>array($locales)
                 )
             )
-            ->add('percentage', PercentType::class, array(
+            ->add('percentage', 'text', array(
                     'label'=>'Cost variance (%)',
-                    'type'=>'integer',
-                    'scale'=>2
+                    'editable'=>true
                  )
             )
-            ->add('getStringIsTempered', 'string', array(
-                    'label' => 'Material improved',
-                    'sortable'=>true
-                )
-            )
+
             ->add('scalingPoint', 'string', array(
                     'label' => 'Scaling point (Square meters)',
-                    'sortable'=>true
+                    'editable'=>true
                 )
             )
             ->add('scalingPercentage', 'string', array(
                     'label' => 'Scaling variance (%)',
-                    'sortable'=>true
+                    'editable'=>true
+                )
+            )
+            ->add('isTempered', 'boolean', array(
+                    'label' => 'Material improved',
+                    'editable'=>true
                 )
             )
             ->add('_action', 'actions', array(
@@ -76,5 +73,30 @@ class TableMaterialAdmin extends Admin
                 )
             )
         ;
+    }
+    protected function configureDatagridFilters(DatagridMapper $filter)
+    {
+        $filter->add('translations.locale', 'doctrine_orm_choice', [
+            'label' => 'Language',
+            'field_options' => [
+                'required' => false,
+                'choices' => $this->getLanguageChoices(),
+                'multiple'=>true,
+                'expanded'=>false
+            ],
+            'field_type' => 'choice'
+        ])
+        ->add('isTempered');
+    }
+
+    private function getLanguageChoices()
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $availableLocales = $container->getParameter('locales');
+        $languageChoices = [];
+        foreach ($availableLocales as $locale) {
+            $languageChoices[$locale] = $locale;
+        }
+        return $languageChoices;
     }
 }

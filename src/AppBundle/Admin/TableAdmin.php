@@ -10,11 +10,14 @@ namespace AppBundle\Admin;
 
 
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use AppBundle\Entity\Table;
+use AppBundle\Entity\TableImage;
+use AppBundle\Form\Type\ImageType;
+use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
-use Sonata\CoreBundle\Form\Type\BooleanType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
@@ -63,19 +66,22 @@ class TableAdmin extends Admin
             )
             ->end()
             ->with('General')
+                ->add('code',TextType::class, array('label'=>'Code',
+                                                    'read_only'=>true,
+                                                    'data'=>Utils::generateItemCodeString()))
                 ->add('basePrice', MoneyType::class, array('label' => 'Table base price'))
                 ->add('hasExtension', CheckboxType::class, array('label' => 'Does this table offer extensions?', 'required'=>false))
                 ->add('hasDistanceToSides', CheckboxType::class, array('label' => 'Does this table have distance to sides configuration?', 'required'=>false))
             ->end()
             ->with('Drawers')
-                ->add('drawerAttribute', AdminType::class, array('label'=>false), array(
+                ->add('drawerAttribute', 'sonata_type_admin', array('label'=>false), array(
                     'edit'=>'inline',
                     'inline'=>'table',
-                    'sortable'=>'position'
+                    'sortable'=>'position',
                 ))
             ->end()
             ->with('Leg Profiles')
-                ->add('legAttribute', AdminType::class, array('label'=>false), array(
+                ->add('legAttribute', 'sonata_type_admin', array('label'=>false), array(
                     'edit'=>'inline',
                     'inline'=>'table',
                     'sortable'=>'position'
@@ -83,40 +89,55 @@ class TableAdmin extends Admin
             ->end()
             ->with ('Visibility')
                 ->add('showInCatalog', CheckboxType::class, array('label' => 'Should this item be visible in the catalog? (You can enable it later)', 'required'=>false))
-            ->end();
+            ->end()
+            ->with('Images')
+                ->add('images', 'sonata_type_collection', [
+                    'by_reference' => false
+                ],
+                ['edit'=>'inline',
+                 'inline'=>'table',
+                 'sortable'=>'position'
+                 ]);
         ;
 
 
     }
 
+
+    public function prePersist($object)
+    {
+        $this->bindImages($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $this->bindImages($object);
+    }
+
     protected function configureListFields(ListMapper $listMapper)
     {
-        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('translate.getName', null, array(
+            ->addIdentifier('adminName.name', null, array(
                 'label' => 'Admin Name',
-                'locales'=>array('en')
             ))
-            ->add('getLocales','text', array(
+            ->add('locales','text', array(
                     'label'=>'Available in',
-                     
-                    'parameters'=>array($locales)
                 )
             )
-            ->add('showInCatalog','boolean',array(
-                 'editable' => true,
-                'label'=>'Is visible in catalog'
-            ))
             ->add('basePrice','currency',array(
                 'currency'=>'€',
                 'editable'=>true
             ))
+            ->addIdentifier('drawerAttribute.maxNumberOfDrawers', null,array(
+                'label'=>'Offers drawers'
+            ))
+            ->add('showInCatalog','boolean',array(
+                 'editable' => true,
+                'label'=>'Is visible in catalog'
+            ))
             ->add('hasExtension','boolean',array(
                 'editable'=>true,
                 'label'=>'Offers extensions'
-            ))
-            ->addIdentifier('drawerAttribute.maxNumberOfDrawers', null,array(
-                'label'=>'Offers drawers'
             ))
             ->add('hasDistanceToSides','boolean',array(
                 'editable'=>true,
@@ -130,6 +151,40 @@ class TableAdmin extends Admin
                 )
             )
         ;
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $filter)
+    {
+        $filter->add('translations.locale', 'doctrine_orm_choice', [
+            'label' => 'Language',
+            'field_options' => [
+                'required' => false,
+                'choices' => $this->getLanguageChoices(),
+                'multiple'=>true,
+                'expanded'=>false
+            ],
+            'field_type' => 'choice'
+        ]);
+    }
+
+    private function getLanguageChoices()
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $availableLocales = $container->getParameter('locales');
+        $languageChoices = [];
+        foreach ($availableLocales as $locale) {
+            $languageChoices[$locale] = $locale;
+        }
+        return $languageChoices;
+    }
+
+    private function bindImages(Table $object)
+    {
+        /** @var TableImage $image */
+        foreach ($object->getImages() as $image)
+        {
+            $image->setTableItem($object);
+        }
     }
 
 

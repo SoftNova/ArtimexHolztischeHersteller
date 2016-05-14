@@ -11,68 +11,67 @@ namespace AppBundle\Admin;
 
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
-use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProductAdmin extends Admin
 {
+
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Translations')
-                ->add('translations', TranslationsType::class,
-                    array(
-                        'label'=>false,
-                        'fields' => array(
-                            'name' => array('field_type'=>TextType::class),
-                            'description' => array('field_type'=>TextType::class,
-                                'locale_options'=>array(
-                                    'admin'=>array(
-                                        'attr'=>array('readonly' =>true,
-                                            'disabled'=>true)
-                                    )
+            ->add('translations', TranslationsType::class,
+                array(
+                    'label' => false,
+                    'fields' => array(
+                        'name' => array('field_type' => TextType::class),
+                        'description' => array('field_type' => TextType::class,
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('readonly' => true,
+                                        'disabled' => true)
                                 )
-                            ,'required'=>false),
-                            'byStateVariance' => array(
-                            'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
-                                'locale_options'=>array(
-                                    'admin'=>array(
-                                        'attr'=>array('readonly' =>true,
-                                            'disabled'=>true)
-                                    )
-                                  )
-                            ,'required'=>false
                             )
+                        , 'required' => false),
+                        'byStateVariance' => array(
+                            'field_type' => PercentType::class, 'type' => 'integer', 'scale' => 2,
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('readonly' => true,
+                                        'disabled' => true)
+                                )
+                            )
+                        , 'required' => false
                         )
                     )
                 )
+            )
             ->end()
             ->with('General')
-                ->add('price', MoneyType::class, array('label' => 'Table base price'))
+            ->add('price', MoneyType::class, array('label' => 'Table base price'))
             ->end();
 
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('toAdmin', null, array(
+            ->addIdentifier('adminName.name', null, array(
                 'label' => 'Admin Name',
-                'sortable' =>true
             ))
-            ->add('getLocales','text', array(
+            ->add('locales', 'text', array(
                     'label'=>'Available in',
-                    
-                    'parameters'=>array($locales)
                 )
             )
-            ->add('price',null,array(
-                'label'=>'Price (€)'
+            ->add('price', 'currency', array(
+                'currency'=>'€',
+                'editable'=>true,
+                'row_align'=>'left',
             ))
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -80,8 +79,32 @@ class ProductAdmin extends Admin
                         'delete' => array()
                     )
                 )
-            )
-        ;
+            );
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $filter)
+    {
+        $filter->add('translations.locale', 'doctrine_orm_choice', [
+            'label' => 'Language',
+            'field_options' => [
+                'required' => false,
+                'choices' => $this->getLanguageChoices(),
+                'multiple'=>true,
+                'expanded'=>false
+            ],
+            'field_type' => 'choice'
+        ]);
+    }
+
+    private function getLanguageChoices()
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $availableLocales = $container->getParameter('locales');
+        $languageChoices = [];
+        foreach ($availableLocales as $locale) {
+            $languageChoices[$locale] = $locale;
+        }
+        return $languageChoices;
     }
 
 }

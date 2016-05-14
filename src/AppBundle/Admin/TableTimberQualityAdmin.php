@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+
 
 class TableTimberQualityAdmin extends Admin
 {
@@ -28,23 +30,17 @@ class TableTimberQualityAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $locales=$this->getConfigurationPool()->getContainer()->getParameter('locales');
         $listMapper
-            ->addIdentifier('toAdmin', null, array(
+            ->addIdentifier('adminName.name', null, array(
                 'label' => 'Admin Name',
-                'sortable' =>true
             ))
-            ->add('getLocales',null, array(
+            ->add('locales','text', array(
                     'label'=>'Available in',
-                    
-                    'parameters'=>array($locales)
                 )
             )
-            ->add('costIncrease', PercentType::class, array(
+            ->add('costIncrease', 'text', array(
                     'label' => 'Cost variance (%)',
-                    'type'=>'integer',
-                    'scale'=>2,
-                    'sortable'=>true
+                    'editable'=>true
                 )
             )
             ->add('_action', 'actions', array(
@@ -55,5 +51,30 @@ class TableTimberQualityAdmin extends Admin
                 )
             )
         ;
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $filter)
+    {
+        $filter->add('translations.locale', 'doctrine_orm_choice', [
+            'label' => 'Language',
+            'field_options' => [
+                'required' => false,
+                'choices' => $this->getLanguageChoices(),
+                'multiple'=>true,
+                'expanded'=>false
+            ],
+            'field_type' => 'choice'
+        ]);
+    }
+
+    private function getLanguageChoices()
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        $availableLocales = $container->getParameter('locales');
+        $languageChoices = [];
+        foreach ($availableLocales as $locale) {
+            $languageChoices[$locale] = $locale;
+        }
+        return $languageChoices;
     }
 }

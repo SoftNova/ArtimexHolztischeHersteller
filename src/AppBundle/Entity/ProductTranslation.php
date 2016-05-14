@@ -7,9 +7,8 @@
  */
 
 namespace AppBundle\Entity;
-use Knp\DoctrineBehaviors\Model as ORMBehavior;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Class ProductTranslation
@@ -20,8 +19,7 @@ use Symfony\Component\DependencyInjection\Container;
 
 class ProductTranslation
 {
-    use ORMBehavior\Translatable\Translation;
-
+    use Translation;
 
     /**
      * @var
@@ -90,10 +88,6 @@ class ProductTranslation
         $this->byStateVariance = $byStateVariance;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
 
 
 }

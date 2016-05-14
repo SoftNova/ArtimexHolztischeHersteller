@@ -60,9 +60,14 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        mappings:
-          AppBundle: ~
-
+        auto_mapping: true
+        # New custom filter
+        filters:
+            oneLocale:
+                class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
+                enabled: true
+a2lix_i18n_doctrine:
+    manager_registry: doctrine       # [1]
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -100,4 +105,4 @@ a2lix_translation_form:
     manager_registry: doctrine      # [2]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
 
-
+gregwar_image: ~

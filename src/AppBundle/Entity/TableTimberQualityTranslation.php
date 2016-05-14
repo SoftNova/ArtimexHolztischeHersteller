@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Entity;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehavior;
 
@@ -18,7 +19,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehavior;
  */
 class TableTimberQualityTranslation
 {
-    use ORMBehavior\Translatable\Translation;
+    use Translation;
     /**
      * @var
      * @ORM\Column(type="string", name="name", nullable=false, length=255)

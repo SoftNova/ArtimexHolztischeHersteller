@@ -26,6 +26,8 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+            new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
+            new Gregwar\ImageBundle\GregwarImageBundle(),
             new AppBundle\AppBundle(),
         ];
 

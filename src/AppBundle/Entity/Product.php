@@ -7,8 +7,10 @@
  */
 
 namespace AppBundle\Entity;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+
 /**
  * Class Product
  * @package AppBundle\Model
@@ -18,12 +20,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  */
 class Product
 {
-    use ORMBehaviors\Translatable\Translatable;
-
-    public function __call($method, $arguments)
-    {
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }
+    use Translatable;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -40,6 +37,12 @@ class Product
     /**
      * @return mixed
      */
+    protected $translations;
+
+    public function __contruct()
+    {
+        $this->translations = new ArrayCollection();
+    }
     public function getId()
     {
         return $this->id;
@@ -48,6 +51,7 @@ class Product
     /**
      * @param mixed $id
      */
+
     public function setId($id)
     {
         $this->id = $id;
@@ -69,27 +73,22 @@ class Product
         $this->price = $price;
     }
 
+
+    public function getLocales(){
+        $locales = implode("-",$this->getTranslations()->getKeys());
+        $locales = (strpos($locales,"admin")!==false) ? substr($locales,6):$locales;
+        return (strlen($locales)===0) ? '-' : $locales;
+    }
     public function __toString()
     {
-        if($name = $this->translate()->getName()){
+        if($name = $this->getName()){
             return $name;
         }
         return '';
     }
-
-    public function toAdmin(){
-        return $this->translate('admin')->getName();
-    }
-
-    public function getLocales($locales){
-        $output=array();
-        foreach ($locales as $locale) {
-            if (strcmp($locale,"admin")!==0) {
-                if (!is_null($this->translate($locale)->getName())) {
-                    $output[] = $this->translate($locale)->getLocale();
-                }
-            }
-        }
-        return (count($output)>0 ? implode("-",array_unique($output)) : "_Not available");
+    public function adminName(){
+        if($this->getTranslations()->containsKey('admin')){
+            return $this->getTranslations()->get('admin');
+        };
     }
 }

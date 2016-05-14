@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Entity;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\ORM\Mapping as ORM;
 /**
@@ -17,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TableMaterialTranslation
 {
-    use ORMBehaviors\Translatable\Translation;
+    use Translation;
 
     
     /**
@@ -42,9 +43,5 @@ class TableMaterialTranslation
         $this->name = $name;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
 
 }
