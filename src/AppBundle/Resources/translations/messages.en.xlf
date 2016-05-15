@@ -59,7 +59,26 @@
                              All of the customer data we collect is protected against unauthorized access and is never sold, traded or rented for commercial purposes to other organizations. </target>
 
              </trans-unit>
-
+            <trans-unit id="information">
+                     <source>app.information</source>
+                     <target>Information:</target>
+            </trans-unit>
+            <trans-unit id="paymentinfo">
+                     <source>app.paymentinfo</source>
+                     <target>Payment Information</target>
+            </trans-unit>
+            <trans-unit id="shippinginfo">
+                        <source>app.shippinginfo</source>
+                        <target>Shipping information</target>
+            </trans-unit>
+            <trans-unit id="terms">
+                        <source>app.terms</source>
+                        <target>Terms and conditions</target>
+            </trans-unit>
+            <trans-unit id="contactlink">
+                        <source>app.contact</source>
+                        <target>Contact</target>
+            </trans-unit>
 
         </body>
     </file>
