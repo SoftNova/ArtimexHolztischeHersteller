@@ -13,11 +13,13 @@ use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use AppBundle\Entity\Table;
 use AppBundle\Entity\TableImage;
 use AppBundle\Form\Type\ImageType;
+use AppBundle\Utils\ImgConstraint;
 use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
@@ -27,6 +29,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class TableAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('Table')
@@ -104,15 +109,7 @@ class TableAdmin extends Admin
     }
 
 
-    public function prePersist($object)
-    {
-        $this->bindImages($object);
-    }
 
-    public function preUpdate($object)
-    {
-        $this->bindImages($object);
-    }
 
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -186,6 +183,13 @@ class TableAdmin extends Admin
             $image->setTableItem($object);
         }
     }
+    public function prePersist($object)
+    {
+        $this->bindImages($object);
+    }
 
-
+    public function preUpdate($object)
+    {
+        $this->bindImages($object);
+    }
 }

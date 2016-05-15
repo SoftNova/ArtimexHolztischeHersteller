@@ -9,18 +9,20 @@
 namespace AppBundle\Entity;
 use AppBundle\Utils\Utils;
 use Doctrine\ORM\Mapping as ORM;
-use Gregwar\Image\Image;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class TableImage
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="TableImageRepository", )
  * @ORM\Table(name="table_image")
  * @ORM\HasLifecycleCallbacks()
  */
-class TableImage
+class TableImage extends AbstractImage
 {
+
+    const UPLOAD_PATH = Utils::TABLE_IMAGE_PATH;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -48,37 +50,7 @@ class TableImage
      */
     protected $role;
 
-    /**
-     * @var
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $filename;
-    /**
-     * Unmapped property to handle file uploads
-     */
-    private $file;
-
-    /**
-     * @var
-     * @ORM\Column(name="updated", type="datetime", nullable=true)
-     */
-    protected $updated;
-
-    /**
-     * @return mixed
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
-     * @param mixed $updated
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-    }
+  
 
 
     /**
@@ -146,74 +118,59 @@ class TableImage
     }
 
 
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
+
+    public function upload($path)
     {
-        $this->file = $file;
+        return parent::upload($path);
     }
 
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
+
+    public function lifecycleFileUpload()
     {
-        return $this->file;
+        $this->upload(self::UPLOAD_PATH);
     }
 
-    /**
-     * Manages the copying of the file to the relevant place on the server
-     */
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-        $img = new Image($this->file);
-        $img->save('asd.jpg','jpg',80);
-
-        $hashName = Utils::generateImageString(18);
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-
-        // move takes the target directory and target filename as params
-        $this->getFile()->move(
-            Utils::TABLE_IMAGE_PATH,
-            $hashName//$this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->filename = $hashName;
-
-        // clean up the file property as you won't need it anymore
-        $this->setFile(null);
-    }
-
-    /**
-     * Updates the hash value to force the preUpdate and postUpdate events to fire
-     */
-    public function refreshUpdated()
-    {
-        $this->setUpdated(new \DateTime());
-    }
 
     /**
      * @ORM\PrePersist()
      */
     public function prePersist(){
-        $this->upload();
+        $this->upload(self::UPLOAD_PATH);
     }
     /**
-     *  @ORM\PreUpdate()
+     * @ORM\PreUpdate()
      */
     public function preUpdate(){
-        $this->upload();
+        $this->setTempFilename();
+        $this->upload(self::UPLOAD_PATH);
+    }
+
+
+    /**
+     * @ORM\PostUpdate()
+     */
+    public function postUpdate(){
+        $oldFile = Utils::TABLE_IMAGE_PATH . $this->tempFilename;
+        if (file_exists($oldFile)){
+            unlink($oldFile);
+        }
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemove(){
+        $this->setTempFilename();
+    }
+
+    /**
+     * 
+     * @ORM\PostRemove()
+     */
+    public function postRemove(){
+        $oldFile = Utils::TABLE_IMAGE_PATH . $this->tempFilename;
+        if (file_exists($oldFile)){
+            unlink($oldFile);
+        }
     }
 }

@@ -9,16 +9,19 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Utils\ImgConstraint;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Sonata\CoreBundle\Validator\ErrorElement;
 
 class TableImageAdmin extends  Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array(
+            ->add('file', FileType::class, array(
                 'required' => false
             ))
             ->add('materialItem', 'sonata_type_model', array('btn_add'=>false))
@@ -26,20 +29,10 @@ class TableImageAdmin extends  Admin
         ;
     }
 
-    public function prePersist($image)
+    public function validate(ErrorElement $errorElement, $object)
     {
-        $this->manageFileUpload($image);
+        $errorElement->with('file')
+            ->addConstraint(new ImgConstraint())->end();
     }
 
-    public function preUpdate($image)
-    {
-        $this->manageFileUpload($image);
-    }
-
-    private function manageFileUpload($image)
-    {
-        if ($image->getFile()) {
-            $image->refreshUpdated();
-        }
-    }
 }

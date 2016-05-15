@@ -265,6 +265,4 @@ class Table
             return $this->getTranslations()->get('admin');
         };
     }
-
-
 }

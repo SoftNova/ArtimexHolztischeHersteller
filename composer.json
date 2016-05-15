@@ -31,7 +31,7 @@
         "sonata-project/doctrine-extensions": "^1.0",
         "a2lix/translation-form-bundle": "^2.1",
         "a2lix/i18n-doctrine-bundle": "^0.1.0",
-        "gregwar/image-bundle": "dev-master"
+        "liip/imagine-bundle": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

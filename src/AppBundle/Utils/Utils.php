@@ -12,7 +12,8 @@ namespace AppBundle\Utils;
 class Utils
 {
     const TABLE_IMAGE_PATH = 'app/img/table_img/';
-
+    const ALLOWED_IMG_EXT = array('jpg','jpeg','gif','png');
+    const INVALID_FILE_EXTENSION = "Invalid file extension";
     public static function generateItemCodeString($length = 10) {
         $characters = '0123456789';
         $charactersLength = strlen($characters);

@@ -105,4 +105,17 @@ a2lix_translation_form:
     manager_registry: doctrine      # [2]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
 
-gregwar_image: ~
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        thumbnail:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
+
+
