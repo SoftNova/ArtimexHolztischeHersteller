@@ -70,7 +70,7 @@ class TableImage extends AbstractImage
     }
 
     /**
-     * @return mixed
+     * @return Table
      */
     public function getTableItem()
     {
@@ -117,7 +117,10 @@ class TableImage extends AbstractImage
         $this->role = $role;
     }
 
-
+    public function path()
+    {
+        return self::UPLOAD_PATH . $this->getTableItem()->getCode() . '/';
+    }
 
     public function upload($path)
     {
@@ -127,7 +130,7 @@ class TableImage extends AbstractImage
 
     public function lifecycleFileUpload()
     {
-        $this->upload(self::UPLOAD_PATH);
+        $this->upload($this->path());
     }
 
 
@@ -135,14 +138,14 @@ class TableImage extends AbstractImage
      * @ORM\PrePersist()
      */
     public function prePersist(){
-        $this->upload(self::UPLOAD_PATH);
+        $this->upload($this->path());
     }
     /**
      * @ORM\PreUpdate()
      */
     public function preUpdate(){
         $this->setTempFilename();
-        $this->upload(self::UPLOAD_PATH);
+        $this->upload($this->path());
     }
 
 
@@ -150,9 +153,18 @@ class TableImage extends AbstractImage
      * @ORM\PostUpdate()
      */
     public function postUpdate(){
-        $oldFile = Utils::TABLE_IMAGE_PATH . $this->tempFilename;
+
+        $oldFile = $this->path() . $this->tempFilename;
+        $currentFile = $this->path() . $this->filename;
         if (file_exists($oldFile)){
+            if ($oldFile!==$currentFile)
             unlink($oldFile);
+        }
+        if (count($this->getTableItem()->getImages())===0){
+            $dir = $this->path();
+            if (is_dir($dir)){
+                rmdir($dir);
+            }
         }
     }
 
@@ -168,9 +180,20 @@ class TableImage extends AbstractImage
      * @ORM\PostRemove()
      */
     public function postRemove(){
-        $oldFile = Utils::TABLE_IMAGE_PATH . $this->tempFilename;
+        $oldFile = $this->path(). $this->tempFilename;
         if (file_exists($oldFile)){
             unlink($oldFile);
         }
+        if (count($this->getTableItem()->getImages())===0){
+            $dir = $this->path();
+            if (is_dir($dir)){
+                rmdir($dir);
+            }
+        }
+    }
+
+    public function getWebPath()
+    {
+        return $this->path() . $this->filename;
     }
 }

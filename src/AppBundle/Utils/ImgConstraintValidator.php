@@ -9,13 +9,13 @@
 namespace AppBundle\Utils;
 
 
-use AppBundle\Entity\TableImage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 class ImgConstraintValidator extends ConstraintValidator
 {
-    /** @var TableImage $value */
+    /** @var UploadedFile $value */
     public function validate($value, Constraint $constraint)
     {
         if ($value===null){

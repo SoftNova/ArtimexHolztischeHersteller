@@ -12,9 +12,9 @@ namespace AppBundle\Admin;
 use AppBundle\Utils\ImgConstraint;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Sonata\CoreBundle\Validator\ErrorElement;
 
 class TableImageAdmin extends  Admin
 {
@@ -32,7 +32,9 @@ class TableImageAdmin extends  Admin
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement->with('file')
-            ->addConstraint(new ImgConstraint())->end();
+            ->addConstraint(new ImgConstraint())
+        ->end();
     }
+
 
 }

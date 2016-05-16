@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\MappedSuperclass()
  */
-class AbstractImage
+abstract class AbstractImage
 {
     /**
      * @var UploadedFile
@@ -31,6 +31,12 @@ class AbstractImage
      * @ORM\Column(type="string", length=100)
      */
     protected $filename;
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $updated;
 
     /**
      * @return UploadedFile
@@ -67,6 +73,23 @@ class AbstractImage
             $this->tempFilename = $this->filename;
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param mixed $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
 
     /**
      * @return mixed
@@ -108,5 +131,20 @@ class AbstractImage
         // clean up the file property as you won't need it anymore
         $this->setFile(null);
     }
+
+    /**
+     * Updates the hash value to force the preUpdate and postUpdate events to fire
+     */
+    public function refreshUpdated()
+    {
+        $this->setUpdated(new \DateTime());
+    }
+
+    abstract protected function getWebPath();
+    abstract protected function prePersist();
+    abstract protected function preUpdate();
+    abstract protected function preRemove();
+    abstract protected function postUpdate();
+    abstract protected function postRemove();
 
 }

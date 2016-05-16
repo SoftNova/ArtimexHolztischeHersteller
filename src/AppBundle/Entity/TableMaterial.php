@@ -56,7 +56,7 @@ class TableMaterial
 
     protected $translations;
 
-    public function __contruct()
+    public function __construct()
     {
         $this->translations = new ArrayCollection();
     }

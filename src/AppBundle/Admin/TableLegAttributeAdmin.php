@@ -8,9 +8,11 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Utils\ProfileConstraint;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,6 +23,13 @@ class TableLegAttributeAdmin extends  Admin
     {
         $form->add('basePrice', MoneyType::class, array('label' => 'Leg base price'))
             ->add ('variance', PercentType::class, array('label' => 'Variance percentage', 'type'=>'integer', 'scale'=>2))
-            ->add ('profiles', TextType::class, array('label' => 'Example: 9x9, 9x10, 10x10. Leave empty in case the leg is profileless','required'=>false));
+            ->add ('profiles', TextType::class, array('label' => 'Example: 9x9, 9x10, 10x10. Leave empty in case the table has special legs','required'=>false));
+    }
+
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $errorElement->with('profiles')
+            ->addConstraint(new ProfileConstraint())
+            ->end();
     }
 }

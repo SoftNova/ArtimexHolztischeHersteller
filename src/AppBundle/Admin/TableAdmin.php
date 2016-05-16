@@ -12,14 +12,11 @@ namespace AppBundle\Admin;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use AppBundle\Entity\Table;
 use AppBundle\Entity\TableImage;
-use AppBundle\Form\Type\ImageType;
-use AppBundle\Utils\ImgConstraint;
 use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\AdminType;
-use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
@@ -34,6 +31,7 @@ class TableAdmin extends Admin
     );
     protected function configureFormFields(FormMapper $form)
     {
+        $subject = $this->getSubject();
         $form->with('Table')
             ->add('translations',TranslationsType::class,
                 array(
@@ -71,9 +69,7 @@ class TableAdmin extends Admin
             )
             ->end()
             ->with('General')
-                ->add('code',TextType::class, array('label'=>'Code',
-                                                    'read_only'=>true,
-                                                    'data'=>Utils::generateItemCodeString()))
+                ->add('code',TextType::class, $this->isCreate($subject))
                 ->add('basePrice', MoneyType::class, array('label' => 'Table base price'))
                 ->add('hasExtension', CheckboxType::class, array('label' => 'Does this table offer extensions?', 'required'=>false))
                 ->add('hasDistanceToSides', CheckboxType::class, array('label' => 'Does this table have distance to sides configuration?', 'required'=>false))
@@ -181,6 +177,7 @@ class TableAdmin extends Admin
         foreach ($object->getImages() as $image)
         {
             $image->setTableItem($object);
+            $image->refreshUpdated();
         }
     }
     public function prePersist($object)
@@ -192,4 +189,17 @@ class TableAdmin extends Admin
     {
         $this->bindImages($object);
     }
+
+    private function isCreate(Table $subject){
+        if (is_null($subject->getCode())){
+            return  array('label'=>'Code',
+                'read_only'=>true,
+                'data'=>Utils::generateItemCodeString(10, Table::class));
+        }
+        return array('label'=>'Code',
+            'read_only'=>true
+        );
+    }
+
+
 }

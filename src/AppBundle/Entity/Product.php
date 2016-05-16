@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use AppBundle\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductDAO")
  * @ORM\Table(name="product")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -30,6 +32,12 @@ class Product
 
     /**
      * @var
+     * @ORM\Column(type="string", length=13, unique=true, nullable=false)
+     */
+    protected $code;
+
+    /**
+     * @var
      * @ORM\Column(type="decimal", name="price", nullable=false, precision=9, scale=2)
      */
     protected $price;
@@ -39,9 +47,20 @@ class Product
      */
     protected $translations;
 
-    public function __contruct()
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ProductImage",
+     *     mappedBy="productItem",
+     *     cascade={"all"},
+     *     orphanRemoval=true
+     * )
+     */
+    protected $images;
+
+    public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
     public function getId()
     {
@@ -55,6 +74,31 @@ class Product
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**
@@ -90,5 +134,31 @@ class Product
         if($this->getTranslations()->containsKey('admin')){
             return $this->getTranslations()->get('admin');
         };
+    }
+
+    /**
+     * @param ProductImage $image
+     */
+    public function addImage(ProductImage $image)
+    {
+        $this->images->add($image);
+    }
+
+    /**
+     * @param ProductImage $image
+     */
+    public function removeImage(ProductImage $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove(){
+        $dir = Utils::PRODUCT_IMAGE_PATH . $this->getCode();
+        if (is_dir($dir)){
+            rmdir($dir);
+        }
     }
 }

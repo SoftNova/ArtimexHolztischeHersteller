@@ -12,12 +12,17 @@ namespace AppBundle\Utils;
 class Utils
 {
     const TABLE_IMAGE_PATH = 'app/img/table_img/';
-    const ALLOWED_IMG_EXT = array('jpg','jpeg','gif','png');
+    const PRODUCT_IMAGE_PATH = 'app/img/product_img/';
+
+    const ALLOWED_IMG_EXT = array('jpg','jpeg','gif','png','JPG','JPEG','GIF','PNG');
     const INVALID_FILE_EXTENSION = "Invalid file extension";
-    public static function generateItemCodeString($length = 10) {
+
+    public static function generateItemCodeString($length = 10, $class) {
         $characters = '0123456789';
         $charactersLength = strlen($characters);
-        $randomString = 'COD';
+        $classArray = explode("\\",$class);
+        $class=end($classArray);
+        $randomString = ($class==="Table") ? 'TAB' : 'PRO';
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }

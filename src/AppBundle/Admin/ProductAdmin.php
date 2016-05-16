@@ -10,20 +10,27 @@ namespace AppBundle\Admin;
 
 
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use AppBundle\Entity\Product;
+use AppBundle\Entity\ProductImage;
+use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProductAdmin extends Admin
 {
+    protected $formOptions = array(
+        'cascade_validation' => true
+    );
 
     protected function configureFormFields(FormMapper $form)
     {
+
+        $subject = $this->getSubject();
         $form->with('Translations')
             ->add('translations', TranslationsType::class,
                 array(
@@ -53,8 +60,18 @@ class ProductAdmin extends Admin
             )
             ->end()
             ->with('General')
-            ->add('price', MoneyType::class, array('label' => 'Table base price'))
-            ->end();
+            ->add('code',TextType::class, $this->isCreate($subject))
+            ->add('price', MoneyType::class, array('label' => 'Product price'))
+            ->end()
+            ->with('Images')
+            ->add('images', 'sonata_type_collection', [
+                'by_reference' => false
+            ],
+                ['edit'=>'inline',
+                    'inline'=>'table',
+                    'sortable'=>'position'
+                ]);
+
 
     }
 
@@ -105,6 +122,37 @@ class ProductAdmin extends Admin
             $languageChoices[$locale] = $locale;
         }
         return $languageChoices;
+    }
+
+
+    private function bindImages(Product $object)
+    {
+        /** @var ProductImage $image */
+        foreach ($object->getImages() as $image)
+        {
+            $image->setProductItem($object);
+            $image->refreshUpdated();
+        }
+    }
+    public function prePersist($object)
+    {
+        $this->bindImages($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $this->bindImages($object);
+    }
+
+    private function isCreate(Product $subject){
+        if (is_null($subject->getCode())){
+            return  array('label'=>'Code',
+                'read_only'=>true,
+                'data'=>Utils::generateItemCodeString(10, Product::class));
+        }
+        return array('label'=>'Code',
+            'read_only'=>true
+        );
     }
 
 }

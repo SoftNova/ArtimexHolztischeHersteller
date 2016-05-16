@@ -9,6 +9,7 @@
 
 namespace AppBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use AppBundle\Utils\Utils;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -19,6 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TableDAO")
  * @ORM\Table(name="table_item")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Table
 {
@@ -265,4 +267,16 @@ class Table
             return $this->getTranslations()->get('admin');
         };
     }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove(){
+        $dir = Utils::TABLE_IMAGE_PATH . $this->getCode();
+        if (is_dir($dir)){
+            rmdir($dir);
+        }
+    }
+
+
 }

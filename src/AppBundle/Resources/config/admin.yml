@@ -68,5 +68,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Table Image, show_in_dashboard: false }
 
+    admin.product.image:
+        class: AppBundle\Admin\ProductImageAdmin
+        arguments: [~, AppBundle\Entity\ProductImage, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Product Image, show_in_dashboard: false }
+
 
 
