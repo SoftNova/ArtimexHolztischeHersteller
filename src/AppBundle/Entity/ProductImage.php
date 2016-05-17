@@ -54,10 +54,7 @@ class ProductImage extends AbstractImage
         $this->id = $id;
     }
 
-    public function path()
-    {
-        return self::UPLOAD_PATH . $this->getProductItem()->getCode() . '/';
-    }
+
 
     /**
      * @return Product
@@ -110,6 +107,9 @@ class ProductImage extends AbstractImage
      */
     public function postUpdate(){
 
+        if (is_null($this->tempFilename)){
+            return true;
+        }
         $oldFile = $this->path(). $this->tempFilename;
         $currentFile = $this->path() . $this->filename;
         if (file_exists($oldFile)){
@@ -136,22 +136,33 @@ class ProductImage extends AbstractImage
      * @ORM\PostRemove()
      */
     public function postRemove(){
+        if (is_null($this->tempFilename)){
+            return true;
+        }
         $oldFile = $this->path() . $this->tempFilename;
         if (file_exists($oldFile)){
             unlink($oldFile);
         }
         if (count($this->getProductItem()->getImages())===0){
             $dir = self::UPLOAD_PATH . $this->getProductItem()->getCode();
-            if (is_dir($dir)){
-                rmdir($dir);
-            }
+            $this->deleteDirectory($dir);
         }
 
     }
 
     public function getWebPath()
     {
-        return $this->path() . $this->filename;
+        if (!is_null($this->path())){
+            return $this->path() . $this->filename;
+        }
+        return null;
+    }
+    public function path()
+    {
+        if (!is_null($this->getProductItem())){
+            return self::UPLOAD_PATH . $this->getProductItem()->getCode() . '/';
+        }
+        return null;
     }
 
 }

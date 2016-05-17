@@ -24,7 +24,7 @@ class TableMaterialTemperingAdmin extends Admin
             ->add('translations',TranslationsType::class, array('label'=>false))
             ->end()
             ->with('General')
-            ->add('costIncrease', PercentType::class, array('label' => 'Cost variance', 'type'=>'integer', 'scale'=>2))
+            ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type'=>'integer', 'scale'=>2))
             ->end();
     }
 
@@ -32,14 +32,20 @@ class TableMaterialTemperingAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('adminName.name', null, array(
-                'label' => 'Admin Name',
+                'label' => 'admin.name',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'name'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
-            ->add('locales',null, array(
-                    'label'=>'Available in',
+            ->add('locales','text', array(
+                    'label'=>'admin.available.in',
+                    'sortable'=>true,
+                    'sort_field_mapping'=>array('fieldName'=>'locale'),
+                    'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
             ->add('costIncrease', 'text', array(
-                'label' => 'Cost variance (%)',
+                'label' => 'admin.cost.variance',
                     'editable'=>true
             ))
             ->add('_action', 'actions', array(

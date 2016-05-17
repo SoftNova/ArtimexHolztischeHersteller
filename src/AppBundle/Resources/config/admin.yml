@@ -74,5 +74,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Product Image, show_in_dashboard: false }
 
+    admin.table.material.image:
+        class: AppBundle\Admin\TableMaterialImageAdmin
+        arguments: [~, AppBundle\Entity\TableMaterialImage, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Material Image, show_in_dashboard: false }
+
+
 
 

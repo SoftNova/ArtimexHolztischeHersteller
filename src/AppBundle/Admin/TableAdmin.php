@@ -110,31 +110,42 @@ class TableAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('adminName.name', null, array(
-                'label' => 'Admin Name',
+            ->addIdentifier('code', 'text', array('label'=>'admin.code'))
+            ->add('adminName.name', null, array(
+                'label' => 'admin.name',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'name'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
             ->add('locales','text', array(
-                    'label'=>'Available in',
+                    'label'=>'admin.available.in',
+                    'sortable'=>true,
+                    'sort_field_mapping'=>array('fieldName'=>'locale'),
+                    'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
-            ->add('basePrice','currency',array(
-                'currency'=>'€',
-                'editable'=>true
+            ->add('drawerAttribute.maxNumberOfDrawers', null,array(
+                'label'=>'admin.nr.of.drawers',
+                'row_align'=>'left'
             ))
-            ->addIdentifier('drawerAttribute.maxNumberOfDrawers', null,array(
-                'label'=>'Offers drawers'
+            ->add('legAttribute.profiles', 'string', array('label'=>'admin.leg.profile'))
+            ->add('basePrice','currency',array(
+                'label'=>'admin.base.price',
+                'currency'=>'€',
+                'editable'=>true,
+                'row_align'=>'left'
             ))
             ->add('showInCatalog','boolean',array(
                  'editable' => true,
-                'label'=>'Is visible in catalog'
+                'label'=>'admin.show.in.catalog'
             ))
             ->add('hasExtension','boolean',array(
                 'editable'=>true,
-                'label'=>'Offers extensions'
+                'label'=>'admin.has.extension'
             ))
             ->add('hasDistanceToSides','boolean',array(
                 'editable'=>true,
-                'label'=>'Offers distance to sides'
+                'label'=>'admin.has.distance.to.sides'
             ))
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -157,7 +168,11 @@ class TableAdmin extends Admin
                 'expanded'=>false
             ],
             'field_type' => 'choice'
-        ]);
+        ])
+            ->add('code')
+            ->add('hasDistanceToSides')
+            ->add('hasExtension')
+            ->add('showInCatalog');
     }
 
     private function getLanguageChoices()
@@ -199,6 +214,9 @@ class TableAdmin extends Admin
         return array('label'=>'Code',
             'read_only'=>true
         );
+    }
+
+    private function translatedLabels(){
     }
 
 

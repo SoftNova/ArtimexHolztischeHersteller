@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: rvcat
- * Date: 5/14/2016
- * Time: 12:50 AM
+ * User: cvisan
+ * Date: 5/17/2016
+ * Time: 2:37 PM
  */
 
 namespace AppBundle\Admin;
@@ -13,19 +13,15 @@ use AppBundle\Utils\ImgConstraint;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class TableImageAdmin extends  Admin
+class TableMaterialImageAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $options = array('required'=>false,
-            'image_path'=>'webPath');
+
         $formMapper
-            ->add('file', FileType::class, $options)
-            ->add('materialItem', 'sonata_type_model', array('btn_add'=>false))
-            ->add('role', CheckboxType::class, array('label'=>"Is this a primary image?", 'required'=>false))
+            ->add('file', FileType::class, array('required'=>false, 'image_path'=>'webPath'));
         ;
     }
 
@@ -33,8 +29,7 @@ class TableImageAdmin extends  Admin
     {
         $errorElement->with('file')
             ->addConstraint(new ImgConstraint())
-        ->end();
+            ->end();
     }
-
 
 }

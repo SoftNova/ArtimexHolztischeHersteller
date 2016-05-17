@@ -40,21 +40,23 @@ class TableHeightAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->add('height_lower_bound', IntegerType::class, array(
-                    'label'=>'Minimum leg height',
-                    'sortable'=>true
+                    'label'=>'admin.min.height',
                 )
              )
             ->add('height_upper_bound', IntegerType::class, array(
-                    'label'=>'Maximum leg height',
-                    'sortable'=>true
+                    'label'=>'admin.max.height',
                 )
             )
-            ->add('step',IntegerType::class, array(
-                    'label'=>'Interval range',
-                    'sortable'=>true
+            ->add('step','number', array(
+                    'label'=>'admin.step',
+                    'editable'=>true
                 )
             )
-            ->add('costPerStep', MoneyType::class, array('label'=>'Cost increase with interval (€)'))
+            ->add('costPerStep', 'currency' , array(
+                'label'=>'admin.cost.per.step',
+                'currency'=>'€',
+                'editable'=>true,
+                'row_align'=>'left'))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),

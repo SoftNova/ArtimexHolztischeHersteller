@@ -40,13 +40,11 @@ class TableWidthAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->add('width_lower_bound', IntegerType::class, array(
-                    'label'=>'Minimum surface width',
-                    'sortable'=>true
+                    'label'=>'admin.min.width',
                 )
             )
             ->add('width_upper_bound', IntegerType::class, array(
-                    'label'=>'Maximum surface width',
-                    'sortable'=>true
+                    'label'=>'admin.max.width',
                 )
             )
             ->add('_action', 'actions', array(

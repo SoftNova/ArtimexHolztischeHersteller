@@ -9,6 +9,9 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Entity\TableMaterial;
+use AppBundle\Entity\TableMaterialImage;
+use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\Filter\ChoiceType;
@@ -18,50 +21,63 @@ use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 class TableMaterialAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-
-        $form->with('')
+        $subject = $this->getSubject();
+        $form->with('Material')
                 ->add('translations',TranslationsType::class, array('label'=>false))
             ->end()
             ->with('General')
+                ->add('code',TextType::class, $this->isCreate($subject))
                 ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer', 'scale'=>2))
                 ->add('scalingPoint', NumberType::class, array('label'=>'Value (in square meters) after which price scaling applies', 'required' => false))
                 ->add('scalingPercentage', PercentType::class, array('label'=>'Value of scaling', 'type'=>'integer', 'scale'=>2, 'required' => false))
                 ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false))
+            ->end()
+            ->with ('Image')
+                ->add('image', 'sonata_type_admin', array('label'=>false))
             ->end();
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('adminName.name', null, array(
-                'label' => 'Admin Name',
+            ->addIdentifier('code', 'text', array('label'=>'admin.code'))
+            ->add('adminName.name', null, array(
+                'label' => 'admin.name',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'name'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
-            ->add('locales',null, array(
-                    'label'=>'Available in',
+            ->add('locales','text', array(
+                    'label'=>'admin.available.in',
+                    'sortable'=>true,
+                    'sort_field_mapping'=>array('fieldName'=>'locale'),
+                    'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
             ->add('percentage', 'text', array(
-                    'label'=>'Cost variance (%)',
+                    'label'=>'admin.cost.variance',
                     'editable'=>true
                  )
             )
 
             ->add('scalingPoint', 'string', array(
-                    'label' => 'Scaling point (Square meters)',
+                    'label' => 'admin.scaling.point',
                     'editable'=>true
                 )
             )
             ->add('scalingPercentage', 'string', array(
-                    'label' => 'Scaling variance (%)',
+                    'label' => 'admin.scaling.variance',
                     'editable'=>true
                 )
             )
             ->add('isTempered', 'boolean', array(
-                    'label' => 'Material improved',
+                    'label' => 'admin.material.improved',
                     'editable'=>true
                 )
             )
@@ -86,7 +102,8 @@ class TableMaterialAdmin extends Admin
             ],
             'field_type' => 'choice'
         ])
-        ->add('isTempered');
+        ->add('isTempered')
+        ->add('code');
     }
 
     private function getLanguageChoices()
@@ -99,4 +116,32 @@ class TableMaterialAdmin extends Admin
         }
         return $languageChoices;
     }
+
+    private function bindImages(TableMaterial $object)
+    {
+        /** @var TableMaterialImage $image */
+        $object->getImage()->setMaterialItem($object);
+        $object->getImage()->refreshUpdated();
+    }
+    public function prePersist($object)
+    {
+        $this->bindImages($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $this->bindImages($object);
+    }
+
+    private function isCreate(TableMaterial $subject){
+        if (is_null($subject->getCode())){
+            return  array('label'=>'Code',
+                'read_only'=>true,
+                'data'=>Utils::generateItemCodeString(10, TableMaterial::class));
+        }
+        return array('label'=>'Code',
+            'read_only'=>true
+        );
+    }
+
 }

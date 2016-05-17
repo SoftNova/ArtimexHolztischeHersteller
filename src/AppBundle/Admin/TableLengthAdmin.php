@@ -36,13 +36,11 @@ class TableLengthAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->add('length_lower_bound', IntegerType::class, array(
-                    'label'=>'Minimum surface length',
-                    'sortable'=>true
+                    'label'=>'admin.min.length',
                 )
             )
             ->add('length_upper_bound', IntegerType::class, array(
-                    'label'=>'Maximum surface length',
-                    'sortable'=>true
+                    'label'=>'admin.max.length',
                 )
             )
             ->add('_action', 'actions', array(

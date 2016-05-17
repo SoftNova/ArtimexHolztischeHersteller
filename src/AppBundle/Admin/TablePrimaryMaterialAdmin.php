@@ -27,10 +27,15 @@ class TablePrimaryMaterialAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('primaryMaterial', 'sonata_type_model')
-            ->add('pricePerSquareMeter', MoneyType::class, array(
-                    'label'=>'Price per square meter (€)',
-                    'sortable'=>true
+            ->addIdentifier('primaryMaterial.adminName.name', 'sonata_type_model', array('label'=>'admin.primary.material',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'id'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'primaryMaterial'))))
+            ->add('pricePerSquareMeter', 'currency', array(
+                    'label'=>'admin.price.per.square.meter',
+                    'editable'=>true,
+                    'row_align'=>'left',
+                    'currency'=>'€'
                 )
             )
             ->add('_action', 'actions', array(
@@ -73,7 +78,7 @@ class TablePrimaryMaterialAdmin extends Admin
         $container = $this->getConfigurationPool()->getContainer();
         $em=$this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
         $hasPrimary=(count($em->findAll())==0) ? false : true;
-        if ($hasPrimary) {
+        if ($hasPrimary==true) {
             if ($container->get('request')->get('_route') == 'sonata_admin_dashboard') {
                 $collection->remove('create');
             }

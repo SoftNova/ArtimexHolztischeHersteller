@@ -8,8 +8,9 @@
 
 namespace AppBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use AppBundle\Utils\Utils;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Class TableMaterial
@@ -17,6 +18,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * 
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TableMaterialDAO")
  * @ORM\Table(name="table_material")
+ * @ORM\HasLifecycleCallbacks()
  */
 class TableMaterial
 {
@@ -29,6 +31,11 @@ class TableMaterial
      */
     protected $id;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", length=13, unique=true, nullable=false)
+     */
+    protected $code;
     /**
      * @var
      * Value, either PricePerSquareMeter or percentage of primary material
@@ -54,6 +61,12 @@ class TableMaterial
      */
     protected $scalingPercentage;
 
+    /**
+     * @var
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TableMaterialImage", mappedBy="materialItem", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $image;
+
     protected $translations;
 
     public function __construct()
@@ -76,6 +89,41 @@ class TableMaterial
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    
 
 
     /**
@@ -162,4 +210,35 @@ class TableMaterial
             return $this->getTranslations()->get('admin');
         };
     }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove(){
+        $dir = Utils::MATERIAL_IMAGE_PATH . $this->getCode();
+        $this->deleteDirectory($dir);
+    }
+    public function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true;
+        }
+
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+
+            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
+            }
+
+        }
+
+        return rmdir($dir);
+    }
+
 }

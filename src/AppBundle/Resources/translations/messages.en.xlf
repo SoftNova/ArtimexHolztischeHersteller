@@ -80,6 +80,111 @@
                         <target>Contact</target>
             </trans-unit>
 
+
+
+
+
+
+
+
+
+            <trans-unit id="admin.code">
+                <source>admin.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="admin.name">
+                <source>admin.name</source>
+                <target>Admin name</target>
+            </trans-unit>
+            <trans-unit id="admin.available.in">
+                <source>admin.available.in</source>
+                <target>Available in</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.variance">
+                <source>admin.cost.variance</source>
+                <target>Cost variance (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.scaling.point">
+                <source>admin.scaling.point</source>
+                <target>Square meters waypost (m²) </target>
+            </trans-unit>
+            <trans-unit id="admin.scaling.variance">
+                <source>admin.scaling.variance</source>
+                <target>Scaling variance (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.material.improved">
+                <source>admin.material.improved</source>
+                <target>Is tempered</target>
+            </trans-unit>
+
+            <trans-unit id="admin.nr.of.drawers">
+                <source>admin.nr.of.drawers</source>
+                <target>Number of drawers</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profile">
+                <source>admin.leg.profile</source>
+                <target>Leg profiles</target>
+            </trans-unit>
+            <trans-unit id="admin.base.price">
+                <source>admin.base.price</source>
+                <target>Base price</target>
+            </trans-unit>
+            <trans-unit id="admin.show.in.catalog">
+                <source>admin.show.in.catalog</source>
+                <target>Is visible</target>
+            </trans-unit>
+            <trans-unit id="admin.has.extension">
+                <source>admin.has.extension</source>
+                <target>Offers extension</target>
+            </trans-unit>
+            <trans-unit id="admin.has.distance.to.sides">
+                <source>admin.has.distance.to.sides</source>
+                <target>Offers distance to sides</target>
+            </trans-unit>
+            <trans-unit id="admin.primary.material">
+                <source>admin.primary.material</source>
+                <target>Primary Material</target>
+            </trans-unit>
+            <trans-unit id="admin.price.per.square.meter">
+                <source>admin.price.per.square.meter</source>
+                <target>Price per m²</target>
+            </trans-unit>
+            <trans-unit id="admin.min.width">
+                <source>admin.min.width</source>
+                <target>Minimum surface width</target>
+            </trans-unit>
+            <trans-unit id="admin.max.width">
+                <source>admin.max.width</source>
+                <target>Maximum surface width</target>
+            </trans-unit>
+            <trans-unit id="admin.min.length">
+                <source>admin.min.length</source>
+                <target>Minimum surface length</target>
+            </trans-unit>
+            <trans-unit id="admin.max.length">
+                <source>admin.max.length</source>
+                <target>Maximum surface length</target>
+            </trans-unit>
+            <trans-unit id="admin.min.height">
+                <source>admin.min.height</source>
+                <target>Minimum surface height</target>
+            </trans-unit>
+            <trans-unit id="admin.max.height">
+                <source>admin.max.height</source>
+                <target>Maximum surface height</target>
+            </trans-unit>
+            <trans-unit id="admin.step">
+                <source>admin.step</source>
+                <target>Step interval</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.per.step">
+                <source>admin.cost.per.step</source>
+                <target>Cost per step</target>
+            </trans-unit>
+
+
+
+
         </body>
     </file>
 </xliff>

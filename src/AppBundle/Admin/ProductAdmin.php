@@ -36,8 +36,10 @@ class ProductAdmin extends Admin
                 array(
                     'label' => false,
                     'fields' => array(
-                        'name' => array('field_type' => TextType::class),
+                        'name' => array('field_type' => TextType::class,
+                            'label'=>'admin.normal.name'),
                         'description' => array('field_type' => TextType::class,
+                            'label'=>'admin.description',
                             'locale_options' => array(
                                 'admin' => array(
                                     'attr' => array('readonly' => true,
@@ -46,6 +48,7 @@ class ProductAdmin extends Admin
                             )
                         , 'required' => false),
                         'byStateVariance' => array(
+                            'label'=>'admin.by.state.variance',
                             'field_type' => PercentType::class, 'type' => 'integer', 'scale' => 2,
                             'locale_options' => array(
                                 'admin' => array(
@@ -61,11 +64,12 @@ class ProductAdmin extends Admin
             ->end()
             ->with('General')
             ->add('code',TextType::class, $this->isCreate($subject))
-            ->add('price', MoneyType::class, array('label' => 'Product price'))
+            ->add('price', MoneyType::class, array('label' => 'admin.base.price'))
             ->end()
             ->with('Images')
             ->add('images', 'sonata_type_collection', [
-                'by_reference' => false
+                'by_reference' => false,
+                'label'=>'admin.images'
             ],
                 ['edit'=>'inline',
                     'inline'=>'table',
@@ -78,14 +82,22 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('adminName.name', null, array(
-                'label' => 'Admin Name',
+            ->addIdentifier('code', 'text', array('label'=>'admin.code'))
+            ->add('adminName.name', null, array(
+                'label' => 'admin.name',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'name'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
-            ->add('locales', 'text', array(
-                    'label'=>'Available in',
+            ->add('locales','text', array(
+                    'label'=>'admin.available.in',
+                    'sortable'=>true,
+                    'sort_field_mapping'=>array('fieldName'=>'locale'),
+                    'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
             ->add('price', 'currency', array(
+                'label'=>'admin.base.price',
                 'currency'=>'€',
                 'editable'=>true,
                 'row_align'=>'left',
@@ -110,7 +122,8 @@ class ProductAdmin extends Admin
                 'expanded'=>false
             ],
             'field_type' => 'choice'
-        ]);
+        ])
+        ->add('code');
     }
 
     private function getLanguageChoices()

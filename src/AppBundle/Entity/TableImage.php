@@ -117,11 +117,6 @@ class TableImage extends AbstractImage
         $this->role = $role;
     }
 
-    public function path()
-    {
-        return self::UPLOAD_PATH . $this->getTableItem()->getCode() . '/';
-    }
-
     public function upload($path)
     {
         return parent::upload($path);
@@ -154,6 +149,9 @@ class TableImage extends AbstractImage
      */
     public function postUpdate(){
 
+        if (is_null($this->tempFilename)){
+            return true;
+        }
         $oldFile = $this->path() . $this->tempFilename;
         $currentFile = $this->path() . $this->filename;
         if (file_exists($oldFile)){
@@ -180,20 +178,31 @@ class TableImage extends AbstractImage
      * @ORM\PostRemove()
      */
     public function postRemove(){
+        if (is_null($this->tempFilename)){
+            return true;
+        }
         $oldFile = $this->path(). $this->tempFilename;
         if (file_exists($oldFile)){
             unlink($oldFile);
         }
         if (count($this->getTableItem()->getImages())===0){
             $dir = $this->path();
-            if (is_dir($dir)){
-                rmdir($dir);
-            }
+            $this->deleteDirectory($dir);
         }
     }
 
     public function getWebPath()
     {
-        return $this->path() . $this->filename;
+        if (!is_null($this->path())){
+            return $this->path() . $this->filename;
+        }
+        return null;
+    }
+    public function path()
+    {
+        if (!is_null($this->getTableItem())){
+            return self::UPLOAD_PATH . $this->getTableItem()->getCode() . '/';
+        }
+        return null;
     }
 }
