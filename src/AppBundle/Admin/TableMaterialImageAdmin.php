@@ -21,7 +21,7 @@ class TableMaterialImageAdmin extends Admin
     {
 
         $formMapper
-            ->add('file', FileType::class, array('required'=>false, 'image_path'=>'webPath'));
+            ->add('file', FileType::class, array('required'=>false, 'image_path'=>'webPath', 'label'=>false));
         ;
     }
 

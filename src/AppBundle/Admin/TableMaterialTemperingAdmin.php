@@ -15,15 +15,24 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TableMaterialTemperingAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->with('Translations')
-            ->add('translations',TranslationsType::class, array('label'=>false))
+        $form->with('admin.translations')
+            ->add('translations',TranslationsType::class,
+                array(
+                    'label'=>false,
+                    'fields' => array(
+                        'name' => array('field_type'=>TextType::class,
+                            'label'=>'admin.normal.name')
+                    )
+                )
+            )
             ->end()
-            ->with('General')
+            ->with('admin.general')
             ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type'=>'integer', 'scale'=>2))
             ->end();
     }

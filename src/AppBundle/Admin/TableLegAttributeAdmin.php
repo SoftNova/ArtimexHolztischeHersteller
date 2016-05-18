@@ -21,9 +21,9 @@ class TableLegAttributeAdmin extends  Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('basePrice', MoneyType::class, array('label' => 'Leg base price'))
-            ->add ('variance', PercentType::class, array('label' => 'Variance percentage', 'type'=>'integer', 'scale'=>2))
-            ->add ('profiles', TextType::class, array('label' => 'Example: 9x9, 9x10, 10x10. Leave empty in case the table has special legs','required'=>false));
+        $form->add('basePrice', MoneyType::class, array('label' => 'admin.base.price'))
+            ->add ('variance', PercentType::class, array('label' => 'admin.variance.percentage', 'type'=>'integer', 'scale'=>2))
+            ->add ('profiles', TextType::class, array('label' => 'admin.leg.profiles.create','required'=>false));
     }
 
     public function validate(ErrorElement $errorElement, $object)

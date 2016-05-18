@@ -21,11 +21,12 @@ class TableImageAdmin extends  Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $options = array('required'=>false,
-            'image_path'=>'webPath');
+            'image_path'=>'webPath',
+            'label'=>false);
         $formMapper
             ->add('file', FileType::class, $options)
             ->add('materialItem', 'sonata_type_model', array('btn_add'=>false))
-            ->add('role', CheckboxType::class, array('label'=>"Is this a primary image?", 'required'=>false))
+            ->add('role', CheckboxType::class, array('label'=>"admin.image.primary", 'required'=>false))
         ;
     }
 

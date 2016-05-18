@@ -19,8 +19,8 @@ class TablePrimaryMaterialAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'Price per square meter'))
-            ->add('primaryMaterial', 'sonata_type_model');
+        $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'admin.price.per.square.meter'))
+            ->add('primaryMaterial', 'sonata_type_model', array('label'=>'admin.primary.material'));
     }
 
 
@@ -47,30 +47,6 @@ class TablePrimaryMaterialAdmin extends Admin
             );
     }
 
-    protected function configureDatagridFilters(DatagridMapper $filter)
-    {
-        $filter->add('translations.locale', 'doctrine_orm_choice', [
-            'label' => 'Language',
-            'field_options' => [
-                'required' => false,
-                'choices' => $this->getLanguageChoices(),
-                'multiple'=>true,
-                'expanded'=>false
-            ],
-            'field_type' => 'choice'
-        ]);
-    }
-
-    private function getLanguageChoices()
-    {
-        $container = $this->getConfigurationPool()->getContainer();
-        $availableLocales = $container->getParameter('locales');
-        $languageChoices = [];
-        foreach ($availableLocales as $locale) {
-            $languageChoices[$locale] = $locale;
-        }
-        return $languageChoices;
-    }
 
 
     protected function configureRoutes(RouteCollection $collection)

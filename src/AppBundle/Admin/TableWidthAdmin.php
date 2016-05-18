@@ -20,8 +20,8 @@ class TableWidthAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('width_lower_bound', IntegerType::class, array('label'=>'Minimum surface width'))
-            ->add('width_upper_bound', IntegerType::class, array('label'=>'Maximum surface width'));
+        $form->add('width_lower_bound', IntegerType::class, array('label'=>'admin.min.width'))
+            ->add('width_upper_bound', IntegerType::class, array('label'=>'admin.max.width'));
     }
 
     

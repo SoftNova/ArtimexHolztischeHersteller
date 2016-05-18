@@ -17,8 +17,8 @@ class TableLengthAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('length_lower_bound', IntegerType::class, array('label'=>'Minimum surface length'))
-            ->add('length_upper_bound', IntegerType::class, array('label'=>'Maximum surface length'));
+        $form->add('length_lower_bound', IntegerType::class, array('label'=>'admin.min.length'))
+            ->add('length_upper_bound', IntegerType::class, array('label'=>'admin.max.length'));
     }
 
     protected function configureRoutes(RouteCollection $collection)

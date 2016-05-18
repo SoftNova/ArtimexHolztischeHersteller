@@ -32,13 +32,15 @@ class TableAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $subject = $this->getSubject();
-        $form->with('Table')
+        $form->with('admin.translations')
             ->add('translations',TranslationsType::class,
                 array(
                     'label'=>false,
                     'fields' => array(
-                        'name' => array('field_type'=>TextType::class),
+                        'name' => array('field_type'=>TextType::class,
+                            'label'=>'admin.normal.name'),
                         'description' => array('field_type'=>TextType::class,
+                            'label'=>'admin.description',
                             'locale_options'=>array(
                                 'admin'=>array(
                                     'attr'=>array('readonly' =>true,
@@ -47,6 +49,7 @@ class TableAdmin extends Admin
                             )
                         ,'required'=>false),
                         'byStateVariance' => array(
+                            'label'=>'admin.by.state.variance',
                             'field_type'=>PercentType::class, 'type'=>'integer', 'scale'=>2,
                             'locale_options'=>array(
                                 'admin'=>array(
@@ -57,6 +60,7 @@ class TableAdmin extends Admin
                         ,'required'=>false
                         )
                         ,'message' =>array('field_type'=>'text',
+                            'label'=>'admin.message',
                             'locale_options'=>array(
                                 'admin'=>array(
                                     'attr'=>array('readonly' =>true,
@@ -68,32 +72,33 @@ class TableAdmin extends Admin
                 )
             )
             ->end()
-            ->with('General')
+            ->with('admin.general')
                 ->add('code',TextType::class, $this->isCreate($subject))
-                ->add('basePrice', MoneyType::class, array('label' => 'Table base price'))
-                ->add('hasExtension', CheckboxType::class, array('label' => 'Does this table offer extensions?', 'required'=>false))
-                ->add('hasDistanceToSides', CheckboxType::class, array('label' => 'Does this table have distance to sides configuration?', 'required'=>false))
+                ->add('basePrice', MoneyType::class, array('label' => 'admin.base.price'))
+                ->add('hasExtension', CheckboxType::class, array('label' => 'admin.has.extension', 'required'=>false))
+                ->add('hasDistanceToSides', CheckboxType::class, array('label' => 'admin.has.distance.to.sides', 'required'=>false))
             ->end()
-            ->with('Drawers')
+            ->with('app.drawer.attribute')
                 ->add('drawerAttribute', 'sonata_type_admin', array('label'=>false), array(
                     'edit'=>'inline',
                     'inline'=>'table',
                     'sortable'=>'position',
                 ))
             ->end()
-            ->with('Leg Profiles')
+            ->with('app.leg.attribute')
                 ->add('legAttribute', 'sonata_type_admin', array('label'=>false), array(
                     'edit'=>'inline',
                     'inline'=>'table',
                     'sortable'=>'position'
                 ))
             ->end()
-            ->with ('Visibility')
-                ->add('showInCatalog', CheckboxType::class, array('label' => 'Should this item be visible in the catalog? (You can enable it later)', 'required'=>false))
+            ->with ('app.visibility')
+                ->add('showInCatalog', CheckboxType::class, array('label' => 'admin.is.visible', 'required'=>false))
             ->end()
-            ->with('Images')
+            ->with('admin.images')
                 ->add('images', 'sonata_type_collection', [
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'label'=>false
                 ],
                 ['edit'=>'inline',
                  'inline'=>'table',
@@ -160,7 +165,7 @@ class TableAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
         $filter->add('translations.locale', 'doctrine_orm_choice', [
-            'label' => 'Language',
+            'label' => 'app.language',
             'field_options' => [
                 'required' => false,
                 'choices' => $this->getLanguageChoices(),
@@ -207,11 +212,11 @@ class TableAdmin extends Admin
 
     private function isCreate(Table $subject){
         if (is_null($subject->getCode())){
-            return  array('label'=>'Code',
+            return  array('label'=>'admin.code',
                 'read_only'=>true,
                 'data'=>Utils::generateItemCodeString(10, Table::class));
         }
-        return array('label'=>'Code',
+        return array('label'=>'admin.code',
             'read_only'=>true
         );
     }

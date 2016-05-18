@@ -92,6 +92,10 @@
                 <source>admin.code</source>
                 <target>Code</target>
             </trans-unit>
+            <trans-unit id="admin.message">
+                <source>admin.message</source>
+                <target>Message</target>
+            </trans-unit>
             <trans-unit id="admin.name">
                 <source>admin.name</source>
                 <target>Admin name</target>
@@ -103,6 +107,10 @@
             <trans-unit id="admin.cost.variance">
                 <source>admin.cost.variance</source>
                 <target>Cost variance (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.per.step">
+                <source>admin.cost.per.step</source>
+                <target>Cost per step</target>
             </trans-unit>
             <trans-unit id="admin.scaling.point">
                 <source>admin.scaling.point</source>
@@ -177,10 +185,161 @@
                 <source>admin.step</source>
                 <target>Step interval</target>
             </trans-unit>
-            <trans-unit id="admin.cost.per.step">
-                <source>admin.cost.per.step</source>
-                <target>Cost per step</target>
+
+            <trans-unit id="admin.normal.name">
+                <source>admin.normal.name</source>
+                <target>Name</target>
             </trans-unit>
+            <trans-unit id="admin.description">
+                <source>admin.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="admin.by.state.variance">
+                <source>admin.by.state.variance</source>
+                <target>Cost variance in this state</target>
+            </trans-unit>
+            <trans-unit id="admin.images">
+                <source>admin.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="admin.translations">
+                <source>admin.translations</source>
+                <target>Translations</target>
+            </trans-unit>
+            <trans-unit id="locale.admin">
+                <source>locale.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.en">
+                <source>locale.en</source>
+                <target>En</target>
+            </trans-unit>
+            <trans-unit id="locale.fr">
+                <source>locale.fr</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.de">
+                <source>locale.de</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.ro">
+                <source>locale.ro</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="admin.general">
+                <source>admin.general</source>
+                <target>General</target>
+            </trans-unit>
+            <trans-unit id="admin.max.drawers">
+                <source>admin.max.drawers</source>
+                <target>Maximum number of drawers</target>
+            </trans-unit>
+            <trans-unit id="admin.variance.percentage">
+                <source>admin.variance.percentage</source>
+                <target>Variance percentage</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profiles.create">
+                <source>admin.leg.profiles.create</source>
+                <target>Leave empty in case the table has special legs</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.of.primary">
+                <source>admin.cost.of.primary</source>
+                <target>Cost based on primary material</target>
+            </trans-unit>
+            <trans-unit id="admin.primary.image">
+                <source>admin.primary.image</source>
+                <target>Is this a thumbnail?</target>
+            </trans-unit>
+            <trans-unit id="admin.visibility">
+                <source>admin.visibility</source>
+                <target>Visibility</target>
+            </trans-unit>
+            <trans-unit id="admin.is.visible">
+                <source>admin.is.visible</source>
+                <target>Should this item be visible in the catalog? (You can enable it later)</target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="app.table">
+                <source>app.table</source>
+                <target>Table</target>
+            </trans-unit>
+            <trans-unit id="app.material">
+                <source>app.material</source>
+                <target>Material</target>
+            </trans-unit>
+            <trans-unit id="app.materials">
+                <source>app.materials</source>
+                <target>Materials</target>
+            </trans-unit>
+            <trans-unit id="app.tempering">
+                <source>app.tempering</source>
+                <target>Tempering</target>
+            </trans-unit>
+            <trans-unit id="app.timber.quality">
+                <source>app.timber.quality</source>
+                <target>Timber quality</target>
+            </trans-unit>
+            <trans-unit id="app.primary.material">
+                <source>app.primary.material</source>
+                <target>Primary Material</target>
+            </trans-unit>
+            <trans-unit id="app.surface.width">
+                <source>app.surface.width</source>
+                <target>Width</target>
+            </trans-unit>
+            <trans-unit id="app.surface.length">
+                <source>app.surface.length</source>
+                <target>Length</target>
+            </trans-unit>
+            <trans-unit id="app.leg.height">
+                <source>app.leg.height</source>
+                <target>Height</target>
+            </trans-unit>
+            <trans-unit id="app.product">
+                <source>app.product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="app.drawer.attribute">
+                <source>app.drawer.attribute</source>
+                <target>Drawers</target>
+            </trans-unit>
+            <trans-unit id="app.leg.attribute">
+                <source>app.leg.attribute</source>
+                <target>Table legs</target>
+            </trans-unit>
+            <trans-unit id="app.table.images">
+                <source>app.table.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.product.images">
+                <source>app.product.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.tables">
+                <source>app.tables</source>
+                <target>Tables</target>
+            </trans-unit>
+            <trans-unit id="app.tables.rules">
+                <source>app.tables.rules</source>
+                <target>Table Rules</target>
+            </trans-unit>
+            <trans-unit id="app.articles">
+                <source>app.articles</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="app.language">
+                <source>app.language</source>
+                <target>Language</target>
+            </trans-unit>
+
+
+
+
+
+
 
 
 

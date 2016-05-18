@@ -47,6 +47,30 @@ class TableTranslation
     protected $message;
 
     /**
+     * @var
+     * @ORM\Column(type="boolean", name="visibility")
+     */
+    protected $visibility;
+
+    /**
+     * @return mixed
+     */
+    public function getVisibility()
+    {
+        return $this->visibility;
+    }
+
+    /**
+     * @param mixed $visibility
+     */
+    public function setVisibility($visibility)
+    {
+        $this->visibility = $visibility;
+    }
+
+    
+
+    /**
      * @return mixed
      */
     public function getByStateVariance()

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraint;
 
 class ProfileConstraint extends Constraint
 {
-    public $message = "Invalid data added. Please recheck.";
+    public $message = "Invalid data added. Please recheck. Example: 9x9, 9x10, 10x10";
 
     public function validatedBy()
     {

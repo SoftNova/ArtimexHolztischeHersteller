@@ -28,17 +28,17 @@ class TableMaterialAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $subject = $this->getSubject();
-        $form->with('Material')
+        $form->with('app.material')
                 ->add('translations',TranslationsType::class, array('label'=>false))
             ->end()
-            ->with('General')
+            ->with('admin.general')
                 ->add('code',TextType::class, $this->isCreate($subject))
-                ->add('percentage', PercentType::class, array('label'=>'Cost modifier based on primary material', 'type'=>'integer', 'scale'=>2))
-                ->add('scalingPoint', NumberType::class, array('label'=>'Value (in square meters) after which price scaling applies', 'required' => false))
-                ->add('scalingPercentage', PercentType::class, array('label'=>'Value of scaling', 'type'=>'integer', 'scale'=>2, 'required' => false))
-                ->add('isTempered', CheckboxType::class, array('label' => 'Is this material already improved?', 'required' => false))
+                ->add('percentage', PercentType::class, array('label'=>'admin.cost.of.primary', 'type'=>'integer', 'scale'=>2))
+                ->add('scalingPoint', NumberType::class, array('label'=>'admin.scaling.point', 'required' => false))
+                ->add('scalingPercentage', PercentType::class, array('label'=>'admin.scaling.variance', 'type'=>'integer', 'scale'=>2, 'required' => false))
+                ->add('isTempered', CheckboxType::class, array('label' => 'admin.material.improved', 'required' => false))
             ->end()
-            ->with ('Image')
+            ->with ('admin.images')
                 ->add('image', 'sonata_type_admin', array('label'=>false))
             ->end();
     }
@@ -135,11 +135,11 @@ class TableMaterialAdmin extends Admin
 
     private function isCreate(TableMaterial $subject){
         if (is_null($subject->getCode())){
-            return  array('label'=>'Code',
+            return  array('label'=>'admin.code',
                 'read_only'=>true,
                 'data'=>Utils::generateItemCodeString(10, TableMaterial::class));
         }
-        return array('label'=>'Code',
+        return array('label'=>'admin.code',
             'read_only'=>true
         );
     }

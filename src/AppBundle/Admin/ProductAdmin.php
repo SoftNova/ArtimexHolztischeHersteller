@@ -17,6 +17,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,7 +32,7 @@ class ProductAdmin extends Admin
     {
 
         $subject = $this->getSubject();
-        $form->with('Translations')
+        $form->with('admin.translations')
             ->add('translations', TranslationsType::class,
                 array(
                     'label' => false,
@@ -57,19 +58,30 @@ class ProductAdmin extends Admin
                                 )
                             )
                         , 'required' => false
+                        ),
+                        'visibility'=> array(
+                            'label'=>'admin.visibility',
+                            'field_type' => CheckboxType::class,
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('readonly' => true,
+                                        'disabled' => true)
+                                )
+                            )
+                        , 'required' => false
                         )
                     )
                 )
             )
             ->end()
-            ->with('General')
+            ->with('admin.general')
             ->add('code',TextType::class, $this->isCreate($subject))
             ->add('price', MoneyType::class, array('label' => 'admin.base.price'))
             ->end()
-            ->with('Images')
+            ->with('admin.images')
             ->add('images', 'sonata_type_collection', [
                 'by_reference' => false,
-                'label'=>'admin.images'
+                'label'=>false
             ],
                 ['edit'=>'inline',
                     'inline'=>'table',
@@ -159,11 +171,11 @@ class ProductAdmin extends Admin
 
     private function isCreate(Product $subject){
         if (is_null($subject->getCode())){
-            return  array('label'=>'Code',
+            return  array('label'=>'admin.code',
                 'read_only'=>true,
                 'data'=>Utils::generateItemCodeString(10, Product::class));
         }
-        return array('label'=>'Code',
+        return array('label'=>'admin.code',
             'read_only'=>true
         );
     }

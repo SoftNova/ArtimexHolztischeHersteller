@@ -19,10 +19,10 @@ class TableHeightAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('height_lower_bound', IntegerType::class, array('label'=>'Minimum leg height'))
-            ->add('height_upper_bound', IntegerType::class, array('label'=>'Maximum leg height'))
-            ->add('step',IntegerType::class, array('label'=>'Interval range'))
-            ->add('costPerStep', MoneyType::class, array('label'=>'Cost increase with interval'));
+        $form->add('height_lower_bound', IntegerType::class, array('label'=>'admin.min.height'))
+            ->add('height_upper_bound', IntegerType::class, array('label'=>'admin.max.height'))
+            ->add('step',IntegerType::class, array('label'=>'admin.step'))
+            ->add('costPerStep', MoneyType::class, array('label'=>'admin.cost.per.step'));
     }
 
     protected function configureRoutes(RouteCollection $collection)
