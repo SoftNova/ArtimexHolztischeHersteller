@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraint;
 
 class ImgConstraint extends Constraint
 {
-    public $message = "You can only upload jpg, jpeg, png or giff files";
+    public $message = "app.image.validator.message";
 
     public function validatedBy()
     {

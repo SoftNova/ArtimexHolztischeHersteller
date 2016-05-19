@@ -102,11 +102,11 @@ sonata_admin:
 a2lix_translation_form:
     locale_provider: default       # [1]
     locales: "%locales%"          # [1-a]
-    default_locale: admin             # [1-b]
-    required_locales: [admin]         # [1-c]
+   # default_locale: admin             # [1-b]
+   # required_locales: [admin]         # [1-c]
     manager_registry: doctrine      # [2]
-    templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
-
+    #templating: "A2lixTranslationFormBundle::default.html.twig"      # [3]
+    templating: a2lixTranslationForm.html.twig
 
 liip_imagine:
     resolvers:
@@ -121,3 +121,17 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [120, 90], mode: outbound }
+
+lunetics_locale:
+    allowed_locales: "%locales%"
+    switcher:
+      template:
+        switcher.html.twig
+    cookie:
+        set_on_change: true
+    guessing_order:
+        - query
+        - router
+        - session
+        - cookie
+        - browser

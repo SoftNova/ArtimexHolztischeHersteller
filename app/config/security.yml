@@ -14,7 +14,7 @@ security:
     firewalls:
         admin:
             context: site
-            pattern: ^/admin/*
+            pattern: ^/[a-z]{2}/admin/*
             form_login:
                 provider:      fos_userbundle
                 login_path:    fos_user_security_login
@@ -43,7 +43,7 @@ security:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
 
 
 

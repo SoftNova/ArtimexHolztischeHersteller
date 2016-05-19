@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
             new AppBundle\AppBundle(),
         ];
 

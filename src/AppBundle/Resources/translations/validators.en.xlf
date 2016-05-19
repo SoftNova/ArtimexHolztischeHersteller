@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.image.validator.message">
+                <source>app.image.validator.message</source>
+                <target>Images can only be of type jpeg, jpg, gif or png.</target>
+            </trans-unit>
+            <trans-unit id="app.leg.constraint">
+                <source>app.leg.constraint</source>
+                <target> Invalid data added. Please recheck. Example: 9x9, 9x10, 10x10.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

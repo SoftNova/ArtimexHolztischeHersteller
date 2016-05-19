@@ -22,7 +22,7 @@ class TableTimberQualityTranslation
     use Translation;
     /**
      * @var
-     * @ORM\Column(type="string", name="name", nullable=false, length=255)
+     * @ORM\Column(type="string", name="name", nullable=true, length=255)
      */
     protected $name;
 

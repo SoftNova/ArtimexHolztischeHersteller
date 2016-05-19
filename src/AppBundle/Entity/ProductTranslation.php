@@ -23,7 +23,7 @@ class ProductTranslation
 
     /**
      * @var
-     * @ORM\Column(type="string", name="name", nullable=false, length=255)
+     * @ORM\Column(type="string", name="name", nullable=true, length=255)
      */
     protected $name;
 
@@ -42,7 +42,7 @@ class ProductTranslation
 
     /**
      * @var
-     * @ORM\Column(type="boolean", name="visibility")
+     * @ORM\Column(type="boolean", name="visibility", nullable=true)
      */
     protected $visibility;
 
@@ -62,7 +62,7 @@ class ProductTranslation
         $this->visibility = $visibility;
     }
 
-    
+
 
     /**
      * @return mixed

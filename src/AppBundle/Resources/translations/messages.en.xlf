@@ -258,6 +258,10 @@
                 <source>admin.is.visible</source>
                 <target>Should this item be visible in the catalog? (You can enable it later)</target>
             </trans-unit>
+            <trans-unit id="Dashboard">
+                <source>Dashboard</source>
+                <target>Should this item be visible in the catalog? (You can enable it later)</target>
+            </trans-unit>
 
 
 

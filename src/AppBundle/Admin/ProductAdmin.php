@@ -38,7 +38,13 @@ class ProductAdmin extends Admin
                     'label' => false,
                     'fields' => array(
                         'name' => array('field_type' => TextType::class,
-                            'label'=>'admin.normal.name'),
+                            'label'=>'admin.normal.name',
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('required' => true)
+                                )
+                            )
+                        ),
                         'description' => array('field_type' => TextType::class,
                             'label'=>'admin.description',
                             'locale_options' => array(
@@ -101,7 +107,7 @@ class ProductAdmin extends Admin
                 'sort_field_mapping'=>array('fieldName'=>'name'),
                 'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
-            ->add('locales','text', array(
+            ->add('isVisibleIn','text', array(
                     'label'=>'admin.available.in',
                     'sortable'=>true,
                     'sort_field_mapping'=>array('fieldName'=>'locale'),

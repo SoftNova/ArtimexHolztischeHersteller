@@ -37,8 +37,14 @@ class TableAdmin extends Admin
                 array(
                     'label'=>false,
                     'fields' => array(
-                        'name' => array('field_type'=>TextType::class,
-                            'label'=>'admin.normal.name'),
+                        'name' => array('field_type' => TextType::class,
+                            'label'=>'admin.normal.name',
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('required' => true)
+                                )
+                            )
+                        ),
                         'description' => array('field_type'=>TextType::class,
                             'label'=>'admin.description',
                             'locale_options'=>array(
@@ -68,6 +74,17 @@ class TableAdmin extends Admin
                                 )
                             )
                         )
+                        ,'visibility'=> array(
+                            'label'=>'admin.visibility',
+                            'field_type' => CheckboxType::class,
+                            'locale_options' => array(
+                                'admin' => array(
+                                    'attr' => array('readonly' => true,
+                                        'disabled' => true)
+                                )
+                            )
+                        , 'required' => false
+                        )
                     )
                 )
             )
@@ -92,7 +109,7 @@ class TableAdmin extends Admin
                     'sortable'=>'position'
                 ))
             ->end()
-            ->with ('app.visibility')
+            ->with ('admin.is.visible')
                 ->add('showInCatalog', CheckboxType::class, array('label' => 'admin.is.visible', 'required'=>false))
             ->end()
             ->with('admin.images')
@@ -122,10 +139,10 @@ class TableAdmin extends Admin
                 'sort_field_mapping'=>array('fieldName'=>'name'),
                 'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
             ))
-            ->add('locales','text', array(
+            ->add('isVisibleIn','text', array(
                     'label'=>'admin.available.in',
                     'sortable'=>true,
-                    'sort_field_mapping'=>array('fieldName'=>'locale'),
+                    'sort_field_mapping'=>array('fieldName'=>'visibility'),
                     'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
@@ -164,7 +181,7 @@ class TableAdmin extends Admin
 
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
-        $filter->add('translations.locale', 'doctrine_orm_choice', [
+        $filter->add('translations.visibility', 'doctrine_orm_choice', [
             'label' => 'app.language',
             'field_options' => [
                 'required' => false,
@@ -221,8 +238,6 @@ class TableAdmin extends Admin
         );
     }
 
-    private function translatedLabels(){
-    }
 
 
 }

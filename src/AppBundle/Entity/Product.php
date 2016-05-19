@@ -161,4 +161,18 @@ class Product
             rmdir($dir);
         }
     }
+
+    public function isVisibleIn(){
+        $isVisible = array();
+        foreach ($this->getTranslations() as $item) {
+            if ($item->getLocale()!="admin"){
+                if ($item->getVisibility()===true){
+                    $isVisible[$item->getLocale()] = $item->getLocale();
+                }
+            }
+        }
+        $result = implode(" | ", $isVisible);
+        return (strlen($result)===0) ? '-' : $result;
+
+    }
 }
