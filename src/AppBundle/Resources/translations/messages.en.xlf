@@ -258,9 +258,9 @@
                 <source>admin.is.visible</source>
                 <target>Should this item be visible in the catalog? (You can enable it later)</target>
             </trans-unit>
-            <trans-unit id="Dashboard">
-                <source>Dashboard</source>
-                <target>Should this item be visible in the catalog? (You can enable it later)</target>
+            <trans-unit id="admin.image.primary">
+                <source>admin.image.primary</source>
+                <target>Is this a thumbnail?</target>
             </trans-unit>
 
 

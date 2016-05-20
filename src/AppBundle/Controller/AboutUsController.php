@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AboutUsController extends Controller
 {
     /**
-     * @Route("/{_locale}/aboutus", name="aboutus")
+     * @Route("/{_locale}/aboutus", name="_aboutus")
      */
     public function indexAction(Request $request)
     {

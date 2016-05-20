@@ -14,6 +14,7 @@ class Utils
     const TABLE_IMAGE_PATH = 'app/img/table_img/';
     const PRODUCT_IMAGE_PATH = 'app/img/product_img/';
     const MATERIAL_IMAGE_PATH = 'app/img/material_img/';
+    const DEFAULT_IMAGE='app/img/no.png';
 
     const ALLOWED_IMG_EXT = array('jpg','jpeg','gif','png','JPG','JPEG','GIF','PNG');
     const INVALID_FILE_EXTENSION = "Invalid file extension";

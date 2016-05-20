@@ -3,7 +3,21 @@
     {% include 'client/statics/header.html.twig' %}
     <!-- End of header area -->
 {% endblock %}
+
+{% block subnenu %}
+    <div class="navbar">
+        <ul class="nav navbar-nav">
+            <a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a>
+            <a href="{{ path('_products') }}" >{% trans %}app.all.tables{% endtrans %}</a>
+        </ul>
+    </div>
+{% endblock %}
+
+
 {% block content %}
+    {% if aItems is not null %}
+        {% include 'client/subContent/allItems.html.twig' %}
+    {% endif %}
 {% endblock %}
 {% block footer %}
     <!-- Start of footer area -->

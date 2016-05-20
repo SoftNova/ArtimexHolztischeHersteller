@@ -1,0 +1,17 @@
+{% block content %}
+    <ul class="list-inline">
+    {% if aItems %}
+        {% for oItem in aItems %}
+            <li>
+                <a href={{ path('_specificProduct', { 'name' : oItem.name }) }}>
+                    {% if oItem.primaryImage is not null %}
+                        <span><p>{{ oItem.name }}</p>
+                        <img src="{{ oItem.primaryImage | imagine_filter('thumbnail')}}">
+                        </span>
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock %}

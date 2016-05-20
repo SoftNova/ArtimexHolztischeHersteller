@@ -292,4 +292,14 @@ class Table
 
     }
 
+    public function getPrimaryImage(){
+        /** @var TableImage $image */
+        foreach ($this->images as $image){
+            if ($image->getRole()){
+                return $image->getWebPath();
+            }
+        }
+        return Utils::DEFAULT_IMAGE;
+    }
+
 }

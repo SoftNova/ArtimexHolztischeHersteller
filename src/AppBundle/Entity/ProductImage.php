@@ -36,7 +36,12 @@ class ProductImage extends AbstractImage
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product", inversedBy="images")
      */
     protected $productItem;
-    
+
+    /**
+     * @var
+     * @ORM\Column(type="boolean", name="role", nullable=true)
+     */
+    protected $role;
 
     /**
      * @return mixed
@@ -53,6 +58,23 @@ class ProductImage extends AbstractImage
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
 
 
 

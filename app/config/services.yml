@@ -4,10 +4,30 @@ parameters:
 #    parameter_name: value
 
 services:
-  app.image_type_extensions:
-    class: AppBundle\Form\Extension\ImageTypeExtension
-    tags:
-      - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }
+    app.image_type_extensions:
+      class: AppBundle\Form\Extension\ImageTypeExtension
+      tags:
+        - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+
+    table_repository:
+      class: AppBundle\Repository\TableDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\Table]
+
+    table_service:
+      class: AppBundle\Service\TableService
+      arguments: [@table_repository]
+
+    product_repository:
+      class: AppBundle\Repository\ProductDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\Product]
+
+    article_service:
+      class: AppBundle\Service\ProductService
+      arguments: [@product_repository]
+

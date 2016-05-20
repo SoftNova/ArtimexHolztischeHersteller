@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends Controller
 {
     /**
-     * @Route("/{_locale}/", name="homepage")
+     * @Route("/{_locale}/", name="_homepage")
      */
     public function indexAction(Request $request)
     {

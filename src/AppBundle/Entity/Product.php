@@ -175,4 +175,15 @@ class Product
         return (strlen($result)===0) ? '-' : $result;
 
     }
+    
+    public function getPrimaryImage(){
+        /** @var ProductImage $image */
+        foreach ($this->images as $image){
+            if ($image->getRole()){
+                return $image->getWebPath();
+            }
+        }
+        return Utils::DEFAULT_IMAGE;
+    }
+
 }

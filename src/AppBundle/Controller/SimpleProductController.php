@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SimpleProductController extends Controller
 {
     /**
-     * @Route("/simple_product", name="simple_product")
+     * @Route("/simple_product", name="_simple_product")
      */
     public function indexAction(Request $request)
     {
