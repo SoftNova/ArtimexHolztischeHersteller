@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block subnenu %}
-    <div class="navbar">
-        <ul class="nav navbar-nav">
-            <a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a>
-            <a href="{{ path('_products') }}" >{% trans %}app.all.tables{% endtrans %}</a>
-        </ul>
+    <div class="container">
+        <div class="navbar">
+            <ul class="nav navbar-nav">
+                <a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a>
+                <a href="{{ path('_products') }}" >{% trans %}app.all.tables{% endtrans %}</a>
+            </ul>
+        </div>
     </div>
 {% endblock %}
 

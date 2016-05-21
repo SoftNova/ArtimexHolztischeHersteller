@@ -1,17 +1,33 @@
 {% block content %}
     <ul class="list-inline">
-    {% if aItems %}
-        {% for oItem in aItems %}
-            <li>
-                <a href={{ path('_specificProduct', { 'name' : oItem.name }) }}>
-                    {% if oItem.primaryImage is not null %}
-                        <span><p>{{ oItem.name }}</p>
-                        <img src="{{ oItem.primaryImage | imagine_filter('thumbnail')}}">
-                        </span>
+        <div class="single-product-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row">
+                    {% if aItems %}
+                        {% for oItem in aItems %}
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-shop-product">
+                                    <div class="product-upper">
+
+                                        {% if oItem.primaryImage is not null %}
+                                            <p style="font-size: 25px; font-family: 'Arial Black'">{{ oItem.name }}</p>
+                                            <img src="{{ oItem.primaryImage | imagine_filter('thumbnail')}}">
+                                        {% endif %}
+                                    </div>
+                                    <h2><a href={{ path('_specificProduct', { 'name' : oItem.name }) }}></h2>
+
+                                    <div class="product-option-shop">
+                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Configure</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
                     {% endif %}
-                </a>
-            </li>
-        {% endfor %}
-    {% endif %}
+
+                </div>
+            </div>
+        </div>
     </ul>
 {% endblock %}

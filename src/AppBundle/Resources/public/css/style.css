@@ -187,7 +187,7 @@ z-index: 9;
   content: "";
   height: 100%;
   left: 0;
-  opacity: 0.6;
+  opacity: 0.4;
   position: absolute;
   top: 0;
   width: 100%;
@@ -195,8 +195,8 @@ z-index: 9;
 
 
 .slide-one {background-image: url("../img/slider1.jpg")}
-.slide-two {background-image: url({{ asset ('../img/slider2.jpg')}})}
-.slide-three {background-image: url(../../../../web/bundles/app/img/slide3.jpg)}
+.slide-two {background-image: url("../img/slider2.jpg")}
+.slide-three {background-image: url("../img/slider3.jpg")}
 .slide-text {color: #fff;font-size: 18px;font-weight: 200}
 .slide-text h2 {
   font-size: 45px;font-weight: 200
