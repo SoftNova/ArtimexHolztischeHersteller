@@ -14,12 +14,22 @@
         </div>
     </div>
 {% endblock %}
-
-
 {% block content %}
-    {% if aItems is not null %}
-        {% include 'client/subContent/allItems.html.twig' %}
-    {% endif %}
+<ul class="list-inline">
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                 {% if aTables is not null %}
+                     {% include 'client/subContent/allTables.html.twig' %}
+                {% endif %}
+                {% if aArticles is not null %}
+                    {% include 'client/subContent/allArticles.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</ul>
 {% endblock %}
 {% block footer %}
     <!-- Start of footer area -->

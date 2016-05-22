@@ -1,0 +1,16 @@
+{% extends ':client:products.html.twig' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="{{ oItem.primaryImage | imagine_filter('thumbnail') }}">
+            </div>
+            <div class="col-sm-3">
+                <p>{{ oItem.description }}</p>
+            </div>
+            <div class="col-sm-4">
+                <p>{{ oItem.price }}EUR</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

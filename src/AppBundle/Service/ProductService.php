@@ -27,5 +27,8 @@ class ProductService
     public function getAllByLang($lang){
         return $this->productDAO->findAllByLang($lang);
     }
+    public function findByCode($code){
+        return $this->productDAO->findByCode($code);
+    }
 
 }

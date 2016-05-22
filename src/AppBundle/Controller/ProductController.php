@@ -19,7 +19,8 @@ class ProductController extends Controller
         $aTables = $tableService->getAllByLang($lang);
         return $this->render('client/products.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-            'aItems'=>$aTables
+            'aTables'=>$aTables,
+            'aArticles'=>null
         ]);
     }
 
@@ -32,17 +33,34 @@ class ProductController extends Controller
         $aArticles=$articleService->getAllByLang($lang);
         return $this->render('client/products.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-            'aItems' => $aArticles,
+            'aArticles' => $aArticles,
+            'aTables'=>null
         ]);
     }
 
     /**
-     * @Route("/{_locale}/{name}-{code}", name="_specificProduct")
+     * @Route("/{_locale}/{name}/{code}", name="_specificTable")
      */
-    public function getSpecificProduct(){
+    public function getSpecificTable(){
 
-        return $this->render('client/subContent/product.html.twig', [
+        $service=$this->get('table_service');
+        $lang=$this->get('request')->getLocale();
+
+
+        return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ]);
+    }
+    /**
+     * @Route("/{_locale}/{name}-{code}", name="_specificArticle")
+     */
+    public function getSpecificArticle(){
+        $service=$this->get('article_service');
+        $code = $this->get('request')->get('code');
+        $article = $service->findByCode($code);
+        return $this->render('client/subContent/article.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'oItem' => $article
         ]);
     }
 
