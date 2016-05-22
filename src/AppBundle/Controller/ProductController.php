@@ -37,7 +37,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/{name}", name="_specificProduct")
+     * @Route("/{_locale}/{name}-{code}", name="_specificProduct")
      */
     public function getSpecificProduct(){
 

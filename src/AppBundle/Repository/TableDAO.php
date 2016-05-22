@@ -26,9 +26,11 @@ class TableDAO extends EntityRepository
             ->join('t.translations', 'tt' )
             ->where('tt.locale= :lang')
             ->andWhere('tt.visibility= :visibility')
+            ->andWhere('t.showInCatalog= :sic')
             ->addSelect('tt')
             ->setParameter('lang', $lang)
             ->setParameter('visibility', 1)
+            ->setParameter('sic', 1)
         ;
         return $qb->getQuery()->getResult();
     }

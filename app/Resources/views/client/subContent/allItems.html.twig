@@ -15,7 +15,7 @@
                                             <img src="{{ oItem.primaryImage | imagine_filter('thumbnail')}}">
                                         {% endif %}
                                     </div>
-                                    <h2><a href={{ path('_specificProduct', { 'name' : oItem.name }) }}></h2>
+                                    <h2><a href={{ path('_specificProduct', { 'name' : oItem.name, 'code' : oItem.code}) }}></a></h2>
 
                                     <div class="product-option-shop">
                                         <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Configure</a>

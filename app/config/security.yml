@@ -23,7 +23,7 @@ security:
                 default_target_path: sonata_admin_dashboard
             logout:
                 path:   fos_user_security_logout
-                target: homepage
+                target: _homepage
             anonymous: true
             security: true
         # disables authentication for assets and the profiler, adapt it according to your needs
