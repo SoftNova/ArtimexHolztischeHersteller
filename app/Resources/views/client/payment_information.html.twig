@@ -1,0 +1,53 @@
+{% block head %}
+    <!-- Header area -->
+    {% include 'client/statics/header.html.twig' %}
+    <!-- End of header area -->
+{% endblock %}
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{% trans %}app.paymentinfo{% endtrans %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <br/>
+                    Payment methods<br/><br/>
+
+                    Artimex-Sport proposes various alternatives for the payment of your orders. Here they are:
+                    <br/><br/>
+                    Credit cards: We accept Visa and MasterCard. The transfer of your personal data is secured by a SSL encryption system. Your credit card will be automatically processed by our payment service provider. If your data are correct, we shall immediately proceed with processing your order.
+                    <br/><br/>
+                    PayPal: Online secured payment service, easy and fast. For further information about PayPal, please see www.paypal.com. If your data are correct, we shall immediately proceed with processing your order.
+                    <br/><br/>
+                    Payment secured by SSL encryption: We are using the SSL security system (Secure Socket Layer) and also a 128 Bit encoding after the transfer of your personal data. This technology, which assures a very high security level, is also used by banks to protect data after online transactions.  A key or a padlock symbol indicates that the payment transaction is secure.
+                    <br/><br/>
+                    Payment methods:<br/>
+                    Advance payment when placing the order (3% discount)<br/>
+                    Paypal<br/>
+                    Credit-cards<br/>
+                    Electronic Bank Transfer<br/>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End main content area -->
+{% endblock %}
+{% block footer %}
+    <!-- Start of footer area -->
+    {% include '/client/statics/footer.html.twig' %}
+    <!-- End of footer area -->
+{% endblock %}

@@ -1,0 +1,39 @@
+{% block head %}
+    <!-- Header area -->
+    {% include 'client/statics/header.html.twig' %}
+    <!-- End of header area -->
+{% endblock %}
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{% trans %}app.shippinginfo{% endtrans %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <br/>
+                    All prices including shipping via:
+                </div>
+            </div>
+        </div>
+    </div> <!-- End main content area -->
+{% endblock %}
+{% block footer %}
+    <!-- Start of footer area -->
+    {% include '/client/statics/footer.html.twig' %}
+    <!-- End of footer area -->
+{% endblock %}

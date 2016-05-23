@@ -21,11 +21,10 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">{% trans %}app.information{% endtrans %} </h2>
                         <ul>
-                            <li><a href="#">{% trans %}app.paymentinfo{% endtrans %}</a></li>
-                            <li><a href="#">{% trans %}app.shippinginfo{% endtrans %}</a></li>
-                            <li><a href="#">{% trans %}app.terms{% endtrans %}</a></li>
-                            <li><a href="#">{% trans %}app.contact{% endtrans %}</a></li>
-                            <li><a href="#">Front page</a></li>
+                            <li><a href="{{path('_paymentinfo')}}">{% trans %}app.paymentinfo{% endtrans %}</a></li>
+                            <li><a href="{{path('_shippinginfo')}}">{% trans %}app.shippinginfo{% endtrans %}</a></li>
+                            <li><a href="{{path('_terms_conditions')}}">{% trans %}app.terms{% endtrans %}</a></li>
+                            <li><a href="{{path('_contact')}}">{% trans %}app.contact{% endtrans %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,14 +44,14 @@
 
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
-                        <h2 class="footer-wid-title">Newsletter</h2>
-                        <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                        <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="Type your email">
-                                <input type="submit" value="Subscribe">
-                            </form>
-                        </div>
+                        <h2 class="footer-wid-title">{% trans %}app.contact{% endtrans %}</h2>
+                        <p>ARTIMEX SPORT GMBH <br/>
+                            Markenbildchenweg 34, 56068,Koblenz,Germany
+                            <br/><br/>
+                            international@artimexsport.com<br/>
+                            Phone:<br/>
+                            +49 2613 9071430</p>
+
                     </div>
                 </div>
             </div>
