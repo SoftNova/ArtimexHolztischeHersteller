@@ -4,13 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                Pics and title go here
+                <img src="{{oItem.primaryImage | imagine_filter('productDisplay')}}"/>
+                <p>{{ oItem.description }}</p>
             </div>
             <div class="col-sm-3">
-                desciption goes here
+                {% include ':client/subContent:dynamicSpecs.html.twig' %}
             </div>
             <div class="col-sm-4">
-                options go here
+                {% include ':client/subContent:configurations.html.twig' %}
             </div>
         </div>
     </div>

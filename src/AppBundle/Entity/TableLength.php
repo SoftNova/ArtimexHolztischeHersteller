@@ -39,6 +39,64 @@ class TableLength
     protected $lengthUpperBound;
 
     /**
+     * @var
+     * @ORM\Column(type="integer", name="drawer_lower_bound", nullable=false)
+     */
+    protected $drawerLowerBound;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", name="drawer_upper_bound", nullable=false)
+     */
+    protected $drawerUpperBound;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", name="ext_lower_bound", nullable=false)
+     */
+    protected $extLowerBound;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", name="ext_upper_bound", nullable=false)
+     */
+    protected $extUpperBound;
+
+    /**
+     * @return mixed
+     */
+    public function getExtLowerBound()
+    {
+        return $this->extLowerBound;
+    }
+
+    /**
+     * @param mixed $extLowerBound
+     */
+    public function setExtLowerBound($extLowerBound)
+    {
+        $this->extLowerBound = $extLowerBound;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExtUpperBound()
+    {
+        return $this->extUpperBound;
+    }
+
+    /**
+     * @param mixed $extUpperBound
+     */
+    public function setExtUpperBound($extUpperBound)
+    {
+        $this->extUpperBound = $extUpperBound;
+    }
+
+    
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -53,6 +111,39 @@ class TableLength
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDrawerLowerBound()
+    {
+        return $this->drawerLowerBound;
+    }
+
+    /**
+     * @param mixed $drawerLowerBound
+     */
+    public function setDrawerLowerBound($drawerLowerBound)
+    {
+        $this->drawerLowerBound = $drawerLowerBound;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDrawerUpperBound()
+    {
+        return $this->drawerUpperBound;
+    }
+
+    /**
+     * @param mixed $drawerUpperBound
+     */
+    public function setDrawerUpperBound($drawerUpperBound)
+    {
+        $this->drawerUpperBound = $drawerUpperBound;
+    }
+
 
     /**
      * @return mixed

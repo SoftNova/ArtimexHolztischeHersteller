@@ -25,10 +25,13 @@ class ProductDAO extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findByCode($code){
+    public function findByCode($code, $lang){
         $qb = $this->createQueryBuilder('p');
-        $qb->where('p.code= :code')
-            ->setParameter('code', $code);
+        $qb->join('p.translations', 'pt')
+            ->where('pt.locale= :lang')
+            ->andWhere('p.code= :code')
+            ->setParameter('code', $code)
+            ->setParameter('lang', $lang);
 
         return $qb->getQuery()->getOneOrNullResult( );
     }

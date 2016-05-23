@@ -33,7 +33,7 @@ class TableTimberQualityAdmin extends Admin
             )
             ->end()
             ->with('admin.general')
-            ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type'=>'fractional', 'scale'=>2))
+            ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type'=>'integer', 'scale'=>2))
             ->end();
     }
 

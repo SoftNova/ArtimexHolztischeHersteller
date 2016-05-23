@@ -34,4 +34,16 @@ class TableDAO extends EntityRepository
         ;
         return $qb->getQuery()->getResult();
     }
+
+    public function findByCode($code, $lang){
+        $qb = $this->createQueryBuilder('t');
+        $qb->join('t.translations', 'tt' )
+            ->where('tt.locale= :lang')
+            ->andWhere('t.code= :code')
+            ->addSelect('tt')
+            ->setParameter('code', $code)
+            ->setParameter('lang', $lang);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
 }

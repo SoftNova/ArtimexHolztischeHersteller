@@ -2,16 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: cvisan
- * Date: 5/5/2016
- * Time: 1:39 PM
+ * Date: 5/23/2016
+ * Time: 2:00 PM
  */
 
 namespace AppBundle\Repository;
+
+
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping as ORM;
 
-
-class TableMaterialDAO extends EntityRepository
+class TimberTemperingDAO extends EntityRepository
 {
     public function findAllByLang($lang){
         $qb = $this->_em->createQueryBuilder();

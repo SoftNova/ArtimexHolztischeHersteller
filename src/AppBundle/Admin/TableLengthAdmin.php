@@ -18,7 +18,11 @@ class TableLengthAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form->add('length_lower_bound', IntegerType::class, array('label'=>'admin.min.length'))
-            ->add('length_upper_bound', IntegerType::class, array('label'=>'admin.max.length'));
+            ->add('length_upper_bound', IntegerType::class, array('label'=>'admin.max.length'))
+            ->add('drawer_lower_bound', IntegerType::class, array('label'=>'admin.min.dr.length'))
+            ->add('drawer_upper_bound', IntegerType::class, array('label'=>'admin.max.dr.length'))
+            ->add('ext_lower_bound', IntegerType::class, array('label'=>'admin.min.ext.length'))
+            ->add('ext_upper_bound', IntegerType::class, array('label'=>'admin.max.ext.length'));
     }
 
     protected function configureRoutes(RouteCollection $collection)
@@ -43,6 +47,10 @@ class TableLengthAdmin extends Admin
                     'label'=>'admin.max.length',
                 )
             )
+            ->add('drawer_lower_bound', IntegerType::class, array('label'=>'admin.min.dr.length'))
+            ->add('drawer_upper_bound', IntegerType::class, array('label'=>'admin.max.dr.length'))
+            ->add('ext_lower_bound', IntegerType::class, array('label'=>'admin.min.ext.length'))
+            ->add('ext_upper_bound', IntegerType::class, array('label'=>'admin.max.ext.length'))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),

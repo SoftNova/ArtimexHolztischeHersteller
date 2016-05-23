@@ -1,0 +1,22 @@
+<div class="dynamicSpecs">
+    <h6 id="name"><strong> {{ oItem.name}} </strong></h6>
+    <h6 id="surface"><strong>{% trans %} app.dimensions {% endtrans %}:</strong></h6>
+    <h6 id="plank"><strong>{% trans %} app.plank {% endtrans %}:</strong></h6>
+    <h6 id="wood"> <strong>{% trans %} app.wood.selection{% endtrans %}:</strong></h6>
+    <h6 id="quality"><strong>{% trans %} app.timber.quality{% endtrans %}:</strong></h6>
+    <h6 id="tempering"><strong>{% trans %} app.timber.tempering {% endtrans %}:</strong></h6>
+    <div class="row"><hr></div>
+    <div class="row" >
+        <div class="col-sm-6">
+        <p id="price">
+            <strong>
+                {% trans %} app.currency {% endtrans %}{{ oItem.basePrice}}
+            </strong>
+        </p>
+        <small >{% trans %}app.vat.included{% endtrans %}</small>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-cart" >{% trans %} app.to.cart {% endtrans %}</button>
+        </div>
+    </div>
+</div>

@@ -125,6 +125,15 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [26, 26], mode: outbound }
+        primaryImage:
+            quality: 75
+            filters:
+                thumbnail: { size: [250, 170], mode: outbound }
+        productDisplay:
+            quality: 75
+            filters:
+                thumbnail: { size: [540, 360], mode: outbound }
+
 
 lunetics_locale:
     allowed_locales: "%locales%"

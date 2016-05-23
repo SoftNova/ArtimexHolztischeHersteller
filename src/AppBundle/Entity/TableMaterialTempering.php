@@ -15,7 +15,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehavior;
  * Class TableMaterialTempering
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TimberTemperingDAO")
  * @ORM\Table(name="table_material_tempering")
  */
 class TableMaterialTempering

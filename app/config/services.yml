@@ -31,3 +31,46 @@ services:
       class: AppBundle\Service\ProductService
       arguments: [@product_repository]
 
+
+    height_repository:
+      class: AppBundle\Repository\TableHeightDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableHeight]
+    width_repository:
+      class: AppBundle\Repository\TableWidthDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableWidth]
+    length_repository:
+      class: AppBundle\Repository\TableLengthDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableLength]
+
+    surface_service:
+      class: AppBundle\Service\SurfaceService
+      arguments: [@length_repository, @width_repository, @height_repository]
+
+
+    material_repository:
+      class: AppBundle\Repository\TableMaterialDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableMaterial]
+    primary_material_repository:
+      class: AppBundle\Repository\TablePrimaryMaterialDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TablePrimaryMaterial]
+    material_service:
+      class: AppBundle\Service\MaterialService
+      arguments: [@material_repository, @primary_material_repository]
+
+    timber_quality_repository:
+      class: AppBundle\Repository\TableTimberQualityDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableTimberQuality]
+    timber_tempering_repository:
+      class: AppBundle\Repository\TimberTemperingDAO
+      factory: [@doctrine.orm.default_entity_manager, 'getRepository']
+      arguments: [AppBundle\Entity\TableMaterialTempering]
+    timber_service:
+      class: AppBundle\Service\TimberSpecsService
+      arguments: [@timber_quality_repository, @timber_tempering_repository]
+

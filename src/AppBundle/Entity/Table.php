@@ -158,7 +158,7 @@ class Table
     }
 
     /**
-     * @return mixed
+     * @return TableLegAttribute
      */
     public function getLegAttribute()
     {
@@ -302,4 +302,11 @@ class Table
         return Utils::DEFAULT_IMAGE;
     }
 
+    public function getProfilesArray(){
+        if (!is_null($profiles=$this->getLegAttribute()->getProfiles())){
+            $result = explode(",", $profiles);
+            return $result;
+        }
+        return null;
+    }
 }

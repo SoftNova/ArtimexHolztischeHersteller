@@ -1,0 +1,178 @@
+<div class="row">
+    <h3>{% trans %} app.configuration {% endtrans %}</h3>
+    <p><strong>{% trans %} app.dimensions{% endtrans %}</strong></p>
+    <div class="col-sm-4 header-area">
+        <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
+        <select class="form-control" id="length">
+            {% for value in length.lengthLowerBound..length.lengthUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-4 header-area">
+        <label for="width">{% trans %} app.surface.width {% endtrans %}</label>
+        <select class="form-control" id="width">
+            {% for value in width.widthLowerBound..width.widthUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-4 header-area">
+        <label for="height">{% trans %} app.leg.height {% endtrans %}</label>
+        <select class="form-control" id="height">
+            {% for value in height.heightLowerBound..height.heightUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<!-- End of dimensions -->
+
+<!-- start of custom message -->
+{% if oItem.message is not null %}
+    <div class="row"><hr></div>
+    <p><strong>
+            {{ oItem.message }}
+        </strong></p>
+{% endif %}
+<!-- end of custom message -->
+<!-- Start of leg profiles -->
+{% if oItem.profilesArray is not null %}
+    <div class="row"><hr></div>
+    <div class="row">
+    <p><strong>{% trans %} app.leg.profiles{% endtrans %}</strong></p>
+    <div class="form-inline header-area">
+    {% for value in oItem.profilesArray %}
+        <label class="radio-inline">
+            <input type="radio">
+            {{ value }}
+        </label>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+<!-- End of leg profiles -->
+<!-- Start of sides -->
+{% if oItem.hasDistanceToSides %}
+    <div class="row"><hr></div>
+    <div class="row">
+        <p><strong>{% trans %} app.distance.to.sides {% endtrans %}</strong></p>
+        <div class="form-inline col-sm-12 header-area">
+            <div class="col-sm-6">
+                <label class="radio-inline">
+                    <input type="radio" name="distRadio">
+                    First picture
+                </label>
+            </div>
+            <div class="col-sm-6">
+                <label class="radio-inline">
+                    <input type="radio" name="distRadio">
+                    Second picture
+                </label>
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!-- End of sides -->
+<!-- Start of extensions -->
+{% if oItem.hasExtension %}
+    <div class="row"><hr></div>
+    <div class="row">
+        <p><strong>{% trans %} app.extensions.profiles{% endtrans %}</strong></p>
+        <div class="form-inline col-sm-12 header-area">
+        {% for value in 0..2 %}
+            <div class="col-sm-4">
+                <label class="radio-inline">
+                    <input type="radio" name="extRadio">
+                    {{ value }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+        </div>
+        <div class="form-inline header-area">
+        <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
+        <select class="form-control" id="length">
+            {% for value in length.extLowerBound..length.extUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endif %}
+<!-- End of extensions -->
+<!-- Start of drawers -->
+{% if oItem.drawerAttribute.maxNumberOfDrawers is not null %}
+    <div class="row"><hr></div>
+    <div class="row">
+    <p><strong>{% trans %} app.drawer.attribute{% endtrans %}</strong></p>
+    <div class="form-inline header-area">
+    {% for value in 0..oItem.drawerAttribute.maxNumberOfDrawers %}
+        <label class="radio-inline">
+            <input type="radio" name="legRadio">
+            {{ value }}
+        </label>
+    {% endfor %}
+</div>
+    </div>
+
+
+<div class="row">
+    <div class="form-inline header-area">
+    <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
+    <select class="form-control" id="length">
+        {% for value in length.drawerLowerBound..length.drawerUpperBound %}
+            <option>{{ value }}</option>
+        {% endfor %}
+    </select>
+</div>
+    </div>
+{% endif %}
+<!-- End of drawers -->
+<div class="row"><hr></div>
+<!-- start of material selection -->
+<div class="row">
+    <p><strong>{% trans %} app.wood.selection{% endtrans %}</strong></p>
+    <div class="form-inline col-sm-12 header-area">
+        {% for oMaterial in aMaterials %}
+            <div class="col-sm-6">
+                <label class="radio-inline">
+                    <input type="radio" name="matRadio">
+                    {{ oMaterial.name }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- end of material selection -->
+<div class="row"><hr></div>
+<!-- start of timber quality -->
+<div class="row">
+    <p><strong>{% trans %} app.timber.quality{% endtrans %}</strong></p>
+    <div class="form-inline col-sm-12 header-area">
+        {% for oTimberQuality in aTimberQuality %}
+            <div class="col-sm-4">
+                <label class="radio-inline">
+                    <input type="radio" name="qualRadio">
+                    {{ oTimberQuality.name }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- end of timber quality -->
+<div class="row"><hr></div>
+<!-- start of timber tempering -->
+<div class="row">
+    <p><strong>{% trans %} app.timber.tempering{% endtrans %}</strong></p>
+    <div class="form-inline col-sm-12 header-area">
+        {% for oTimberTempering in aTimberTempering %}
+            <div class="col-sm-4">
+                <label class="radio-inline">
+                    <input type="radio" name="timberRadio">
+                    {{ oTimberTempering.name }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- start of timber tempering -->

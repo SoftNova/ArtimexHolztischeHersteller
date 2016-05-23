@@ -44,11 +44,30 @@ class ProductController extends Controller
     public function getSpecificTable(){
 
         $service=$this->get('table_service');
+        $surfaceService=$this->get('surface_service');
+        $materialService= $this->get('material_service');
+        $code = $this->get('request')->get('code');
+        $timberService = $this->get('timber_service');
         $lang=$this->get('request')->getLocale();
+
+        $aMaterials = $materialService->getMaterialsForLang($lang);
+        $table = $service->findByCode($code, $lang);
+        $height = $surfaceService->getHeight();
+        $width = $surfaceService->getWidth();
+        $length = $surfaceService->getLength();
+        $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
+        $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
 
 
         return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'oItem'=>$table,
+            'width' => $width,
+            'length'=>$length,
+            'height'=>$height,
+            'aMaterials'=>$aMaterials,
+            'aTimberQuality'=>$aTimberQuality,
+            'aTimberTempering'=>$aTimberTempering
         ]);
     }
     /**
@@ -57,7 +76,9 @@ class ProductController extends Controller
     public function getSpecificArticle(){
         $service=$this->get('article_service');
         $code = $this->get('request')->get('code');
-        $article = $service->findByCode($code);
+        $lang=$this->get('request')->getLocale();
+
+        $article = $service->findByCode($code, $lang);
         return $this->render('client/subContent/article.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'oItem' => $article

@@ -17,7 +17,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehavior;
  * Class TableTimberQuality
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TableTimberQualityDAO")
  * @ORM\Table(name="table_timber_quality")
  */
 class TableTimberQuality

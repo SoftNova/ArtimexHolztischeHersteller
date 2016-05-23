@@ -27,4 +27,7 @@ class TableService
         return $this->tableDAO->findAllByLang($lang);
     }
 
+    public function findByCode($code, $lang){
+        return $this->tableDAO->findByCode($code, $lang);
+    }
 }

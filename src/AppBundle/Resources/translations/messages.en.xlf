@@ -163,23 +163,39 @@
             </trans-unit>
             <trans-unit id="admin.max.width">
                 <source>admin.max.width</source>
-                <target>Maximum surface width</target>
+                <target>Maximum surface width (cm)</target>
             </trans-unit>
             <trans-unit id="admin.min.length">
                 <source>admin.min.length</source>
-                <target>Minimum surface length</target>
+                <target>Minimum surface length (cm)</target>
             </trans-unit>
             <trans-unit id="admin.max.length">
                 <source>admin.max.length</source>
-                <target>Maximum surface length</target>
+                <target>Maximum surface length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.dr.length">
+                <source>admin.max.dr.length</source>
+                <target>Maximum drawer length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.dr.length">
+                <source>admin.min.dr.length</source>
+                <target>Minimum drawer length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.ext.dr.length">
+                <source>admin.min.ext.dr.length</source>
+                <target>Minimum extension length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.ext.length">
+                <source>admin.max.ext.length</source>
+                <target>Maximum extension length (cm)</target>
             </trans-unit>
             <trans-unit id="admin.min.height">
                 <source>admin.min.height</source>
-                <target>Minimum surface height</target>
+                <target>Minimum surface height (cm)</target>
             </trans-unit>
             <trans-unit id="admin.max.height">
                 <source>admin.max.height</source>
-                <target>Maximum surface height</target>
+                <target>Maximum surface height (cm)</target>
             </trans-unit>
             <trans-unit id="admin.step">
                 <source>admin.step</source>
@@ -337,6 +353,10 @@
             <trans-unit id="app.language">
                 <source>app.language</source>
                 <target>Language</target>
+            </trans-unit>
+            <trans-unit id="app.currency">
+                <source>app.currency</source>
+                <target>£</target>
             </trans-unit>
 
 
