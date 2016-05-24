@@ -3,13 +3,11 @@
         <div class="col-md-3 col-sm-6">
             <div class="single-shop-product">
                 <div class="product-upper">
-                    {% if oItem.primaryImage is not null %}
-                        <p style="font-size: 25px; font-family: 'Arial Black'">{{ oItem.name }}</p>
-                        <img src="{{ oItem.primaryImage | imagine_filter('primaryImage')}}">
-                        <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('_specificArticle', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
-                        </div>
-                    {% endif %}
+                    <p style="font-size: 25px; font-family: 'Arial Black'">{{ oItem.name }}</p>
+                    <img src="{{ oItem.primaryImage | imagine_filter('primaryImage')}}">
+                    <div class="product-option-shop">
+                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('_specificArticle', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
+                    </div>
                 </div>
 
             </div>

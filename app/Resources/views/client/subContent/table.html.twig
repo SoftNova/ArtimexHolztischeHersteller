@@ -4,8 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                <img src="{{oItem.primaryImage | imagine_filter('productDisplay')}}"/>
+                <img src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
                 <p>{{ oItem.description }}</p>
+
+                <!-- start of custom message -->
+                {% if oItem.message is not null %}
+                    <div class="row">
+                        <hr>
+                    </div>
+                    <p><strong>
+                            {{ oItem.message }}
+                        </strong></p>
+                {% endif %}
+                <!-- end of custom message -->
             </div>
             <div class="col-sm-3">
                 {% include ':client/subContent:dynamicSpecs.html.twig' %}

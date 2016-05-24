@@ -15,12 +15,15 @@ class ProductController extends Controller
     {
         $tableService=$this->get('table_service');
         $lang=$this->get('request')->getLocale();
+        $materialService= $this->get('material_service');
+        $primaryMaterial = $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId();
 
         $aTables = $tableService->getAllByLang($lang);
         return $this->render('client/products.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'aTables'=>$aTables,
-            'aArticles'=>null
+            'aArticles'=>null,
+            'primaryMaterial'=>$primaryMaterial
         ]);
     }
 
@@ -49,8 +52,9 @@ class ProductController extends Controller
         $code = $this->get('request')->get('code');
         $timberService = $this->get('timber_service');
         $lang=$this->get('request')->getLocale();
-
+        
         $aMaterials = $materialService->getMaterialsForLang($lang);
+        $primaryMaterial = $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId();
         $table = $service->findByCode($code, $lang);
         $height = $surfaceService->getHeight();
         $width = $surfaceService->getWidth();
@@ -67,7 +71,8 @@ class ProductController extends Controller
             'height'=>$height,
             'aMaterials'=>$aMaterials,
             'aTimberQuality'=>$aTimberQuality,
-            'aTimberTempering'=>$aTimberTempering
+            'aTimberTempering'=>$aTimberTempering,
+            'primaryMaterial'=>$primaryMaterial
         ]);
     }
     /**

@@ -292,11 +292,14 @@ class Table
 
     }
 
-    public function getPrimaryImage(){
+    public function getPrimaryImage($id){
         /** @var TableImage $image */
         foreach ($this->images as $image){
             if ($image->getRole()){
-                return $image->getWebPath();
+                if($image->getMaterialItem()->getId()==$id && $image->getRole())
+                {
+                    return $image->getWebPath();
+                }
             }
         }
         return Utils::DEFAULT_IMAGE;
