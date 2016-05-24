@@ -161,7 +161,6 @@
             {% for oTimberQuality in aTimberQuality|batch(3) %}
             {% for column in oTimberQuality %}
             <div class="col-sm-{{ loop.index==oTimberQuality|length ? (4-loop.index)*4 : 4 }} header-area">
-                <div class="col-sm-4 header-area">
                     <label class="radio-inline">
                         <input type="radio" name="qualRadio">
                         {{ column.name }}
@@ -170,7 +169,6 @@
                 {% endfor %}
                 {% endfor %}
             </div>
-        </div>
     </div>
         <!-- end of timber quality -->
         <div class="row">
