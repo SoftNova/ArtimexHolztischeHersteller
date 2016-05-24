@@ -1,135 +1,134 @@
-<div class="container-fluid">
+<div class="row">
+    <h3>{% trans %} app.configuration {% endtrans %}</h3>
+    <p><strong>{% trans %} app.dimensions{% endtrans %}</strong></p>
+    <div class="col-sm-4 header-area">
+        <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
+        <select class="form-control" id="length">
+            {% for value in length.lengthLowerBound..length.lengthUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-4 header-area">
+        <label for="width">{% trans %} app.surface.width {% endtrans %}</label>
+        <select class="form-control" id="width">
+            {% for value in width.widthLowerBound..width.widthUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-4 header-area">
+        <label for="height">{% trans %} app.leg.height {% endtrans %}</label>
+        <select class="form-control" id="height">
+            {% for value in height.heightLowerBound..height.heightUpperBound %}
+                <option>{{ value }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<!-- End of dimensions -->
+
+<!-- Start of leg profiles -->
+{% if oItem.profilesArray is not null %}
     <div class="row">
-        <h3>{% trans %} app.configuration {% endtrans %}</h3>
-        <p><strong>{% trans %} app.dimensions{% endtrans %}</strong></p>
-        <div class="col-sm-4 header-area">
+        <hr>
+    </div>
+    <div class="row">
+        <p><strong>{% trans %} app.leg.profiles{% endtrans %}</strong></p>
+        {% for row in oItem.profilesArray|batch(3,null) %}
+            {% for column in row %}
+                <div class="col-sm-{{ loop.index==row|length ? (4-loop.index)*4 : 4 }} header-area">
+                    <label class="radio-inline header-area">
+                        <input type="radio">
+                        <span>{{ column }}</span>
+                    </label>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
+<!-- End of leg profiles -->
+<!-- Start of sides -->
+{% if oItem.hasDistanceToSides %}
+    <div class="row">
+        <hr>
+    </div>
+    <div class="row">
+        <p><strong>{% trans %} app.distance.to.sides {% endtrans %}</strong></p>
+        <div class="form-inline">
+            <div class="col-sm-6 header-area">
+                <label class="radio-inline">
+                    <input type="radio" name="distRadio">
+                    First picture
+                </label>
+            </div>
+            <div class="col-sm-6 header-area">
+                <label class="radio-inline">
+                    <input type="radio" name="distRadio">
+                    Second picture
+                </label>
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!-- End of sides -->
+<!-- Start of extensions -->
+{% if oItem.hasExtension %}
+    <div class="row">
+        <hr>
+    </div>
+    <div class="row">
+        <p><strong>{% trans %} app.extensions.profiles{% endtrans %}</strong></p>
+        <div class="form-inline header-area">
+            {% for value in 0..2 %}
+                <div class="col-sm-4 header-area">
+                    <label class="radio-inline">
+                        <input type="radio" name="extRadio">
+                        {{ value }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-inline header-area col-sm-12">
             <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
             <select class="form-control" id="length">
-                {% for value in length.lengthLowerBound..length.lengthUpperBound %}
-                    <option>{{ value }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-sm-4 header-area">
-            <label for="width">{% trans %} app.surface.width {% endtrans %}</label>
-            <select class="form-control" id="width">
-                {% for value in width.widthLowerBound..width.widthUpperBound %}
-                    <option>{{ value }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-sm-4 header-area">
-            <label for="height">{% trans %} app.leg.height {% endtrans %}</label>
-            <select class="form-control" id="height">
-                {% for value in height.heightLowerBound..height.heightUpperBound %}
+                {% for value in length.extLowerBound..length.extUpperBound %}
                     <option>{{ value }}</option>
                 {% endfor %}
             </select>
         </div>
     </div>
-    <!-- End of dimensions -->
 
-    <!-- Start of leg profiles -->
-    {% if oItem.profilesArray is not null %}
-        <div class="row">
-            <hr>
+{% endif %}
+<!-- End of extensions -->
+<!-- Start of drawers -->
+{% if oItem.drawerAttribute.maxNumberOfDrawers is not null and oItem.drawerAttribute.maxNumberOfDrawers!=0 %}
+<div class="row">
+    <hr>
+</div>
+<div class="row">
+    <p><strong>{% trans %} app.drawer.attribute{% endtrans %}</strong></p>
+    {% for value in 0..oItem.drawerAttribute.maxNumberOfDrawers %}
+    {% if loop.index == oItem.drawerAttribute.maxNumberOfDrawers+1 and loop.index % 6 !=0 %}
+    <div class="col-sm-{{ (12*((oItem.drawerAttribute.maxNumberOfDrawers+1)/3)|round(0,'ceil'))-(4*oItem.drawerAttribute.maxNumberOfDrawers) }} header-area">
+        {% else %}
+        <div class="col-sm-4 header-area">
+            {% endif %}
+            <label class="radio-inline">
+                <input type="radio" name="legRadio">
+                {{ value }}
+            </label>
         </div>
-        <div class="row">
-            <p><strong>{% trans %} app.leg.profiles{% endtrans %}</strong></p>
-                {% for value in oItem.profilesArray %}
-                    <div class="col-sm-2 header-area">
-                    <label class="radio-inline header-area">
-                        <input type="radio">
-                        <span>{{ value }}</span>
-                    </label>
-                    </div>
+        {% endfor %}
+        <div class="form-inline header-area col-sm-12">
+            <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
+            <select class="form-control" id="length">
+                {% for value in length.drawerLowerBound..length.drawerUpperBound %}
+                    <option>{{ value }}</option>
                 {% endfor %}
+            </select>
         </div>
-    {% endif %}
-    <!-- End of leg profiles -->
-    <!-- Start of sides -->
-    {% if oItem.hasDistanceToSides %}
-        <div class="row">
-            <hr>
-        </div>
-        <div class="row">
-            <p><strong>{% trans %} app.distance.to.sides {% endtrans %}</strong></p>
-            <div class="form-inline">
-                <div class="col-sm-6 header-area">
-                    <label class="radio-inline">
-                        <input type="radio" name="distRadio">
-                        First picture
-                    </label>
-                </div>
-                <div class="col-sm-6 header-area">
-                    <label class="radio-inline">
-                        <input type="radio" name="distRadio">
-                        Second picture
-                    </label>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-    <!-- End of sides -->
-    <!-- Start of extensions -->
-    {% if oItem.hasExtension %}
-        <div class="row">
-            <hr>
-        </div>
-        <div class="row">
-            <p><strong>{% trans %} app.extensions.profiles{% endtrans %}</strong></p>
-            <div class="form-inline header-area">
-                {% for value in 0..2 %}
-                    <div class="col-sm-4 header-area">
-                        <label class="radio-inline">
-                            <input type="radio" name="extRadio">
-                            {{ value }}
-                        </label>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="form-inline header-area col-sm-12">
-                <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
-                <select class="form-control" id="length">
-                    {% for value in length.extLowerBound..length.extUpperBound %}
-                        <option>{{ value }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-
-    {% endif %}
-    <!-- End of extensions -->
-    <!-- Start of drawers -->
-    {% if oItem.drawerAttribute.maxNumberOfDrawers is not null %}
-        <div class="row">
-            <hr>
-        </div>
-        <div class="row">
-            <p><strong>{% trans %} app.drawer.attribute{% endtrans %}</strong></p>
-            <div class="header-area">
-                {% for value in 0..oItem.drawerAttribute.maxNumberOfDrawers %}
-                    <div class="col-sm-2 header-area">
-                        <label class="radio-inline">
-                            <input type="radio" name="legRadio">
-                            {{ value }}
-                        </label>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="form-inline header-area col-sm-12">
-                <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
-                <select class="form-control" id="length">
-                    {% for value in length.drawerLowerBound..length.drawerUpperBound %}
-                        <option>{{ value }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
+    </div>
     {% endif %}
     <!-- End of drawers -->
     <div class="row">
@@ -139,13 +138,15 @@
     <div class="row">
         <p><strong>{% trans %} app.wood.selection{% endtrans %}</strong></p>
         <div class="form-inline">
-            {% for oMaterial in aMaterials %}
-                <div class="col-sm-4 header-area">
-                    <label class="radio-inline">
-                        <input type="radio" name="matRadio">
-                        {{ oMaterial.name }}
-                    </label>
-                </div>
+            {% for oMaterial in aMaterials|batch(3) %}
+                {% for column in oMaterial %}
+                    <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} header-area">
+                        <label class="radio-inline">
+                            <input type="radio" name="matRadio">
+                            {{ column.name }}
+                        </label>
+                    </div>
+                {% endfor %}
             {% endfor %}
         </div>
     </div>
@@ -157,35 +158,41 @@
     <div class="row">
         <p><strong>{% trans %} app.timber.quality{% endtrans %}</strong></p>
         <div class="form-inline">
-            {% for oTimberQuality in aTimberQuality %}
+            {% for oTimberQuality in aTimberQuality|batch(3) %}
+            {% for column in oTimberQuality %}
+            <div class="col-sm-{{ loop.index==oTimberQuality|length ? (4-loop.index)*4 : 4 }} header-area">
                 <div class="col-sm-4 header-area">
                     <label class="radio-inline">
                         <input type="radio" name="qualRadio">
-                        {{ oTimberQuality.name }}
+                        {{ column.name }}
                     </label>
                 </div>
-            {% endfor %}
+                {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <!-- end of timber quality -->
-    <div class="row">
-        <hr>
-    </div>
-    <div class="row">
-        <p><strong>{% trans %} app.timber.tempering{% endtrans %}</strong></p>
-        <div class="form-inline">
-            {% for oTimberTempering in aTimberTempering %}
-                <div class="col-sm-4 header-area">
-                    <label class="radio-inline">
-                        <input type="radio" name="timberRadio">
-                        {{ oTimberTempering.name }}
-                    </label>
-                </div>
-            {% endfor %}
+        <!-- end of timber quality -->
+        <div class="row">
+            <hr>
+        </div>
+        <div class="row">
+            <p><strong>{% trans %} app.timber.tempering{% endtrans %}</strong></p>
+            <div class="form-inline">
+                {% for oTimberTempering in aTimberTempering|batch(3) %}
+                    {% for column in oTimberTempering %}
+                        <div class="col-sm-{{ loop.index==oTimberTempering|length ? (4-loop.index)*4 : 4 }} header-area">
+                            <label class="radio-inline">
+                                <input type="radio" name="timberRadio">
+                                {{ column.name }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <hr>
         </div>
     </div>
-    <div class="row">
-        <hr>
-    </div>
-</div>
-<!-- start of timber tempering -->
+    <!-- start of timber tempering -->

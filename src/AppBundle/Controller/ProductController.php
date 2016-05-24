@@ -16,7 +16,7 @@ class ProductController extends Controller
         $tableService=$this->get('table_service');
         $lang=$this->get('request')->getLocale();
         $materialService= $this->get('material_service');
-        $primaryMaterial = $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId();
+        $primaryMaterial = !is_null($materialService->getPrimaryMaterial()) ? $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
 
         $aTables = $tableService->getAllByLang($lang);
         return $this->render('client/products.html.twig', [
@@ -54,7 +54,7 @@ class ProductController extends Controller
         $lang=$this->get('request')->getLocale();
         
         $aMaterials = $materialService->getMaterialsForLang($lang);
-        $primaryMaterial = $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId();
+        $primaryMaterial = !is_null($materialService->getPrimaryMaterial()) ? $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
         $table = $service->findByCode($code, $lang);
         $height = $surfaceService->getHeight();
         $width = $surfaceService->getWidth();
@@ -89,8 +89,4 @@ class ProductController extends Controller
             'oItem' => $article
         ]);
     }
-
-
-
-
 }

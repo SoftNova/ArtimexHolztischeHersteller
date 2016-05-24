@@ -181,8 +181,8 @@
                 <source>admin.min.dr.length</source>
                 <target>Minimum drawer length (cm)</target>
             </trans-unit>
-            <trans-unit id="admin.min.ext.dr.length">
-                <source>admin.min.ext.dr.length</source>
+            <trans-unit id="admin.min.ext.length">
+                <source>admin.min.ext.length</source>
                 <target>Minimum extension length (cm)</target>
             </trans-unit>
             <trans-unit id="admin.max.ext.length">
