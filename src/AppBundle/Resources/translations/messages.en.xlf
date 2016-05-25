@@ -358,6 +358,35 @@
                 <source>app.currency</source>
                 <target>£</target>
             </trans-unit>
+            <trans-unit id="app.dimensions">
+                <source>app.dimensions</source>
+                <target>Dimensions(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.quality">
+                <source>app.quality</source>
+                <target>Timber quality:</target>
+            </trans-unit>
+            <trans-unit id="app.plank">
+                <source>app.plank</source>
+                <target>Plank(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.disk.thickness">
+                <source>app.disk.thickness</source>
+                <target>Disk thickness(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.wood.selection">
+                <source>app.wood.selection</source>
+                <target>Material:</target>
+            </trans-unit>
+            <trans-unit id="app.timber.tempering">
+                <source>app.timber.tempering</source>
+                <target>Tempering:</target>
+            </trans-unit>
+            <trans-unit id="app.profile">
+                <source>app.profile</source>
+                <target>Leg Profile(cm):</target>
+            </trans-unit>
+
 
 
 

@@ -3,7 +3,7 @@
     <p><strong>{% trans %} app.dimensions{% endtrans %}</strong></p>
     <div class="col-sm-4 header-area">
         <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
-        <select class="form-control" id="length">
+        <select class="form-control" id="lengthSelect">
             {% for value in length.lengthLowerBound..length.lengthUpperBound %}
                 <option>{{ value }}</option>
             {% endfor %}
@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-4 header-area">
         <label for="width">{% trans %} app.surface.width {% endtrans %}</label>
-        <select class="form-control" id="width">
+        <select class="form-control" id="widthSelect">
             {% for value in width.widthLowerBound..width.widthUpperBound %}
                 <option>{{ value }}</option>
             {% endfor %}
@@ -19,7 +19,7 @@
     </div>
     <div class="col-sm-4 header-area">
         <label for="height">{% trans %} app.leg.height {% endtrans %}</label>
-        <select class="form-control" id="height">
+        <select class="form-control" id="heightSelect">
             {% for value in height.heightLowerBound..height.heightUpperBound %}
                 <option>{{ value }}</option>
             {% endfor %}
@@ -33,13 +33,14 @@
     <div class="row">
         <hr>
     </div>
-    <div class="row">
+    <div class="row" id="profDiv">
         <p><strong>{% trans %} app.leg.profiles{% endtrans %}</strong></p>
         {% for row in oItem.profilesArray|batch(3,null) %}
+            {% set checked = (loop.index==1) ? true : false %}
             {% for column in row %}
                 <div class="col-sm-{{ loop.index==row|length ? (4-loop.index)*4 : 4 }} header-area">
-                    <label class="radio-inline header-area">
-                        <input type="radio">
+                    <label class="radio-inline header-area"  >
+                        <input type="radio" name="profRadio" value="{{ column }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                         <span>{{ column }}</span>
                     </label>
                 </div>
@@ -58,7 +59,7 @@
         <div class="form-inline">
             <div class="col-sm-6 header-area">
                 <label class="radio-inline">
-                    <input type="radio" name="distRadio">
+                    <input type="radio" name="distRadio" checked="checked">
                     First picture
                 </label>
             </div>
@@ -77,13 +78,13 @@
     <div class="row">
         <hr>
     </div>
-    <div class="row">
-        <p><strong>{% trans %} app.extensions.profiles{% endtrans %}</strong></p>
+    <div class="row" id="extDiv">
+        <p><strong>{% trans %} app.extensions{% endtrans %}</strong></p>
         <div class="form-inline header-area">
             {% for value in 0..2 %}
-                <div class="col-sm-4 header-area">
+                <div class="col-sm-4 header-area" >
                     <label class="radio-inline">
-                        <input type="radio" name="extRadio">
+                        <input type="radio" value="{{ value }}" name="extRadio" {{ loop.first ? "checked='checked'" : '' }}>
                         {{ value }}
                     </label>
                 </div>
@@ -91,7 +92,7 @@
         </div>
         <div class="form-inline header-area col-sm-12">
             <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
-            <select class="form-control" id="length">
+            <select class="form-control" id="extLengthSelect">
                 {% for value in length.extLowerBound..length.extUpperBound %}
                     <option>{{ value }}</option>
                 {% endfor %}
@@ -106,23 +107,23 @@
 <div class="row">
     <hr>
 </div>
-<div class="row">
+<div class="row" id="drawerDiv">
     <p><strong>{% trans %} app.drawer.attribute{% endtrans %}</strong></p>
     {% for value in 0..oItem.drawerAttribute.maxNumberOfDrawers %}
     {% if loop.index == oItem.drawerAttribute.maxNumberOfDrawers+1 and loop.index % 6 !=0 %}
     <div class="col-sm-{{ (12*((oItem.drawerAttribute.maxNumberOfDrawers+1)/3)|round(0,'ceil'))-(4*oItem.drawerAttribute.maxNumberOfDrawers) }} header-area">
         {% else %}
-        <div class="col-sm-4 header-area">
+        <div class="col-sm-4 header-area" >
             {% endif %}
             <label class="radio-inline">
-                <input type="radio" name="legRadio">
+                <input type="radio" value="{{ value }}" name="drawerRadio" {{ loop.first ? "checked='checked'" : ''  }}>
                 {{ value }}
             </label>
         </div>
         {% endfor %}
         <div class="form-inline header-area col-sm-12">
             <label for="length">{% trans %} app.surface.length {% endtrans %}</label>
-            <select class="form-control" id="length">
+            <select class="form-control" id="drawerLengthSelect">
                 {% for value in length.drawerLowerBound..length.drawerUpperBound %}
                     <option>{{ value }}</option>
                 {% endfor %}
@@ -135,14 +136,14 @@
         <hr>
     </div>
     <!-- start of material selection -->
-    <div class="row">
+    <div class="row" id="matDiv">
         <p><strong>{% trans %} app.wood.selection{% endtrans %}</strong></p>
         <div class="form-inline">
             {% for oMaterial in aMaterials|batch(3) %}
                 {% for column in oMaterial %}
-                    <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} header-area">
+                    <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} header-area" >
                         <label class="radio-inline">
-                            <input type="radio" name="matRadio">
+                            <input type="radio" value="{{ column.name }}" name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : ''}}>
                             {{ column.name }}
                         </label>
                     </div>
@@ -155,14 +156,15 @@
         <hr>
     </div>
     <!-- start of timber quality -->
-    <div class="row">
+    <div class="row" id="qualityDiv">
         <p><strong>{% trans %} app.timber.quality{% endtrans %}</strong></p>
         <div class="form-inline">
             {% for oTimberQuality in aTimberQuality|batch(3) %}
-            {% for column in oTimberQuality %}
+                {% set checked = (loop.index==1) ? true : false %}
+                {% for column in oTimberQuality %}
             <div class="col-sm-{{ loop.index==oTimberQuality|length ? (4-loop.index)*4 : 4 }} header-area">
                     <label class="radio-inline">
-                        <input type="radio" name="qualRadio">
+                        <input type="radio" name="qualityRadio" value="{{ column.name }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                         {{ column.name }}
                     </label>
                 </div>
@@ -171,17 +173,19 @@
             </div>
     </div>
         <!-- end of timber quality -->
-        <div class="row">
+    <!-- start of timber tempering -->
+    <div class="row">
             <hr>
         </div>
-        <div class="row">
+        <div class="row" id="temperingDiv">
             <p><strong>{% trans %} app.timber.tempering{% endtrans %}</strong></p>
             <div class="form-inline">
                 {% for oTimberTempering in aTimberTempering|batch(3) %}
+                    {% set checked = (loop.index==1) ? true : false %}
                     {% for column in oTimberTempering %}
                         <div class="col-sm-{{ loop.index==oTimberTempering|length ? (4-loop.index)*4 : 4 }} header-area">
                             <label class="radio-inline">
-                                <input type="radio" name="timberRadio">
+                                <input type="radio" name="temperingRadio" value="{{ column.name }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                                 {{ column.name }}
                             </label>
                         </div>
@@ -193,4 +197,4 @@
             <hr>
         </div>
     </div>
-    <!-- start of timber tempering -->
+<!-- end of timber tempering -->

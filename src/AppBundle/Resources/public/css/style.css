@@ -1031,27 +1031,19 @@ hr.style-seven:before { /* Not really supposed to work, but does */
 .dynamicSpecs{
     background: none repeat scroll 0 0 #d2d4dc
 }
-.dynamicSpecs h6 {
-    font-family: raleway;
-    font-size: 13px;
-    font-weight: 100;
-}
-
-.dynamicSpecs label {
-    font-family: raleway;
-    font-size: 8px;
-
-}
-.dynamicSpecs p{
-    font-family: raleway;
-    font-size: 30px;
-
-}
 .dynamicSpecs small{
     font-family: raleway;
     font-size: 9px;
-
 }
+.dynamicSpecs label{
+    font-family: raleway;
+    font-size: 13px;
+}
+.dynamicSpecs p{
+    font-family: raleway;
+    font-size: 13px;
+}
+
 .btn-cart {
     background-color: hsl(124, 82%, 35%) !important;
     background-repeat: repeat-x;
@@ -1082,4 +1074,13 @@ hr.style-seven:before { /* Not really supposed to work, but does */
 }
 .leftDelimiter {
     border-left: 1px #f4f4f4;
+}
+
+.ajax-loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; /* presto! */
 }

@@ -3,27 +3,27 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-5">
-                <img src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
+            <div class="col-xs-12 col-sm-6 col-md-5">
+                <div id="loadImageDiv">
+                    <img src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
+                </div>
                 <p>{{ oItem.description }}</p>
-
+                <div class="row">
+                    <hr>
+                </div>
                 <!-- start of custom message -->
                 {% if oItem.message is not null %}
-                    <div class="row">
-                        <hr>
-                    </div>
-                    <p><strong>
-                            {{ oItem.message }}
-                        </strong></p>
+                <p><strong>{{  oItem.message }}</strong></p>
                 {% endif %}
                 <!-- end of custom message -->
             </div>
-            <div class="col-sm-3">
+            <div class="col-xs-12  col-sm-6 col-md-3">
                 {% include ':client/subContent:dynamicSpecs.html.twig' %}
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-sm-12 col-md-4">
                 {% include ':client/subContent:configurations.html.twig' %}
             </div>
         </div>
     </div>
 {% endblock %}
+

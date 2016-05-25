@@ -1,15 +1,109 @@
-<div class="dynamicSpecs container-fluid">
-    <h6 id="name"><strong> {{ oItem.name }} </strong></h6>
-    <h6 id="surface"><strong>{% trans %} app.dimensions {% endtrans %}:</strong></h6>
-    <h6 id="plank"><strong>{% trans %} app.plank {% endtrans %}:</strong></h6>
-    <h6 id="wood"><strong>{% trans %} app.wood.selection{% endtrans %}:</strong></h6>
-    <h6 id="quality"><strong>{% trans %} app.timber.quality{% endtrans %}:</strong></h6>
-    <h6 id="tempering"><strong>{% trans %} app.timber.tempering {% endtrans %}:</strong></h6>
-    <div class="row">
+<div class="dynamicSpecs container-fluid" id="loadContentDiv">
+    <img class="ajax-loader" src="{{ asset('bundles/app/img/loading.gif') }}"/>
+    <div class="hidden" data-code="{{ oItem.id }}" id="dynamicIdDiv"></div>
+    <div class="row " id="dynamicNameDiv">
+        <div class="col-xs-12">
+            <h3>{{ oItem.name }}</h3>
+        </div>
+    </div>
+
+    <div class="row" id="dynamicDimensionsDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.dimensions{% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span><p id="dynamicDimensions"></p></span>
+        </div>
+    </div>
+
+    {% if oItem.profilesArray is not null %}
+        <div class="row" id="dynamicProfileDiv">
+            <div class="col-xs-4 col-md-5">
+                <span><label>{% trans %} app.profile{% endtrans %}</label></span>
+            </div>
+            <div class="col-xs-8 col-md-7">
+                <span><p id="dynamicProfile"></p></span>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if oItem.hasExtension %}
+        <div class="row" id="dynamicExtDiv">
+            <div class="col-xs-4 col-md-5">
+                <span><label>{% trans %} app.extensions{% endtrans %}</label></span>
+            </div>
+            <div class="col-xs-8 col-md-7">
+                <span><p id="dynamicExt"></p></span>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if oItem.drawerAttribute.maxNumberOfDrawers is not null and oItem.drawerAttribute.maxNumberOfDrawers!=0 %}
+        <div class="row" id="dynamicDrawerDiv">
+            <div class="col-xs-4 col-md-5">
+                <span><label>{% trans %} app.drawer.attribute{% endtrans %}</label></span>
+            </div>
+            <div class="col-xs-8 col-md-7">
+                <span><p id="dynamicDrawer"></p></span>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row" id="dynamicPlankDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.plank {% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span><p id="dynamicPlank">4</p></span>
+        </div>
+    </div>
+
+    <div class="row" id="dynamicDiskThicknessDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.disk.thickness {% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span><p id="dynamicDiskThickness">8 (2x4)</p></span>
+        </div>
+    </div>
+
+    <div class="row" id="dynamicWoodDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.wood.selection {% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span><p id="dynamicWood"></p></span>
+        </div>
+    </div>
+
+    <div class="row" id="dynamicQualityDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.quality {% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span> <p id="dynamicQuality"></p></span>
+        </div>
+    </div>
+
+    <div class="row" id="dynamicTemperingDiv">
+        <div class="col-xs-4 col-md-5">
+            <span><label>{% trans %} app.timber.tempering {% endtrans %}</label></span>
+        </div>
+        <div class="col-xs-8 col-md-7">
+            <span><p id="dynamicTempering"></p></span>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
         <hr>
     </div>
-   <span >
-    <small>{% trans %}app.vat.included{% endtrans %}</small>
-    <button class="btn btn-cart" id="cartButton" name="cartButton">{% trans %} app.currency {% endtrans %}{{ oItem.basePrice }}</button>
-   </span>
+
+    <div class="row" id="dynamicPriceDiv" data-path="{{ path('_calculatePrice_ajax') }}"></div>
+    <div class="col-xs-12">
+             <span>
+                <small class="col-xs-5 glyphicon-object-align-bottom">{% trans %}app.vat.included{% endtrans %}</small>
+                <button class="btn btn-cart col-xs-5" id="addToCartButton" name="cartButton">{% trans %}
+                    app.currency {% endtrans %}{{ oItem.basePrice }}</button>
+            </span>
+    </div>
 </div>
