@@ -1084,3 +1084,23 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     bottom: 0;
     margin: auto; /* presto! */
 }
+
+
+
+.footer-menu a:link{
+    background-color: transparent;
+    text-decoration: none;
+}
+.footer-menu a:hover{
+    color: #099747;
+}
+
+.product-upper p{
+    font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 26.4px;
+
+}
