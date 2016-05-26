@@ -97,6 +97,15 @@
                 +49 2613 9071430]]>
                 </target>
             </trans-unit>
+            <trans-unit id="app.test" xml:space="preserve">
+                <source>app.test</source>
+                <target>
+                    asd: |
+                        first line
+                        second line
+                        third
+                </target>
+            </trans-unit>
 
 
 
