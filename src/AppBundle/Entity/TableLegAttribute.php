@@ -32,20 +32,11 @@ class TableLegAttribute
      */
     protected $basePrice;
 
-    /**
-     * @var
-     * @ORM\Column(type="decimal", name="variance", nullable=true, precision=9, scale=2)
-     */
-    protected $variance;
+  
 
-    /**
-     * @var
-     * @ORM\Column(type="string", name="profiles", nullable=true)
-     *
-     */
-    protected $profiles;
-
-
+    public function __construct()
+    {
+    }
     /**
      * @return mixed
      */
@@ -78,39 +69,6 @@ class TableLegAttribute
         $this->basePrice = $basePrice;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVariance()
-    {
-        return $this->variance;
-    }
-
-    /**
-     * @param mixed $variance
-     */
-    public function setVariance($variance)
-    {
-        $this->variance = $variance;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProfiles()
-    {
-        return $this->profiles;
-    }
-
-    /**
-     * @param mixed $profiles
-     */
-    public function setProfiles($profiles)
-    {
-        $this->profiles = $profiles;
-    }
-
   
 
-  
 }

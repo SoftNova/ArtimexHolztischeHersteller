@@ -137,7 +137,7 @@
             </trans-unit>
             <trans-unit id="admin.cost.per.step">
                 <source>admin.cost.per.step</source>
-                <target>Cost per step</target>
+                <target>Cost increase per step (%)</target>
             </trans-unit>
             <trans-unit id="admin.scaling.point">
                 <source>admin.scaling.point</source>
@@ -283,7 +283,7 @@
             </trans-unit>
             <trans-unit id="admin.leg.profiles.create">
                 <source>admin.leg.profiles.create</source>
-                <target>Leave empty in case the table has special legs</target>
+                <target>Profile</target>
             </trans-unit>
             <trans-unit id="admin.cost.of.primary">
                 <source>admin.cost.of.primary</source>
@@ -304,6 +304,14 @@
             <trans-unit id="admin.image.primary">
                 <source>admin.image.primary</source>
                 <target>Is this a thumbnail?</target>
+            </trans-unit>
+            <trans-unit id="admin.variance.static">
+                <source>admin.variance.static</source>
+                <target>Price increase</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profiles">
+                <source>admin.leg.profiles</source>
+                <target>Profiles</target>
             </trans-unit>
 
 

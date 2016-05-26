@@ -12,9 +12,10 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Symfony\Component\Form\Extension\Core\Type\PercentType;
+
 class TableHeightAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
@@ -22,7 +23,7 @@ class TableHeightAdmin extends Admin
         $form->add('height_lower_bound', IntegerType::class, array('label'=>'admin.min.height'))
             ->add('height_upper_bound', IntegerType::class, array('label'=>'admin.max.height'))
             ->add('step',IntegerType::class, array('label'=>'admin.step'))
-            ->add('costPerStep', MoneyType::class, array('label'=>'admin.cost.per.step'));
+            ->add('costPerStep', PercentType::class, array('label'=>'admin.cost.per.step', 'type'=>'integer', 'scale'=>2));
     }
 
     protected function configureRoutes(RouteCollection $collection)
@@ -52,9 +53,8 @@ class TableHeightAdmin extends Admin
                     'editable'=>true
                 )
             )
-            ->add('costPerStep', 'currency' , array(
+            ->add('costPerStep', 'text' , array(
                 'label'=>'admin.cost.per.step',
-                'currency'=>'€',
                 'editable'=>true,
                 'row_align'=>'left'))
             ->add('_action', 'actions', array(

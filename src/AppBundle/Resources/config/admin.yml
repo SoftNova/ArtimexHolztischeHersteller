@@ -80,6 +80,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: app.material.images, show_in_dashboard: false, label_catalogue: "messages" }
 
+    admin.table.leg.profile:
+        class: AppBundle\Admin\TableLegProfileAdmin
+        arguments: [~,  AppBundle\Entity\TableLegProfile, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: app.leg.attribute, show_in_dashboard: false, label_catalogue: "messages" }
 
 
 

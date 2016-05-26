@@ -12,6 +12,7 @@ namespace AppBundle\Admin;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 use AppBundle\Entity\Table;
 use AppBundle\Entity\TableImage;
+use AppBundle\Entity\TableLegProfile;
 use AppBundle\Utils\Utils;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -108,8 +109,17 @@ class TableAdmin extends Admin
                     'inline'=>'table',
                     'sortable'=>'position'
                 ))
+                ->add('profiles', 'sonata_type_collection', [
+                    'by_reference' => false,
+                    'label'=>'admin.leg.profiles',
+                    'required'=>false
+                ],
+                    ['edit'=>'inline',
+                        'inline'=>'table',
+                        'sortable'=>'position'
+                ])
             ->end()
-            ->with ('admin.is.visible')
+            ->with ('admin.show.in.catalog')
                 ->add('showInCatalog', CheckboxType::class, array('label' => 'admin.is.visible', 'required'=>false))
             ->end()
             ->with('admin.images')
@@ -150,7 +160,6 @@ class TableAdmin extends Admin
                 'label'=>'admin.nr.of.drawers',
                 'row_align'=>'left'
             ))
-            ->add('legAttribute.profiles', 'string', array('label'=>'admin.leg.profile'))
             ->add('basePrice','currency',array(
                 'label'=>'admin.base.price',
                 'currency'=>'€',
@@ -217,14 +226,22 @@ class TableAdmin extends Admin
             $image->refreshUpdated();
         }
     }
+    private function bindProfiles(Table $object){
+        /** @var TableLegProfile $profile */
+        foreach ($object->getProfiles() as $profile){
+            $profile->setTableItem($object);
+        }
+    }
     public function prePersist($object)
     {
         $this->bindImages($object);
+        $this->bindProfiles($object);
     }
 
     public function preUpdate($object)
     {
         $this->bindImages($object);
+        $this->bindProfiles($object);
     }
 
     private function isCreate(Table $subject){

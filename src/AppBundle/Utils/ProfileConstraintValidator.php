@@ -22,7 +22,7 @@ class ProfileConstraintValidator extends  ConstraintValidator
         }
 
         $value = preg_replace('/\s+/', '', $value);
-        $regEx = '/([0-9]+x{1}[0-9]+,?)+$/';
+        $regEx = '/^[0-9]+x{1}[0-9]+$/';
         $invalid = preg_match($regEx, $value)=== 1 ? false : true;
         if ($invalid){
             $this->context->addViolation($constraint->message);

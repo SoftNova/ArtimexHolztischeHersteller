@@ -86,10 +86,21 @@ class Table
      */
     protected $images;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TableLegProfile",
+     *     mappedBy="tableItem",
+     *     cascade={"all"},
+     *     orphanRemoval=true
+     * )
+     */
+    protected $profiles;
+
     protected $translations;
 
     public function __construct()
     {
+        $this->profiles = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->images=new ArrayCollection();
     }
@@ -230,7 +241,37 @@ class Table
         $this->images->removeElement($image);
     }
 
-    
+    /**
+     * @return TableLegProfile
+     */
+    public function getProfiles()
+    {
+        return $this->profiles;
+    }
+
+    /**
+     * @param mixed $profiles
+     */
+    public function setProfiles($profiles)
+    {
+        $this->profiles = $profiles;
+    }
+
+    /**
+     * @param TableLegProfile $profile
+     */
+    public function addProfile(TableLegProfile $profile)
+    {
+        $this->profiles->add($profile);
+    }
+
+    /**
+     * @param TableLegProfile $profile
+     */
+    public function removeProfile(TableLegProfile  $profile)
+    {
+        $this->profiles->removeElement($profile);
+    }
     /**
      * @return mixed
      */
@@ -306,10 +347,15 @@ class Table
     }
 
     public function getProfilesArray(){
-        if (!is_null($profiles=$this->getLegAttribute()->getProfiles())){
-            $result = explode(",", $profiles);
+        if (count($this->profiles) != 0){
+            $result=array();
+            /** @var TableLegProfile $profile */
+            foreach ($this->getProfiles() as $profile){
+                $result[] = $profile->getProfile();
+            }
             return $result;
         }
         return null;
     }
+
 }
