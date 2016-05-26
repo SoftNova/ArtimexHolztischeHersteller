@@ -160,6 +160,13 @@ class TableAdmin extends Admin
                 'label'=>'admin.nr.of.drawers',
                 'row_align'=>'left'
             ))
+            ->add('getProfilesString', null,array(
+                'label'=>'admin.leg.profiles',
+                'row_align'=>'left',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'profile'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'profiles'))
+            ))
             ->add('basePrice','currency',array(
                 'label'=>'admin.base.price',
                 'currency'=>'€',

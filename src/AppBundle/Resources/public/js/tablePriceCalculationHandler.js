@@ -4,10 +4,16 @@
 
 function showLoader(){
     $('.ajax-loader').show();
+    $('#loadContentDiv').addClass('ajax-loader-fade');
+    $('#loadImageDiv').addClass('ajax-loader-fade');
+    $('#addToCartButton').prop('disabled',true);
 }
 
 function removeLoader(){
     $('.ajax-loader').hide();
+    $('#loadContentDiv').removeClass('ajax-loader-fade');
+    $('#loadImageDiv').removeClass('ajax-loader-fade');
+    $('#addToCartButton').prop('disabled', false);
 }
 $(document).ready(function () {
     renew();
@@ -71,11 +77,11 @@ function renew() {
         data: ajaxData,
         dataType: "json",
         beforeSend: function(){
-            showLoader()
+            showLoader();
         },
         success: function(response){
-            $('#addToCartButton').html(response);
             removeLoader();
+            $('#addToCartButton').html(response);
         }
     })
 }

@@ -1083,7 +1083,13 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     right: 0;
     bottom: 0;
     margin: auto; /* presto! */
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 }
+.ajax-loader-fade{
+    opacity: 0.45;
+    filter: alpha(opacity=45);
+} /* For IE8 and earlier */
 
 
 

@@ -358,4 +358,16 @@ class Table
         return null;
     }
 
+    public function getProfilesString(){
+        if (count($this->profiles) != 0){
+            $result=array();
+            /** @var TableLegProfile $profile */
+            foreach ($this->getProfiles() as $profile){
+                $result[] = $profile->getProfile();
+            }
+            $resultString = implode(", ", $result);
+            return $resultString;
+        }
+        return null;
+    }
 }
