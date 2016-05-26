@@ -23,6 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     use Translatable;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -185,5 +186,4 @@ class Product
         }
         return Utils::DEFAULT_IMAGE;
     }
-
 }

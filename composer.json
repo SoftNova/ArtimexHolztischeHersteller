@@ -33,7 +33,10 @@
         "a2lix/i18n-doctrine-bundle": "^0.1.0",
         "lunetics/locale-bundle": "2.2.*",
         "liip/imagine-bundle": "^1.5",
-        "symfony/intl": "^3.0"
+        "symfony/intl": "^3.0",
+        "sonata-project/formatter-bundle": "^3.0",
+        "knplabs/knp-markdown-bundle": "^1.5",
+        "egeloen/ckeditor-bundle": "^4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

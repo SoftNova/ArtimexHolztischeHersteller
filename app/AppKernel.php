@@ -29,6 +29,9 @@ class AppKernel extends Kernel
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
             new AppBundle\AppBundle(),
         ];
 

@@ -45,7 +45,7 @@ class TableAdmin extends Admin
                                 )
                             )
                         ),
-                        'description' => array('field_type'=>TextType::class,
+                        'description' => array('field_type'=>'ckeditor',
                             'label'=>'admin.description',
                             'locale_options'=>array(
                                 'admin'=>array(
