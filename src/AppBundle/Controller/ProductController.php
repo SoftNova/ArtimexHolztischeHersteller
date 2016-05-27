@@ -66,7 +66,7 @@ class ProductController extends Controller
         $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
         $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
 
-        return $this->render('client/subContent/table.html.twig', [
+         return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'oItem'=>$table,
             'width' => $width,
