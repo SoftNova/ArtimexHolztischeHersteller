@@ -153,7 +153,7 @@ class Table
     }
 
     /**
-     * @return mixed
+     * @return TableDrawerAttribute
      */
     public function getDrawerAttribute()
     {
@@ -344,18 +344,6 @@ class Table
             }
         }
         return Utils::DEFAULT_IMAGE;
-    }
-
-    public function getProfilesArray(){
-        if (count($this->profiles) != 0){
-            $result=array();
-            /** @var TableLegProfile $profile */
-            foreach ($this->getProfiles() as $profile){
-                $result[] = $profile->getProfile();
-            }
-            return $result;
-        }
-        return null;
     }
 
     public function getProfilesString(){

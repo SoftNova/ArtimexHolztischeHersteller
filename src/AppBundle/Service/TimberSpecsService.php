@@ -9,6 +9,8 @@
 namespace AppBundle\Service;
 
 
+use AppBundle\Entity\TableMaterialTempering;
+use AppBundle\Entity\TableTimberQuality;
 use AppBundle\Repository\TableTimberQualityDAO;
 use AppBundle\Repository\TimberTemperingDAO;
 
@@ -29,5 +31,22 @@ class TimberSpecsService
 
     public function getAllTimberTemperingByLang($lang){
         return $this->timberTemperingDAO->findAllByLang($lang);
+    }
+
+    public function applyQualityVariance($totalPrice, $qualityID){
+        /** @var TableTimberQuality $qualityType */
+        $qualityType = $this->timberQualityDAO->find($qualityID);
+        $totalPrice = $totalPrice + ($qualityType->getCostIncrease()/100 * $totalPrice);
+        return $totalPrice;
+    }
+    public function applyTemperingVariance($totalPrice, $temperingID){
+        if (is_null($temperingID)){
+            return $totalPrice;
+        }else{
+            /** @var TableMaterialTempering $temperingType */
+            $temperingType = $this->timberTemperingDAO->find($temperingID);
+            $totalPrice = $totalPrice + ($temperingType->getCostIncrease()/100 * $totalPrice);
+            return $totalPrice;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Utils\Utils;
+use AppBundle\Entity\TablePrimaryMaterial;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Response;
@@ -13,12 +13,15 @@ class ProductController extends Controller
     /**
      * @Route("/{_locale}/tables", name="_products")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $tableService=$this->get('table_service');
         $lang=$this->get('request')->getLocale();
-        $materialService= $this->get('material_service');
-        $primaryMaterial = !is_null($materialService->getPrimaryMaterial()) ? $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
+        $surfaceService= $this->get('surface_service');
+
+        /** @var TablePrimaryMaterial $primaryMaterialItem */
+        $primaryMaterialItem = $surfaceService->getPrimaryMaterial();
+        $primaryMaterial = !is_null($primaryMaterialItem) ? $primaryMaterialItem->getPrimaryMaterial()->getId() : null;
 
         $aTables = $tableService->getAllByLang($lang);
         return $this->render('client/products.html.twig', [
@@ -50,20 +53,18 @@ class ProductController extends Controller
 
         $service=$this->get('table_service');
         $surfaceService=$this->get('surface_service');
-        $materialService= $this->get('material_service');
         $code = $this->get('request')->get('code');
         $timberService = $this->get('timber_service');
         $lang=$this->get('request')->getLocale();
-        
-        $aMaterials = $materialService->getMaterialsForLang($lang);
-        $primaryMaterial = !is_null($materialService->getPrimaryMaterial()) ? $materialService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
+
+        $aMaterials = $surfaceService->getMaterialsForLang($lang);
+        $primaryMaterial = !is_null($surfaceService->getPrimaryMaterial()) ? $surfaceService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
         $table = $service->findByCode($code, $lang);
         $height = $surfaceService->getHeight();
         $width = $surfaceService->getWidth();
         $length = $surfaceService->getLength();
         $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
         $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
-
 
         return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
@@ -93,13 +94,17 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/ajax", name="_calculatePrice_ajax")
+     * @Route("/{_locale}/ajax/", name="_calculatePrice_ajax")
      */
     public function calculatePriceAjax(){
         $request = $this->get('request');
+        $surfaceService = $this->get('surface_service');
+        $tableSupportService = $this->get('table_support_service');
+        $timberSpecsService = $this->get('timber_service');
+        $lang=$this->get('request')->getLocale();
+        $tableService=$this->get('table_service');
 
         if ($request->isXmlHttpRequest()){
-            $data = $request->get('data');
             $length = $request->get('length');
             $width = $request->get('width');
             $height = $request->get('height');
@@ -111,27 +116,33 @@ class ProductController extends Controller
             $material=$request->get('material');
             $quality= $request->get('quality');
             $tempering= $request->get('tempering');
-            $itemID= $request->get('itemID');
+            $code = $request->get('code');
 
+            $tableItem = $tableService->findByCode($code, $lang);
 
-            $surfacePrice = $length * $width;
+            $surfacePrice = $surfaceService->calculateSurface($length, $width, $material);
+            if ($surfacePrice == false){
+                $custom = $this->get('translator')->trans('app.custom.order');
+                return new \Symfony\Component\HttpFoundation\Response(json_encode(array('failure'=>$custom)));
+            }
+            $supportPrice = $tableSupportService->calculateSupportPrice($height, $profile, $tableItem);
+            $extensionPrice = (!is_null($extensions)) ? $surfaceService->calculateExtensionSurface($extLength, $width, $material, $extensions) : 0;
+            $drawerPrice = (!is_null($drawers)) ? $surfaceService->calculateDrawerSurface($drawerLength, $width, $tableItem, $drawers) : 0;
 
-            $fullHeightPrice = $height * 100; //to do
+            $tablePrice = $surfacePrice + $supportPrice + $extensionPrice + $drawerPrice;
+            $tablePrice = $timberSpecsService->applyQualityVariance($tablePrice, $quality);
+            $tablePrice = !is_null($tempering) ? $timberSpecsService->applyTemperingVariance($tablePrice, $tempering) : $tablePrice;
+            
+            /* final by state variance price */
+            $tablePrice = round($tablePrice + ($tableItem->getByStateVariance()/100 * $tablePrice));
 
-            $extensionsPrice = $extensions * $extLength * $width;
-
-            $drawersPrice = $drawers * $drawerLength * $width;
-
-            $materialPrice = /* material */ 100;
-
-            $qualityPrice = /* quality */100;
-            $temperingPrice = /*tempering*/100;
-
-            $totalPrice = 1234.44;
             $currency = $this->get('translator')->trans('app.currency');
-//            $result = $currency . $totalPrice;
-            return new \Symfony\Component\HttpFoundation\Response($length);
+            $stringPrice = $currency . strval($tablePrice) . ",00";
+
+
+
+            return new \Symfony\Component\HttpFoundation\Response(json_encode(array('success'=>$stringPrice)));
         }
-        return new Response('Invalid request!, 400');
+        return new \Symfony\Component\HttpFoundation\Response('Invalid request!, 400');
     }
 }

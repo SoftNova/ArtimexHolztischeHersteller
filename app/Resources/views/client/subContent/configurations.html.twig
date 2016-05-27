@@ -29,19 +29,19 @@
 <!-- End of dimensions -->
 
 <!-- Start of leg profiles -->
-{% if oItem.profilesArray is not null %}
+{% if oItem.profiles|length > 0 %}
     <div class="row">
         <hr>
     </div>
     <div class="row" id="profDiv">
         <p><strong>{% trans %} app.leg.profiles{% endtrans %}</strong></p>
-        {% for row in oItem.profilesArray|batch(3,null) %}
+        {% for row in oItem.profiles|batch(3,null) %}
             {% set checked = (loop.index==1) ? true : false %}
             {% for column in row %}
                 <div class="col-sm-{{ loop.index==row|length ? (4-loop.index)*4 : 4 }} header-area">
                     <label class="radio-inline header-area"  >
-                        <input type="radio" name="profRadio" value="{{ column }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
-                        <span>{{ column }}</span>
+                        <input type="radio" name="profRadio" value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
+                        <span>{{ column.profile }}</span>
                     </label>
                 </div>
             {% endfor %}
@@ -143,7 +143,7 @@
                 {% for column in oMaterial %}
                     <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} header-area" >
                         <label class="radio-inline">
-                            <input type="radio" value="{{ column.name }}" name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : ''}}>
+                            <input type="radio" value="{{ column.id }}" name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : ''}}>
                             {{ column.name }}
                         </label>
                     </div>
@@ -164,7 +164,7 @@
                 {% for column in oTimberQuality %}
             <div class="col-sm-{{ loop.index==oTimberQuality|length ? (4-loop.index)*4 : 4 }} header-area">
                     <label class="radio-inline">
-                        <input type="radio" name="qualityRadio" value="{{ column.name }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
+                        <input type="radio" name="qualityRadio" value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                         {{ column.name }}
                     </label>
                 </div>
@@ -185,7 +185,7 @@
                     {% for column in oTimberTempering %}
                         <div class="col-sm-{{ loop.index==oTimberTempering|length ? (4-loop.index)*4 : 4 }} header-area">
                             <label class="radio-inline">
-                                <input type="radio" name="temperingRadio" value="{{ column.name }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
+                                <input type="radio" name="temperingRadio" value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                                 {{ column.name }}
                             </label>
                         </div>

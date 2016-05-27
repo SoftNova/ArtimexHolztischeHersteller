@@ -107,6 +107,15 @@
                 </target>
             </trans-unit>
 
+            <trans-unit id="app.add.to.cart" xml:space="preserve">
+                <source>app.add.to.cart</source>
+                <target>Add to cart</target>
+            </trans-unit>
+            <trans-unit id="app.custom.order" xml:space="preserve">
+                <source>app.custom.order</source>
+                <target>Surface size is over 3m². This is a custom order </target>
+            </trans-unit>
+
 
 
 

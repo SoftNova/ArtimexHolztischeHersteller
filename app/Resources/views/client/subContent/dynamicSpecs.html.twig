@@ -1,5 +1,5 @@
 <div class="dynamicSpecs container-fluid" id="loadContentDiv">
-    <div class="hidden" data-code="{{ oItem.id }}" id="dynamicIdDiv"></div>
+    <div class="hidden" data-code="{{ oItem.code }}" id="dynamicIdDiv"></div>
     <div class="row " id="dynamicNameDiv">
         <div class="col-xs-12">
             <h3>{{ oItem.name }}</h3>
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    {% if oItem.profilesArray is not null %}
+    {% if oItem.profiles|length > 0 %}
         <div class="row" id="dynamicProfileDiv">
             <div class="col-xs-4 col-md-5">
                 <span><label>{% trans %} app.profile{% endtrans %}</label></span>
@@ -97,12 +97,13 @@
         <hr>
     </div>
 
-    <div class="row" id="dynamicPriceDiv" data-path="{{ path('_calculatePrice_ajax') }}"></div>
-    <div class="col-xs-12">
-             <span>
+    <div class="row" id="dynamicPriceDiv" data-path="{{ path('_calculatePrice_ajax')}}"></div>
+    <div class="col-xs-12" id="dynamicPriceSubDiv">
+             <span id="dynamicPriceSpan">
                 <small class="col-xs-5 glyphicon-object-align-bottom">{% trans %}app.vat.included{% endtrans %}</small>
-                <button class="btn btn-cart col-xs-5" id="addToCartButton" name="cartButton">{% trans %}
-                    app.currency {% endtrans %}{{ oItem.basePrice }}</button>
+                <button class="btn btn-cart col-xs-5" id="addToCartButton" name="cartButton">{% trans %} app.add.to.cart{% endtrans %}</button>
+            </span>
+            <span id="dynamicErrorSpan">
             </span>
     </div>
 </div>

@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class TableLegProfile
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TableLegProfileDAO")
  * @ORM\Table(name="table_leg_profile")
  */
 class TableLegProfile
@@ -47,7 +47,7 @@ class TableLegProfile
     protected $tableItem;
 
     /**
-     * @return mixed
+     * @return Table
      */
     public function getTableItem()
     {

@@ -55,7 +55,7 @@ function renew() {
     $('#dynamicTempering').text(tempering);
 
 
-    var itemID = $('#dynamicIdDiv').attr('data-code');
+    var itemCode = $('#dynamicIdDiv').attr('data-code');
     var path = $('#dynamicPriceDiv').attr('data-path');
     var ajaxData = {
         length: length,
@@ -69,7 +69,7 @@ function renew() {
         material: material,
         quality: quality,
         tempering: tempering,
-        itemID: itemID
+        code: itemCode
     };
     $.ajax({
         type: 'POST',
@@ -81,7 +81,23 @@ function renew() {
         },
         success: function(response){
             removeLoader();
-            $('#addToCartButton').html(response);
+            var span = $('#dynamicPriceSpan');
+            var errorSpan = $('#dynamicErrorSpan');
+            if (response.success) {
+                span.show();
+                errorSpan.hide();
+                errorSpan.text('');
+                $('#addToCartButton').html(response.success);
+            }
+            if (response.failure){
+                span.hide();
+                errorSpan.append('<p>' + response.failure + '</p>');
+                errorSpan.show();
+            }
+        },
+        error: function () {
+            removeLoader();
+            alert ("Problem Encountered. Try again or contact an administrator");
         }
     })
 }
@@ -98,5 +114,4 @@ $('input[type=radio][name=matRadio]').change(function(){
 
 function renewWithImage() {
     renew();
-
 }
