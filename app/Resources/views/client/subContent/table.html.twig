@@ -1,30 +1,33 @@
 {% extends ':client:products.html.twig' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <div id="loadImageDiv">
-                    <img class="ajax-loader img-responsive" src="{{ asset('bundles/app/img/loading.gif') }}"/>
-                    <img id="displayImage" src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
+    {% if oItem is not null %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-5">
+                    <div id="loadImageDiv">
+                        <img class="ajax-loader img-responsive" src="{{ asset('bundles/app/img/loading.gif') }}"/>
+                        <img id="displayImage"
+                             src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"/>
+                    </div>
+                    <p>{{ oItem.description }}</p>
+                    <div class="row">
+                        <hr>
+                    </div>
+                    <!-- start of custom message -->
+                    {% if oItem.message is not null %}
+                        <p><strong>{{ oItem.message }}</strong></p>
+                    {% endif %}
+                    <!-- end of custom message -->
                 </div>
-                <p>{{ oItem.description }}</p>
-                <div class="row">
-                    <hr>
+                <div class="col-xs-12  col-sm-6 col-md-3">
+                    {% include ':client/subContent:dynamicSpecs.html.twig' %}
                 </div>
-                <!-- start of custom message -->
-                {% if oItem.message is not null %}
-                <p><strong>{{  oItem.message }}</strong></p>
-                {% endif %}
-                <!-- end of custom message -->
-            </div>
-            <div class="col-xs-12  col-sm-6 col-md-3">
-                {% include ':client/subContent:dynamicSpecs.html.twig' %}
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                {% include ':client/subContent:configurations.html.twig' %}
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    {% include ':client/subContent:configurations.html.twig' %}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
 

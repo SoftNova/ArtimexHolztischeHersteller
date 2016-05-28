@@ -97,7 +97,6 @@ function renew() {
         },
         error: function () {
             removeLoader();
-            alert ("Problem Encountered. Try again or contact an administrator");
         }
     })
 }
