@@ -270,7 +270,14 @@
                 +49 2613 9071430
                 </target>
             </trans-unit>
-
+            <trans-unit id="app.all.products">
+                <source>app.all.products</source>
+                <target>Accesories</target>
+            </trans-unit>
+            <trans-unit id="app.all.tables">
+            <source>app.all.tables</source>
+            <target>Tables</target>
+            </trans-unit>
             <trans-unit id="app.add.to.cart" xml:space="preserve">
                 <source>app.add.to.cart</source>
                 <target>Add to cart</target>
