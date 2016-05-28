@@ -16,6 +16,7 @@
                                 <li data-target="#slide-list" data-slide-to="0" class="active"></li>
                                 <li data-target="#slide-list" data-slide-to="1"></li>
                                 <li data-target="#slide-list" data-slide-to="2"></li>
+                                <li data-target="#slide-list" data-slide-to="3"></li>
                             </ol>
                         </div>
                     </div>
@@ -32,10 +33,9 @@
                                     <div class="row">
                                         <div class="col-md-6 col-md-offset-6">
                                             <div class="slide-content">
-                                                <h2>We are awesome</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorem, excepturi. Dolore aliquam quibusdam ut quae iure vero exercitationem ratione!</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi ab molestiae minus reiciendis! Pariatur ab rerum, sapiente ex nostrum laudantium.</p>
-                                                <a href="" class="readmore">Learn more</a>
+                                                <h2>{{ 'app.motto1'| trans | nl2br }}</h2>
+                                                <p>{{ 'app.motto1-text'| trans | nl2br }}</p>
+                                                <a href="{{path('_products')}}" class="readmore">Products</a>
                                             </div>
                                         </div>
                                     </div>
@@ -53,9 +53,9 @@
                                     <div class="row">
                                         <div class="col-md-6 col-md-offset-6">
                                             <div class="slide-content">
-                                                <h2>We are great</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, dolorum harum molestias tempora deserunt voluptas possimus quos eveniet, vitae voluptatem accusantium atque deleniti inventore. Enim quam placeat expedita! Quibusdam!</p>
-                                                <a href="" class="readmore">Learn more</a>
+                                                <h2>{{ 'app.motto2'| trans | nl2br }}</h2>
+                                                <p>{{ 'app.motto2-text'| trans | nl2br }}</p>
+                                                <a href="{{path('_products')}}" class="readmore">View more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -73,9 +73,28 @@
                                     <div class="row">
                                         <div class="col-md-6 col-md-offset-6">
                                             <div class="slide-content">
-                                                <h2>We are superb</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eius?</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptates necessitatibus dicta recusandae quae amet nobis sapiente explicabo voluptatibus rerum nihil quas saepe, tempore error odio quam obcaecati suscipit sequi.</p>
+                                                <h2>{{ 'app.motto3'| trans | nl2br }}</h2>
+                                                <p>{{ 'app.motto3-text'| trans | nl2br }}</p>
+                                                <a href="{{path('_products')}}" class="readmore">View more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-four"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                <h2>{{ 'app.motto4'| trans | nl2br }}</h2>
+                                                <p>{{ 'app.motto4-text'| trans | nl2br }}</p>
                                                 <a href="" class="readmore">Learn more</a>
                                             </div>
                                         </div>
@@ -94,30 +113,33 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-gift"></i>
+                        <p><a href="{{path('_products')}}">New products</a></p>
+                    </div>
+                </div>
+
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo">
                         <i class="fa fa-refresh"></i>
-                        <p>30 Days return</p>
+                        <p><a href="{{path('_terms_conditions')}}">30 Days return</a></p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo">
                         <i class="fa fa-truck"></i>
-                        <p>Free shipping</p>
+                        <a href="{{path('_shippinginfo')}}"><p>Free shipping</p></a>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo">
                         <i class="fa fa-lock"></i>
-                        <p>Secure payments</p>
+                        <p><a href="{{path('_paymentinfo')}}">Secure payments</a></p>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo">
-                        <i class="fa fa-gift"></i>
-                        <p>New products</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div> <!-- End promo area -->
