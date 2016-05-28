@@ -6,13 +6,11 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-about-us">
                         <h2><span>{% trans %}app.name{% endtrans %}</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                        <p>{{ 'app.descr' | trans | nl2br }}</p>
                         <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+                            <a href="{% trans %}app.fb{% endtrans %}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="{% trans %}app.yt{% endtrans %}" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="{% trans %}app.pin{% endtrans %}" target="_blank"><i class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -33,11 +31,8 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Categories</h2>
                         <ul>
-                            <li><a href="#">Mobile Phone</a></li>
-                            <li><a href="#">Home accesseries</a></li>
-                            <li><a href="#">LED TV</a></li>
-                            <li><a href="#">Computer</a></li>
-                            <li><a href="#">Gadets</a></li>
+                            <li><a href="#">{% trans %}app.tables{% endtrans %}</a></li>
+                            <li><a href="#">{% trans %}app.accesories{%endtrans%}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +40,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
                         <h2 class="footer-wid-title">{% trans %}app.contact{% endtrans %}</h2>
-                        <p>{{ 'app.test' | trans | nl2br  }}</p>
+                        <p>{{ 'app.contactdetails' | trans | nl2br  }}</p>
 
                     </div>
                 </div>
@@ -58,13 +53,12 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2015 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
+                        <p>&copy; Copyright © 2016 Artimex Sport. All rights reserved. Coded with <i class="fa fa-heart"></i> by <a href="#" target="_blank">#</a></p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="footer-card-icon">
-                        <i class="fa fa-cc-discover"></i>
                         <i class="fa fa-cc-mastercard"></i>
                         <i class="fa fa-cc-paypal"></i>
                         <i class="fa fa-cc-visa"></i>
