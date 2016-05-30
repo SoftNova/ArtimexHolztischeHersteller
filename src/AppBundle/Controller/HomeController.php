@@ -10,11 +10,10 @@ class HomeController extends Controller
 {
     /**
      * @Route("/{_locale}/", name="_homepage")
+     * @Route("/")
      */
     public function indexAction(Request $request)
     {
-
-        // replace this example code with whatever you need
         return $this->render('client/homepage.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
