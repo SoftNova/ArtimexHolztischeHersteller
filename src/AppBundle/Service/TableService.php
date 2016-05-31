@@ -30,5 +30,8 @@ class TableService
     public function findByCode($code, $lang){
         return $this->tableDAO->findByCode($code, $lang);
     }
+    public function findPrimaryImageByMaterial($materialID,$code){
+        return $this->tableDAO->findPrimaryImageByMaterial($materialID,$code);
+    }
 
 }

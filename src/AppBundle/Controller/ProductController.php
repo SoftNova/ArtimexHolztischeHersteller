@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TablePrimaryMaterial;
+use AppBundle\Utils\Utils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Response;
@@ -66,7 +67,7 @@ class ProductController extends Controller
         $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
         $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
 
-         return $this->render('client/subContent/table.html.twig', [
+        return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'oItem'=>$table,
             'width' => $width,
@@ -145,4 +146,21 @@ class ProductController extends Controller
         }
         return new \Symfony\Component\HttpFoundation\Response('Invalid request!, 400');
     }
+
+    /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial") */
+    public function getPrImageByMat(){
+        $request = $this->get('request');
+        $tableService=$this->get('table_service');
+        $lang=$this->get('request')->getLocale();
+        if ($request->isXmlHttpRequest()) {
+            $code = $request->get('itemCode');
+            $material=$request->get('material');
+            $tableItem = $tableService->findPrimaryImageByMaterial($material, $code);
+            $altPath = Utils::DEFAULT_IMAGE;
+            $image=$this->get('liip_imagine.controller')
+                ->filterAction(new Request(), (is_null($tableItem) ? $altPath : $tableItem->getFirstImage()->getWebPath()), 'productDisplay')->getTargetUrl();
+            return new \Symfony\Component\HttpFoundation\Response(json_encode(($image)));
+        }
+    }
+    
 }

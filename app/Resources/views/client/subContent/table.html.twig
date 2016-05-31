@@ -4,13 +4,20 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-5">
-                <div id="loadImageDiv">
+                <div id="loadImageDiv" data-path="{{ path ('_getPrimaryImageByMaterial') }}">
                     <img class="ajax-loader img-responsive" src="{{ asset('bundles/app/img/loading.gif') }}"/>
                     <img id="displayImage" src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
                 </div>
                 <p>{{ oItem.description }}</p>
                 <div class="row">
                     <hr>
+                </div>
+                <div class="photos">
+                    foreach secImage in oItem.secondaryImages
+                        img src = secImage | image_filter('secondaryProdactDisplay')
+                    google twig foreach pt sintaxa
+                    defineste filtru pt imagini secundare in config.yml exact cum e definit pentru product display,
+                    schimba doar dimensiuniile
                 </div>
                 <!-- start of custom message -->
                 {% if oItem.message is not null %}

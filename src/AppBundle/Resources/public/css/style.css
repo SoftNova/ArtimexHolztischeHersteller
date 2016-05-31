@@ -1116,3 +1116,10 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     line-height: 26.4px;
 
 }
+
+
+.grey-zone {
+    background: none repeat scroll 0 0 #f4f4f4;
+    padding-bottom: 8px;
+    padding-top: 5px;
+}

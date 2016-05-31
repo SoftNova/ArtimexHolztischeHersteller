@@ -45,5 +45,17 @@ class TableDAO extends EntityRepository
             ->setParameter('lang', $lang);
         return $qb->getQuery()->getOneOrNullResult();
     }
+    public function findPrimaryImageByMaterial($materialID,$code){
+        $qb = $this->createQueryBuilder('t');
+        $qb->join('t.images', 'ti')
+            ->where('t.code= :code')
+            ->andWhere('ti.materialItem= :materialID')
+            ->andWhere('ti.role= :primary')
+            ->addSelect('ti')
+            ->setParameter('materialID',$materialID)
+            ->setParameter('primary', 1)
+            ->setParameter('code',$code);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 
 }

@@ -10,11 +10,18 @@ class HomeController extends Controller
 {
     /**
      * @Route("/{_locale}/", name="_homepage")
+     * @Route("/")
      */
     public function indexAction(Request $request)
     {
 
-        // replace this example code with whatever you need
+        $langIso2=$this->get('request')->getLocale();
+        $allLocales=$this->getParameter('locales');
+
+        $langIso2=strlen($langIso2)>2 ? substr($langIso2,0,2) : $langIso2;
+        if (in_array($langIso2, $allLocales)){
+            $this->get('request')->setLocale($langIso2);
+        }
         return $this->render('client/homepage.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);

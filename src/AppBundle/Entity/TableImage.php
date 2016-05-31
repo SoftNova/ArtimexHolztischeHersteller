@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class TableImage
  * @package AppBundle\Entity
  *
- * @ORM\Entity(repositoryClass="TableImageRepository", )
+ * @ORM\Entity(repositoryClass="TableImageDAO", )
  * @ORM\Table(name="table_image")
  * @ORM\HasLifecycleCallbacks()
  */

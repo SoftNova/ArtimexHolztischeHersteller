@@ -358,4 +358,20 @@ class Table
         }
         return null;
     }
+    
+    public function getFirstImage(){
+        foreach ($this->images as $image){
+            return $image;
+        }
+    }
+
+    public function getSecondaryImages(){
+        $pics = array();
+        foreach ($this->images as $image){
+            if (!$image->getRole()){
+                $pics[]= $image->getWebPath();
+            }
+        }
+        return (count($pics)>0) ? $pics : array(Utils::DEFAULT_IMAGE);
+    }
 }

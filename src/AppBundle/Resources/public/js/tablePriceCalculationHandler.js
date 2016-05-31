@@ -1,6 +1,9 @@
 /**
  * Created by cvisan on 5/25/2016.
  */
+$(document).ready(function () {
+    renew();
+});
 
 function showLoader(){
     $('.ajax-loader').show();
@@ -15,9 +18,7 @@ function removeLoader(){
     $('#loadImageDiv').removeClass('ajax-loader-fade');
     $('#addToCartButton').prop('disabled', false);
 }
-$(document).ready(function () {
-    renew();
-});
+
 
 function renew() {
     var length = $('#lengthSelect').find('option:selected').text();
@@ -45,8 +46,10 @@ function renew() {
         var drawerLength = $('#drawerLengthSelect').find('option:selected').text();
         $('#dynamicDrawer').text(drawers + " (" + drawerLength + "cm)");
     }
-    var material = $('input[name=matRadio]:checked', '#matDiv').val();
-    $('#dynamicWood').text(material);
+    var material = $('input[name=matRadio]:checked', '#matDiv');
+    $('#dynamicWood').text(material.attr('data-name'));
+
+    var materialID=material.val();
 
     var quality = $('input[name=qualityRadio]:checked', '#qualityDiv').val();
     $('#dynamicQuality').text(quality);
@@ -66,7 +69,7 @@ function renew() {
         extLength: extLength,
         drawers: drawers,
         drawerLength: drawerLength,
-        material: material,
+        material: materialID,
         quality: quality,
         tempering: tempering,
         code: itemCode
@@ -91,13 +94,13 @@ function renew() {
             }
             if (response.failure){
                 span.hide();
+                errorSpan.text('');
                 errorSpan.append('<p>' + response.failure + '</p>');
                 errorSpan.show();
             }
         },
         error: function () {
             removeLoader();
-            alert ("Problem Encountered. Try again or contact an administrator");
         }
     })
 }
@@ -113,5 +116,24 @@ $('input[type=radio][name=matRadio]').change(function(){
 });
 
 function renewWithImage() {
-    renew();
+    var itemCode = $('#dynamicIdDiv').attr('data-code');
+    var path = $('#loadImageDiv').attr('data-path');
+    var material = $('input[name=matRadio]:checked', '#matDiv').val();
+    var ajaxData={
+        itemCode: itemCode,
+        material: material
+    };
+    $.ajax({
+        type: 'POST',
+        url: path,
+        data: ajaxData,
+        dataType: "json",
+        beforeSend: function(){
+            showLoader();
+        },
+        success: function (response) {
+            $('#displayImage').attr('src',response);
+            removeLoader();
+        }
+    })
 }
