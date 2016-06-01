@@ -1,15 +1,22 @@
 {% if aTables %}
     {% for oItem in aTables %}
-        <div class="col-sm-3">
-            <div class="single-shop-product">
-                <div class="product-upper">
-                    <p> {{ oItem.name }}</p>
-                    <img src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage')}}">
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="single-shop-product">
+                    <div class="product-upper">
+                        <p> {{ oItem.name }}</p>
+                        <img src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage') }}">
+                        <div class="product-option-shop">
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"
+                               rel="nofollow"
+                               href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% if loop.index==4 %}
+            <div class="row"><hr></div>
+        {% endif %}
     {% endfor %}
 {% endif %}

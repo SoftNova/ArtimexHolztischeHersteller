@@ -5,12 +5,14 @@
             {% for locale in locales %}
                 {% if locale.locale!="admin" %}
                     <li{% if current_locale == locale.locale %} class="locale_current"{% endif %}>
-                            <a href="{{ locale.link }}" title="{{ locale.locale_current_language }}">
-                              <span>
-                                  <img src={{ ('bundles/app/img/flags/' ~ locale.locale ~ '.png') |  imagine_filter('flag') }}>
-                                  </span>
-                                  {{ locale.locale_current_language }}
-                            </a>
+                        <a href="{{ locale.link }}" title="{{ locale.locale_current_language }}">
+                            <div class="row">
+                                <div class="sm-col-3"><img
+                                            src={{ ('bundles/app/img/flags/' ~ locale.locale ~ '.png') |  imagine_filter('flag') }}>
+                                </div>
+                                <div class="sm-col-9"><p>{{ locale.locale_current_language }}</p></div>
+                            </div>
+                        </a>
                     </li>
                 {% endif %}
             {% endfor %}
