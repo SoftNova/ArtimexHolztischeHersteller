@@ -144,8 +144,8 @@
             {% for oMaterial in aMaterials|batch(3) %}
                 {% for column in oMaterial %}
                     <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} grey-zone">
-                        <label class="radio-inline">
-                            <input type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}"
+                        <label class="radio-inline materialRadioMouseOver" title="">
+                            <input type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}" data-imgPath="{{ column.image.webPath }}"
                                    data-name="{{ column.name }}"
                                    name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : '' }}>
                             {{ column.name }}
