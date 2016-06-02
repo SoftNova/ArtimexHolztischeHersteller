@@ -145,10 +145,10 @@
                 {% for column in oMaterial %}
                     <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} grey-zone">
                         <label class="radio-inline materialRadioMouseOver" title="">
-                            <input type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}" data-imgPath="{{ column.image.webPath }}"
+                            <input type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}" data-imgPath="{{ column.image.getCachePath }}"
                                    data-name="{{ column.name }}"
                                    name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : '' }}>
-                            {{ column.name }}
+                            <p>{{ column.name }}</p>
                         </label>
                     </div>
                 {% endfor %}
@@ -169,8 +169,9 @@
                     <div class="col-sm-{{ loop.index==oTimberQuality|length ? (4-loop.index)*4 : 4 }} grey-zone">
                         <label class="radio-inline">
                             <input type="radio" name="qualityRadio"
-                                   value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
-                            {{ column.name }}
+                                   value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}
+                                   data-name="{{ column.name }}">
+                            <p>{{ column.name }}</p>
                         </label>
                     </div>
                 {% endfor %}
@@ -191,8 +192,9 @@
                     <div class="col-sm-{{ loop.index==oTimberTempering|length ? (4-loop.index)*4 : 4 }} grey-zone">
                         <label class="radio-inline">
                             <input type="radio" name="temperingRadio"
-                                   value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
-                            {{ column.name }}
+                                   value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}
+                                   data-name="{{ column.name }}">
+                            <p>{{ column.name }}</p>
                         </label>
                     </div>
                 {% endfor %}

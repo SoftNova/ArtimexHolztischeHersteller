@@ -36,10 +36,27 @@ class TableMaterialImage extends AbstractImage
      * @var
      * @ORM\OneToOne(targetEntity="TableMaterial", inversedBy="image")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id")
-     * 
+     *
      */
     protected $materialItem;
 
+    protected $cachePath;
+
+    /**
+     * @return mixed
+     */
+    public function getCachePath()
+    {
+        return $this->cachePath;
+    }
+
+    /**
+     * @param mixed $cachePath
+     */
+    public function setCachePath($cachePath)
+    {
+        $this->cachePath = $cachePath;
+    }
 
 
     /**
@@ -88,13 +105,16 @@ class TableMaterialImage extends AbstractImage
     /**
      * @ORM\PrePersist()
      */
-    public function prePersist(){
+    public function prePersist()
+    {
         $this->upload($this->path());
     }
+
     /**
      * @ORM\PreUpdate()
      */
-    public function preUpdate(){
+    public function preUpdate()
+    {
         $this->setTempFilename();
         $this->upload($this->path());
     }
@@ -103,8 +123,9 @@ class TableMaterialImage extends AbstractImage
     /**
      * @ORM\PostUpdate()
      */
-    public function postUpdate(){
-        if (is_null($this->tempFilename)){
+    public function postUpdate()
+    {
+        if (is_null($this->tempFilename)) {
             return true;
         }
         $oldFile = $this->path() . $this->tempFilename;
@@ -117,22 +138,25 @@ class TableMaterialImage extends AbstractImage
 
     public function getWebPath()
     {
-        if (!is_null($this->path())){
+        if (!is_null($this->path())) {
             return $this->path() . $this->filename;
         }
         return null;
     }
+
     public function path()
     {
-        if (!is_null($this->getMaterialItem())){
+        if (!is_null($this->getMaterialItem())) {
             return (self::UPLOAD_PATH . $this->getMaterialItem()->getCode() . '/');
         }
         return null;
     }
+
     public function postRemove()
     {
         // abstract class requirement. Not needed here
     }
+
     public function preRemove()
     {
         // abstract class requirement. Not needed here

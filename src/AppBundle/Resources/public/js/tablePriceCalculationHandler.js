@@ -46,16 +46,20 @@ function renew() {
         var drawerLength = $('#drawerLengthSelect').find('option:selected').text();
         $('#dynamicDrawer').text(drawers + " (" + drawerLength + "cm)");
     }
-    var material = $('input[name=matRadio]:checked', '#matDiv');
-    $('#dynamicWood').text(material.attr('data-name'));
+    var materialObj = $('input[name=matRadio]:checked', '#matDiv');
+    $('#dynamicWood').text(materialObj.attr('data-name'));
 
-    var materialID=material.val();
+    var materialID=materialObj.val();
 
-    var quality = $('input[name=qualityRadio]:checked', '#qualityDiv').val();
-    $('#dynamicQuality').text(quality);
+    var qualityObj = $('input[name=qualityRadio]:checked', '#qualityDiv');
+    $('#dynamicQuality').text(qualityObj.attr('data-name'));
 
-    var tempering = $('input[name=temperingRadio]:checked', '#temperingDiv').val();
-    $('#dynamicTempering').text(tempering);
+    var quality=qualityObj.val();
+
+    var temperingObj = $('input[name=temperingRadio]:checked', '#temperingDiv');
+    $('#dynamicTempering').text(temperingObj.attr('data-name'));
+
+    var tempering=temperingObj.val();
 
 
     var itemCode = $('#dynamicIdDiv').attr('data-code');

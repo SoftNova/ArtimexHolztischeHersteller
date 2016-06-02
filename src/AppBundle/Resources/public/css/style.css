@@ -1123,3 +1123,10 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     padding-bottom: 8px;
     padding-top: 5px;
 }
+
+.hover-img {
+    border: 15px solid #fff;
+    -webkit-box-shadow: 5px 5px 5px #777;
+    -moz-box-shadow: 5px 5px 5px #777;
+    box-shadow: 5px 5px 5px #777;
+}

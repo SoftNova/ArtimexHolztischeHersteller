@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\TableMaterial;
 use AppBundle\Entity\TablePrimaryMaterial;
 use AppBundle\Utils\Utils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -66,6 +67,15 @@ class ProductController extends Controller
         $length = $surfaceService->getLength();
         $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
         $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
+
+        $altPath = Utils::DEFAULT_IMAGE;
+        /** @var TableMaterial $material */
+        foreach ($aMaterials as $material){
+            $image = $this->get('liip_imagine.controller')
+                ->filterAction(new Request(), (is_null($material->getImage()->getWebPath()) ? $altPath : $material->getImage()->getWebPath()), 'primaryImage')->getTargetUrl();
+            $material->getImage()->setCachePath($image);
+        }
+
 
         return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),

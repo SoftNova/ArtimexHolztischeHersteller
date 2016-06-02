@@ -39,12 +39,9 @@
     </div>
 </ul>
 {% endblock %}
+{% block javascripts %}{% endblock %}
 {% block footer %}
     <!-- Start of footer area -->
     {% include '/client/statics/footer.html.twig' %}
     <!-- End of footer area -->
-{% endblock %}
-{% block javascripts %}
-    <script src="{{ asset('bundles/app/js/tablePriceCalculationHandler.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/app/js/mouseOverDisplayMaterialImage.js') }}" type="text/javascript"></script>
 {% endblock %}
