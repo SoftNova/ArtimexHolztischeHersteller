@@ -107,6 +107,7 @@ sonata_admin:
         layout:  SonataAdminBundle::layout.html.twig
 
 
+
 a2lix_translation_form:
     locale_provider: default       # [1]
     locales: "%locales%"          # [1-a]

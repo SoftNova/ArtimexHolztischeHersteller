@@ -86,5 +86,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: app.leg.attribute, show_in_dashboard: false, label_catalogue: "messages" }
 
+    admin.table.category:
+        class: AppBundle\Admin\TableCategoryAdmin
+        arguments: [~,  AppBundle\Entity\TableCategory, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: app.table.category, label_catalogue: "messages", group: app.tables }
 
 

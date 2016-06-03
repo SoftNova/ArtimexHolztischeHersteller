@@ -96,6 +96,9 @@ class TableAdmin extends Admin
                 ->add('hasExtension', CheckboxType::class, array('label' => 'admin.has.extension', 'required'=>false))
                 ->add('hasDistanceToSides', CheckboxType::class, array('label' => 'admin.has.distance.to.sides', 'required'=>false))
             ->end()
+            ->with ('admin.show.in.catalog')
+            ->add('showInCatalog', CheckboxType::class, array('label' => 'admin.is.visible', 'required'=>false))
+            ->end()
             ->with('app.drawer.attribute')
                 ->add('drawerAttribute', 'sonata_type_admin', array('label'=>false), array(
                     'edit'=>'inline',
@@ -119,8 +122,11 @@ class TableAdmin extends Admin
                         'sortable'=>'position'
                 ])
             ->end()
-            ->with ('admin.show.in.catalog')
-                ->add('showInCatalog', CheckboxType::class, array('label' => 'admin.is.visible', 'required'=>false))
+            ->with('admin.category')
+            ->add('categories', 'sonata_type_model', [
+                'label'=>false,
+                'multiple'=>true
+                 ])
             ->end()
             ->with('admin.images')
                 ->add('images', 'sonata_type_collection', [
@@ -132,8 +138,6 @@ class TableAdmin extends Admin
                  'sortable'=>'position'
                  ]);
         ;
-
-
     }
 
 
@@ -156,7 +160,14 @@ class TableAdmin extends Admin
                     'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
                 )
             )
-            ->add('drawerAttribute.maxNumberOfDrawers', null,array(
+            ->add('categories',null, array(
+                'label'=>'admin.category',
+                'sortable'=>true,
+                'sort_field_mapping'=>array('fieldName'=>'name'),
+                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations')),
+                'row_align'=>'left'
+            ))
+            ->add('drawerAttribute.maxNumberOfDrawers', null, array(
                 'label'=>'admin.nr.of.drawers',
                 'row_align'=>'left'
             ))
@@ -210,7 +221,8 @@ class TableAdmin extends Admin
             ->add('code')
             ->add('hasDistanceToSides')
             ->add('hasExtension')
-            ->add('showInCatalog');
+            ->add('showInCatalog')
+            ->add('categories');
     }
 
     private function getLanguageChoices()

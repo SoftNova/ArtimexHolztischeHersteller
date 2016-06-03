@@ -96,6 +96,14 @@ class Table
      */
     protected $profiles;
 
+    /**
+     * @var
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TableCategory", inversedBy="tables", cascade={"persist"})
+     * @ORM\JoinTable(name="table_categories")
+     */
+    protected $categories;
+    
+
     protected $translations;
 
     public function __construct()
@@ -103,6 +111,7 @@ class Table
         $this->profiles = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->images=new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
     /**
      * @return mixed
@@ -134,6 +143,22 @@ class Table
     public function setBasePrice($basePrice)
     {
         $this->basePrice = $basePrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
     }
 
     /**
@@ -239,6 +264,21 @@ class Table
     public function removeImage(TableImage $image)
     {
         $this->images->removeElement($image);
+    }
+    /**
+     * @param TableCategory $category
+     */
+    public function addCategory(TableCategory $category)
+    {
+        $this->categories->add($category);
+    }
+
+    /**
+     * @param TableCategory $category
+     */
+    public function removeCategory(TableCategory $category)
+    {
+        $this->categories->removeElement($category);
     }
 
     /**
