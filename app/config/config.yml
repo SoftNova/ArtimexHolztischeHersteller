@@ -142,6 +142,14 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [540, 360], mode: outbound }
+        productImages:
+            quality: 75
+            filters:
+                thumbnail: { size: [125, 83], mode: outbound }
+        productDisplayLightbox:
+            quality: 75
+            filters:
+                thumbnail: { size: [1000, 800], mode: outbound }
 
 
 lunetics_locale:

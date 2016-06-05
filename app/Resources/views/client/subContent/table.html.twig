@@ -9,13 +9,35 @@
                     <img id="displayImage" src="{{oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay')}}"/>
                 </div>
                 <br><br>
+                <div class="photos">
+
+
+                        {% for secImage in oItem.secondaryImages %}
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <a class="example-image-link" href="{{ secImage | imagine_filter('productDisplayLightbox') }}" data-lightbox="example-set" data-title="photo ex"><img src="{{ secImage | imagine_filter('productImages') }}"></a>
+                            </div>
+
+                        {% endfor %}
+
+                </div>
+                <br><br>
                 <p>{{ oItem.description }}</p>
                 <div class="row">
                     <hr>
                 </div>
-                <div class="photos">
 
-                </div>
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
                 <!-- start of custom message -->
                 {% if oItem.message is not null %}
                 <p><strong>{{  oItem.message }}</strong></p>
