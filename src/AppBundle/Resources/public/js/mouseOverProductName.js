@@ -2,12 +2,11 @@
  * Created by cvisan on 6/6/2016.
  */
 $(document).ready(function () {
-
-    var p=$('.itemDisplayName');
-    p.hover(function (e) {
+    $('.itemDisplayName').hover(function () {
         var text = $(this).text();
         $(this).tooltipster({
-            content: $(text)
+            content: text,
+            multiple:true
         });
     });
 })
