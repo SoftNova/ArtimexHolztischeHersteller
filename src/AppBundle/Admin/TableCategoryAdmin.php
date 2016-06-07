@@ -35,20 +35,10 @@ class TableCategoryAdmin extends Admin
                             )
                         )
                     ),
-                    'visibility' => array(
-                        'label' => 'admin.visibility',
-                        'field_type' => CheckboxType::class,
-                        'locale_options' => array(
-                            'admin' => array(
-                                'attr' => array('readonly' => true,
-                                    'disabled' => true)
-                            )
-                        )
-                    , 'required' => false
-                    )
                 )
             )
-        );
+        )
+        ->add('visibility',CheckboxType::class, array('required'=>false));
     }
 
     protected function configureListFields(ListMapper $listMapper)

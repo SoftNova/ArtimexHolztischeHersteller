@@ -23,8 +23,8 @@ class TableService
         return $this->tableDAO->findAll();
     }
     
-    public function getAllByLang($lang){
-        return $this->tableDAO->findAllByLang($lang);
+    public function getAllByLang($lang, $categoryId){
+        return $this->tableDAO->findAllByLang($lang, $categoryId);
     }
 
     public function findByCode($code, $lang){

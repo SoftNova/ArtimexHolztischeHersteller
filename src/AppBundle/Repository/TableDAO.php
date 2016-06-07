@@ -19,15 +19,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class TableDAO extends EntityRepository
 {
-    public function findAllByLang($lang){
+    public function findAllByLang($lang, $categoryId){
         $qb = $this->_em->createQueryBuilder();
         $qb->select('t')
             ->from($this->_entityName, 't')
+            ->join('t.categories','tc')
             ->join('t.translations', 'tt' )
             ->where('tt.locale= :lang')
+            ->andWhere('tc.id= :categoryId')
             ->andWhere('tt.visibility= :visibility')
             ->andWhere('t.showInCatalog= :sic')
             ->addSelect('tt')
+            ->setParameter('categoryId', $categoryId)
             ->setParameter('lang', $lang)
             ->setParameter('visibility', 1)
             ->setParameter('sic', 1)

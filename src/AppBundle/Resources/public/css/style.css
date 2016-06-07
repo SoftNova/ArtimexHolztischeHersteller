@@ -1134,7 +1134,7 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     margin-bottom: 3px;
 }
 
-.itemDisplay p{
+.itemDisplay p, h3{
     width:250px;
     overflow: hidden;
     white-space: nowrap; /* Don't forget this one */
@@ -1145,5 +1145,10 @@ hr.style-seven:before { /* Not really supposed to work, but does */
     font-variant: normal;
     font-weight: bold;
     line-height: 26.4px;
+}
+
+.secondary-images{
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 

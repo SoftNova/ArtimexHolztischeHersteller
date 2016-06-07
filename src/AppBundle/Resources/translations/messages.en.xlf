@@ -425,6 +425,10 @@
                 <source>admin.images</source>
                 <target>Images</target>
             </trans-unit>
+            <trans-unit id="admin.table.images">
+                <source>admin.table.images</source>
+                <target>Images (If you do not add a primary image to a given material, that material will not be displayed)</target>
+            </trans-unit>
             <trans-unit id="admin.translations">
                 <source>admin.translations</source>
                 <target>Translations</target>
@@ -611,7 +615,7 @@
             </trans-unit>
             <trans-unit id="app.table.category">
                 <source>app.table.category</source>
-                <target>Table Categories:</target>
+                <target>Table Categories</target>
             </trans-unit>
 
 

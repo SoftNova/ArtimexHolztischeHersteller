@@ -80,3 +80,13 @@ services:
       class: AppBundle\Service\TableSupportService
       arguments: ["@table_profile_repository", "@height_repository", "@table_repository"]
 
+    category_repository:
+      class: AppBundle\Repository\TableCategoryDAO
+      factory: ["@doctrine.orm.default_entity_manager", 'getRepository']
+      arguments: [AppBundle\Entity\TableCategory]
+
+    category_service:
+      class: AppBundle\Service\CategoryService
+      arguments: ["@category_repository"]
+
+

@@ -375,6 +375,7 @@ class Table
 
     public function getPrimaryImage($id){
         /** @var TableImage $image */
+        /* display primary image (linked to primary material) */
         foreach ($this->images as $image){
             if ($image->getRole()){
                 if($image->getMaterialItem()->getId()==$id && $image->getRole())
@@ -383,6 +384,14 @@ class Table
                 }
             }
         }
+        /* if ^ not found, return any primary image (linked to any material) */
+        foreach ($this->images as $image) {
+            if ($image->getRole()) {
+                return $image->getWebPath();
+            }
+        }
+
+        /* if no primary image exists, return default */
         return Utils::DEFAULT_IMAGE;
     }
 

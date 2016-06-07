@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\TableImage;
 use AppBundle\Entity\TableMaterial;
 use AppBundle\Entity\TablePrimaryMaterial;
 use AppBundle\Utils\Utils;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Response;
@@ -12,22 +14,36 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends Controller
 {
+
     /**
-     * @Route("/{_locale}/tables", name="_products")
+     * @Route("/{_locale}/products", name="_products")
      */
     public function indexAction()
     {
-        $tableService=$this->get('table_service');
-        $lang=$this->get('request')->getLocale();
-        $surfaceService= $this->get('surface_service');
 
         /** @var TablePrimaryMaterial $primaryMaterialItem */
+        return $this->render('client/products.html.twig', [ 
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'aCategories'=>$this->getCategories(),
+        ]);
+    }
+
+    /**
+     * @Route("/{_locale}/{id}/{name}", name="_allCategoryItems")
+     */
+    public function getAllCategoryItems(){
+        $tableService=$this->get('table_service');
+        $lang=$this->get('request')->getLocale();
+        $categoryId=$this->get('request')->get('id');
+        $surfaceService= $this->get('surface_service');
         $primaryMaterialItem = $surfaceService->getPrimaryMaterial();
         $primaryMaterial = !is_null($primaryMaterialItem) ? $primaryMaterialItem->getPrimaryMaterial()->getId() : null;
+        $aTables = $tableService->getAllByLang($lang, $categoryId);
 
-        $aTables = $tableService->getAllByLang($lang);
-        return $this->render('client/products.html.twig', [
+
+        return $this->render('client/categoryItems.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'aCategories'=>$this->getCategories(),
             'aTables'=>$aTables,
             'aArticles'=>null,
             'primaryMaterial'=>$primaryMaterial
@@ -41,15 +57,16 @@ class ProductController extends Controller
         $articleService = $this->get('article_service');
         $lang=$this->get('request')->getLocale();
         $aArticles=$articleService->getAllByLang($lang);
-        return $this->render('client/products.html.twig', [
+        return $this->render('client/categoryItems.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'aCategories'=>$this->getCategories(),
             'aArticles' => $aArticles,
             'aTables'=>null
         ]);
     }
 
     /**
-     * @Route("/{_locale}/{name}/{code}", name="_specificTable")
+     * @Route("/{_locale}/tables/{name}/{code}", name="_specificTable")
      */
     public function getSpecificTable(){
 
@@ -58,32 +75,35 @@ class ProductController extends Controller
         $code = $this->get('request')->get('code');
         $timberService = $this->get('timber_service');
         $lang=$this->get('request')->getLocale();
+        $allUntranslatedMaterials = $surfaceService->getMaterialsForLang($lang);
 
-        $aMaterials = $surfaceService->getMaterialsForLang($lang);
+
         $primaryMaterial = !is_null($surfaceService->getPrimaryMaterial()) ? $surfaceService->getPrimaryMaterial()->getPrimaryMaterial()->getId() : null;
         $table = $service->findByCode($code, $lang);
+
         $height = $surfaceService->getHeight();
         $width = $surfaceService->getWidth();
         $length = $surfaceService->getLength();
         $aTimberQuality = $timberService->getAllTimberQualityByLang($lang);
         $aTimberTempering = $timberService->getAllTimberTemperingByLang($lang);
 
+        $tableSpecificTranslatedMaterials = $this->getMaterials($table,$allUntranslatedMaterials);
         $altPath = Utils::DEFAULT_IMAGE;
         /** @var TableMaterial $material */
-        foreach ($aMaterials as $material){
+        foreach ($tableSpecificTranslatedMaterials as $material){
             $image = $this->get('liip_imagine.controller')
                 ->filterAction(new Request(), (is_null($material->getImage()->getWebPath()) ? $altPath : $material->getImage()->getWebPath()), 'primaryImage')->getTargetUrl();
             $material->getImage()->setCachePath($image);
         }
 
-
         return $this->render('client/subContent/table.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'aCategories'=>$this->getCategories(),
             'oItem'=>$table,
             'width' => $width,
             'length'=>$length,
             'height'=>$height,
-            'aMaterials'=>$aMaterials,
+            'aMaterials'=>$tableSpecificTranslatedMaterials,
             'aTimberQuality'=>$aTimberQuality,
             'aTimberTempering'=>$aTimberTempering,
             'primaryMaterial'=>$primaryMaterial
@@ -100,6 +120,7 @@ class ProductController extends Controller
         $article = $service->findByCode($code, $lang);
         return $this->render('client/subContent/article.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'aCategories'=>$this->getCategories(),
             'oItem' => $article
         ]);
     }
@@ -161,7 +182,6 @@ class ProductController extends Controller
     public function getPrImageByMat(){
         $request = $this->get('request');
         $tableService=$this->get('table_service');
-        $lang=$this->get('request')->getLocale();
         if ($request->isXmlHttpRequest()) {
             $code = $request->get('itemCode');
             $material=$request->get('material');
@@ -171,6 +191,30 @@ class ProductController extends Controller
                 ->filterAction(new Request(), (is_null($tableItem) ? $altPath : $tableItem->getFirstImage()->getWebPath()), 'productDisplay')->getTargetUrl();
             return new \Symfony\Component\HttpFoundation\Response(json_encode(($image)));
         }
+    }
+
+    private function getCategories(){
+        $lang=$this->get('request')->getLocale();
+        $categoryService = $this->get('category_service');
+        $aCategories = $categoryService->findAllByLang($lang);
+        return $aCategories;
+    }
+    private function getMaterials($tableItem, $translatedMaterials){
+        $tableUntranslatedMaterials=new ArrayCollection();
+        foreach ($tableItem->getImages() as $image)
+        {
+            /** @var TableImage $image */
+            if ($image->getRole() && !$tableUntranslatedMaterials->contains($image->getMaterialItem())){
+                $tableUntranslatedMaterials->add($image->getMaterialItem());
+            }
+        }
+        $result = new ArrayCollection();
+        foreach ($translatedMaterials as $translatedMaterial){
+            if ($tableUntranslatedMaterials->contains($translatedMaterial)){
+                $result->add($translatedMaterial);
+            }
+        }
+        return $result;
     }
     
 }

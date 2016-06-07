@@ -23,7 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-
+use Symfony\Component\Security\Acl\Util\ClassUtils;
 
 class TableAdmin extends Admin
 {
@@ -128,7 +128,7 @@ class TableAdmin extends Admin
                 'multiple'=>true
                  ])
             ->end()
-            ->with('admin.images')
+            ->with('admin.table.images')
                 ->add('images', 'sonata_type_collection', [
                     'by_reference' => false,
                     'label'=>false

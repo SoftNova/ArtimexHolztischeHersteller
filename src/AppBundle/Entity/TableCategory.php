@@ -30,10 +30,15 @@ class TableCategory
 
     /**
      * @var
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Table", inversedBy="categories", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Table", mappedBy="categories", cascade={"persist"})
      */
     protected $tables;
 
+    /**
+     * @var
+     * @ORM\Column(type="boolean", name="visibility", nullable=true)
+     */
+    protected $visibility;
     protected $translations;
 
     public function __construct()
@@ -80,4 +85,22 @@ class TableCategory
         }
         return '';
     }
+
+    /**
+     * @return mixed
+     */
+    public function getVisibility()
+    {
+        return $this->visibility;
+    }
+
+    /**
+     * @param mixed $visibility
+     */
+    public function setVisibility($visibility)
+    {
+        $this->visibility = $visibility;
+    }
+
+
 }

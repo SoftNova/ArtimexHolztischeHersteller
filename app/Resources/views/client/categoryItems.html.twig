@@ -1,0 +1,52 @@
+{% block head %}
+    <!-- Header area -->
+    {% include 'client/statics/header.html.twig' %}
+    <!-- End of header area -->
+{% endblock %}
+{% block subnenu %}
+    <!-- subnav here -->
+    {% if aCategories is not null %}
+        <div class="navbar subnav" role="navigation">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="pager subnav-pager">
+                        <div class="btn-group-wrap">
+                            <li><a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a></li>
+                            {% for oCategory in aCategories %}
+                                <li>
+                                    <a href="{{ path('_allCategoryItems', {'id': oCategory.id, 'name' : oCategory.name }) }}">{{ oCategory.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+{% block content %}
+    <ul class="list-inline">
+        <div class="single-product-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row col-xs-12">
+                    {% if aTables is not null %}
+                        {% include 'client/subContent/allTables.html.twig' %}
+                    {% endif %}
+                    {% if aArticles is not null %}
+                        {% include 'client/subContent/allArticles.html.twig' %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/js/mouseOverProductName.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block footer %}
+    <!-- Start of footer area -->
+    {% include '/client/statics/footer.html.twig' %}
+    <!-- End of footer area -->
+{% endblock %}

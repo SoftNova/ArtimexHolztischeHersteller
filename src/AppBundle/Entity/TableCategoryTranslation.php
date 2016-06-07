@@ -25,11 +25,7 @@ class TableCategoryTranslation
      */
     protected $name;
 
-    /**
-     * @var
-     * @ORM\Column(type="boolean", name="visibility", nullable=true)
-     */
-    protected $visibility;
+   
 
     /**
      * @return mixed
@@ -47,21 +43,7 @@ class TableCategoryTranslation
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVisibility()
-    {
-        return $this->visibility;
-    }
-
-    /**
-     * @param mixed $visibility
-     */
-    public function setVisibility($visibility)
-    {
-        $this->visibility = $visibility;
-    }
+   
 
 
 }
