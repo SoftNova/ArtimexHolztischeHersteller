@@ -5,8 +5,11 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
             <div class="row">
                 <div id="loadImageDiv" data-path="{{ path ('_getPrimaryImageByMaterial') }}">
-                    <img id="displayImage" class="img-responsive"
-                         src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"/>
+                    <a class="example-image-link"
+                       href="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"
+                       data-lightbox="example-set" data-title="">
+                        <img id="displayImage" class="img-responsive"
+                            src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"/></a>
                 </div>
             </div>
             <div class="row">
@@ -15,7 +18,7 @@
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 secondary-images">
                             <a class="example-image-link"
                                href="{{ secImage | imagine_filter('productDisplayLightbox') }}"
-                               data-lightbox="example-set" data-title="photo ex"><img
+                               data-lightbox="example-set" data-title=""><img
                                         src="{{ secImage | imagine_filter('productImages') }}"></a>
                         </div>
                     {% endfor %}

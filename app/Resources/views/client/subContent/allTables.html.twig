@@ -3,15 +3,20 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 itemDisplay">
             <div class="row">
             <span>
+
                 <p class="itemDisplayName aligncenter">{{ oItem.name }}</p>
-                <img class="img-responsive" id="primaryImageDisplay"
-                     src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage') }}">
-            </span>
-                <div class="product-option-shop">
-                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"
-                       rel="nofollow"
-                       href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
+                <div class="single-product">
+                    <div class="product-f-image">
+                        <img class="img-responsive" id="primaryImageDisplay"
+                        src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage') }}">
+                        <div class="product-hover">
+                            <a href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Configure</a>
+                        </div>
+                    </div>
                 </div>
+
+            </span>
+
             </div>
             <div class="row">
                 <hr>
