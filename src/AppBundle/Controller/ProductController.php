@@ -6,6 +6,7 @@ use AppBundle\Entity\TableImage;
 use AppBundle\Entity\TableMaterial;
 use AppBundle\Entity\TablePrimaryMaterial;
 use AppBundle\Utils\Utils;
+use AppBundle\Validator\SurfaceValidator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,6 +26,7 @@ class ProductController extends Controller
         return $this->render('client/products.html.twig', [ 
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'aCategories'=>$this->getCategories(),
+            'oCart'=>$this->getCart()
         ]);
     }
 
@@ -46,7 +48,8 @@ class ProductController extends Controller
             'aCategories'=>$this->getCategories(),
             'aTables'=>$aTables,
             'aArticles'=>null,
-            'primaryMaterial'=>$primaryMaterial
+            'primaryMaterial'=>$primaryMaterial,
+            'oCart'=>$this->getCart()
         ]);
     }
 
@@ -61,7 +64,8 @@ class ProductController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'aCategories'=>$this->getCategories(),
             'aArticles' => $aArticles,
-            'aTables'=>null
+            'aTables'=>null,
+            'oCart'=>$this->getCart()
         ]);
     }
 
@@ -92,7 +96,7 @@ class ProductController extends Controller
         /** @var TableMaterial $material */
         foreach ($tableSpecificTranslatedMaterials as $material){
             $image = $this->get('liip_imagine.controller')
-                ->filterAction(new Request(), (is_null($material->getImage()->getWebPath()) ? $altPath : $material->getImage()->getWebPath()), 'primaryImage')->getTargetUrl();
+                ->filterAction(new Request(), (is_null($material->getImage()->getWebPath()) ? $altPath : $material->getImage()->getWebPath()), 'materialPopup')->getTargetUrl();
             $material->getImage()->setCachePath($image);
         }
 
@@ -106,7 +110,8 @@ class ProductController extends Controller
             'aMaterials'=>$tableSpecificTranslatedMaterials,
             'aTimberQuality'=>$aTimberQuality,
             'aTimberTempering'=>$aTimberTempering,
-            'primaryMaterial'=>$primaryMaterial
+            'primaryMaterial'=>$primaryMaterial,
+            'oCart'=>$this->getCart()
         ]);
     }
     /**
@@ -121,7 +126,8 @@ class ProductController extends Controller
         return $this->render('client/subContent/article.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'aCategories'=>$this->getCategories(),
-            'oItem' => $article
+            'oItem' => $article,
+            'oCart'=>$this->getCart()
         ]);
     }
 
@@ -150,6 +156,12 @@ class ProductController extends Controller
             $tempering= $request->get('tempering');
             $code = $request->get('code');
 
+
+            $errors = $this->validateSurface($material, $length, $drawerLength, $extLength, $width, $lang);
+
+            if (!empty($errors->getValues())){
+                return new \Symfony\Component\HttpFoundation\Response(json_encode(array('error'=>$errors->first())));
+            }
             $tableItem = $tableService->findByCode($code, $lang);
 
             $surfacePrice = $surfaceService->calculateSurface($length, $width, $material);
@@ -157,6 +169,7 @@ class ProductController extends Controller
                 $custom = $this->get('translator')->trans('app.custom.order');
                 return new \Symfony\Component\HttpFoundation\Response(json_encode(array('failure'=>$custom)));
             }
+
             $supportPrice = $tableSupportService->calculateSupportPrice($height, $profile, $tableItem);
             $extensionPrice = (!is_null($extensions)) ? $surfaceService->calculateExtensionSurface($extLength, $width, $material, $extensions) : 0;
             $drawerPrice = (!is_null($drawers)) ? $surfaceService->calculateDrawerSurface($drawerLength, $width, $tableItem, $drawers) : 0;
@@ -216,5 +229,19 @@ class ProductController extends Controller
         }
         return $result;
     }
-    
+
+    private function getCart(){
+        return $oCart = $this->get('request')->getSession()->get('cart');
+    }
+
+    private function validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth, $lang){
+        $errors = new ArrayCollection();
+        $lengthObject = $this->get('surface_service')->getLength();
+        $widthObject = $this->get('surface_service')->getWidth();
+        $material = $this->get('surface_service')->getMaterialById($material);
+        $result = SurfaceValidator::validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth, $lengthObject, $widthObject);
+        if (!is_null($result)) $errors->add($result);
+        return $errors;
+
+    }
 }

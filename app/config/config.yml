@@ -137,11 +137,13 @@ liip_imagine:
         primaryImage:
             quality: 75
             filters:
-                thumbnail: { size: [250, 170], mode: outbound }
+                upscale: { min: [700, 400] }
+                thumbnail: { size: [700, 400], mode: outbound }
         productDisplay:
             quality: 75
             filters:
-                thumbnail: { size: [540, 360], mode: outbound, allow_upscale: true}
+                upscale: { min: [540, 360] }
+                thumbnail: { size: [540, 360], mode: outbound}
         productImages:
             quality: 75
             filters:
@@ -149,7 +151,12 @@ liip_imagine:
         productDisplayLightbox:
             quality: 75
             filters:
-                thumbnail: { size: [1000, 800], mode: inset, allow_upscale: true }
+                upscale: { min: [1000, 800] }
+                thumbnail: { size: [1000, 800], mode: inset , allow_upscale: true}
+        materialPopup:
+             quality: 75
+             filters:
+                thumbnail: { size: [256, 256], mode: inset }
 
 
 lunetics_locale:

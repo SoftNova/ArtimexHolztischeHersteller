@@ -60,6 +60,9 @@ class SurfaceService
         return ($this->primalMaterialDAO->findAll() ? $this->primalMaterialDAO->findAll()[0]
             : null);
     }
+    public function getMaterialById($material){
+        return $this->materialDAO->find($material);
+    }
 
     public function calculateSurface($length, $width, $materialID){
         /**
@@ -77,14 +80,14 @@ class SurfaceService
         if ($surface >= 3){
             return false;
         }
-        
+
         if ($surface >= $material->getScalingPoint()){
             $totalSurfaceCost = ($surface * $materialPrice) + ($material->getScalingPercentage()/100 * ($surface * $materialPrice));
         }
         else{
             $totalSurfaceCost = $surface * $materialPrice;
         }
-        
+
         return $totalSurfaceCost;
     }
     

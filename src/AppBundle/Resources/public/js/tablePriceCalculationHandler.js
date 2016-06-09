@@ -102,6 +102,9 @@ function renew() {
                 errorSpan.append('<p>' + response.failure + '</p>');
                 errorSpan.show();
             }
+            if (response.error){
+                alert (response.error);
+            }
         },
         error: function () {
             removeLoader();

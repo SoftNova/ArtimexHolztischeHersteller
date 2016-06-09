@@ -37,13 +37,14 @@
 
                         </div>
                     </div>
-
+                    {% if oCart is defined %}
                     <div class="col-sm-6">
                         <div class="shopping-item">
-                            <a href="{{ path('_cart') }}">Cart - <span class="cart-amunt">$800</span> <i
-                                        class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                            <a href="{{ path('_cart') }}">{% trans %}app.cart{% endtrans %} {{ oCart is not null ? '- <span class="cart-amunt">' + 'app.currency' + oCart.totalPrice + '</span>' : ''}} <i
+                                        class="fa fa-shopping-cart"></i> {{ oCart is not null ? '<span class="product-count">'+oCart.cartItems|length+'</span>' : ''}}</a>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div> <!-- End site branding area -->

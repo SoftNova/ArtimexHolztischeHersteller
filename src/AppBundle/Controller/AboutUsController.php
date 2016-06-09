@@ -19,9 +19,11 @@ class AboutUsController extends Controller
     public function indexAction()
     {
 
+        $oCart = $this->get('request')->getSession()->get('cart');
         // replace this example code with whatever you need
         return $this->render('client/aboutus.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'oCart'=>$oCart
         ]);
     }
 }

@@ -6,7 +6,7 @@
             <div class="row">
                 <div id="loadImageDiv" data-path="{{ path ('_getPrimaryImageByMaterial') }}">
                     <a class="example-image-link"
-                       href="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"
+                       href="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplayLightbox') }}"
                        data-lightbox="example-set" data-title="">
                         <img id="displayImage" class="img-responsive"
                             src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplay') }}"/></a>

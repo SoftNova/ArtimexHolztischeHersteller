@@ -13,12 +13,13 @@ class HomeController extends Controller
     /**
      * @Route("/{_locale}/", name="_homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
 
-
+        $oCart = $this->get('request')->getSession()->get('cart');
         return $this->render('client/homepage.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            'oCart'=>$oCart
         ]);
     }
 
