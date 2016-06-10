@@ -50,7 +50,11 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript">var locale= '{{ app.request.locale }}';</script>
+    <script type="text/javascript">
+        var locale= '{{ app.request.locale }}';
+        var cartTrs = '{{ 'app.cart' }}';
+        var currencyTrs= '{{ 'app.currency' }}';
+    </script>
     <script src="{{ asset('bundles/app/js/tablePriceCalculationHandler.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverDisplayMaterialImage.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverProductName.js') }}" type="text/javascript"></script>

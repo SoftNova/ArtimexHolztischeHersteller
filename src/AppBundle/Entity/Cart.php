@@ -18,6 +18,8 @@ class Cart
 
     protected $totalPrice;
 
+    protected $totalQuantity;
+
     protected $shippingIn;
 
     public function __construct()
@@ -73,5 +75,46 @@ class Cart
         $this->shippingIn = $shippingIn;
     }
 
-    
+    public function addItem(CartItem $item){
+        foreach ($this->cartItems as $cartItem){
+            if ($cartItem->equals($item)){
+                $cartItem->setItemQuantity($cartItem->getItemQuantity()+1);
+                $this->computeCartTotals();
+                return;
+            }
+        }
+        $this->cartItems->add($item);
+        $this->computeCartTotals();
+    }
+
+    private function computeCartTotals(){
+        $cartTotalQuantity=0;
+        $cartTotalPrice=0;
+
+        /** @var CartItem $item */
+        foreach ($this->cartItems->getValues() as $item){
+            $rawStringIntegerPriceArray=array_reverse(explode(',',($item->getItemPrice())));
+            $numeralPrice = (int)preg_replace('#[^0-9]+#', '', end($rawStringIntegerPriceArray));
+            $cartTotalPrice = ($numeralPrice*$item->getItemQuantity())+ $cartTotalPrice;
+            $cartTotalQuantity = $item->getItemQuantity() + $cartTotalQuantity;
+        }
+        $this->totalPrice=$cartTotalPrice;
+        $this->totalQuantity=$cartTotalQuantity;
+    }
+    /**
+     * @return mixed
+     */
+    public function getTotalQuantity()
+    {
+        return $this->totalQuantity;
+    }
+
+    /**
+     * @param mixed $totalQuantity
+     */
+    public function setTotalQuantity($totalQuantity)
+    {
+        $this->totalQuantity = $totalQuantity;
+    }
+
 }

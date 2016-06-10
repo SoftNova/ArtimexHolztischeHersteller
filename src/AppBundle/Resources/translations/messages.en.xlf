@@ -286,6 +286,10 @@
                 <source>app.custom.order</source>
                 <target>Surface size is over 3m². This is a custom order </target>
             </trans-unit>
+            <trans-unit id="app.cart" xml:space="preserve">
+                <source>app.cart</source>
+                <target>Cart</target>
+            </trans-unit>
 
 
 

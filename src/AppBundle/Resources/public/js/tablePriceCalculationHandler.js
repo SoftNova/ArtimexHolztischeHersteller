@@ -175,6 +175,14 @@ $('#addToCartButton').on('click',function(){
 
     var itemCode = $('#dynamicIdDiv').attr('data-code');
 
+    var dimensionsString = length + 'x' + width + 'x' + height;
+    var profileString = profileObj.attr('data-name');
+    var drawersString = drawers + " (" + drawerLength + "cm)";
+    var extString = extensions + " (" + extLength + "cm)";
+    var materialString = materialObj.attr('data-name');
+    var qualityString = qualityObj.attr('data-name');
+    var temperingString = temperingObj.attr('data-name');
+
     var ajaxData = {
         length: length,
         width: width,
@@ -187,40 +195,33 @@ $('#addToCartButton').on('click',function(){
         material: materialID,
         quality: quality,
         tempering: tempering,
-        code: itemCode
+        code: itemCode,
+        dimensionsString: dimensionsString,
+        profileString: profileString,
+        drawersString: drawersString,
+        extString: extString,
+        materialString: materialString,
+        qualityString: qualityString,
+        temperingString: temperingString
     };
     $.ajax({
         type: 'POST',
-        url: Routing.generate('_calculatePrice_ajax', {'_locale' : locale}),
+        url: Routing.generate('_add_table_to_cart', {'_locale' : locale}),
         data: ajaxData,
         dataType: "json",
         beforeSend: function(){
-            showLoader();
         },
         success: function(response){
-            removeLoader();
-            var span = $('#dynamicPriceSpan');
-            var errorSpan = $('#dynamicErrorSpan');
             if (response.success) {
-                span.show();
-                errorSpan.hide();
-                errorSpan.text('');
-                $('#addToCartButton').html(response.success);
-            }
-            if (response.failure){
-                span.hide();
-                errorSpan.text('');
-                errorSpan.append('<p>' + response.failure + '</p>');
-                errorSpan.show();
-            }
-            if (response.error){
-                alert('Data corruption detected');
-                window.location.replace(Routing.generate('_homepage'));
-                throw response.error;
+                alert("yay");
+                var cart = $('#cart');
+                cart.text(cartTrs+' - ');
+                cart.append('<span class="cart-amunt">' + response.success.price + '</span>');
+                cart.append('<span class="product-count">'+response.success.quantity+'</span>')
+
             }
         },
         error: function () {
-            removeLoader();
         }
-    }) 
+    })
 });

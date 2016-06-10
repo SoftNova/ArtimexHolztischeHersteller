@@ -11,15 +11,142 @@ namespace AppBundle\Entity;
 
 class CartItem
 {
-    protected $name;
+    protected $itemName;
 
-    protected $img;
+    protected $itemCode;
 
-    protected $price;
+    protected $itemImg;
 
-    protected $specs;
+    protected $itemPrice;
 
-    protected $quantity;
+    protected $itemSpecs;
+
+    protected $itemQuantity;
+
+    /**
+     * @return mixed
+     */
+    public function getItemName()
+    {
+        return $this->itemName;
+    }
+
+    /**
+     * @param mixed $itemName
+     */
+    public function setItemName($itemName)
+    {
+        $this->itemName = $itemName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemCode()
+    {
+        return $this->itemCode;
+    }
+
+    /**
+     * @param mixed $itemCode
+     */
+    public function setItemCode($itemCode)
+    {
+        $this->itemCode = $itemCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemImg()
+    {
+        return $this->itemImg;
+    }
+
+    /**
+     * @param mixed $itemImg
+     */
+    public function setItemImg($itemImg)
+    {
+        $this->itemImg = $itemImg;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemPrice()
+    {
+        return $this->itemPrice;
+    }
+
+    /**
+     * @param mixed $itemPrice
+     */
+    public function setItemPrice($itemPrice)
+    {
+        $this->itemPrice = $itemPrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemSpecs()
+    {
+        return $this->itemSpecs;
+    }
+
+    /**
+     * @param mixed $itemSpecs
+     */
+    public function setItemSpecs($itemSpecs)
+    {
+        $this->itemSpecs = $itemSpecs;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemQuantity()
+    {
+        return $this->itemQuantity;
+    }
+
+    /**
+     * @param mixed $itemQuantity
+     */
+    public function setItemQuantity($itemQuantity)
+    {
+        $this->itemQuantity = $itemQuantity;
+    }
+
+    public function equals(CartItem $other){
+        if (strcmp($this->itemName,$other->getItemName())!=0){
+            return false;
+        }
+
+        if (strcmp($this->itemCode,$other->getItemCode())!=0){
+            return false;
+        }
+
+        if (strcmp($this->itemImg,$other->getItemImg())!=0){
+            return false;
+        }
+
+        if (strcmp($this->itemPrice,$other->getItemPrice())!=0){
+            return false;
+        }
+
+        if (count($this->itemSpecs)!=count($other->getItemSpecs())){
+            return false;
+        }else{
+            for ($i = 0 ; $i < count($this->itemSpecs); $i++ ){
+                if (strcmp($this->itemSpecs[$i],$other->getItemSpecs()[$i])!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
 }
