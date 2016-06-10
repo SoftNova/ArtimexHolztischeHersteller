@@ -1,5 +1,5 @@
 <div class="dynamicSpecs container-fluid" id="loadContentDiv">
-    <img class="ajax-loader img-responsive" src="{{ asset('bundles/app/img/loading.gif') }}"/>
+    <img class="ajax-loader" src="{{ asset('bundles/app/img/loading.gif') }}"/>
     <div class="hidden" data-code="{{ oItem.code }}" id="dynamicIdDiv"></div>
     <div class="row " id="dynamicNameDiv">
         <div class="col-xs-12 itemDisplay">
@@ -98,7 +98,7 @@
         <hr>
     </div>
 
-    <div class="row" id="dynamicPriceDiv" data-path="{{ path('_calculatePrice_ajax')}}"></div>
+    <div class="row" id="dynamicPriceDiv" ></div>
     <div class="col-xs-12" id="dynamicPriceSubDiv">
              <span id="dynamicPriceSpan">
                 <small class="col-xs-5 glyphicon-object-align-bottom">{% trans %}app.vat.included{% endtrans %}</small>

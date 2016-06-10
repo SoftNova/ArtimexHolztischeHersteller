@@ -4,7 +4,7 @@
     <div class="container imageOver">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
             <div class="row">
-                <div id="loadImageDiv" data-path="{{ path ('_getPrimaryImageByMaterial') }}">
+                <div id="loadImageDiv" >
                     <a class="example-image-link"
                        href="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('productDisplayLightbox') }}"
                        data-lightbox="example-set" data-title="">
@@ -50,6 +50,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript">var locale= '{{ app.request.locale }}';</script>
     <script src="{{ asset('bundles/app/js/tablePriceCalculationHandler.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverDisplayMaterialImage.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverProductName.js') }}" type="text/javascript"></script>

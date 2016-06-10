@@ -29,6 +29,9 @@ class TableSupportService
         $this->tableDAO = $td;
     }
 
+    public function findProfile($profileID){
+        return $this->legDAO->find($profileID);
+    }
     public function calculateSupportPrice($height, $profileID, $tableItem){
         /** @var TableLegProfile $profile */
         /** @var TableHeight $heightItem */

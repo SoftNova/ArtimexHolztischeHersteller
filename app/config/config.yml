@@ -158,7 +158,6 @@ liip_imagine:
              filters:
                 thumbnail: { size: [256, 256], mode: inset }
 
-
 lunetics_locale:
     allowed_locales: "%locales%"
     switcher:
@@ -172,8 +171,6 @@ lunetics_locale:
         - session
         - cookie
         - browser
-
-
 
 sonata_formatter:
     formatters:

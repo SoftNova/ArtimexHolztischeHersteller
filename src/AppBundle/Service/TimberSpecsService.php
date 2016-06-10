@@ -49,4 +49,11 @@ class TimberSpecsService
             return $totalPrice;
         }
     }
+    public function getTimberQualityById ($qId){
+        return $this->timberQualityDAO->find($qId);
+    }
+    
+    public function getTimberTemperingByid($tId){
+        return $this->timberTemperingDAO->find($tId);
+    }
 }

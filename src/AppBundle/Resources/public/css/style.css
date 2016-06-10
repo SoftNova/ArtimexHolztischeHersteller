@@ -1078,10 +1078,10 @@ hr.style-seven:before { /* Not really supposed to work, but does */
 
 .ajax-loader {
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    left: 30px;
+    top: 30px;
+    right: 30px;
+    bottom: 30px;
     margin: auto; /* presto! */
     opacity: 0.9;
     filter: alpha(opacity=90);

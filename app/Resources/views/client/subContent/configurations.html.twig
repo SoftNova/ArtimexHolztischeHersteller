@@ -40,7 +40,7 @@
             {% for column in row %}
                 <div class="col-sm-{{ loop.index==row|length ? (4-loop.index)*4 : 4 }} grey-zone">
                     <label class="radio-inline grey-zone">
-                        <input type="radio" name="profRadio"
+                        <input type="radio" name="profRadio" data-name="{{ column.profile }}"
                                value="{{ column.id }}" {{ (checked) ? "checked='checked'" : '' }} {% set checked = false %}>
                         <span>{{ column.profile }}</span>
                     </label>

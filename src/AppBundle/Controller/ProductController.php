@@ -6,6 +6,8 @@ use AppBundle\Entity\TableImage;
 use AppBundle\Entity\TableMaterial;
 use AppBundle\Entity\TablePrimaryMaterial;
 use AppBundle\Utils\Utils;
+use AppBundle\Validator\SpecsValidator;
+use AppBundle\Validator\SupportValidator;
 use AppBundle\Validator\SurfaceValidator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -132,7 +134,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/ajax/", name="_calculatePrice_ajax")
+     * @Route("/{_locale}/ajax/", name="_calculatePrice_ajax", options={"expose"=true})
      */
     public function calculatePriceAjax(){
         $request = $this->get('request');
@@ -155,14 +157,16 @@ class ProductController extends Controller
             $quality= $request->get('quality');
             $tempering= $request->get('tempering');
             $code = $request->get('code');
-
-
-            $errors = $this->validateSurface($material, $length, $drawerLength, $extLength, $width, $lang);
-
-            if (!empty($errors->getValues())){
-                return new \Symfony\Component\HttpFoundation\Response(json_encode(array('error'=>$errors->first())));
-            }
             $tableItem = $tableService->findByCode($code, $lang);
+
+            $errors= array();
+            $errors= array_merge($errors,$this->validateSurface($material, $length, $drawerLength, $extLength, $width)->toArray());
+            $errors= array_merge($errors,$this->validateSupport($height, $profile, $tableItem->getProfiles())->toArray());
+            $errors= array_merge($errors,$this->validateSpecs($quality, $tempering)->toArray());
+
+            if (!empty($errors)){
+                return new \Symfony\Component\HttpFoundation\Response(json_encode(array('error'=>end($errors))));
+            }
 
             $surfacePrice = $surfaceService->calculateSurface($length, $width, $material);
             if ($surfacePrice == false){
@@ -191,7 +195,10 @@ class ProductController extends Controller
         return new \Symfony\Component\HttpFoundation\Response('Invalid request!, 400');
     }
 
-    /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial") */
+    private computePrice(){
+    
+}
+    /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial", options={"expose"=true}) */
     public function getPrImageByMat(){
         $request = $this->get('request');
         $tableService=$this->get('table_service');
@@ -234,7 +241,7 @@ class ProductController extends Controller
         return $oCart = $this->get('request')->getSession()->get('cart');
     }
 
-    private function validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth, $lang){
+    private function validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth){
         $errors = new ArrayCollection();
         $lengthObject = $this->get('surface_service')->getLength();
         $widthObject = $this->get('surface_service')->getWidth();
@@ -242,6 +249,23 @@ class ProductController extends Controller
         $result = SurfaceValidator::validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth, $lengthObject, $widthObject);
         if (!is_null($result)) $errors->add($result);
         return $errors;
+    }
 
+    public function validateSupport($height, $profileId, $profileObjectsArray){
+        $errors = new ArrayCollection();
+        $heightObject = $this->get('surface_service')->getHeight();
+        $result = SupportValidator::validateSupport($height, $profileId, $heightObject, $profileObjectsArray);
+        if (!is_null($result)) $errors->add($result);
+        return $errors;
+
+    }
+
+    public function validateSpecs($qualityId, $temperingId){
+        $errors = new ArrayCollection();
+        $quality = $this->get('timber_service')->getTimberQualityById($qualityId);
+        $tempering = $this->get('timber_service')->getTimberTemperingByid($temperingId);
+        $result = SpecsValidator::validateSpecs($quality, $tempering);
+        if (!is_null($result)) $errors->add($result);
+        return $errors;
     }
 }
