@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function indexAction()
     {
 
-        $oCart = $this->get('request')->getSession()->get('cart');
+        $oCart = $this->get('cart_service')->getCart();
         return $this->render('client/homepage.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
             'oCart'=>$oCart

@@ -30,6 +30,8 @@ services:
     article_service:
       class: AppBundle\Service\ArticleService
       arguments: ["@product_repository","@request_stack"]
+      scope: request
+
 
 
     height_repository:
@@ -88,7 +90,7 @@ services:
     category_service:
       class: AppBundle\Service\CategoryService
       arguments: ["@category_repository", "@request_stack"]
-
+      scope: request
 
     configured_table_service:
             class: AppBundle\Service\ConfiguredTableService
@@ -101,6 +103,7 @@ services:
                 - '@table_service'
                 - '@price_handler_factory'
                 - '@translator.default'
+            scope: request
 
     cart_service:
         class: AppBundle\Service\CartService
@@ -108,13 +111,16 @@ services:
                 - '@configured_table_service'
                 - '@cart_vo_factory'
                 - '@request_stack'
+        scope: request
 
     price_handler_factory:
         class: AppBundle\Service\ConfiguredPriceHandlerFactory
         arguments:
             - '@request_stack'
+        scope: request
 
     cart_vo_factory:
         class: AppBundle\Service\CartVoFactory
         arguments:
             - '@request_stack'
+        scope: request

@@ -175,13 +175,13 @@ $('#addToCartButton').on('click',function(){
 
     var itemCode = $('#dynamicIdDiv').attr('data-code');
 
-    var dimensionsString = length + 'x' + width + 'x' + height;
-    var profileString = profileObj.attr('data-name');
-    var drawersString = drawers + " (" + drawerLength + "cm)";
-    var extString = extensions + " (" + extLength + "cm)";
-    var materialString = materialObj.attr('data-name');
-    var qualityString = qualityObj.attr('data-name');
-    var temperingString = temperingObj.attr('data-name');
+    var dimensionsString = dimensionsLabel + length + 'x' + width + 'x' + height;
+    var profileString =profileLabel+ profileObj.attr('data-name');
+    var drawersString = (drawers>0) ? drawerLabel + drawers + " (" + drawerLength + "cm)" : null;
+    var extString = (extensions>0) ? extLabel + extensions +" (" + extLength + "cm)":null;
+    var materialString =materialLabel+ materialObj.attr('data-name');
+    var qualityString = qualityLabel+ qualityObj.attr('data-name');
+    var temperingString = temperingLabel+ temperingObj.attr('data-name');
 
     var ajaxData = {
         length: length,

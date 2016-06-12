@@ -28,7 +28,7 @@ class Cart
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection(CartItem)
      */
     public function getCartItems()
     {
@@ -86,7 +86,11 @@ class Cart
         $this->cartItems->add($item);
         $this->computeCartTotals();
     }
-
+    public function removeItem(CartItem $cartItem)
+    {
+        $this->cartItems->removeElement($cartItem);
+        $this->computeCartTotals();
+    }
     private function computeCartTotals(){
         $cartTotalQuantity=0;
         $cartTotalPrice=0;
@@ -116,5 +120,7 @@ class Cart
     {
         $this->totalQuantity = $totalQuantity;
     }
+
+    
 
 }

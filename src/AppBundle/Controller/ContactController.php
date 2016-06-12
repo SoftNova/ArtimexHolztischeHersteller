@@ -21,7 +21,7 @@ class ContactController extends Controller
     public function indexAction(Request $request)
     {
 
-        $oCart = $this->get('request')->getSession()->get('cart');
+        $oCart = $this->get('cart_service')->getCart();
         // replace this example code with whatever you need
         return $this->render('client/contact.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),

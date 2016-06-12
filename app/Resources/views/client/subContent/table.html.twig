@@ -54,6 +54,15 @@
         var locale = '{{ app.request.locale }}';
         var cartTrs = '{{ 'app.cart' | trans }}';
         var currencyTrs = '{{ 'app.currency'|trans }}';
+
+        var dimensionsLabel='{{  'app.dimensions' |trans }}';
+        var profileLabel= '{% trans %} app.profile{% endtrans %}';
+        var extLabel = '{% trans %} app.extensions{% endtrans %}';
+        var drawerLabel = '{% trans %} app.drawer.attribute{% endtrans %}';
+        var materialLabel = '{% trans %} app.wood.selection {% endtrans %}';
+        var qualityLabel = '{% trans %} app.quality {% endtrans %}';
+        var temperingLabel = '{% trans %} app.timber.tempering {% endtrans %}';
+
     </script>
     <script src="{{ asset('bundles/app/js/tablePriceCalculationHandler.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverDisplayMaterialImage.js') }}" type="text/javascript"></script>

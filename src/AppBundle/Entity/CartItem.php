@@ -11,6 +11,8 @@ namespace AppBundle\Entity;
 
 class CartItem
 {
+    protected $uniqueItemCode;
+
     protected $itemName;
 
     protected $itemCode;
@@ -31,6 +33,7 @@ class CartItem
         return $this->itemName;
     }
 
+
     /**
      * @param mixed $itemName
      */
@@ -38,6 +41,23 @@ class CartItem
     {
         $this->itemName = $itemName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUniqueItemCode()
+    {
+        return $this->uniqueItemCode;
+    }
+
+    /**
+     * @param mixed $uniqueItemCode
+     */
+    public function setUniqueItemCode($uniqueItemCode)
+    {
+        $this->uniqueItemCode = $uniqueItemCode;
+    }
+
 
     /**
      * @return mixed
@@ -148,5 +168,12 @@ class CartItem
         return true;
     }
 
+    public function getTotalPrice(){
+        $itemTotalCost=0;
+        $rawStringIntegerPriceArray=array_reverse(explode(',',($this->getItemPrice())));
+        $numeralPrice = (int)preg_replace('#[^0-9]+#', '', end($rawStringIntegerPriceArray));
+        $itemTotalCost = ($numeralPrice*$this->getItemQuantity())+ $itemTotalCost;
+        return $itemTotalCost.',00';
+    }
 
 }
