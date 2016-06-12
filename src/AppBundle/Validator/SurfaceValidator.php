@@ -2,6 +2,8 @@
 namespace AppBundle\Validator;
 use AppBundle\Entity\TableLength;
 use AppBundle\Entity\TableWidth;
+use AppBundle\ValueObject\ConfiguredTablePriceVO;
+
 /**
  * Created by PhpStorm.
  * User: cvisan
@@ -10,22 +12,23 @@ use AppBundle\Entity\TableWidth;
  */
 class SurfaceValidator
 {
-    public static function validateSurface($material, $tableLength, $drawerLength, $extLength, $tableWidth, TableLength $lengthObject, TableWidth $widthObject){
+    public static function validateSurface(ConfiguredTablePriceVO $tableConfigs, $material, TableLength $lengthObject, TableWidth $widthObject)
+    {
         $message=null;
         if (is_null($material)){
             $message='Corrupted data';
         }
-        if ($tableLength < $lengthObject->getLengthLowerBound() || $tableLength > $lengthObject->getLengthUpperBound()) {
+        if ($tableConfigs->getLength() < $lengthObject->getLengthLowerBound() || $tableConfigs->getLength() > $lengthObject->getLengthUpperBound()) {
             $message = 'Corrupted data';
         }
-        if ($tableWidth < $widthObject->getWidthLowerBound() || $tableWidth > $widthObject->getWidthUpperBound()) {
+        if ($tableConfigs->getWidth() < $widthObject->getWidthLowerBound() || $tableConfigs->getWidth() > $widthObject->getWidthUpperBound()) {
             $message = 'Corrupted data';
         }
-        $drawerLength = ($drawerLength==='') ? null : $drawerLength;
+        $drawerLength = ($tableConfigs->getDrawerLength() ==='') ? null : $tableConfigs->getDrawerLength();
         if (!is_null($drawerLength) && $drawerLength < $lengthObject->getDrawerLowerBound() || $drawerLength > $lengthObject->getDrawerUpperBound()){
             $message = 'Corrupted data';
         }
-        $extLength = ($extLength==='') ? null : $extLength;
+        $extLength = ($tableConfigs->getExtLength()==='') ? null : $tableConfigs->getExtLength();
         if (!is_null($extLength) && $extLength < $lengthObject->getExtLowerBound() || $extLength > $lengthObject->getExtUpperBound()){
             $message = 'Corrupted data';
         }

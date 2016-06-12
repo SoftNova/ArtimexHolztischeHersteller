@@ -243,7 +243,7 @@ class Table
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection(TableImage)
      */
     public function getImages()
     {

@@ -10,19 +10,20 @@ namespace AppBundle\Validator;
 
 
 use AppBundle\Entity\TableHeight;
+use AppBundle\ValueObject\ConfiguredTablePriceVO;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class SupportValidator
 {
-    public static function validateSupport($height, $profileId, TableHeight $heightObject, $profilesArray)
+    public static function validateSupport(ConfiguredTablePriceVO $tableConfigs, TableHeight $heightObject, $profilesArray)
     {
         $message = null;
-        if ($height < $heightObject->getHeightLowerBound() || $height > $heightObject->getHeightUpperBound()) {
+        if ($tableConfigs->getHeight() < $heightObject->getHeightLowerBound() || $tableConfigs->getHeight() > $heightObject->getHeightUpperBound()) {
             $message = 'Corrupted data';
         }
-        if (!is_null($profileId)) {
+        if (!is_null($tableConfigs->getProfile())) {
             $profileIds = new ArrayCollection(array_map(function($p){ return $p->getId();}, $profilesArray->getValues()));
-            if (!$profileIds->contains(intval($profileId))) {
+            if (!$profileIds->contains(intval($tableConfigs->getProfile()))) {
                 $message = 'Corrupted data';
             }
         }

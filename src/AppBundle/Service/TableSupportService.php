@@ -15,6 +15,7 @@ use AppBundle\Entity\TableLegProfile;
 use AppBundle\Repository\TableDAO;
 use AppBundle\Repository\TableHeightDAO;
 use AppBundle\Repository\TableLegProfileDAO;
+use AppBundle\ValueObject\ConfiguredTablePriceVO;
 
 class TableSupportService
 {
@@ -30,16 +31,16 @@ class TableSupportService
     }
 
     public function findProfile($profileID){
-        return $this->legDAO->find($profileID);
-    }
-    public function calculateSupportPrice($height, $profileID, $tableItem){
+    return $this->legDAO->find($profileID);
+}
+    public function calculateSupportPrice(ConfiguredTablePriceVO $tableConfigs, $tableItem){
         /** @var TableLegProfile $profile */
         /** @var TableHeight $heightItem */
         /** @var TableLegProfile $profile */
         /** @var Table $tableItem */
-        $profile = ($profileID > 0) ? $this->legDAO->find($profileID) : null;
+        $profile = ($tableConfigs->getProfile() > 0) ? $this->legDAO->find($tableConfigs->getProfile()) : null;
         $heightItem = $this->heightDAO->findAll()[0];
-        $procentualVariance=$this->determineTotalVariance($height, $heightItem);
+        $procentualVariance=$this->determineTotalVariance($tableConfigs->getHeight(), $heightItem);
         $tableLegBaseCost = $tableItem->getLegAttribute()->getBasePrice();
         $preHeightCost = is_null($profile) ? $tableLegBaseCost : $profile->getVariance() + $tableLegBaseCost;
 

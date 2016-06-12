@@ -13,5 +13,7 @@ use Doctrine\ORM\EntityRepository;
 
 class TableLengthDAO extends EntityRepository
 {
-
+    public function getUniqueLengthObject(){
+        return (end($this->findAll()));
+    }
 }

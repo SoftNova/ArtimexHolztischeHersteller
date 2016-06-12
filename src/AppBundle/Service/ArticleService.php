@@ -10,13 +10,16 @@ namespace AppBundle\Service;
 
 
 use AppBundle\Repository\ProductDAO;
+use Symfony\Component\HttpFoundation\RequestStack;
 
-class ProductService
+class ArticleService
 {
 
     private $productDAO;
-    public function __construct(ProductDAO $repo)
+    private $request;
+    public function __construct(ProductDAO $repo, RequestStack $requestStack)
     {
+        $this->request=$requestStack->getCurrentRequest();
         $this->productDAO = $repo;
     }
 
@@ -24,10 +27,12 @@ class ProductService
         return $this->productDAO->findAll();
     }
     
-    public function getAllByLang($lang){
+    public function getAllByLang(){
+        $lang=$this->request->getLocale();
         return $this->productDAO->findAllByLang($lang);
     }
-    public function findByCode($code, $lang){
+    public function findByCode($code){
+        $lang=$this->request->getLocale();
         return $this->productDAO->findByCode($code, $lang);
     }
 

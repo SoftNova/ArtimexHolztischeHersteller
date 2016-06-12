@@ -13,6 +13,7 @@ use AppBundle\Entity\TableMaterialTempering;
 use AppBundle\Entity\TableTimberQuality;
 use AppBundle\Repository\TableTimberQualityDAO;
 use AppBundle\Repository\TimberTemperingDAO;
+use AppBundle\ValueObject\ConfiguredTablePriceVO;
 
 class TimberSpecsService
 {
@@ -33,18 +34,22 @@ class TimberSpecsService
         return $this->timberTemperingDAO->findAllByLang($lang);
     }
 
-    public function applyQualityVariance($totalPrice, $qualityID){
-        /** @var TableTimberQuality $qualityType */
-        $qualityType = $this->timberQualityDAO->find($qualityID);
-        $totalPrice = $totalPrice + ($qualityType->getCostIncrease()/100 * $totalPrice);
-        return $totalPrice;
+    public function applyQualityVariance($totalPrice, ConfiguredTablePriceVO $tableConfigs){
+        if (is_null($tableConfigs->getQuality())){
+            return $totalPrice;
+        }else {
+            /** @var TableTimberQuality $qualityType */
+            $qualityType = $this->timberQualityDAO->find($tableConfigs->getQuality());
+            $totalPrice = $totalPrice + ($qualityType->getCostIncrease() / 100 * $totalPrice);
+            return $totalPrice;
+        }
     }
-    public function applyTemperingVariance($totalPrice, $temperingID){
-        if (is_null($temperingID)){
+    public function applyTemperingVariance($totalPrice, ConfiguredTablePriceVO $tableConfigs){
+        if (is_null($tableConfigs->getTempering())){
             return $totalPrice;
         }else{
             /** @var TableMaterialTempering $temperingType */
-            $temperingType = $this->timberTemperingDAO->find($temperingID);
+            $temperingType = $this->timberTemperingDAO->find($tableConfigs->getTempering());
             $totalPrice = $totalPrice + ($temperingType->getCostIncrease()/100 * $totalPrice);
             return $totalPrice;
         }

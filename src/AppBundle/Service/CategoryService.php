@@ -11,17 +11,21 @@ namespace AppBundle\Service;
 
 use AppBundle\Repository\TableCategoryDAO;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class CategoryService
 {
     private $categoryDAO;
+    private $request;
 
-    public function __construct(TableCategoryDAO $cDAO)
+    public function __construct(TableCategoryDAO $cDAO, RequestStack $request)
     {
+        $this->request = $request->getCurrentRequest();
         $this->categoryDAO=$cDAO;
     }
 
-    public function findAllByLang($lang){
+    public function findAllByLang(){
+        $lang = $this->request->getLocale();
         $aCategories = new ArrayCollection($this->categoryDAO->findAllByLang($lang));
         foreach ($aCategories as $cat){
             if (is_null($cat->getName())){

@@ -18,6 +18,7 @@ use AppBundle\Repository\TableLengthDAO;
 use AppBundle\Repository\TableMaterialDAO;
 use AppBundle\Repository\TablePrimaryMaterialDAO;
 use AppBundle\Repository\TableWidthDAO;
+use AppBundle\ValueObject\ConfiguredTablePriceVO;
 
 class SurfaceService
 {
@@ -55,7 +56,7 @@ class SurfaceService
         return $this->materialDAO->findAllByLang($lang);
     }
 
-    /** @var TablePrimaryMaterial */
+    /** @return TablePrimaryMaterial */
     public function getPrimaryMaterial(){
         return ($this->primalMaterialDAO->findAll() ? $this->primalMaterialDAO->findAll()[0]
             : null);
@@ -64,19 +65,18 @@ class SurfaceService
         return $this->materialDAO->find($material);
     }
 
-    public function calculateSurface($length, $width, $materialID){
+    public function calculateSurface(ConfiguredTablePriceVO $tableConfigs){
         /**
          * @var TablePrimaryMaterial $primaryMaterial
          * @var TableMaterial $material
          */
 
-        $material = $this->materialDAO->find($materialID);
+        $material = $this->materialDAO->find($tableConfigs->getMaterial());
         $primaryMaterial = $this->primalMaterialDAO->findAll() ? $this->primalMaterialDAO->findAll()[0]
             : null;
         $primaryMaterialPrice = $primaryMaterial->getPricePerSquareMeter();
         $materialPrice = ($primaryMaterialPrice + (($material->getPercentage()/100) * $primaryMaterialPrice));
-        $surface = ($length * $width) / 10000;
-        $totalSurfaceCost=0;
+        $surface = ($tableConfigs->getLength() * $tableConfigs->getWidth()) / 10000;
         if ($surface >= 3){
             return false;
         }
@@ -91,29 +91,41 @@ class SurfaceService
         return $totalSurfaceCost;
     }
     
-    public function calculateDrawerSurface($drawerLength, $tableWidth, $table, $nrOfDrawersSelected){
+    public function calculateDrawerSurface(ConfiguredTablePriceVO $tableConfigs, $table){
         /** @var Table $table */
-        $surface = ($drawerLength * $tableWidth) / 10000;
-        $totalDrawerCost = ($surface * $table->getDrawerAttribute()->getBasePrice()) * $nrOfDrawersSelected;
+        if (is_null($tableConfigs->getDrawers())){
+            return 0;
+        }
+
+        $surface = ($tableConfigs->getDrawerLength() * $tableConfigs->getWidth()) / 10000;
+        $totalDrawerCost = ($surface * $table->getDrawerAttribute()->getBasePrice()) * $tableConfigs->getDrawers();
 
         return $totalDrawerCost;
     }
 
-    public function calculateExtensionSurface($length, $width, $materialID, $nrOfExtensions){
+    public function calculateExtensionSurface(ConfiguredTablePriceVO $tableConfigs){
         /**
          * @var TablePrimaryMaterial $primaryMaterial
          * @var TableMaterial $material
          */
 
-        $material = $this->materialDAO->find($materialID);
+        if (is_null($tableConfigs->getExtensions())){
+            return 0;
+        }
+        $material = $this->materialDAO->find($tableConfigs->getMaterial());
         $primaryMaterial = $this->primalMaterialDAO->findAll() ? $this->primalMaterialDAO->findAll()[0]
             : null;
         $primaryMaterialPrice = $primaryMaterial->getPricePerSquareMeter();
         $materialPrice = ($primaryMaterialPrice + (($material->getPercentage()/100) * $primaryMaterialPrice));
-        $surface = ($length * $width) / 10000;
-        $totalSurfaceCost=$surface*$materialPrice * $nrOfExtensions;
+        $surface = ($tableConfigs->getExtLength() * $tableConfigs->getWidth()) / 10000;
+        $totalSurfaceCost=$surface*$materialPrice * $tableConfigs->getExtensions();
 
 
         return $totalSurfaceCost;
+    }
+
+    public function findTableSpecificMaterials($lang, $tableId)
+    {
+        return $this->materialDAO->findTableSpecificMaterials($lang, $tableId);
     }
 }

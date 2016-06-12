@@ -28,8 +28,8 @@ services:
       arguments: [AppBundle\Entity\Product]
 
     article_service:
-      class: AppBundle\Service\ProductService
-      arguments: ["@product_repository"]
+      class: AppBundle\Service\ArticleService
+      arguments: ["@product_repository","@request_stack"]
 
 
     height_repository:
@@ -87,7 +87,34 @@ services:
 
     category_service:
       class: AppBundle\Service\CategoryService
-      arguments: ["@category_repository"]
+      arguments: ["@category_repository", "@request_stack"]
 
 
+    configured_table_service:
+            class: AppBundle\Service\ConfiguredTableService
+            arguments:
+                - '@surface_service'
+                - '@table_support_service'
+                - '@timber_service'
+                - '@liip_imagine.controller'
+                - '@request_stack'
+                - '@table_service'
+                - '@price_handler_factory'
+                - '@translator.default'
 
+    cart_service:
+        class: AppBundle\Service\CartService
+        arguments:
+                - '@configured_table_service'
+                - '@cart_vo_factory'
+                - '@request_stack'
+
+    price_handler_factory:
+        class: AppBundle\Service\ConfiguredPriceHandlerFactory
+        arguments:
+            - '@request_stack'
+
+    cart_vo_factory:
+        class: AppBundle\Service\CartVoFactory
+        arguments:
+            - '@request_stack'
