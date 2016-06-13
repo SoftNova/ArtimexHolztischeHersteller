@@ -55,18 +55,18 @@
     <div class="row">
         <hr>
     </div>
-    <div class="row">
+    <div class="row" id="distDiv">
         <p><strong>{% trans %} app.distance.to.sides {% endtrans %}</strong></p>
         <div class="form-inline">
             <div class="col-sm-6 grey-zone">
                 <label class="radio-inline">
-                    <input type="radio" name="distRadio" checked="checked">
+                    <input type="radio" name="distRadio" value="1" checked="checked">
                     First picture
                 </label>
             </div>
             <div class="col-sm-6 grey-zone">
                 <label class="radio-inline">
-                    <input type="radio" name="distRadio">
+                    <input type="radio" name="distRadio" value="2">
                     Second picture
                 </label>
             </div>
@@ -146,7 +146,7 @@
                 {% for column in oMaterial %}
                     <div class="col-sm-{{ loop.index==oMaterial|length ? (4-loop.index)*4 : 4 }} grey-zone">
                         <label class="radio-inline materialRadioMouseOver" title="">
-                            <input type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}" data-imgPath="{{ column.image.getCachePath }}"
+                            <input class="matRadio" type="radio" value="{{ column.id }}" data-is-tempered="{{ column.isTempered }}" data-imgPath="{{ column.image.getCachePath }}"
                                    data-name="{{ column.name }}"
                                    name="matRadio" {{ column.id==primaryMaterial ? "checked='checked'" : '' }}>
                             <p>{{ column.name }}</p>

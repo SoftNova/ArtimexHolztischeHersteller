@@ -1,225 +1,45 @@
-{% extends 'base.html.twig' %}
-   {% block content %}
-       {% include ':client/statics:header.html.twig' %}
+{% block head %}
+    <!-- Header area -->
+    {% include 'client/statics/header.html.twig' %}
+    <!-- End of header area -->
+{% endblock %}
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{% trans %} app.shopping.cart {% endtrans %}</h2>
 
-       <div class="product-big-title-area">
-           <div class="container">
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="product-bit-title text-center">
-                           <h2>{% trans %} app.shopping.cart {% endtrans %}</h2>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div> <!-- End Page title area -->
-
-
-       <div class="single-product-area">
-           <div class="zigzag-bottom"></div>
-           <div class="container">
-               <div class="row">
-                   <div class="col-md-4">
-                       some stuff should go here
-                   </div>
-
-                   <div class="col-md-8">
-                       <div class="product-content-right">
-                           <div class="woocommerce">
-                               <form method="post" action="#">
-                                   <table cellspacing="0" class="shop_table cart">
-                                       <thead>
-                                       <tr>
-                                           <th class="product-remove">&nbsp;</th>
-                                           <th class="product-thumbnail">&nbsp;</th>
-                                           <th class="product-name">app.item</th>
-                                           <th class="product-price">app.price</th>
-                                           <th class="product-quantity">app.quantity</th>
-                                           <th class="product-subtotal">app.entry.total</th>
-                                       </tr>
-                                       </thead>
-                                       <tbody>
-                                       {% if oCart is not null %}
-                                           {% for cartItem in oCart.cartItems %}
-                                               <tr class="cart_item">
-                                                   <td class="product-remove">
-                                                       <a onclick="removeMe(this)" title="Remove this item" data-code="{{ cartItem.uniqueItemCode }}"
-                                                          class="remove-item-from-cart" href="#">×</a>
-                                                   </td>
-
-                                                   <td class="product-thumbnail">
-                                                       <a href="#"><img width="145" height="145" alt="poster_1_up"
-                                                                        class="shop_thumbnail"
-                                                                        src={{ cartItem.itemImg | imagine_filter('thumbnail') }}></a>
-                                                   </td>
-
-                                                   <td class="product-name">
-                                                       <a href="#">{{ cartItem.itemName }}
-                                                           {% for spec in cartItem.itemSpecs %}
-                                                               <div class="cart-description">
-                                                                   <p>{{ spec }}</p>
-                                                               </div>
-                                                           {% endfor %}
-                                                       </a>
-                                                   </td>
-
-                                                   <td class="product-price">
-                                                       <span class="amount">{{ cartItem.itemPrice }}</span>
-                                                   </td>
-
-                                                   <td class="product-quantity">
-                                                       <div class="quantity buttons_added">
-                                                           <input type="button" class="minus" value="-">
-                                                           <input type="number" size="4" class="input-text qty text"
-                                                                  title="Qty" value={{ cartItem.itemQuantity }} min="0"
-                                                                  step="1">
-                                                           <input type="button" class="plus" value="+">
-                                                       </div>
-                                                   </td>
-
-                                                   <td class="product-subtotal">
-                                                       <span class="amount">{% trans %}
-                                                           app.currency{% endtrans %}{{ cartItem.totalPrice }}</span>
-                                                   </td>
-                                               </tr>
-                                           {% endfor %}
-                                           <tr>
-                                               <td class="actions" colspan="6">
-                                                   <input type="submit"
-                                                          value={% trans %}app.continue.shipping{% endtrans %}
-                                                          name="apply_coupon" class="button">
-                                                   <input type="submit"
-                                                          value={% trans %}app.update.cart{% endtrans %}
-                                                          name="update_cart" class="button">
-                                                   <input type="submit"
-                                                          value={% trans %}app.proceed.checkout{% endtrans %}
-                                                          name="proceed"
-                                                          class="checkout-button button alt wc-forward">
-                                               </td>
-                                           </tr>
-                                       {% endif %}
-                                       </tbody>
-                                   </table>
-                               </form>
-
-                               <div class="cart-collaterals">
-
-
-                                   <div class="cross-sells">
-                                       <h2>You may be interested in...</h2>
-                                       <ul class="products">
-                                           <li class="product">
-                                               <a href="single-product.html">
-                                                   <img width="325" height="325" alt="T_4_front"
-                                                        class="attachment-shop_catalog wp-post-image"
-                                                        src="img/product-2.jpg">
-                                                   <h3>Ship Your Idea</h3>
-                                                   <span class="price"><span class="amount">£20.00</span></span>
-                                               </a>
-
-                                               <a class="add_to_cart_button" data-quantity="1" data-product_sku=""
-                                                  data-product_id="22" rel="nofollow" href="single-product.html">Select
-                                                   options</a>
-                                           </li>
-
-                                           <li class="product">
-                                               <a href="single-product.html">
-                                                   <img width="325" height="325" alt="T_4_front"
-                                                        class="attachment-shop_catalog wp-post-image"
-                                                        src="img/product-4.jpg">
-                                                   <h3>Ship Your Idea</h3>
-                                                   <span class="price"><span class="amount">£20.00</span></span>
-                                               </a>
-
-                                               <a class="add_to_cart_button" data-quantity="1" data-product_sku=""
-                                                  data-product_id="22" rel="nofollow" href="single-product.html">Select
-                                                   options</a>
-                                           </li>
-                                       </ul>
-                                   </div>
-
-
-                                   <div class="cart_totals ">
-                                       <h2>Cart Totals</h2>
-
-                                       <table cellspacing="0">
-                                           <tbody>
-                                           <tr class="cart-subtotal">
-                                               <th>Cart Subtotal</th>
-                                               <td><span class="amount">£15.00</span></td>
-                                           </tr>
-
-                                           <tr class="shipping">
-                                               <th>Shipping and Handling</th>
-                                               <td>Free Shipping</td>
-                                           </tr>
-
-                                           <tr class="order-total">
-                                               <th>Order Total</th>
-                                               <td><strong><span class="amount">£15.00</span></strong></td>
-                                           </tr>
-                                           </tbody>
-                                       </table>
-                                   </div>
-
-
-                                   <form method="post" action="#" class="shipping_calculator">
-                                       <h2><a class="shipping-calculator-button" data-toggle="collapse"
-                                              href="#calcalute-shipping-wrap" aria-expanded="false"
-                                              aria-controls="calcalute-shipping-wrap">Calculate Shipping</a></h2>
-
-                                       <section id="calcalute-shipping-wrap" class="shipping-calculator-form collapse">
-
-                                           <p class="form-row form-row-wide">
-                                               <select rel="calc_shipping_state" class="country_to_state"
-                                                       id="calc_shipping_country" name="calc_shipping_country">
-                                                   <option value="">Select a country…</option>
-                                                   <option value="WS">Western Samoa</option>
-                                                   <option value="YE">Yemen</option>
-                                                   <option value="ZM">Zambia</option>
-                                                   <option value="ZW">Zimbabwe</option>
-                                               </select>
-                                           </p>
-
-                                           <p class="form-row form-row-wide"><input type="text" id="calc_shipping_state"
-                                                                                    name="calc_shipping_state"
-                                                                                    placeholder="State / county"
-                                                                                    value="" class="input-text"></p>
-
-                                           <p class="form-row form-row-wide"><input type="text"
-                                                                                    id="calc_shipping_postcode"
-                                                                                    name="calc_shipping_postcode"
-                                                                                    placeholder="Postcode / Zip"
-                                                                                    value="" class="input-text"></p>
-
-
-                                           <p>
-                                               <button class="button" value="1" name="calc_shipping" type="submit">
-                                                   Update Totals
-                                               </button>
-                                           </p>
-
-                                       </section>
-                                   </form>
-
-
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-       {% block javascripts %}
-           <script type="text/javascript">
-               var locale = '{{ app.request.locale }}';
-               var cartTrs = '{{ 'app.cart' | trans }}';
-               var currencyTrs = '{{ 'app.currency'|trans }}';
-           </script>
-           <script src="{{ asset('bundles/app/js/removeFromCart.js') }}" type="text/javascript"></script>
-
-       {% endblock %}
-       {% include ':client/statics:footer.html.twig' %}
-
-
-   {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="" id="cartDynamicContent">
+                    {% include ':client:cartItems.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <!-- Start of footer area -->
+    {% include '/client/statics/footer.html.twig' %}
+    <!-- End of footer area -->
+{% endblock %}
+{% block javascripts %}
+   <script type="text/javascript">
+       var locale = '{{ app.request.locale }}';
+       var cartTrs = '{{ 'app.cart' | trans }}';
+       var currencyTrs = '{{ 'app.currency'|trans }}';
+       var imgPath = '{{ asset('bundles/app/img/loading.gif') }}';
+   </script>
+   <script src="{{ asset('bundles/app/js/cartScripts/removeFromCart.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('bundles/app/js/cartScripts/quantityModifier.js') }}" type="text/javascript"></script>
+{% endblock %}

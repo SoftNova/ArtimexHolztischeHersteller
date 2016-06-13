@@ -64,7 +64,11 @@
         var temperingLabel = '{% trans %} app.timber.tempering {% endtrans %}';
 
     </script>
+    <script type="text/javascript">
+        var imgPath = '{{ asset('bundles/app/img/loading.gif') }}';
+    </script>
     <script src="{{ asset('bundles/app/js/tablePriceCalculationHandler.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/cartScripts/addToCart.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverDisplayMaterialImage.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/mouseOverProductName.js') }}" type="text/javascript"></script>
 {% endblock %}

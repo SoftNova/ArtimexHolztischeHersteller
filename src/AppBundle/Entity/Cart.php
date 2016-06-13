@@ -48,7 +48,7 @@ class Cart
      */
     public function getTotalPrice()
     {
-        return $this->totalPrice;
+        return $this->totalPrice. ',00';
     }
 
     /**
@@ -79,19 +79,19 @@ class Cart
         foreach ($this->cartItems as $cartItem){
             if ($cartItem->equals($item)){
                 $cartItem->setItemQuantity($cartItem->getItemQuantity()+1);
-                $this->computeCartTotals();
+                $this->updateCart();
                 return;
             }
         }
         $this->cartItems->add($item);
-        $this->computeCartTotals();
+        $this->updateCart();
     }
     public function removeItem(CartItem $cartItem)
     {
         $this->cartItems->removeElement($cartItem);
-        $this->computeCartTotals();
+        $this->updateCart();
     }
-    private function computeCartTotals(){
+    public function updateCart(){
         $cartTotalQuantity=0;
         $cartTotalPrice=0;
 

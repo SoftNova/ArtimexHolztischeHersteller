@@ -20,6 +20,7 @@ class CartVO
     protected $materialString;
     protected $qualityString;
     protected $temperingString;
+    protected $distToSides;
 
     public function __construct(
         $dimensionsString,
@@ -28,7 +29,8 @@ class CartVO
         $extString,
         $materialString,
         $qualityString,
-        $temperingString
+        $temperingString,
+        $distToSides
     )
     {
         $this->dimensionsString = $dimensionsString;
@@ -38,6 +40,7 @@ class CartVO
         $this->materialString = $materialString;
         $this->qualityString = $qualityString;
         $this->temperingString = $temperingString;
+        $this->distToSides=$distToSides;
     }
 
     public static function createFromRequest(Request $request)
@@ -49,7 +52,8 @@ class CartVO
             $request->get('extString'),
             $request->get('materialString'),
             $request->get('qualityString'),
-            $request->get('temperingString')
+            $request->get('temperingString'),
+            $request->get('distanceToSides')
         );
     }
 
@@ -107,6 +111,22 @@ class CartVO
     public function getTemperingString()
     {
         return $this->temperingString;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDistToSides()
+    {
+        return $this->distToSides;
+    }
+
+    /**
+     * @param mixed $distToSides
+     */
+    public function setDistToSides($distToSides)
+    {
+        $this->distToSides = $distToSides;
     }
 
     

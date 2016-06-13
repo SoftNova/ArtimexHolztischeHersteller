@@ -135,28 +135,7 @@ class ProductController extends Controller
         return new JsonResponse('Invalid request!, 400');
     }
 
-    /**
-     * @Route("/{_locale}/addTableToCart/", name="_add_table_to_cart", options={"expose"=true})
-     */
-    public function addTableToCart()
-    {
-        $request = $this->get('request');
-        if ($request->isXmlHttpRequest()) {
-            $finalPrice =json_decode($this->get('configured_table_service')->calculatePrice()->getContent(),true)['success'];
-            $cart=$this->get('cart_service')->addItemToCartAjax($finalPrice);
-            $this->get('session')->set('cart', $cart);
-
-            return new JsonResponse(
-                [
-                    'success' => array(
-                        'price'=>$cart->getTotalPrice(),
-                        'quantity'=>$cart->getTotalQuantity()
-                    )
-                ]
-            );
-        }
-        return new JsonResponse('Invalid request!, 400');
-    }
+   
 
     /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial", options={"expose"=true}) */
     public function getPrImageByMat()

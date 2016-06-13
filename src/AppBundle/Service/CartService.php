@@ -48,6 +48,7 @@ class CartService
         if ($cartVo->getProfileString() !== "") $specsArray[] = $cartVo->getProfileString();
         if ($cartVo->getQualityString() !== "") $specsArray[] = $cartVo->getQualityString();
         if ($cartVo->getTemperingString() !== "") $specsArray[] = $cartVo->getTemperingString();
+        if ($cartVo->getDistToSides() !=="") $specsArray[] = $cartVo->getDistToSides();
 
         $cartItem = new CartItem();
         $cartItem->setUniqueItemCode(Utils::generateUniqueCartCode());
@@ -92,6 +93,28 @@ class CartService
                 $cart->removeItem($cartItem);
             }
         }
+        return $cart;
+    }
+
+      
+
+    public function modifyCartItemQuantity()
+    {
+
+        $cart = $this->getCart();
+        if (is_null($cart))
+            return null;
+        $code = $this->request->get('itemCode');
+        $newQuantity=$this->request->get('itemNewQuantity');
+        if (intval($newQuantity)<1){
+            return false;
+        }
+        foreach ($cart->getCartItems() as $cartItem) {
+            if ($cartItem->getUniqueItemCode() == $code) {
+                $cartItem->setItemQuantity(intval($newQuantity));
+            }
+        }
+        $cart->updateCart();
         return $cart;
     }
 
