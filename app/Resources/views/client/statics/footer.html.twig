@@ -10,7 +10,8 @@
                         <div class="footer-social">
                             <a href="{% trans %}app.fb{% endtrans %}" target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href="{% trans %}app.yt{% endtrans %}" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="{% trans %}app.pin{% endtrans %}" target="_blank"><i class="fa fa-pinterest"></i></a>
+                            <a href="{% trans %}app.pin{% endtrans %}" target="_blank"><i
+                                        class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -19,10 +20,10 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">{% trans %}app.information{% endtrans %} </h2>
                         <ul>
-                            <li><a href="{{path('_paymentinfo')}}">{% trans %}app.paymentinfo{% endtrans %}</a></li>
-                            <li><a href="{{path('_shippinginfo')}}">{% trans %}app.shippinginfo{% endtrans %}</a></li>
-                            <li><a href="{{path('_terms_conditions')}}">{% trans %}app.terms{% endtrans %}</a></li>
-                            <li><a href="{{path('_contact')}}">{% trans %}app.contact{% endtrans %}</a></li>
+                            <li><a href="{{ path('_paymentinfo') }}">{% trans %}app.paymentinfo{% endtrans %}</a></li>
+                            <li><a href="{{ path('_shippinginfo') }}">{% trans %}app.shippinginfo{% endtrans %}</a></li>
+                            <li><a href="{{ path('_terms_conditions') }}">{% trans %}app.terms{% endtrans %}</a></li>
+                            <li><a href="{{ path('_contact') }}">{% trans %}app.contact{% endtrans %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -32,7 +33,7 @@
                         <h2 class="footer-wid-title">Categories</h2>
                         <ul>
                             <li><a href="#">{% trans %}app.tables{% endtrans %}</a></li>
-                            <li><a href="#">{% trans %}app.accesories{%endtrans%}</a></li>
+                            <li><a href="#">{% trans %}app.accesories{% endtrans %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +41,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
                         <h2 class="footer-wid-title">{% trans %}app.contact{% endtrans %}</h2>
-                        <p>{{ 'app.contactdetails' | trans | nl2br  }}</p>
+                        <p>{{ 'app.contactdetails' | trans | nl2br }}</p>
 
                     </div>
                 </div>
@@ -53,7 +54,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; Copyright © 2016 Artimex Sport. All rights reserved. Coded with <i class="fa fa-heart"></i> by <a href="#" target="_blank">#</a></p>
+                        <p>&copy; Copyright © 2016 Artimex Sport. All rights reserved. Coded with <i
+                                    class="fa fa-heart"></i> by <a href="#" target="_blank">#</a></p>
                     </div>
                 </div>
 

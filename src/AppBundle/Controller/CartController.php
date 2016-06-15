@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\ValueObject\OrderVO;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -115,5 +116,21 @@ class CartController extends Controller
             );
         }
         return new JsonResponse('Invalid request!, 400');
+    }
+
+    /**
+     * @Route("/{_locale}/cart/summary", name="_cart_checkout_submit")
+     */
+    public function checkoutFormAction(){
+        $orderVO = new OrderVO();
+
+        $form = $this->createFormBuilder($orderVO)
+            ->add('fname', TextType::class)
+            ->add('lname', TextType::class)
+            ->add('phone', DateType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
+
+        return null;
     }
 }

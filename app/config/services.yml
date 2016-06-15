@@ -124,3 +124,9 @@ services:
         arguments:
             - '@request_stack'
         scope: request
+
+    order_factory:
+            class: AppBundle\Service\OrderFactory
+            arguments:
+                - '@request_stack'
+            scope: request

@@ -35,7 +35,7 @@ function modifyMe(caller) {
                 $('#cartDynamicContent').html(response.success.content);
             }
             if (response.failure) {
-                window.location.replace(Routing.generate('_homepage'));
+                window.location.replace(Routing.generate('_homepage', {'_locale':locale}));
                 throw response.error;
             }
         }

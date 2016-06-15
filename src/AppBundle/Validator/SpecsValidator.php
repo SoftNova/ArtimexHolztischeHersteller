@@ -11,13 +11,13 @@ namespace AppBundle\Validator;
 
 class SpecsValidator
 {
-    public static function validateSpecs($quality, $tempering){
+    public static function validateSpecs($quality, $tempering, $tableConfigs){
         $message=null;
 
         if (is_null($quality)){
             $message='Corrupted data';
         }
-        if (is_null($tempering)){
+        if (!is_null($tableConfigs->getTempering()) && is_null($tempering)){
             $message='Corrupted data';
         }
 

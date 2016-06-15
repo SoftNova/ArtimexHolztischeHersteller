@@ -3,6 +3,17 @@
  */
 $(document).ready(function () {
     renew();
+
+    var materialObj = $('input[name=matRadio]:checked', '#matDiv');
+    var materialTempering = materialObj.attr('data-is-tempered');
+    if (materialTempering=="1") {
+        $('#temperingDiv').effect('clip');
+        $('#temperingDivHr').effect('clip');
+    }
+    else {
+        $('#temperingDiv').effect('slide');
+        $('#temperingDivHr').effect('slide');
+    }
 });
 
 function showLoader() {
@@ -50,14 +61,31 @@ function renew() {
     $('#dynamicWood').text(materialObj.attr('data-name'));
     var materialID = materialObj.val();
 
+    var materialTempering = materialObj.attr('data-is-tempered');
+    if (materialTempering=="1"){
+        $('input[name=temperingRadio]').each(function(){
+            $(this).attr('disabled','disabled');
+        });
+
+    }else{
+        $('input[name=temperingRadio]').each(function(){
+            $(this).removeAttr('disabled');
+        });
+
+    }
     var qualityObj = $('input[name=qualityRadio]:checked', '#qualityDiv');
     $('#dynamicQuality').text(qualityObj.attr('data-name'));
     var quality = qualityObj.val();
 
     var temperingObj = $('input[name=temperingRadio]:checked', '#temperingDiv');
-    $('#dynamicTempering').text(temperingObj.attr('data-name'));
-    var tempering = temperingObj.val();
-
+    if (materialTempering==1){
+        $('#dynamicTempering').text(temperingTrans);
+        var tempering = undefined;
+    }
+    else{
+        $('#dynamicTempering').text(temperingObj.attr('data-name'));
+        var tempering = temperingObj.val();
+    }
     var itemCode = $('#dynamicIdDiv').attr('data-code');
     var ajaxData = {
         length: length,
@@ -99,7 +127,7 @@ function renew() {
                 errorSpan.show();
             }
             if (response.error) {
-                window.location.replace(Routing.generate('_homepage'));
+                window.location.replace(Routing.generate('_homepage', {'_locale': locale}));
                 throw response.error;
             }
         },
@@ -126,7 +154,20 @@ $('input[type=radio][name=matRadio]').change(function () {
 
 function renewWithImage() {
     var itemCode = $('#dynamicIdDiv').attr('data-code');
-    var material = $('input[name=matRadio]:checked', '#matDiv').val();
+
+    var materialObj = $('input[name=matRadio]:checked', '#matDiv');
+    var material = materialObj.val();
+
+
+    var materialTempering = materialObj.attr('data-is-tempered');
+    if (materialTempering=="1") {
+        $('#temperingDiv').effect('clip');
+        $('#temperingDivHr').effect('clip');
+    }
+    else {
+        $('#temperingDiv').effect('slide');
+        $('#temperingDivHr').effect('slide');
+    }
     var ajaxData = {
         itemCode: itemCode,
         material: material

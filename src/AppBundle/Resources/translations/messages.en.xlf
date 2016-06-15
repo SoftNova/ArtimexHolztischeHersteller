@@ -290,6 +290,184 @@
                 <source>app.cart</source>
                 <target>Cart</target>
             </trans-unit>
+            <trans-unit id="app.tempering.material.defined" xml:space="preserve">
+                <source>app.tempering.material.defined</source>
+                <target>Material defined</target>
+            </trans-unit>
+
+            <trans-unit id="app.table">
+                <source>app.table</source>
+                <target>Table</target>
+            </trans-unit>
+            <trans-unit id="app.material">
+                <source>app.material</source>
+                <target>Material</target>
+            </trans-unit>
+            <trans-unit id="app.materials">
+                <source>app.materials</source>
+                <target>Materials</target>
+            </trans-unit>
+            <trans-unit id="app.tempering">
+                <source>app.tempering</source>
+                <target>Tempering</target>
+            </trans-unit>
+            <trans-unit id="app.timber.quality">
+                <source>app.timber.quality</source>
+                <target>Timber quality</target>
+            </trans-unit>
+            <trans-unit id="app.primary.material">
+                <source>app.primary.material</source>
+                <target>Primary Material</target>
+            </trans-unit>
+            <trans-unit id="app.surface.width">
+                <source>app.surface.width</source>
+                <target>Width</target>
+            </trans-unit>
+            <trans-unit id="app.surface.length">
+                <source>app.surface.length</source>
+                <target>Length</target>
+            </trans-unit>
+            <trans-unit id="app.leg.height">
+                <source>app.leg.height</source>
+                <target>Height</target>
+            </trans-unit>
+            <trans-unit id="app.product">
+                <source>app.product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="app.drawer.attribute">
+                <source>app.drawer.attribute</source>
+                <target>Drawers</target>
+            </trans-unit>
+            <trans-unit id="app.leg.attribute">
+                <source>app.leg.attribute</source>
+                <target>Table legs</target>
+            </trans-unit>
+            <trans-unit id="app.table.images">
+                <source>app.table.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.product.images">
+                <source>app.product.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.tables">
+                <source>app.tables</source>
+                <target>Tables</target>
+            </trans-unit>
+            <trans-unit id="app.accesories">
+                <source>app.accesories</source>
+                <target>Accesories</target>
+            </trans-unit>
+            <trans-unit id="app.tables.rules">
+                <source>app.tables.rules</source>
+                <target>Table Rules</target>
+            </trans-unit>
+            <trans-unit id="app.articles">
+                <source>app.articles</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="app.language">
+                <source>app.language</source>
+                <target>Language</target>
+            </trans-unit>
+            <trans-unit id="app.currency">
+                <source>app.currency</source>
+                <target>£</target>
+            </trans-unit>
+            <trans-unit id="app.dimensions">
+                <source>app.dimensions</source>
+                <target>Dimensions(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.quality">
+                <source>app.quality</source>
+                <target>Timber quality:</target>
+            </trans-unit>
+            <trans-unit id="app.plank">
+                <source>app.plank</source>
+                <target>Plank(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.disk.thickness">
+                <source>app.disk.thickness</source>
+                <target>Disk thickness(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.wood.selection">
+                <source>app.wood.selection</source>
+                <target>Material:</target>
+            </trans-unit>
+            <trans-unit id="app.timber.tempering">
+                <source>app.timber.tempering</source>
+                <target>Tempering:</target>
+            </trans-unit>
+            <trans-unit id="app.profile">
+                <source>app.profile</source>
+                <target>Leg Profile(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.table.category">
+                <source>app.table.category</source>
+                <target>Table Categories</target>
+            </trans-unit>
+
+            <trans-unit id="app.input.first.name">
+                <source>app.input.first.name</source>
+                <target>First Name</target>
+            </trans-unit>
+            <trans-unit id="app.input.last.name">
+                <source>app.input.last.name</source>
+                <target>Last Name</target>
+            </trans-unit>
+            <trans-unit id="app.input.email">
+                <source>app.input.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="app.input.phone">
+                <source>app.input.phone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="app.input.message">
+                <source>app.input.message</source>
+                <target>Enter your massage for us here. We will get back to you within 2 business days.</target>
+            </trans-unit>
+            <trans-unit id="app.input.address.one">
+                <source>app.input.address.one</source>
+                <target>Address 1</target>
+            </trans-unit>
+            <trans-unit id="app.input.address.two">
+                <source>app.input.address.two</source>
+                <target>Address 2</target>
+            </trans-unit>
+            <trans-unit id="app.input.state">
+                <source>app.input.state</source>
+                <target>State/Province</target>
+            </trans-unit>
+            <trans-unit id="app.input.city">
+                <source>app.input.city</source>
+                <target>City</target>
+            </trans-unit>
+            <trans-unit id="app.input.company">
+                <source>app.input.company</source>
+                <target>Company</target>
+            </trans-unit>
+            <trans-unit id="app.input.company.reg.code">
+                <source>app.input.company.reg.code</source>
+                <target>Company Register Code</target>
+            </trans-unit>
+            <trans-unit id="app.input.postal.code">
+                <source>app.input.postal.code</source>
+                <target>Postal Code</target>
+            </trans-unit>
+            <trans-unit id="app.input.comments">
+                <source>app.input.comments</source>
+                <target>Any special or specific requests?</target>
+            </trans-unit>
+            <trans-unit id="app.checkout">
+                <source>app.checkout</source>
+                <target>Checkout</target>
+            </trans-unit>
+
+
+
+
 
 
 
@@ -508,119 +686,6 @@
 
 
 
-
-            <trans-unit id="app.table">
-                <source>app.table</source>
-                <target>Table</target>
-            </trans-unit>
-            <trans-unit id="app.material">
-                <source>app.material</source>
-                <target>Material</target>
-            </trans-unit>
-            <trans-unit id="app.materials">
-                <source>app.materials</source>
-                <target>Materials</target>
-            </trans-unit>
-            <trans-unit id="app.tempering">
-                <source>app.tempering</source>
-                <target>Tempering</target>
-            </trans-unit>
-            <trans-unit id="app.timber.quality">
-                <source>app.timber.quality</source>
-                <target>Timber quality</target>
-            </trans-unit>
-            <trans-unit id="app.primary.material">
-                <source>app.primary.material</source>
-                <target>Primary Material</target>
-            </trans-unit>
-            <trans-unit id="app.surface.width">
-                <source>app.surface.width</source>
-                <target>Width</target>
-            </trans-unit>
-            <trans-unit id="app.surface.length">
-                <source>app.surface.length</source>
-                <target>Length</target>
-            </trans-unit>
-            <trans-unit id="app.leg.height">
-                <source>app.leg.height</source>
-                <target>Height</target>
-            </trans-unit>
-            <trans-unit id="app.product">
-                <source>app.product</source>
-                <target>Product</target>
-            </trans-unit>
-            <trans-unit id="app.drawer.attribute">
-                <source>app.drawer.attribute</source>
-                <target>Drawers</target>
-            </trans-unit>
-            <trans-unit id="app.leg.attribute">
-                <source>app.leg.attribute</source>
-                <target>Table legs</target>
-            </trans-unit>
-            <trans-unit id="app.table.images">
-                <source>app.table.images</source>
-                <target>Images</target>
-            </trans-unit>
-            <trans-unit id="app.product.images">
-                <source>app.product.images</source>
-                <target>Images</target>
-            </trans-unit>
-            <trans-unit id="app.tables">
-                <source>app.tables</source>
-                <target>Tables</target>
-            </trans-unit>
-            <trans-unit id="app.accesories">
-                <source>app.accesories</source>
-                <target>Accesories</target>
-            </trans-unit>
-            <trans-unit id="app.tables.rules">
-                <source>app.tables.rules</source>
-                <target>Table Rules</target>
-            </trans-unit>
-            <trans-unit id="app.articles">
-                <source>app.articles</source>
-                <target>Articles</target>
-            </trans-unit>
-            <trans-unit id="app.language">
-                <source>app.language</source>
-                <target>Language</target>
-            </trans-unit>
-            <trans-unit id="app.currency">
-                <source>app.currency</source>
-                <target>£</target>
-            </trans-unit>
-            <trans-unit id="app.dimensions">
-                <source>app.dimensions</source>
-                <target>Dimensions(cm):</target>
-            </trans-unit>
-            <trans-unit id="app.quality">
-                <source>app.quality</source>
-                <target>Timber quality:</target>
-            </trans-unit>
-            <trans-unit id="app.plank">
-                <source>app.plank</source>
-                <target>Plank(cm):</target>
-            </trans-unit>
-            <trans-unit id="app.disk.thickness">
-                <source>app.disk.thickness</source>
-                <target>Disk thickness(cm):</target>
-            </trans-unit>
-            <trans-unit id="app.wood.selection">
-                <source>app.wood.selection</source>
-                <target>Material:</target>
-            </trans-unit>
-            <trans-unit id="app.timber.tempering">
-                <source>app.timber.tempering</source>
-                <target>Tempering:</target>
-            </trans-unit>
-            <trans-unit id="app.profile">
-                <source>app.profile</source>
-                <target>Leg Profile(cm):</target>
-            </trans-unit>
-            <trans-unit id="app.table.category">
-                <source>app.table.category</source>
-                <target>Table Categories</target>
-            </trans-unit>
 
 
 

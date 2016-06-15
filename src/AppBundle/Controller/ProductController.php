@@ -135,7 +135,7 @@ class ProductController extends Controller
         return new JsonResponse('Invalid request!, 400');
     }
 
-   
+    
 
     /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial", options={"expose"=true}) */
     public function getPrImageByMat()

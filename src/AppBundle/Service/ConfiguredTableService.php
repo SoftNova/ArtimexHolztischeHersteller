@@ -214,8 +214,9 @@ class ConfiguredTableService
     {
         $errors = new ArrayCollection();
         $quality = $this->timberService->getTimberQualityById($tableConfigs->getQuality());
-        $tempering = $this->timberService->getTimberTemperingByid($tableConfigs->getTempering());
-        $result = SpecsValidator::validateSpecs($quality, $tempering);
+        /* if material selected is tempered, $tempering variable below will be null, which is fine */
+        $tempering = is_null($tableConfigs->getTempering()) ? null : $this->timberService->getTimberTemperingByid($tableConfigs->getTempering());
+        $result = SpecsValidator::validateSpecs($quality, $tempering, $tableConfigs);
         if (!is_null($result)) $errors->add($result);
         return $errors;
     }
