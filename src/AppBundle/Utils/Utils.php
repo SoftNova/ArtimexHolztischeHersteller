@@ -15,7 +15,6 @@ class Utils
     const PRODUCT_IMAGE_PATH = 'app/img/product_img/';
     const MATERIAL_IMAGE_PATH = 'app/img/material_img/';
     const DEFAULT_IMAGE='app/img/no.png';
-
     const ALLOWED_IMG_EXT = array('jpg','jpeg','gif','png','JPG','JPEG','GIF','PNG');
     const INVALID_FILE_EXTENSION = "Invalid file extension";
 
@@ -61,5 +60,32 @@ class Utils
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+    
+    public static function getDeliveryCountries($countries){
+        $results=array();
+        foreach ($countries as $iso2){
+            switch ($iso2){
+                case 'FR':
+                    $results['fr']='app.france';
+                    break;
+                case 'DE':
+                    $results['de']='app.germany';
+                    break;
+                case 'RO':
+                    $results['ro']='app.romania';
+                    break;
+                case 'GB':
+                    $results['en']='app.uk';
+                    break;
+            }
+        }
+        return $results;
+
+    }
+
+    public static function getPaymentMethodChoices(){
+        return array('1'=>'app.input.on.delivery',
+            '2'=>'app.input.bank.transfer');
     }
 }

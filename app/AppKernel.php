@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
             new AppBundle\AppBundle(),
         ];
 

@@ -460,10 +460,36 @@
                 <source>app.input.comments</source>
                 <target>Any special or specific requests?</target>
             </trans-unit>
+            <trans-unit id="app.input.bank.transfer">
+                <source>app.input.bank.transfer</source>
+                <target>Payment on delivery</target>
+            </trans-unit>
+            <trans-unit id="app.input.on.delivery">
+                <source>app.input.on.delivery</source>
+                <target>Down payment</target>
+            </trans-unit>
             <trans-unit id="app.checkout">
                 <source>app.checkout</source>
                 <target>Checkout</target>
             </trans-unit>
+            <trans-unit id="app.romania">
+                <source>app.romania</source>
+                <target>Romania</target>
+            </trans-unit>
+            <trans-unit id="app.germany">
+                <source>app.germany</source>
+                <target>Germany</target>
+            </trans-unit>
+            <trans-unit id="app.france">
+                <source>app.france</source>
+                <target>France</target>
+            </trans-unit>
+            <trans-unit id="app.uk">
+                <source>app.uk</source>
+                <target>United Kingdom</target>
+            </trans-unit>
+
+
 
 
 
