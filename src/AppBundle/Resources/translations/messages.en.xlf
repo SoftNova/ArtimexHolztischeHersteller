@@ -488,6 +488,15 @@
                 <source>app.uk</source>
                 <target>United Kingdom</target>
             </trans-unit>
+            <trans-unit id="app.on.delivery.info">
+                <source>app.on.delivery.info</source>
+                <target>Payment will be made upon order delivery.</target>
+            </trans-unit>
+            <trans-unit id="app.on.downpayment.info">
+                <source>app.on.downpayment.info</source>
+                <target>A down payment will be made via bank transfer.</target>
+            </trans-unit>
+
 
 
 

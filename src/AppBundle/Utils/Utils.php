@@ -85,7 +85,7 @@ class Utils
     }
 
     public static function getPaymentMethodChoices(){
-        return array('1'=>'app.input.on.delivery',
-            '2'=>'app.input.bank.transfer');
+        return array('1'=>'app.input.bank.transfer',
+            '2'=>'app.input.on.delivery');
     }
 }

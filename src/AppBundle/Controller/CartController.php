@@ -141,7 +141,10 @@ class CartController extends Controller
                     'multiple'=>false,
                     'expanded'=>true,
                     'required'=>true,
-                    
+                    'choice_attr' => function($val, $key, $index) {
+                        // adds a class like attending_yes, attending_no, etc
+                        return ['class' => 'with-font'];
+                    }
                 ))
             ->add('submit', SubmitType::class, array('label' => 'app.checkout'))
             ->getForm();
