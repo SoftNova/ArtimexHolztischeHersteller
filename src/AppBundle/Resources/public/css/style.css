@@ -230,7 +230,7 @@ body { font-family: 'Titillium Web', sans-serif; }
 
 
 .readmore:hover {background: #222;text-decoration: none;color: #fff;border: 1px solid #fff}
-
+.readmore:visited {color:white;}
 
 .promo-area {
     background: none repeat scroll 0 0 #099747;
@@ -257,7 +257,7 @@ body { font-family: 'Titillium Web', sans-serif; }
 }
 
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
-
+.single-promo a:visited {color:white;}
 .section-title {
     font-family: "Raleway",sans-serif;
     font-size: 50px;

@@ -237,7 +237,11 @@
             </trans-unit>
             <trans-unit id="app.pin">
                 <source>app.pin</source>
-                <target>Information:</target>
+                <target>https://www.pinterest.com/ArtimexGmbH/</target>
+            </trans-unit>
+            <trans-unit id="app.ig">
+                <source>app.pin</source>
+                <target>https://www.instagram.com/artimex_sport/</target>
             </trans-unit>
             <trans-unit id="information">
                      <source>app.information</source>
