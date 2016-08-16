@@ -1,0 +1,221 @@
+<div class="well well-sm">
+    <fieldset>
+        <div class="row">
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                    <span class="col-sm-1"><i
+                                                class="fa fa-user bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientFirstName,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientFirstName) }}
+                        </div>
+                    </div>
+                    <!-- End of First name section -->
+
+
+                    <!-- Last name section -->
+                    <div class="col-xs-12">
+                                    <span class="col-sm-1"><i
+                                                class="fa fa-user bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientLastName,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientLastName) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                    <span class="col-sm-1"><i
+                                                class="fa fa-envelope-o bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientEmail,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientEmail) }}
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                                    <span class="col-sm-1"><i
+                                                class="fa fa-mobile-phone bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientPhone,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientPhone) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-map bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientCountry,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientCountry) }}
+
+                        </div>
+                    </div>
+                    <!-- End of First name section -->
+
+
+                    <!-- Last name section -->
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-map-marker bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientStateOrProvidence,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientStateOrProvidence) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-home bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientCity,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientCity) }}
+
+                        </div>
+                    </div>
+                    <!-- End of First name section -->
+
+
+                    <!-- Last name section -->
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-inbox bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientPostalCode,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientPostalCode) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-map-o bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientAddress1,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientAddress1) }}
+
+                        </div>
+                    </div>
+                    <!-- End of First name section -->
+
+
+                    <!-- Last name section -->
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-map-o bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientAddress2,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientAddress2) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-suitcase bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientCompany,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientCompany) }}
+
+                        </div>
+                    </div>
+                    <!-- End of First name section -->
+
+
+                    <!-- Last name section -->
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-registered bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientCompanyRegCode,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientCompanyRegCode) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                                            <span class="col-sm-1"><i
+                                                        class="fa fa-commenting bigicon vertical-align-middle hidden-xs"></i></span>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.clientComment,
+                            {'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.clientComment) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row bottom-padding">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="col-sm-10">
+                            {{ form_widget(form.submit) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

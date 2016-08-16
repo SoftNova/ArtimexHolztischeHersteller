@@ -11,20 +11,17 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Utils\Utils;
-use AppBundle\ValueObject\OrderVO;
 use libphonenumber\PhoneNumberFormat;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 
 class CartController extends Controller
@@ -133,6 +130,7 @@ class CartController extends Controller
                 array(
                     'label' => 'app.input.comments',
                     'required' => false,
+                    'attr' => array('rows' => 7)
                 ))
             ->add('clientPaymentMethod', ChoiceType::class,
                 array(
@@ -153,7 +151,7 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            var_dump('die');die;
         }
 
 

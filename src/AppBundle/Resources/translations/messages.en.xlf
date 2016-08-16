@@ -500,7 +500,10 @@
                 <source>app.on.downpayment.info</source>
                 <target>A down payment will be made via bank transfer.</target>
             </trans-unit>
-
+            <trans-unit id="app.submit">
+                <source>app.submit</source>
+                <target>Submit</target>
+            </trans-unit>
 
 
 

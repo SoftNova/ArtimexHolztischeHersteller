@@ -88,4 +88,8 @@ class Utils
         return array('1'=>'app.input.bank.transfer',
             '2'=>'app.input.on.delivery');
     }
+
+    public static function getFreeSample(){
+        return array('0'=>'app.free.sample');
+    }
 }

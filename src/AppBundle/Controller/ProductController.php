@@ -2,20 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Cart;
-use AppBundle\Entity\CartItem;
-use AppBundle\Entity\Table;
-use AppBundle\Entity\TableImage;
-use AppBundle\Entity\TableMaterial;
 use AppBundle\Entity\TablePrimaryMaterial;
-use AppBundle\Utils\Utils;
-use AppBundle\Validator\SpecsValidator;
-use AppBundle\Validator\SupportValidator;
-use AppBundle\Validator\SurfaceValidator;
-use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

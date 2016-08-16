@@ -14,16 +14,19 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="row">
-
+        <div class="col-sm-8 col-xs-12">
+        {% include ':client/subContent/cart:delivery_detailts.html.twig' %}
+        </div>
         <div class=" col-xs-12 hidden-xs col-sm-4" id="grand-total">
             {% include ':client/subContent/cart:cart_totals.html.twig' %}
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-8 col-xs-12">
         {% include ':client/subContent/cart:payment_method.html.twig' %}
+        </div>
     </div>
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
         {% include ':client/subContent/cart:cart_totals.html.twig' %}
@@ -35,6 +38,6 @@
 {% endblock %}
     {% block footer %}
         <!-- Start of footer area -->
-            {% include '/client/statics/footer.html.twig' %}
+        {% include '/client/statics/footer.html.twig' %}
         <!-- End of footer area -->
     {% endblock %}

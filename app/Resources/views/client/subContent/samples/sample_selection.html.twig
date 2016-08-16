@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+<div class="row">
+    {% form_theme form ':form:sample_choice_widget.html.twig' %}
+    {{ form_widget(form.materialSamples) }}
+    {{ form_errors(form.materialSamples) }}
+</div>
