@@ -504,6 +504,14 @@
                 <source>app.submit</source>
                 <target>Submit</target>
             </trans-unit>
+            <trans-unit id="app.orders">
+                <source>app.orders</source>
+                <target>Orders</target>
+            </trans-unit>
+            <trans-unit id="app.table.payment">
+                <source>app.table.payment</source>
+                <target>Payment Methods</target>
+            </trans-unit>
 
 
 

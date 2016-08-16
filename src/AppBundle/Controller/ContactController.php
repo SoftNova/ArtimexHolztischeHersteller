@@ -27,6 +27,7 @@ class ContactController extends Controller
     public function indexAction(Request $request)
     {
         $cart = $this->get('cart_service')->getCart();
+
         $form = $this->createFormBuilder()
             ->add('clientFirstName', TextType::class,
                 array(

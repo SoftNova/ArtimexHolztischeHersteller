@@ -151,7 +151,37 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump('die');die;
+            $order = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Sample Request - From '. $order->getClientFirstName() . ' ' . $order->getClientLastName())
+                ->setFrom($order->getClientEmail())
+                ->setTo($this->getParameter('mailer_user'))
+                ->setBody(
+                    $this->renderView(
+                        'emails/order.html.twig',
+                        array('sample' => $order)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+
+
+            $autoReply = \Swift_Message::newInstance()
+                ->setSubject('Sample Request')
+                ->setFrom($this->getParameter('mailer_user'))
+                ->setTo($order->getClientEmail())
+                ->setBody(
+                    $this->renderView(
+                        'emails/order_autoreply.html.twig',
+                        array('sample' => $order)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($autoReply);
+            return $this->render(':client:success.html.twig', [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
+                'oCart' => $cart,
+            ]);
         }
 
 

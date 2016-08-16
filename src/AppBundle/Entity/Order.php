@@ -102,6 +102,11 @@ class Order
      */
     protected $clientComment;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\PaymentMethod")
+     * @ORM\JoinColumn(name="payment_method_id", referencedColumnName="id")
+     */
     protected $clientPaymentMethod;
 
     /**

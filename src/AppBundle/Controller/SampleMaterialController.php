@@ -33,6 +33,7 @@ class SampleMaterialController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $cart = $this->get('cart_service')->getCart();
         $sample = new Sample();
         $countries = $this->container->getParameter('countries');
         $lang=$request->getLocale();
@@ -128,6 +129,7 @@ class SampleMaterialController extends Controller
             ->add('materialSamples', EntityType::class,
                 array(
                     'class' => 'AppBundle\Entity\TableMaterial',
+                    'choices'=>$aMaterials,
                     'multiple' => true,
                     'expanded' => true,
                     'required' => true
@@ -139,8 +141,37 @@ class SampleMaterialController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump('die');
-            die;
+            $sample = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Sample Request - From '. $sample->getClientFirstName() . ' ' . $sample->getClientLastName())
+                ->setFrom($sample->getClientEmail())
+                ->setTo($this->getParameter('mailer_user'))
+                ->setBody(
+                    $this->renderView(
+                        'emails/sample_material.html.twig',
+                        array('sample' => $sample)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+
+
+            $autoReply = \Swift_Message::newInstance()
+                ->setSubject('Sample Request')
+                ->setFrom($this->getParameter('mailer_user'))
+                ->setTo($sample->getClientEmail())
+                ->setBody(
+                    $this->renderView(
+                        'emails/sample_material_autoreply.html.twig',
+                        array('sample' => $sample)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($autoReply);
+            return $this->render(':client:success.html.twig', [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
+                'oCart' => $cart,
+            ]);
         }
 
 
