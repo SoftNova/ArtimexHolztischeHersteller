@@ -10,6 +10,14 @@
                 <source>app.leg.constraint</source>
                 <target> Invalid data added. Please recheck. Example: 9x9, 9x10, 10x10.</target>
             </trans-unit>
+            <trans-unit id="app.samples.min.message">
+                <source>app.samples.min.message</source>
+                <target>Pick at least 1 material</target>
+            </trans-unit>
+            <trans-unit id="app.samples.max.messaget">
+                <source>app.samples.max.message</source>
+                <target>A maximum of 4 samples can be sent</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

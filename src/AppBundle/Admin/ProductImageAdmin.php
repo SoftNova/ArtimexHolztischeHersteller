@@ -9,7 +9,7 @@
 namespace AppBundle\Admin;
 
 
-use AppBundle\Utils\ImgConstraint;
+use AppBundle\Validator\ImgConstraint;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;

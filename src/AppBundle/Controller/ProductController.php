@@ -68,6 +68,7 @@ class ProductController extends Controller
      */
     public function getSpecificTable()
     {
+
         $configuredTableService = $this->get('configured_table_service');
         $code = $this->get('request')->get('code');
         $primaryMaterial = $configuredTableService->getPrimaryMaterial();

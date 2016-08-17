@@ -17,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Class PaymentMethod
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PaymentMethodDAO")
  * @ORM\Table(name="payment_method")
  */
 class PaymentMethod
@@ -82,5 +82,12 @@ class PaymentMethod
         $this->translations = $translations;
     }
 
+    public function __toString()
+    {
+        if($name = $this->getName()){
+            return $name;
+        }
+        return '';
+    }
 
 }

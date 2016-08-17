@@ -10,6 +10,11 @@
                  <source>app.account</source>
                  <target>Konto</target>
             </trans-unit>
+            <trans-unit id="app.currency">
+                <source>app.currency</source>
+                <target>€</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -52,6 +52,7 @@ class Utils
         return $randomString;
     }
     
+    // ToDo remove this
     public static function generateUniqueCartCode($length = 10){
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

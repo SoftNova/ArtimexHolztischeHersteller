@@ -7,35 +7,35 @@
  */
 
 namespace AppBundle\Admin;
-use Sonata\AdminBundle\Route\RouteCollection;
+
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class TablePrimaryMaterialAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('pricePerSquareMeter', MoneyType::class, array('label'=>'admin.price.per.square.meter'))
-            ->add('primaryMaterial', 'sonata_type_model', array('label'=>'admin.primary.material'));
+        $form->add('pricePerSquareMeter', MoneyType::class, array('label' => 'admin.price.per.square.meter'))
+            ->add('primaryMaterial', 'sonata_type_model', array('label' => 'admin.primary.material'));
     }
 
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('primaryMaterial.adminName.name', 'sonata_type_model', array('label'=>'admin.primary.material',
-                'sortable'=>true,
-                'sort_field_mapping'=>array('fieldName'=>'id'),
-                'sort_parent_association_mappings'=>array(array('fieldName'=>'primaryMaterial'))))
+            ->addIdentifier('primaryMaterial.adminName.name', 'sonata_type_model', array('label' => 'admin.primary.material',
+                'sortable' => true,
+                'sort_field_mapping' => array('fieldName' => 'id'),
+                'sort_parent_association_mappings' => array(array('fieldName' => 'primaryMaterial'))))
             ->add('pricePerSquareMeter', 'currency', array(
-                    'label'=>'admin.price.per.square.meter',
-                    'editable'=>true,
-                    'row_align'=>'left',
-                    'currency'=>'€'
+                    'label' => 'admin.price.per.square.meter',
+                    'editable' => true,
+                    'row_align' => 'left',
+                    'currency' => '€'
                 )
             )
             ->add('_action', 'actions', array(
@@ -48,13 +48,12 @@ class TablePrimaryMaterialAdmin extends Admin
     }
 
 
-
     protected function configureRoutes(RouteCollection $collection)
     {
         $container = $this->getConfigurationPool()->getContainer();
-        $em=$this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
-        $hasPrimary=(count($em->findAll())==0) ? false : true;
-        if ($hasPrimary==true) {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
+        $hasPrimary = (count($em->findAll()) == 0) ? false : true;
+        if ($hasPrimary == true) {
             if ($container->get('request')->get('_route') == 'sonata_admin_dashboard') {
                 $collection->remove('create');
             }

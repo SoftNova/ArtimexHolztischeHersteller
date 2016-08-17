@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Sample;
+use AppBundle\Validator\MinMaxChoices;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -130,6 +131,7 @@ class SampleMaterialController extends Controller
                 array(
                     'class' => 'AppBundle\Entity\TableMaterial',
                     'choices'=>$aMaterials,
+                    'constraints' => array(new MinMaxChoices()),
                     'multiple' => true,
                     'expanded' => true,
                     'required' => true
@@ -141,7 +143,9 @@ class SampleMaterialController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Sample $sample */
             $sample = $form->getData();
+
             $message = \Swift_Message::newInstance()
                 ->setSubject('Sample Request - From '. $sample->getClientFirstName() . ' ' . $sample->getClientLastName())
                 ->setFrom($sample->getClientEmail())
@@ -168,6 +172,8 @@ class SampleMaterialController extends Controller
                     'text/html'
                 );
             $this->get('mailer')->send($autoReply);
+            
+            $this->get('sample_service')->save($sample);
             return $this->render(':client:success.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
                 'oCart' => $cart,

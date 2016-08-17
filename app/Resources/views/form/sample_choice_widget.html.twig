@@ -26,3 +26,14 @@
         {% endfor -%}
     </div>
 {%- endblock choice_widget_expanded -%}
+
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="list-unstyled">
+            {%- for error in errors -%}
+                <li class="color-red">{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}

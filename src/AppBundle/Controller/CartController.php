@@ -13,6 +13,7 @@ use AppBundle\Entity\Order;
 use AppBundle\Utils\Utils;
 use libphonenumber\PhoneNumberFormat;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -42,6 +43,8 @@ class CartController extends Controller
         $cart = $this->get('cart_service')->getCart();
         $order = new Order();
         $countries = $this->container->getParameter('countries');
+        $lang=$request->getLocale();
+        $aMethods = $this->get('payment_method_service')->getMethodsForLang($lang);
 
         $form = $this->createFormBuilder($order)
             ->add('clientFirstName', TextType::class,
@@ -132,16 +135,17 @@ class CartController extends Controller
                     'required' => false,
                     'attr' => array('rows' => 7)
                 ))
-            ->add('clientPaymentMethod', ChoiceType::class,
+            ->add('clientPaymentMethod', EntityType::class,
                 array(
-                    'choices'=>Utils::getPaymentMethodChoices()
-                ,
+                    'class'=>'AppBundle\Entity\PaymentMethod',
+                    'choices'=>$aMethods,
                     'multiple'=>false,
                     'expanded'=>true,
                     'required'=>true,
                     'choice_attr' => function($val, $key, $index) {
                         // adds a class like attending_yes, attending_no, etc
-                        return ['class' => 'with-font'];
+                        return ['class' => 'with-font',
+                                'data-disc'=>$val->getModifier()];
                     }
                 ))
             ->add('submit', SubmitType::class, array('label' => 'app.checkout'))
@@ -151,6 +155,7 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Order $order */
             $order = $form->getData();
             $message = \Swift_Message::newInstance()
                 ->setSubject('Sample Request - From '. $order->getClientFirstName() . ' ' . $order->getClientLastName())
@@ -178,9 +183,12 @@ class CartController extends Controller
                     'text/html'
                 );
             $this->get('mailer')->send($autoReply);
+            
+            $this->get('order_service')->save($order,$cart);
+            $this->get('cart_service')->clearCart();
             return $this->render(':client:success.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
-                'oCart' => $cart,
+                'oCart' => $this->get('cart_service')->getCart(),
             ]);
         }
 

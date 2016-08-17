@@ -6,6 +6,11 @@
                 <source>app.title</source>
                 <target>Acesta este titlul</target>
             </trans-unit>
+
+            <trans-unit id="app.currency">
+                <source>app.currency</source>
+                <target>RON</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

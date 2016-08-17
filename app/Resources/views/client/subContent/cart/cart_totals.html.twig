@@ -27,7 +27,7 @@
                 <h2>
                     {% trans %} app.grand.total{% endtrans %}
                 </h2>
-                <h2>
+                <h2 id="cartGrandTotal" data-grt="{{ oCart.totalPrice }}" data-cur="{{ 'app.currency' |trans }}">
                     {{ 'app.currency' |trans }}{{ oCart.totalPrice }}
                 </h2>
             </div>

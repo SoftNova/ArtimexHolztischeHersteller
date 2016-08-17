@@ -1,18 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: cvisan
- * Date: 5/16/2016
- * Time: 3:58 PM
+ * User: rvcat
+ * Date: 5/15/2016
+ * Time: 1:44 AM
  */
 
-namespace AppBundle\Utils;
+namespace AppBundle\Validator;
+
 
 use Symfony\Component\Validator\Constraint;
 
-class ProfileConstraint extends Constraint
+class ImgConstraint extends Constraint
 {
-    public $message = "app.leg.constraint";
+    public $message = "app.image.validator.message";
 
     public function validatedBy()
     {

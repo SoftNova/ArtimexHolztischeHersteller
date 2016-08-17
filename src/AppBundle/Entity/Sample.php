@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Sample
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SampleDAO")
  * @ORM\Table(name="sample_history")
  */
 class Sample
@@ -104,11 +104,30 @@ class Sample
     protected $clientComment;
 
     /**
+     * @var
+     * @ORM\Column(type="boolean", nullable=true, name="processed_status")
+     */
+    protected $processedStatus;
+
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime", nullable=false, name="registered_date")
+     */
+    protected $registeredDate;
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime", nullable=true, name="processed_date")
+     */
+    protected $processedDate;
+
+    /**
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TableMaterial")
      * @ORM\JoinTable(name="samples_per_order",
      *      joinColumns={@ORM\JoinColumn(name="sample_order_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="material_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="material_id", referencedColumnName="id")}
      *      )
      */
     protected $materialSamples;
@@ -133,7 +152,57 @@ class Sample
     public function __construct()
     {
         $this->materialSamples = new ArrayCollection();
+        $this->processedStatus = false;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProcessedStatus()
+    {
+        return $this->processedStatus;
+    }
+
+    /**
+     * @param mixed $processedStatus
+     */
+    public function setProcessedStatus($processedStatus)
+    {
+        $this->processedStatus = $processedStatus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegisteredDate()
+    {
+        return $this->registeredDate;
+    }
+
+    /**
+     * @param mixed $registeredDate
+     */
+    public function setRegisteredDate($registeredDate)
+    {
+        $this->registeredDate = $registeredDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProcessedDate()
+    {
+        return $this->processedDate;
+    }
+
+    /**
+     * @param mixed $processedDate
+     */
+    public function setProcessedDate($processedDate)
+    {
+        $this->processedDate = $processedDate;
+    }
+
 
 
     /**
@@ -246,6 +315,14 @@ class Sample
     public function setClientStateOrProvidence($clientStateOrProvidence)
     {
         $this->clientStateOrProvidence = $clientStateOrProvidence;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

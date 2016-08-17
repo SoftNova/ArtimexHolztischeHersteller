@@ -11,22 +11,77 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class CartItem
+ * @package AppBundle\Entity
+ * @ORM\Entity()
+ * @ORM\Table(name="cart")
+ */
 class Cart
 {
 
-    protected $cartItems;
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
 
+    /**
+     * @var
+     * @ORM\Column(type="decimal", name="total_price", nullable=false, precision=9, scale=2)
+     */
     protected $totalPrice;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", name="cart_currency", nullable=false)
+     */
+    protected $cartCurrency;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", name="total_quantity", nullable=false, precision=9, scale=2)
+     */
     protected $totalQuantity;
 
-    protected $shippingIn;
+    /**
+     * @var Order
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Order", inversedBy="cart")
+     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     */
+    protected $order;
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartItem", mappedBy="cart", cascade={"all"})
+     */
+    protected $cartItems;
 
     public function __construct()
     {
         $this->cartItems=new ArrayCollection();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCartCurrency()
+    {
+        return $this->cartCurrency;
+    }
+
+    /**
+     * @param mixed $cartCurrency
+     */
+    public function setCartCurrency($cartCurrency)
+    {
+        $this->cartCurrency = $cartCurrency;
+    }
+
+    
     /**
      * @return ArrayCollection(CartItem)
      */
@@ -44,6 +99,23 @@ class Cart
     }
 
     /**
+     * @return Order
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param Order $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getTotalPrice()
@@ -57,22 +129,6 @@ class Cart
     public function setTotalPrice($totalPrice)
     {
         $this->totalPrice = $totalPrice;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getShippingIn()
-    {
-        return $this->shippingIn;
-    }
-
-    /**
-     * @param mixed $shippingIn
-     */
-    public function setShippingIn($shippingIn)
-    {
-        $this->shippingIn = $shippingIn;
     }
 
     public function addItem(CartItem $item){

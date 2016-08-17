@@ -7,23 +7,100 @@
  */
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
-
+/**
+ * Class CartItem
+ * @package AppBundle\Entity
+ * @ORM\Entity()
+ * @ORM\Table(name="cart_item")
+ */
 class CartItem
 {
-    protected $uniqueItemCode;
 
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     * @var
+     * @ORM\Column(type="string", nullable=false, name="item_name")
+     */
     protected $itemName;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", nullable=false, name="item_code")
+     */
     protected $itemCode;
 
-    protected $itemImg;
-
+    /**
+     * @var
+     * @ORM\Column(type="string", name="item_price", nullable=false, length=255)
+     */
     protected $itemPrice;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", nullable=false, name="item_config")
+     */
+    protected $itemConfig;
+
+    /**
+     * @var
+     * @ORM\Column(type="integer", nullable=false, name="item_quantity")
+     */
+    protected $itemQuantity;
+
+
+    /**
+     * @var Cart
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="cartItems")
+     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
+     */
+    protected $cart;
+
+    /** non persistent */
+    protected $uniqueItemCode;
+    protected $itemImg;
     protected $itemSpecs;
 
-    protected $itemQuantity;
+    /**
+     * @return mixed
+     */
+    public function getItemConfig()
+    {
+        return $this->itemConfig;
+    }
+
+    /**
+     * @param mixed $itemConfig
+     */
+    public function setItemConfig($itemConfig)
+    {
+        $this->itemConfig = $itemConfig;
+    }
+
+    /**
+     * @return Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
+     * @param Cart $cart
+     */
+    public function setCart($cart)
+    {
+        $this->cart = $cart;
+    }
+
+
 
     /**
      * @return mixed

@@ -6,9 +6,10 @@
  * Time: 1:46 AM
  */
 
-namespace AppBundle\Utils;
+namespace AppBundle\Validator;
 
 
+use AppBundle\Utils\Utils;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -18,11 +19,11 @@ class ImgConstraintValidator extends ConstraintValidator
     /** @var UploadedFile $value */
     public function validate($value, Constraint $constraint)
     {
-        if ($value===null){
+        if ($value === null) {
             return;
         }
         $guessType = $value->getClientOriginalExtension();
-        if (!in_array($guessType, Utils::ALLOWED_IMG_EXT)){
+        if (!in_array($guessType, Utils::ALLOWED_IMG_EXT)) {
             $this->context->addViolation($constraint->message);
         }
     }
