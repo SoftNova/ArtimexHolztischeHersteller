@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: cvisan
  * Date: 8/17/2016
- * Time: 10:31 AM
+ * Time: 6:29 PM
  */
 
 namespace AppBundle\Admin;
@@ -17,14 +17,12 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class SampleAdmin extends Admin
+class OrderAdmin extends Admin
 {
-
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->clearExcept(array('list', 'show'));
     }
-
 
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -45,7 +43,6 @@ class SampleAdmin extends Admin
             ->add('clientCity', 'text', ['label'=>'app.input.city'])
             ->add('clientAddress1', 'text', ['label'=>'app.input.address.one'])
             ->add('processedDate', 'date', array('label'=>'admin.processed.date'))
-            ->add('materialSamples', null, ['label'=>'admin.samples'])
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'delete' => array(),
@@ -59,24 +56,24 @@ class SampleAdmin extends Admin
     {
         $countries = $this->getConfigurationPool()->getContainer()->getParameter('countries');
         $filter->add('id')
-        ->add('processedStatus',null, ['label'=>'admin.processed.status'])
-        ->add('clientCountry', 'doctrine_orm_choice', [
-            'label' => 'admin.country',
-            'field_options' => [
-                'required' => false,
-                'choices' => Utils::getDeliveryCountries($countries),
-                'multiple'=>true,
-                'expanded'=>false
-            ],
-            'field_type' => 'choice'
-        ]);
+            ->add('processedStatus',null, ['label'=>'admin.processed.status'])
+            ->add('clientCountry', 'doctrine_orm_choice', [
+                'label' => 'admin.country',
+                'field_options' => [
+                    'required' => false,
+                    'choices' => Utils::getDeliveryCountries($countries),
+                    'multiple'=>true,
+                    'expanded'=>false
+                ],
+                'field_type' => 'choice'
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $show)
     {
         $show
             ->tab('General') // the tab call is optional
-            ->with('Sample Request', array(
+            ->with('Randomness', array(
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-success',
             ))
@@ -102,8 +99,7 @@ class SampleAdmin extends Admin
             ->add('clientCompany', 'text', ['label'=>'app.input.company'])
             ->add('clientCompanyRegCode', 'text', ['label'=>'app.input.company.reg.code'])
             ->add('clientComment', 'text', ['label'=>'app.input.comments'])
-            ->add('materialSamples', null, ['label'=>'admin.samples'])
-            ;
+        ;
     }
 
     public function preUpdate($object)
@@ -112,5 +108,4 @@ class SampleAdmin extends Admin
         // TODO maybe send "Order processed mail"?
 
     }
-
 }

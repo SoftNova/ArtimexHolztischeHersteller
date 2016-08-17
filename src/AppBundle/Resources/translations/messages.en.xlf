@@ -314,6 +314,11 @@
                 <target>Sample History</target>
             </trans-unit>
 
+            <trans-unit id="app.table.order">
+                <source>app.table.order</source>
+                <target>Order History</target>
+            </trans-unit>
+
             <trans-unit id="app.table">
                 <source>app.table</source>
                 <target>Table</target>
