@@ -4,12 +4,590 @@
         <body>
             <trans-unit id="title">
                 <source>app.title</source>
-                <target>Das ist der titel</target>
+                <target>Das ist der Titel</target>
             </trans-unit>
             <trans-unit id="links">
-                 <source>app.account</source>
-                 <target>Konto</target>
+                <source>app.account</source>
+                <target>Benutzerkonto</target>
             </trans-unit>
+            <trans-unit id="app.home">
+                <source>app.home</source>
+                <target>Heim</target>
+            </trans-unit>
+            <trans-unit id="app.aboutus">
+                <source>app.aboutus</source>
+                <target>Über uns</target>
+            </trans-unit>
+            <trans-unit id="app.product1">
+                <source>app.product1</source>
+                <target>Produkte</target>
+            </trans-unit>
+            <trans-unit id="app.contact">
+                <source>app.contact</source>
+                <target>Kontakt</target>
+            </trans-unit>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Artimex Sport</target>
+            </trans-unit>
+
+            <trans-unit id="app.motto1">
+                <source>app.motto1</source>
+                <target>Sonderanfertigungen und Materiale höchster Qualität</target>
+            </trans-unit>
+            <trans-unit id="app.motto1-text">
+                <source>app.motto1-text</source>
+                <target>Wählen Sie aus einer Vielfalt von Oberteile inklusiv Eichenholz und Marmor um ein einzelnen angefertigtes Tisch zu erstellen. Die Unterteile sind aus Stahl und Holz in verschiedenen Ausführungen verfügbar.</target>
+            </trans-unit>
+            <trans-unit id="app.motto2">
+                <source>app.motto2</source>
+                <target>Verschiedene Stile entsprechend Ihrem Geschmack</target>
+            </trans-unit>
+            <trans-unit id="app.motto2-text">
+                <source>app.motto2-text</source>
+                <target>Wählen Sie den Stil das es Ihnen darstellt oder durchblättern Sie alle!
+                    Falls Ihr Stil modern, vintage, classic oder traditionell ist, Sie werden sicher den finden, die es Ihnen gefällt.</target>
+            </trans-unit>
+            <trans-unit id="app.viewmore">
+                <source>app.viewmore</source>
+                <target>Mehr sehen</target>
+            </trans-unit>
+            <trans-unit id="app.motto3">
+                <source>app.motto3</source>
+                <target>Massivholzmöbeln - eine Beschaffenheitsgarantie</target>
+            </trans-unit>
+            <trans-unit id="app.motto3-text">
+                <source>app.motto3-text</source>
+                <target>Bringen Sie Reichtum und Harmonie zu Ihrem Leben durch Ergänzung Ihres Hauses mit die Farbe und Qualität die Sie mögen.
+                    Es gibt keine Regeln oder Einschränkungen.</target>
+            </trans-unit>
+
+        <trans-unit id="app.prodconf">
+            <source>app.prodconf</source>
+            <target>Produktkonfiguration</target>
+        </trans-unit>
+
+        <trans-unit id="app.motto4">
+                <source>app.motto4</source>
+                <target>Artimex Sport</target>
+            </trans-unit>
+            <trans-unit id="app.motto4-text">
+                <source>app.motto4-text</source>
+                <target>Massivholztische - ein Garant für Qualität</target>
+            </trans-unit>
+
+            <trans-unit id="app.newproducts">
+                <source>app.newproducts</source>
+                <target>Neue Produkte</target>
+            </trans-unit>
+            <trans-unit id="app.waranty">
+                <source>app.waranty</source>
+                <target>30 Tage Rückgabe</target>
+            </trans-unit>
+            <trans-unit id="app.freeshipping">
+                <source>app.freeshipping</source>
+                <target>Kostenloser Versand</target>
+            </trans-unit>
+            <trans-unit id="app.secure">
+                <source>app.secure</source>
+                <target>Sichere Zahlungen</target>
+            </trans-unit>
+
+            <trans-unit id="app.aboutus-page">
+                <source>app.aboutuspage</source>
+                <target>
+                    Vielen Dank, dass Sie unsere Web Seite besuchen!
+
+                    Artimex Sport ist seit über 20 Jahren Hersteller von Sprossenwänden, Gymnastikbänken und anderen Sportartikeln für Sporthallen und Stadien.
+
+                    Die von Artimex Sport produzierten Sportartikel entsprechen der EU und DIN Normen für Sicherheit.
+                    Unsere Sprossenwände sind vom Tüv Rheinland zertifiziert.
+
+                    Unsere Geräte bieten einen Garantieanspruch zwischen 10 bis 20 Jahren, je nach Produkt.
+
+                    Rückgaberecht und Umtausch gelten für 30 Tage.
+
+                    Die Produkte aus unserem Sortiment werden per Paketdienst (UPS) verschickt. Bei grösserem Volumen und Mengen beauftragen wir eine Spedition.
+
+                    Nach Eingang, wird Ihre Bestellung umgehend von uns bearbeitet. Die voraussichtliche Lieferzeit entnehmen Sie bitte der Produktbeschreibung.
+
+                    Wenn Sie sich einen Artikel wünschen, den Artimex Sport anbieten könnte, aber nicht im Katalog erhältlich ist, melden Sie sich bitte bei uns!
+
+                    Sie können unsere produkte in unserem Showroom in Koblenz ansehen, testen und bestellen.
+
+                    Wir wünschen Ihnen nun viel Spaß mit www.artimexsport.com und freuen uns auf Ihren regelmäßigen Besuch.
+
+                    Mit freundlichen Grüßen!
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.terms-page">
+                <source>app.terms-page</source>
+                <target>
+                    1.) Allgemeines
+
+                    Die folgenden Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Angebote, Leistungen und Lieferungen der Firma Artimex Sport GmbH mit Sitz in Koblenz
+                    Amtsgericht Koblenz(HRB24408). Abweichungen sind nur dann wirksam, wenn diese von Artimex Sport    schriftlich bestätigt sind.
+
+
+
+                    2.) Angebot / Vertragsabschluss
+
+                    Alle Angebote sind freibleibend und unverbindlich. Die über den Onlineshop oder per E-Mail, Post, Telefon oder Telefax abgegebene Bestellung des Kunden ist verbindlich, auch wenn diese nicht nochmals schriftlich bestätigt wird. Der Vertrag gilt als abgeschlossen, wenn der Verkäufer nach Erhalt der Bestellung eine schriftliche Auftragsbestätigung oder eine Lieferung abgesandt hat. Im Fall der Nichtverfügbarkeit oder der nur teilweisen Verfügbarkeit eines Produktes werden wir den Kunden unverzüglich informieren. Im Falle der Nichtverfügbarkeit des vertraglich vereinbarten Produktes behalten wir uns vor, ein in Qualität und Preis gleichwertiges Produkt zu erbringen bzw. das versprochene Produkt nicht zu erbringen. Der Kunde ist nicht verpflichtet, das in Qualität und Preis gleichwertige Produkt zu akzeptieren. Hierauf wird der Kunde ausdrücklich anlässlich der Mitteilung der Nichtverfügbarkeit des Produktes hingewiesen. In Fällen der Nichtverfügbarkeit der vertraglich vereinbarten Leistung bleiben die gesetzlichen Ansprüche des Kunden unberührt.
+
+
+                    3.) Preise
+                    Alle genannten Preise sind in EUR inklusive der jeweils gültigen gesetzlichen Mehrwertsteuer und  Versandkosten. Für die Versandkosten nicht angeführter Länder bitten wir Sie und zu kontaktieren.
+
+
+                    4.) Zahlungsbedingungen
+                    Es werden wie im Onlineshop näher beschrieben unter „Zahlungsarten“, folgende Zahlungsarten akzeptiert: Vorkasse, Sofortüberweisung, Rechnung , Nachnahme, Kreditkarte (Visa, MasterCard, Diners Club) und PayPal.Die Rechnungen des Auftragnehmers sind bei Warenerhalt innerhalb von 3 Tagen netto ohne Abzug zahlbar.Eine Bezahlung per Nachnahme ist innerhalb von Österreich und Deutschland für paketversandfähige Waren und bis zu einem Gesamtbetrag von 2.500 Euro möglich.
+
+
+                    5.) Eigentumsvorbehalt
+                    Die von uns gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum. Bis zu diesem Zeitpunkt dürfen die Waren nicht verpfändet, sicherheitshalber übereignet oder mit sonstigen Rechten belastet werden. Der Käufer ist verpflichtet, solange das Eigentum noch nicht auf ihn übergegangen ist, die Kaufsache pfleglich zu behandeln. Solange das Eigentum noch nicht übergegangen ist, hat der Käufer den Verkäufer unverzüglich schriftlich zu benachrichtigen, wenn der gelieferte Gegenstand gepfändet oder sonstigen Eingriffen Dritter ausgesetzt ist. Der Auftragnehmer ist bei vertragswidrigem Verhalten des Käufers berechtigt, insbesondere bei Zahlungsverzug, die Kaufsache zur Sicherung seiner Ansprüche an sich zu nehmen.
+
+
+                    6.) Lieferung, Gefahrübergang
+                    Sofern der Kunde Verbraucher ist, tragen wir unabhängig von der Versandart in jedem Fall das Versandrisiko. Etwaige Versandschäden oder Mängel sind unverzüglich zu rügen.
+
+
+
+                    7.) Gewährleistung
+
+                    Bei berechtigter Reklamation besteht unsere Gewährleistung nach unserer Wahl in einer Nachbesserung in angemessenen Frist, einer Ersatzlieferung, Preisminderung, Austausch der mangelhaften Ware gegen mangelfreie oder durch zurückzunehmen der Ware und zurückerstatten des Kaufpreises. Sämtliche Angaben zu Preisen, Maßen, Farben, technischen Daten, usw. stehen unter Vorbehalt. Im Übrigen gelten für Haftung, Mängelrügen und Gewährleistung die gesetzlichen Bestimmungen des ABGB.
+
+
+                    8.) Datenschutz
+
+                    Wir nehmen den Datenschutz und Ihre Privatsphäre sehr ernst und verwenden Ihre persönlichen Daten gemäß den Bestimmungen des Bundesdatenschutzgesetzes.
+
+
+                    Markenbildchenweg 34, 56068 Koblenz, Deutschland
+                    Festnetz: 0261 39071430
+                    Handy: 0172 3258000
+                    E-mail: deutschland@artimexsport.com
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.descr">
+                <source>app.descr</source>
+                <target>Die von Artimex Sport produzierten Sportartikel entsprechen der EU und DIN Normen für Sicherheit.
+                    Unsere Geräte bieten einen Garantieanspruch zwischen 10 bis 20 Jahren, je nach Produkt.
+                </target>
+            </trans-unit>
+            <trans-unit id="app.fb">
+                <source>app.fb</source>
+                <target>https://www.facebook.com/sportartimex/</target>
+            </trans-unit>
+            <trans-unit id="app.yt">
+                <source>app.yt</source>
+                <target>https://www.youtube.com/channel/UCk0cIdezFw_hbWIgv3OTLIA</target>
+            </trans-unit>
+            <trans-unit id="app.pin">
+                <source>app.pin</source>
+                <target>Information:</target>
+            </trans-unit>
+            <trans-unit id="information">
+                <source>app.information</source>
+                <target>Informationen:</target>
+            </trans-unit>
+            <trans-unit id="paymentinfo">
+                <source>app.paymentinfo</source>
+                <target>Zahlung</target>
+            </trans-unit>
+            <trans-unit id="shippinginfo">
+                <source>app.shippinginfo</source>
+                <target>Versand</target>
+            </trans-unit>
+            <trans-unit id="terms">
+                <source>app.terms</source>
+                <target>AGB</target>
+            </trans-unit>
+            <trans-unit id="contactlink">
+                <source>app.contact</source>
+                <target>Kontakt</target>
+            </trans-unit>
+
+            <trans-unit id="contactdetails" xml:space="preserve">
+                <source>app.contactdetails</source>
+                <target>ARTIMEX SPORT GMBH
+                Markenbildchenweg 34, 56068,Koblenz,Germany
+
+                deutschland@artimexsport.com
+                Phone: +49 2613 9071430
+			Handy: +49 172 3258000
+                </target>
+            </trans-unit>
+            <trans-unit id="app.all.products">
+                <source>app.all.products</source>
+                <target>Holztische und Acrylglass</target>
+            </trans-unit>
+            <trans-unit id="app.all.tables">
+                <source>app.all.tables</source>
+                <target>Massivholztische</target>
+            </trans-unit>
+            <trans-unit id="app.add.to.cart" xml:space="preserve">
+                <source>app.add.to.cart</source>
+                <target>In den Warenkorb</target>
+            </trans-unit>
+            <trans-unit id="app.custom.order" xml:space="preserve">
+                <source>app.custom.order</source>
+                <target>Bitte individuelles Angebot anfordern</target>
+            </trans-unit>
+            <trans-unit id="app.cart" xml:space="preserve">
+                <source>app.cart</source>
+                <target>Ihr Warenkorb</target>
+            </trans-unit>
+
+
+
+
+
+
+
+
+
+            <trans-unit id="admin.code">
+                <source>admin.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="admin.message">
+                <source>admin.message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="admin.name">
+                <source>admin.name</source>
+                <target>Admin name</target>
+            </trans-unit>
+            <trans-unit id="admin.available.in">
+                <source>admin.available.in</source>
+                <target>Available in</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.variance">
+                <source>admin.cost.variance</source>
+                <target>Cost variance (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.per.step">
+                <source>admin.cost.per.step</source>
+                <target>Cost increase per step (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.scaling.point">
+                <source>admin.scaling.point</source>
+                <target>Square meters waypost (mÂ˛) </target>
+            </trans-unit>
+            <trans-unit id="admin.scaling.variance">
+                <source>admin.scaling.variance</source>
+                <target>Scaling variance (%)</target>
+            </trans-unit>
+            <trans-unit id="admin.material.improved">
+                <source>admin.material.improved</source>
+                <target>Is tempered</target>
+            </trans-unit>
+
+            <trans-unit id="admin.nr.of.drawers">
+                <source>admin.nr.of.drawers</source>
+                <target>Number of drawers</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profile">
+                <source>admin.leg.profile</source>
+                <target>Leg profiles</target>
+            </trans-unit>
+            <trans-unit id="admin.base.price">
+                <source>admin.base.price</source>
+                <target>Base price</target>
+            </trans-unit>
+            <trans-unit id="admin.show.in.catalog">
+                <source>admin.show.in.catalog</source>
+                <target>Is visible</target>
+            </trans-unit>
+            <trans-unit id="admin.has.extension">
+                <source>admin.has.extension</source>
+                <target>Offers extension</target>
+            </trans-unit>
+            <trans-unit id="admin.has.distance.to.sides">
+                <source>admin.has.distance.to.sides</source>
+                <target>Offers distance to sides</target>
+            </trans-unit>
+            <trans-unit id="admin.primary.material">
+                <source>admin.primary.material</source>
+                <target>Primary Material</target>
+            </trans-unit>
+            <trans-unit id="admin.price.per.square.meter">
+                <source>admin.price.per.square.meter</source>
+                <target>Price per mÂ˛</target>
+            </trans-unit>
+            <trans-unit id="admin.min.width">
+                <source>admin.min.width</source>
+                <target>Minimum surface width</target>
+            </trans-unit>
+            <trans-unit id="admin.max.width">
+                <source>admin.max.width</source>
+                <target>Maximum surface width (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.length">
+                <source>admin.min.length</source>
+                <target>Minimum surface length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.length">
+                <source>admin.max.length</source>
+                <target>Maximum surface length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.dr.length">
+                <source>admin.max.dr.length</source>
+                <target>Maximum drawer length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.dr.length">
+                <source>admin.min.dr.length</source>
+                <target>Minimum drawer length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.ext.length">
+                <source>admin.min.ext.length</source>
+                <target>Minimum extension length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.ext.length">
+                <source>admin.max.ext.length</source>
+                <target>Maximum extension length (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.min.height">
+                <source>admin.min.height</source>
+                <target>Minimum surface height (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.max.height">
+                <source>admin.max.height</source>
+                <target>Maximum surface height (cm)</target>
+            </trans-unit>
+            <trans-unit id="admin.step">
+                <source>admin.step</source>
+                <target>Step interval</target>
+            </trans-unit>
+
+            <trans-unit id="admin.normal.name">
+                <source>admin.normal.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="admin.description">
+                <source>admin.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="admin.by.state.variance">
+                <source>admin.by.state.variance</source>
+                <target>Cost variance in this state</target>
+            </trans-unit>
+            <trans-unit id="admin.images">
+                <source>admin.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="admin.table.images">
+                <source>admin.table.images</source>
+                <target>Images (If you do not add a primary image to a given material, that material will not be displayed)</target>
+            </trans-unit>
+            <trans-unit id="admin.translations">
+                <source>admin.translations</source>
+                <target>Translations</target>
+            </trans-unit>
+            <trans-unit id="locale.admin">
+                <source>locale.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.en">
+                <source>locale.en</source>
+                <target>En</target>
+            </trans-unit>
+            <trans-unit id="locale.fr">
+                <source>locale.fr</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.de">
+                <source>locale.de</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="locale.ro">
+                <source>locale.ro</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="admin.general">
+                <source>admin.general</source>
+                <target>General</target>
+            </trans-unit>
+            <trans-unit id="admin.max.drawers">
+                <source>admin.max.drawers</source>
+                <target>Maximum number of drawers</target>
+            </trans-unit>
+            <trans-unit id="admin.variance.percentage">
+                <source>admin.variance.percentage</source>
+                <target>Variance percentage</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profiles.create">
+                <source>admin.leg.profiles.create</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="admin.cost.of.primary">
+                <source>admin.cost.of.primary</source>
+                <target>Cost based on primary material</target>
+            </trans-unit>
+            <trans-unit id="admin.primary.image">
+                <source>admin.primary.image</source>
+                <target>Is this a thumbnail?</target>
+            </trans-unit>
+            <trans-unit id="admin.visibility">
+                <source>admin.visibility</source>
+                <target>Visibility</target>
+            </trans-unit>
+            <trans-unit id="admin.is.visible">
+                <source>admin.is.visible</source>
+                <target>Should this item be visible in the catalog? (You can enable it later)</target>
+            </trans-unit>
+            <trans-unit id="admin.image.primary">
+                <source>admin.image.primary</source>
+                <target>Is this a thumbnail?</target>
+            </trans-unit>
+            <trans-unit id="admin.variance.static">
+                <source>admin.variance.static</source>
+                <target>Price increase</target>
+            </trans-unit>
+            <trans-unit id="admin.leg.profiles">
+                <source>admin.leg.profiles</source>
+                <target>Profiles</target>
+            </trans-unit>
+            <trans-unit id="admin.category">
+                <source>admin.category</source>
+                <target>Categories</target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="app.table">
+                <source>app.table</source>
+                <target>Table</target>
+            </trans-unit>
+            <trans-unit id="app.material">
+                <source>app.material</source>
+                <target>Material</target>
+            </trans-unit>
+            <trans-unit id="app.materials">
+                <source>app.materials</source>
+                <target>Materials</target>
+            </trans-unit>
+            <trans-unit id="app.tempering">
+                <source>app.tempering</source>
+                <target>Tempering</target>
+            </trans-unit>
+            <trans-unit id="app.timber.quality">
+                <source>app.timber.quality</source>
+                <target>Timber quality</target>
+            </trans-unit>
+            <trans-unit id="app.primary.material">
+                <source>app.primary.material</source>
+                <target>Primary Material</target>
+            </trans-unit>
+            <trans-unit id="app.surface.width">
+                <source>app.surface.width</source>
+                <target>Width</target>
+            </trans-unit>
+            <trans-unit id="app.surface.length">
+                <source>app.surface.length</source>
+                <target>Length</target>
+            </trans-unit>
+            <trans-unit id="app.leg.height">
+                <source>app.leg.height</source>
+                <target>Height</target>
+            </trans-unit>
+            <trans-unit id="app.product">
+                <source>app.product</source>
+                <target>Product</target>
+            </trans-unit>
+            <trans-unit id="app.drawer.attribute">
+                <source>app.drawer.attribute</source>
+                <target>Drawers</target>
+            </trans-unit>
+            <trans-unit id="app.leg.attribute">
+                <source>app.leg.attribute</source>
+                <target>Table legs</target>
+            </trans-unit>
+            <trans-unit id="app.table.images">
+                <source>app.table.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.product.images">
+                <source>app.product.images</source>
+                <target>Images</target>
+            </trans-unit>
+            <trans-unit id="app.tables">
+                <source>app.tables</source>
+                <target>Tables</target>
+            </trans-unit>
+            <trans-unit id="app.accesories">
+                <source>app.accesories</source>
+                <target>Accesories</target>
+            </trans-unit>
+            <trans-unit id="app.tables.rules">
+                <source>app.tables.rules</source>
+                <target>Table Rules</target>
+            </trans-unit>
+            <trans-unit id="app.articles">
+                <source>app.articles</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="app.language">
+                <source>app.language</source>
+                <target>Language</target>
+            </trans-unit>
+            <trans-unit id="app.currency">
+                <source>app.currency</source>
+                <target>€</target>
+            </trans-unit>
+            <trans-unit id="app.dimensions">
+                <source>app.dimensions</source>
+                <target>Dimensions(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.quality">
+                <source>app.quality</source>
+                <target>Timber quality:</target>
+            </trans-unit>
+            <trans-unit id="app.plank">
+                <source>app.plank</source>
+                <target>Plank(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.disk.thickness">
+                <source>app.disk.thickness</source>
+                <target>Disk thickness(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.wood.selection">
+                <source>app.wood.selection</source>
+                <target>Material:</target>
+            </trans-unit>
+            <trans-unit id="app.timber.tempering">
+                <source>app.timber.tempering</source>
+                <target>Tempering:</target>
+            </trans-unit>
+            <trans-unit id="app.profile">
+                <source>app.profile</source>
+                <target>Leg Profile(cm):</target>
+            </trans-unit>
+            <trans-unit id="app.table.category">
+                <source>app.table.category</source>
+                <target>Table Categories</target>
+            </trans-unit>
+            <trans-unit id="app.vat.included">
+                <source>app.vat.included</source>
+                <target>inkl. MwSt.</target>
+            </trans-unit>
+            <trans-unit id="app.configuration">
+                <source>app.configuration</source>
+                <target>Konfigurieren Produkt</target>
+            </trans-unit>
+
+
+
+
+
+
+
+
+
+
         </body>
     </file>
 </xliff>

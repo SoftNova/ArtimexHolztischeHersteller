@@ -48,6 +48,10 @@
                 <target>Choose the style that most represents you or browse all of them!
                         Whether your style is modern, vintage, classic or traditional,  you are sure to find the one that will steal your heart!</target>
             </trans-unit>
+            <trans-unit id="app.viewmore">
+                <source>app.viewmore</source>
+                <target>View more</target>
+            </trans-unit>
             <trans-unit id="app.motto3">
                 <source>app.motto3</source>
                 <target>Solid wood furniture - A Guarantee of Quality</target>
@@ -57,6 +61,10 @@
                 <target>Bring richness and harmony to your life by complementing your home with the color and quality you prefer.
                         There are no rules and no limitations.</target>
             </trans-unit>
+            <trans-unit id="app.prodconf">
+                <source>app.prodconf</source>
+                <target>Product configuration</target>
+            </trans-unit>
             <trans-unit id="app.motto4">
                 <source>app.motto4</source>
                 <target>Artimex Sport</target>
@@ -64,6 +72,23 @@
             <trans-unit id="app.motto4-text">
                 <source>app.motto4-text</source>
                 <target>Artimex Sport</target>
+            </trans-unit>
+
+            <trans-unit id="app.newproducts">
+                <source>app.newproducts</source>
+                <target>New products</target>
+            </trans-unit>
+            <trans-unit id="app.waranty">
+                <source>app.waranty</source>
+                <target>30 Days return</target>
+            </trans-unit>
+            <trans-unit id="app.freeshipping">
+                <source>app.freeshipping</source>
+                <target>Free shipping</target>
+            </trans-unit>
+            <trans-unit id="app.secure">
+                <source>app.secure</source>
+                <target>Secure payments</target>
             </trans-unit>
 
             <trans-unit id="app.aboutus-page">
