@@ -12,13 +12,14 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
-class TableLegAttributeAdmin extends  Admin
+class TableLegAttributeAdmin extends Admin
 {
     protected $formOptions = array(
         'cascade_validation' => true
     );
+
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('basePrice', MoneyType::class, array('label' => 'admin.base.price'));            
+        $form->add('basePrice', MoneyType::class, array('label' => 'admin.base.price'));
     }
 }

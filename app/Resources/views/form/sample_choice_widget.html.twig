@@ -1,0 +1,39 @@
+{% extends "form_div_layout.html.twig" %}
+
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {% set entity = form.vars.choices[child.vars.value].data %}{# get entity object #}
+                <div class="col-sm-6 col-lg-4 itemMaterialDisplay">
+                    <div class="row col-sm-12">
+                <span>
+                <div class="single-product">
+                    <div class="product-f-image">
+                        {{- form_widget(child) -}}
+                        <label for="{{ child.vars.id }}">
+                            <p class="text-center">{{ child.vars.label }}</p>
+                           <img class="center-block img-responsive" id="primaryImageDisplay"
+                                src="{{ entity.image.webpath | imagine_filter('primaryImage') }}">
+                        </label>
+                    </div>
+                </div>
+                </span>
+                    </div>
+                    <div class="col-sm-12 row">
+                        <hr>
+                    </div>
+            </div>
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="list-unstyled">
+            {%- for error in errors -%}
+                <li class="color-red">{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}

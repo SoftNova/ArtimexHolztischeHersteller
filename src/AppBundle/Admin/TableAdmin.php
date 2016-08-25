@@ -23,7 +23,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Symfony\Component\Security\Acl\Util\ClassUtils;
 
 class TableAdmin extends Admin
 {

@@ -11,20 +11,18 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Utils\Utils;
-use AppBundle\ValueObject\OrderVO;
 use libphonenumber\PhoneNumberFormat;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 
 class CartController extends Controller
@@ -45,6 +43,8 @@ class CartController extends Controller
         $cart = $this->get('cart_service')->getCart();
         $order = new Order();
         $countries = $this->container->getParameter('countries');
+        $lang=$request->getLocale();
+        $aMethods = $this->get('payment_method_service')->getMethodsForLang($lang);
 
         $form = $this->createFormBuilder($order)
             ->add('clientFirstName', TextType::class,
@@ -133,17 +133,19 @@ class CartController extends Controller
                 array(
                     'label' => 'app.input.comments',
                     'required' => false,
+                    'attr' => array('rows' => 7)
                 ))
-            ->add('clientPaymentMethod', ChoiceType::class,
+            ->add('clientPaymentMethod', EntityType::class,
                 array(
-                    'choices'=>Utils::getPaymentMethodChoices()
-                ,
+                    'class'=>'AppBundle\Entity\PaymentMethod',
+                    'choices'=>$aMethods,
                     'multiple'=>false,
                     'expanded'=>true,
                     'required'=>true,
                     'choice_attr' => function($val, $key, $index) {
                         // adds a class like attending_yes, attending_no, etc
-                        return ['class' => 'with-font'];
+                        return ['class' => 'with-font',
+                                'data-disc'=>$val->getModifier()];
                     }
                 ))
             ->add('submit', SubmitType::class, array('label' => 'app.checkout'))
@@ -153,7 +155,41 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Order $order */
+            $order = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Sample Request - From '. $order->getClientFirstName() . ' ' . $order->getClientLastName())
+                ->setFrom($order->getClientEmail())
+                ->setTo($this->getParameter('mailer_user'))
+                ->setBody(
+                    $this->renderView(
+                        'emails/order.html.twig',
+                        array('sample' => $order)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
 
+
+            $autoReply = \Swift_Message::newInstance()
+                ->setSubject('Sample Request')
+                ->setFrom($this->getParameter('mailer_user'))
+                ->setTo($order->getClientEmail())
+                ->setBody(
+                    $this->renderView(
+                        'emails/order_autoreply.html.twig',
+                        array('sample' => $order)
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($autoReply);
+            
+            $this->get('order_service')->save($order,$cart);
+            $this->get('cart_service')->clearCart();
+            return $this->render(':client:success.html.twig', [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
+                'oCart' => $this->get('cart_service')->getCart(),
+            ]);
         }
 
 

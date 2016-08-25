@@ -38,27 +38,27 @@ class TableCategoryAdmin extends Admin
                 )
             )
         )
-        ->add('visibility',CheckboxType::class, array('required'=>false));
+            ->add('visibility', CheckboxType::class, array('required' => false));
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->add('adminName.name', null, array(
-        'label' => 'admin.name',
-        'sortable'=>true,
-        'sort_field_mapping'=>array('fieldName'=>'name'),
-        'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
-         ))
-        ->add('visibility','boolean',array(
-            'editable' => true,
-            'label'=>'admin.show.in.catalog'
+            'label' => 'admin.name',
+            'sortable' => true,
+            'sort_field_mapping' => array('fieldName' => 'name'),
+            'sort_parent_association_mappings' => array(array('fieldName' => 'translations'))
         ))
-        ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                    'delete' => array()
+            ->add('visibility', 'boolean', array(
+                'editable' => true,
+                'label' => 'admin.show.in.catalog'
+            ))
+            ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
                 )
-            )
-        );
+            );
     }
 }

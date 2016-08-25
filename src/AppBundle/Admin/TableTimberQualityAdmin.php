@@ -8,12 +8,12 @@
 
 namespace AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
-use Symfony\Component\Form\Extension\Core\Type\PercentType;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
 use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
+use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
@@ -22,18 +22,18 @@ class TableTimberQualityAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form->with('admin.translations')
-            ->add('translations',TranslationsType::class,
+            ->add('translations', TranslationsType::class,
                 array(
-                    'label'=>false,
+                    'label' => false,
                     'fields' => array(
-                        'name' => array('field_type'=>TextType::class,
-                            'label'=>'admin.normal.name')
+                        'name' => array('field_type' => TextType::class,
+                            'label' => 'admin.normal.name')
                     )
                 )
             )
             ->end()
             ->with('admin.general')
-            ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type'=>'integer', 'scale'=>2))
+            ->add('costIncrease', PercentType::class, array('label' => 'admin.cost.variance', 'type' => 'integer', 'scale' => 2))
             ->end();
     }
 
@@ -42,20 +42,20 @@ class TableTimberQualityAdmin extends Admin
         $listMapper
             ->addIdentifier('adminName.name', null, array(
                 'label' => 'admin.name',
-                'sortable'=>true,
-                'sort_field_mapping'=>array('fieldName'=>'name'),
-                'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
+                'sortable' => true,
+                'sort_field_mapping' => array('fieldName' => 'name'),
+                'sort_parent_association_mappings' => array(array('fieldName' => 'translations'))
             ))
-            ->add('locales','text', array(
-                    'label'=>'admin.available.in',
-                    'sortable'=>true,
-                    'sort_field_mapping'=>array('fieldName'=>'locale'),
-                    'sort_parent_association_mappings'=>array(array('fieldName'=>'translations'))
+            ->add('locales', 'text', array(
+                    'label' => 'admin.available.in',
+                    'sortable' => true,
+                    'sort_field_mapping' => array('fieldName' => 'locale'),
+                    'sort_parent_association_mappings' => array(array('fieldName' => 'translations'))
                 )
             )
             ->add('costIncrease', 'text', array(
                     'label' => 'admin.cost.variance',
-                    'editable'=>true
+                    'editable' => true
                 )
             )
             ->add('_action', 'actions', array(
@@ -64,8 +64,7 @@ class TableTimberQualityAdmin extends Admin
                         'delete' => array()
                     )
                 )
-            )
-        ;
+            );
     }
 
     protected function configureDatagridFilters(DatagridMapper $filter)
@@ -75,8 +74,8 @@ class TableTimberQualityAdmin extends Admin
             'field_options' => [
                 'required' => false,
                 'choices' => $this->getLanguageChoices(),
-                'multiple'=>true,
-                'expanded'=>false
+                'multiple' => true,
+                'expanded' => false
             ],
             'field_type' => 'choice'
         ]);

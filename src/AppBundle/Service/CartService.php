@@ -59,13 +59,30 @@ class CartService
         $cartItem->setItemPrice($finalPrice);
         $cartItem->setItemSpecs($specsArray);
         $cartItem->setItemQuantity(1);
+        $config="";
+        foreach ($specsArray as $spec){
+            $config=$config . $spec . '\n';
+        }
+        $cartItem->setItemConfig($config);
 
         $cart = $this->getCart();
         if (is_null($cart)) {
             $cart = new Cart();
         }
+        $cartItem->setCart($cart);
         $cart->addItem($cartItem);
-
+        if ($cart->getCartCurrency()===null) {
+            $lang = $this->request->getLocale();
+            if ($lang=='de' || $lang='fr'){
+                $cart->setCartCurrency('€');
+            }
+            else if ($lang=='en'){
+                $cart->setCartCurrency('£');
+            }
+            else if ($lang=='ro'){
+                $cart->setCartCurrency('RON');
+            }
+        }
         return $cart;
 
     }
@@ -80,6 +97,10 @@ class CartService
         }
         return null;
 
+    }
+
+    public function clearCart(){
+        $this->request->getSession()->remove('cart');
     }
 
     public function removeItemFromCartAjax()

@@ -1,11 +1,7 @@
-<div class="row">
-    {% include ':client/subContent/cart:cart_progress_bar.html.twig' %}
-</div>
-<div class="col-sm-8 col-xs-12">
+
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-12 inline">
@@ -17,6 +13,7 @@
                             </div>
                         </div>
                     </div>
+                    {{ form_start(form) }}
                     <div class="row">
                         <!-- Person of contact section -->
                         <h4 class="text-center"> {{ 'app.person.of.contact' |trans }}</h4>
@@ -29,6 +26,7 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientFirstName,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientFirstName) }}
                                     </div>
                                 </div>
                                 <!-- End of First name section -->
@@ -41,6 +39,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientLastName,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientLastName) }}
+
                                     </div>
                                 </div>
                             </div>
@@ -53,6 +53,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientEmail,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientEmail) }}
+
                                     </div>
                                 </div>
 
@@ -62,6 +64,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientPhone,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientPhone) }}
+
                                     </div>
                                 </div>
                             </div>
@@ -80,6 +84,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientCountry,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientCountry) }}
+
                                     </div>
                                 </div>
                                 <!-- End of First name section -->
@@ -92,6 +98,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientStateOrProvidence,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientStateOrProvidence) }}
+
                                     </div>
                                 </div>
 
@@ -106,6 +114,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientCity,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientCity) }}
+
                                     </div>
                                 </div>
                                 <!-- End of First name section -->
@@ -118,6 +128,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientPostalCode,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientPostalCode) }}
+
                                     </div>
                                 </div>
 
@@ -132,6 +144,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientAddress1,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientAddress1) }}
+
                                     </div>
                                 </div>
                                 <!-- End of First name section -->
@@ -144,6 +158,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientAddress2,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientAddress2) }}
+
                                     </div>
                                 </div>
 
@@ -166,6 +182,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientCompany,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientCompany) }}
+
                                     </div>
                                 </div>
                                 <!-- End of First name section -->
@@ -178,6 +196,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientCompanyRegCode,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientCompanyRegCode) }}
+
                                     </div>
                                 </div>
 
@@ -198,6 +218,8 @@
                                     <div class="col-sm-10">
                                         {{ form_widget(form.clientComment,
                                         {'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.clientComment) }}
+
                                     </div>
                                 </div>
                             </div>
@@ -207,4 +229,3 @@
             </div>
         </div>
     </div>
-</div>

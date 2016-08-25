@@ -87,9 +87,27 @@ services:
             - { name: sonata.admin, manager_type: orm, label: app.leg.attribute, show_in_dashboard: false, label_catalogue: "messages" }
 
     admin.table.category:
-        class: AppBundle\Admin\TableCategoryAdmin
-        arguments: [~,  AppBundle\Entity\TableCategory, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: app.table.category, label_catalogue: "messages", group: app.tables }
+            class: AppBundle\Admin\TableCategoryAdmin
+            arguments: [~,  AppBundle\Entity\TableCategory, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: app.table.category, label_catalogue: "messages", group: app.tables }
 
 
+    admin.order:
+            class: AppBundle\Admin\OrderAdmin
+            arguments: [~,  AppBundle\Entity\Order, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: app.table.order, label_catalogue: "messages", group: app.orders }
+    admin.sample:
+            class: AppBundle\Admin\SampleAdmin
+            arguments: [~,  AppBundle\Entity\Sample, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: app.table.sample, label_catalogue: "messages", group: app.orders }
+
+
+
+    admin.payment.method:
+            class: AppBundle\Admin\PaymentMethodAdmin
+            arguments: [~,  AppBundle\Entity\PaymentMethod, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: app.table.payment, label_catalogue: "messages", group: app.orders }

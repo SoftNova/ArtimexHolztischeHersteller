@@ -102,7 +102,39 @@ class Order
      */
     protected $clientComment;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PaymentMethod")
+     * @ORM\JoinColumn(name="payment_method_id", referencedColumnName="id")
+     */
     protected $clientPaymentMethod;
+
+    /**
+     * @var
+     * @ORM\Column(type="boolean", nullable=true, name="processed_status")
+     */
+    protected $processedStatus;
+
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime", nullable=false, name="registered_date")
+     */
+    protected $registeredDate;
+
+    /**
+     * @var
+     * @ORM\Column(type="datetime", nullable=true, name="processed_date")
+     */
+    protected $processedDate;
+
+    /**
+     * @var Cart
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart", mappedBy="order", cascade={"all"})
+     */
+    protected $cart;
+    
+    
 
     /**
      * @return mixed
@@ -120,7 +152,78 @@ class Order
         $this->clientPaymentMethod = $clientPaymentMethod;
     }
 
-    
+    /**
+     * @return mixed
+     */
+    public function getProcessedStatus()
+    {
+        return $this->processedStatus;
+    }
+
+    /**
+     * @param mixed $processedStatus
+     */
+    public function setProcessedStatus($processedStatus)
+    {
+        $this->processedStatus = $processedStatus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegisteredDate()
+    {
+        return $this->registeredDate;
+    }
+
+    /**
+     * @param mixed $registeredDate
+     */
+    public function setRegisteredDate($registeredDate)
+    {
+        $this->registeredDate = $registeredDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProcessedDate()
+    {
+        return $this->processedDate;
+    }
+
+    /**
+     * @param mixed $processedDate
+     */
+    public function setProcessedDate($processedDate)
+    {
+        $this->processedDate = $processedDate;
+    }
+
+    /**
+     * @return Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
+     * @param Cart $cart
+     */
+    public function setCart($cart)
+    {
+        $this->cart = $cart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @return mixed
      */

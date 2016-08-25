@@ -192,6 +192,7 @@ class TableMaterial
     }
 
 
+
     public function __toString()
     {
         if($name = $this->getName()){

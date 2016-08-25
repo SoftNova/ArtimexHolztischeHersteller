@@ -7,29 +7,30 @@
  */
 
 namespace AppBundle\Admin;
+
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class TableLengthAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('length_lower_bound', IntegerType::class, array('label'=>'admin.min.length'))
-            ->add('length_upper_bound', IntegerType::class, array('label'=>'admin.max.length'))
-            ->add('drawer_lower_bound', IntegerType::class, array('label'=>'admin.min.dr.length'))
-            ->add('drawer_upper_bound', IntegerType::class, array('label'=>'admin.max.dr.length'))
-            ->add('ext_lower_bound', IntegerType::class, array('label'=>'admin.min.ext.length'))
-            ->add('ext_upper_bound', IntegerType::class, array('label'=>'admin.max.ext.length'));
+        $form->add('length_lower_bound', IntegerType::class, array('label' => 'admin.min.length'))
+            ->add('length_upper_bound', IntegerType::class, array('label' => 'admin.max.length'))
+            ->add('drawer_lower_bound', IntegerType::class, array('label' => 'admin.min.dr.length'))
+            ->add('drawer_upper_bound', IntegerType::class, array('label' => 'admin.max.dr.length'))
+            ->add('ext_lower_bound', IntegerType::class, array('label' => 'admin.min.ext.length'))
+            ->add('ext_upper_bound', IntegerType::class, array('label' => 'admin.max.ext.length'));
     }
 
     protected function configureRoutes(RouteCollection $collection)
     {
         $container = $this->getConfigurationPool()->getContainer();
-        $em=$this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
-        $hasPrimary=(count($em->findAll())==0) ? false : true;
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
+        $hasPrimary = (count($em->findAll()) == 0) ? false : true;
         if ($hasPrimary) {
             if ($container->get('request')->get('_route') == 'sonata_admin_dashboard') {
                 $collection->remove('create');
@@ -40,17 +41,17 @@ class TableLengthAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->add('length_lower_bound', IntegerType::class, array(
-                    'label'=>'admin.min.length',
-                )
+                'label' => 'admin.min.length',
             )
+        )
             ->add('length_upper_bound', IntegerType::class, array(
-                    'label'=>'admin.max.length',
+                    'label' => 'admin.max.length',
                 )
             )
-            ->add('drawer_lower_bound', IntegerType::class, array('label'=>'admin.min.dr.length'))
-            ->add('drawer_upper_bound', IntegerType::class, array('label'=>'admin.max.dr.length'))
-            ->add('ext_lower_bound', IntegerType::class, array('label'=>'admin.min.ext.length'))
-            ->add('ext_upper_bound', IntegerType::class, array('label'=>'admin.max.ext.length'))
+            ->add('drawer_lower_bound', IntegerType::class, array('label' => 'admin.min.dr.length'))
+            ->add('drawer_upper_bound', IntegerType::class, array('label' => 'admin.max.dr.length'))
+            ->add('ext_lower_bound', IntegerType::class, array('label' => 'admin.min.ext.length'))
+            ->add('ext_upper_bound', IntegerType::class, array('label' => 'admin.max.ext.length'))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),

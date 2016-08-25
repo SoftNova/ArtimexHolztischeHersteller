@@ -34,6 +34,10 @@ services:
 
 
 
+    sample_repository:
+      class: AppBundle\Repository\SampleDAO
+      factory: ["@doctrine.orm.default_entity_manager", 'getRepository']
+      arguments: [AppBundle\Entity\Sample]
     height_repository:
       class: AppBundle\Repository\TableHeightDAO
       factory: ["@doctrine.orm.default_entity_manager", 'getRepository']
@@ -51,7 +55,14 @@ services:
       class: AppBundle\Service\SurfaceService
       arguments: ["@length_repository", "@width_repository", "@height_repository", "@material_repository", "@primary_material_repository"]
 
+    payment_method_service:
+      class: AppBundle\Service\PaymentMethodService
+      arguments: ['@payment_method_repository']
 
+    payment_method_repository:
+      class: AppBundle\Repository\PaymentMethodDAO
+      factory: ["@doctrine.orm.default_entity_manager", 'getRepository']
+      arguments: [AppBundle\Entity\PaymentMethod]
     material_repository:
       class: AppBundle\Repository\TableMaterialDAO
       factory: ["@doctrine.orm.default_entity_manager", 'getRepository']
@@ -112,6 +123,18 @@ services:
                 - '@cart_vo_factory'
                 - '@request_stack'
         scope: request
+
+    sample_service:
+        class: AppBundle\Service\SampleService
+        arguments:
+                - '@doctrine.orm.entity_manager'
+                - '@request_stack'
+        scope: request
+
+    order_service:
+            class: AppBundle\Service\OrderService
+            arguments:
+                    - '@doctrine.orm.entity_manager'
 
     price_handler_factory:
         class: AppBundle\Service\ConfiguredPriceHandlerFactory

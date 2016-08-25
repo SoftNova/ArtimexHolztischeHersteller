@@ -20,44 +20,62 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well well-sm">
-                    <form class="form-horizontal" method="post">
-                        <fieldset>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon hidden-xs  vertical-align-middle"></i></span>
-                                <div class="col-md-8">
-                                    <input id="fname" name="name" type="text" placeholder="{{ 'app.input.first.name' |trans }}" class="form-control">
-                                </div>
+                    {{ form_start(form) }}
+                    <fieldset>
+                        <div class="form-group row">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i
+                                        class="fa fa-user bigicon hidden-xs  vertical-align-middle"></i></span>
+                            <div class="col-md-8">
+                                {{ form_widget(form.clientFirstName,
+                                {'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.clientFirstName) }}
                             </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon hidden-xs  vertical-align-middle"></i></span>
-                                <div class="col-md-8">
-                                    <input id="lname" name="name" type="text" placeholder="{{ 'app.input.last.name' |trans }}" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i
+                                        class="fa fa-user bigicon hidden-xs  vertical-align-middle"></i></span>
+                            <div class="col-md-8">
+                                {{ form_widget(form.clientLastName,
+                                {'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.clientLastName) }}
                             </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon hidden-xs  vertical-align-middle"></i></span>
-                                <div class="col-md-8">
-                                    <input id="email" name="email" type="text" placeholder="{{ 'app.input.email' | trans }}" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i
+                                        class="fa fa-envelope-o bigicon hidden-xs  vertical-align-middle"></i></span>
+                            <div class="col-md-8">
+                                {{ form_widget(form.clientEmail,
+                                {'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.clientEmail) }}
+
                             </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon hidden-xs  vertical-align-middle"></i></span>
-                                <div class="col-md-8">
-                                    <input id="phone" name="phone" type="text" placeholder="{{ 'app.input.phone' | trans }}" class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i
+                                        class="fa fa-phone-square bigicon hidden-xs  vertical-align-middle"></i></span>
+                            <div class="col-md-8">
+                                {{ form_widget(form.clientPhone,
+                                {'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.clientPhone) }}
                             </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon hidden-xs  vertical-align-middle"></i></span>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" id="message" name="message" placeholder="{{ 'app.input.message' | trans }}" rows="7"></textarea>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i
+                                        class="fa fa-pencil-square-o bigicon hidden-xs  vertical-align-middle"></i></span>
+                            <div class="col-md-8">
+                                {{ form_widget(form.clientComment,
+                                {'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.clientComment) }}
+
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 text-center">
+                                {{ form_widget(form.submit) }}
+                                {{ form_end(form) }}
                             </div>
-                        </fieldset>
+                        </div>
+                    </fieldset>
                     </form>
                 </div>
             </div>

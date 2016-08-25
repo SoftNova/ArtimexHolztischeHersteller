@@ -324,6 +324,26 @@
                 <target>Material defined</target>
             </trans-unit>
 
+
+
+
+
+
+            <trans-unit id="app.table.payment">
+                <source>app.table.payment</source>
+                <target>Payment Methods</target>
+            </trans-unit>
+
+            <trans-unit id="app.table.sample">
+                <source>app.table.sample</source>
+                <target>Sample History</target>
+            </trans-unit>
+
+            <trans-unit id="app.table.order">
+                <source>app.table.order</source>
+                <target>Order History</target>
+            </trans-unit>
+
             <trans-unit id="app.table">
                 <source>app.table</source>
                 <target>Table</target>
@@ -489,14 +509,6 @@
                 <source>app.input.comments</source>
                 <target>Any special or specific requests?</target>
             </trans-unit>
-            <trans-unit id="app.input.bank.transfer">
-                <source>app.input.bank.transfer</source>
-                <target>Payment on delivery</target>
-            </trans-unit>
-            <trans-unit id="app.input.on.delivery">
-                <source>app.input.on.delivery</source>
-                <target>Down payment</target>
-            </trans-unit>
             <trans-unit id="app.checkout">
                 <source>app.checkout</source>
                 <target>Checkout</target>
@@ -525,6 +537,14 @@
                 <source>app.on.downpayment.info</source>
                 <target>A down payment will be made via bank transfer.</target>
             </trans-unit>
+            <trans-unit id="app.submit">
+                <source>app.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="app.orders">
+                <source>app.orders</source>
+                <target>Orders</target>
+            </trans-unit>
 
 
 
@@ -534,12 +554,30 @@
 
 
 
+            <trans-unit id="admin.samples">
+                <source>admin.samples</source>
+                <target>Required</target>
+            </trans-unit>
+            <trans-unit id="admin.registered.date">
+                <source>admin.registered.date</source>
+                <target>Registered on</target>
+            </trans-unit>
+
+            <trans-unit id="admin.country">
+                <source>admin.country</source>
+                <target>Country</target>
+            </trans-unit>
 
 
+            <trans-unit id="admin.processed.date">
+                <source>admin.processed.date</source>
+                <target>Processed on</target>
+            </trans-unit>
 
-
-
-
+            <trans-unit id="admin.processed.status">
+                <source>admin.processed.status</source>
+                <target>Processed</target>
+            </trans-unit>
 
             <trans-unit id="admin.code">
                 <source>admin.code</source>

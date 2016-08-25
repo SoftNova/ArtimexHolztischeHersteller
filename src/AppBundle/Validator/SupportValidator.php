@@ -22,7 +22,9 @@ class SupportValidator
             $message = 'Corrupted data';
         }
         if (!is_null($tableConfigs->getProfile())) {
-            $profileIds = new ArrayCollection(array_map(function($p){ return $p->getId();}, $profilesArray->getValues()));
+            $profileIds = new ArrayCollection(array_map(function ($p) {
+                return $p->getId();
+            }, $profilesArray->getValues()));
             if (!$profileIds->contains(intval($tableConfigs->getProfile()))) {
                 $message = 'Corrupted data';
             }

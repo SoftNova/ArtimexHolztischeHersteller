@@ -1,0 +1,46 @@
+{% block head %}
+    <!-- Header area -->
+    {% include 'client/statics/header.html.twig' %}
+    <!-- End of header area -->
+{% endblock %}
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>{% trans %}app.sample.materials{% endtrans %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row bottom-padding-2x"></div>
+        <div class="row">
+            <div class="col-xs-12 col-lg-8">
+                {% include ':client/subContent/samples:sample_selection.html.twig' %}
+            </div>
+            <div class="col-xs-12 col-md-4">
+                {% include 'client/subContent/samples/sample_delivery_info.html.twig' %}
+            </div>
+        </div>
+    </div>
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- End main content area -->
+{% endblock %}
+{% block footer %}
+    <!-- Start of footer area -->
+    {% include '/client/statics/footer.html.twig' %}
+    <!-- End of footer area -->
+{% endblock %}

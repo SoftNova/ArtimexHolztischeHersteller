@@ -52,6 +52,7 @@ class Utils
         return $randomString;
     }
     
+    // ToDo remove this
     public static function generateUniqueCartCode($length = 10){
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -87,5 +88,9 @@ class Utils
     public static function getPaymentMethodChoices(){
         return array('1'=>'app.input.bank.transfer',
             '2'=>'app.input.on.delivery');
+    }
+
+    public static function getFreeSample(){
+        return array('0'=>'app.free.sample');
     }
 }
