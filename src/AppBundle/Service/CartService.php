@@ -11,6 +11,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\CartItem;
+use AppBundle\Entity\CartItemConfig;
 use AppBundle\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -59,11 +60,11 @@ class CartService
         $cartItem->setItemPrice($finalPrice);
         $cartItem->setItemSpecs($specsArray);
         $cartItem->setItemQuantity(1);
-        $config="";
         foreach ($specsArray as $spec){
-            $config=$config . $spec . '\n';
+            $configSpec = new CartItemConfig($spec);
+            if ($spec!==null)
+            $cartItem->addConfig($configSpec);
         }
-        $cartItem->setItemConfig($config);
 
         $cart = $this->getCart();
         if (is_null($cart)) {

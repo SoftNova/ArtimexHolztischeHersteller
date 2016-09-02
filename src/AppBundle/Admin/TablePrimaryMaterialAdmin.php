@@ -50,13 +50,6 @@ class TablePrimaryMaterialAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $container = $this->getConfigurationPool()->getContainer();
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository($this->getClass());
-        $hasPrimary = (count($em->findAll()) == 0) ? false : true;
-        if ($hasPrimary == true) {
-            if ($container->get('request')->get('_route') == 'sonata_admin_dashboard') {
-                $collection->remove('create');
-            }
-        }
+        $collection->remove('create');
     }
 }

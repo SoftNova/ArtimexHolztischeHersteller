@@ -23,6 +23,13 @@ services:
           tags:
                 - { name: sonata.admin, manager_type: orm, label: app.timber.quality, group: app.tables, label_catalogue: "messages" }
 
+    admin.product:
+          class: AppBundle\Admin\ProductAdmin
+          arguments: [~, AppBundle\Entity\Product, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: app.product , group: app.articles, label_catalogue: "messages" }
+
+
     admin.table.primary.material:
           class: AppBundle\Admin\TablePrimaryMaterialAdmin
           arguments: [~, AppBundle\Entity\TablePrimaryMaterial, ~]
@@ -44,11 +51,6 @@ services:
           tags:
                 - { name: sonata.admin, manager_type: orm, label: app.leg.height, group: app.tables.rules, label_catalogue: "messages" }
 
-    admin.product:
-            class: AppBundle\Admin\ProductAdmin
-            arguments: [~, AppBundle\Entity\Product, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: app.product , group: app.articles, label_catalogue: "messages" }
 
     admin.table.drawer:
             class: AppBundle\Admin\TableDrawerAttributeAdmin

@@ -7,7 +7,9 @@
  */
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Class CartItem
@@ -45,7 +47,10 @@ class CartItem
 
     /**
      * @var
-     * @ORM\Column(type="string", nullable=false, name="item_config")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\CartItemConfig", cascade={"all"})
+     * @ORM\JoinTable(name="cart_item_configs",
+     *     joinColumns={@JoinColumn(name="cart_item_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="cart_item_config_id", referencedColumnName="id", unique=true)})
      */
     protected $itemConfig;
 
@@ -67,6 +72,11 @@ class CartItem
     protected $uniqueItemCode;
     protected $itemImg;
     protected $itemSpecs;
+
+    public function __construct()
+    {
+        $this->itemConfig = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -253,4 +263,17 @@ class CartItem
         return $itemTotalCost.',00';
     }
 
+    public function __toString()
+    {
+        $output = $this->itemName . " | x " . $this->getItemQuantity() . " | \n \r ";
+        foreach ($this->getItemConfig() as $cfg) {
+            $output = $output . $cfg->getSpecification() . " | ";
+        }
+        $output = $output . $this->getTotalPrice();
+        return $output;
+    }
+
+    public function addConfig($spec){
+        $this->itemConfig->add($spec);
+    }
 }

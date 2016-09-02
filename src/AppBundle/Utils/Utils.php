@@ -68,16 +68,16 @@ class Utils
         foreach ($countries as $iso2){
             switch ($iso2){
                 case 'FR':
-                    $results['fr']='app.france';
+                    $results['France']='app.france';
                     break;
                 case 'DE':
-                    $results['de']='app.germany';
+                    $results['Germany']='app.germany';
                     break;
                 case 'RO':
-                    $results['ro']='app.romania';
+                    $results['Romania']='app.romania';
                     break;
                 case 'GB':
-                    $results['en']='app.uk';
+                    $results['Great Britain']='app.uk';
                     break;
             }
         }

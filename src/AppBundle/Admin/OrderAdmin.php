@@ -72,8 +72,8 @@ class OrderAdmin extends Admin
     protected function configureShowFields(ShowMapper $show)
     {
         $show
-            ->tab('General') // the tab call is optional
-            ->with('Randomness', array(
+            ->tab('admin.general') // the tab call is optional
+            ->with('admin.order.request', array(
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-success',
             ))
@@ -99,6 +99,19 @@ class OrderAdmin extends Admin
             ->add('clientCompany', 'text', ['label'=>'app.input.company'])
             ->add('clientCompanyRegCode', 'text', ['label'=>'app.input.company.reg.code'])
             ->add('clientComment', 'text', ['label'=>'app.input.comments'])
+            ->end()
+
+            ->with('admin.order.cart.details', array(
+                'class'       => 'col-md-12',
+                'box_class'   => 'box box-solid box-primary',
+            ))
+
+            ->add('cart.totalPrice', 'text', array('label'=>'admin.total.price'))
+            ->add('cart.currency', 'text', array('label'=>'admin.currency'))
+            ->add('cart.totalQuantity', 'text', array('label'=>'admin.total.quantity'))
+            ->add('cart.cartItems', null, array('label'=>'admin.item.configs',
+                                                    'safe'=>false))
+            ->end()
         ;
     }
 

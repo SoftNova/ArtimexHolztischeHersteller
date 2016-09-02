@@ -75,8 +75,7 @@ class SampleAdmin extends Admin
     protected function configureShowFields(ShowMapper $show)
     {
         $show
-            ->tab('General') // the tab call is optional
-            ->with('Sample Request', array(
+            ->with('admin.sample.request', array(
                 'class'       => 'col-md-12',
                 'box_class'   => 'box box-solid box-success',
             ))

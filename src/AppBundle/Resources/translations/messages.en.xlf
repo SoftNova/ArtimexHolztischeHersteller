@@ -533,6 +533,37 @@
                 <source>admin.samples</source>
                 <target>Required</target>
             </trans-unit>
+
+            <trans-unit id="admin.currency">
+                <source>admin.currency</source>
+                <target>Currency Type</target>
+            </trans-unit>
+
+            <trans-unit id="admin.total.quantity">
+                <source>admin.total.quantity</source>
+                <target>Total Items</target>
+            </trans-unit>
+
+            <trans-unit id="admin.total.price">
+                <source>admin.total.price</source>
+                <target>Total Price</target>
+            </trans-unit>
+
+
+            <trans-unit id="admin.order.request">
+                <source>admin.order.request</source>
+                <target>Order Request Details</target>
+            </trans-unit>
+            <trans-unit id="admin.order.cart.details">
+                <source>admin.order.cart.details</source>
+                <target>Order Cart Details</target>
+            </trans-unit>
+
+            <trans-unit id="admin.sample.request">
+                <source>admin.sample.request</source>
+                <target>Sample Request Details</target>
+            </trans-unit>
+
             <trans-unit id="admin.registered.date">
                 <source>admin.registered.date</source>
                 <target>Registered on</target>
@@ -760,7 +791,10 @@
                 <source>admin.category</source>
                 <target>Categories</target>
             </trans-unit>
-
+            <trans-unit id="admin.item.configs">
+                <source>admin.item.configs</source>
+                <target>Config</target>
+            </trans-unit>
 
 
 
