@@ -10,6 +10,7 @@
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
+    "sonata-project/easy-extends-bundle": "dev-master",
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "^2.8",
