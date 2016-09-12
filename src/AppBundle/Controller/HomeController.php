@@ -28,8 +28,6 @@ class HomeController extends Controller
         $langIso2=$this->get('request')->getLocale();
         $allLocales=$this->getParameter('locales');
         $langIso2=strlen($langIso2)>2 ? substr($langIso2,0,2) : $langIso2;
-        //ToDo fix this
-        $langIso2='de';
         if (in_array($langIso2, $allLocales)){
             return $this->redirect($langIso2, 301);
         }

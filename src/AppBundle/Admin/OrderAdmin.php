@@ -106,8 +106,8 @@ class OrderAdmin extends Admin
                 'box_class'   => 'box box-solid box-primary',
             ))
 
-            ->add('cart.totalPrice', 'text', array('label'=>'admin.total.price'))
-            ->add('cart.currency', 'text', array('label'=>'admin.currency'))
+            ->add('cart.decimalTotalPrice', 'text', array('label'=>'admin.total.price'))
+            ->add('cart.cartCurrency', 'text', array('label'=>'admin.currency'))
             ->add('cart.totalQuantity', 'text', array('label'=>'admin.total.quantity'))
             ->add('cart.cartItems', null, array('label'=>'admin.item.configs',
                                                     'safe'=>false))

@@ -123,6 +123,9 @@ class Cart
         return $this->totalPrice. ',00';
     }
 
+    public function getDecimalTotalPrice(){
+        return $this->totalPrice;
+    }
     /**
      * @param mixed $totalPrice
      */

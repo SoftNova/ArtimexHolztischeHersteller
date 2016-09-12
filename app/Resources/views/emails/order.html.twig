@@ -1,0 +1,33 @@
+{{  'app.order.mail.header' |
+    trans ({
+        '%supplier_mail%':"not_impl@hh.de",
+        '%order_no%' : order.id
+    })
+}}
+{% for item in order.cart.cartItems %}
+    {{ 'app.order.mail.repetitive.content' |
+        trans ({
+            '%product_name%' : item.itemName,
+            '%product_cost%' : item.itemPrice,
+            '%product_quantity%': item.itemQuantity,
+            '%total_price_for_product_times_quantity%': order.cart.cartCurrency ~ item.totalPrice
+        })
+    }}
+{% endfor %}
+{{ 'app.order.mail.static.content' |
+    trans ({
+        '%all_cart_price%' : order.cart.totalPrice ~ order.cart.cartCurrency,
+        '%payment_type%' : order.clientPaymentMethod.name,
+        '%client_email%' : order.clientEmail,
+        '%client_company%' : order.clientCompany,
+        '%client_first_name%' : order.clientFirstName,
+        '%client_last_name%' : order.clientLastName,
+        '%country%' : order.clientCountry,
+        '%city%' : order.clientCity,
+        '%state%' : order.clientStateOrProvidence,
+        '%address_1%' : order.clientAddress1,
+        '%address_2%' : order.clientAddress2,
+        '%client_phone%' : order.clientPhone
+    })
+}}
+

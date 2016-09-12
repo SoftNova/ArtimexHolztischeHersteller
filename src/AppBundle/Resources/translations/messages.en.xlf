@@ -7,28 +7,28 @@
                 <target>This is the title</target>
             </trans-unit>
             <trans-unit id="links">
-                 <source>app.account</source>
-                 <target>Account</target>
+                <source>app.account</source>
+                <target>Account</target>
             </trans-unit>
             <trans-unit id="app.home">
                 <source>app.home</source>
                 <target>Home</target>
             </trans-unit>
             <trans-unit id="app.aboutus">
-                  <source>app.aboutus</source>
-                  <target>About us</target>
+                <source>app.aboutus</source>
+                <target>About us</target>
             </trans-unit>
             <trans-unit id="app.product1">
-                   <source>app.product1</source>
-                   <target>Products</target>
+                <source>app.product1</source>
+                <target>Products</target>
             </trans-unit>
             <trans-unit id="app.contact">
-                   <source>app.contact</source>
-                   <target>Contact</target>
+                <source>app.contact</source>
+                <target>Contact</target>
             </trans-unit>
             <trans-unit id="app.name">
-                    <source>app.name</source>
-                    <target>Artimex Sport</target>
+                <source>app.name</source>
+                <target>Artimex Sport</target>
             </trans-unit>
 
             <trans-unit id="app.motto1">
@@ -37,7 +37,9 @@
             </trans-unit>
             <trans-unit id="app.motto1-text">
                 <source>app.motto1-text</source>
-                <target>Choose from a variety of tops including oak wood,  and marble to create a custom table that's all your own. Bases include steel and wood in a range of finishes.</target>
+                <target>Choose from a variety of tops including oak wood, and marble to create a custom table that's all
+                    your own. Bases include steel and wood in a range of finishes.
+                </target>
             </trans-unit>
             <trans-unit id="app.motto2">
                 <source>app.motto2</source>
@@ -46,7 +48,9 @@
             <trans-unit id="app.motto2-text">
                 <source>app.motto2-text</source>
                 <target>Choose the style that most represents you or browse all of them!
-                        Whether your style is modern, vintage, classic or traditional,  you are sure to find the one that will steal your heart!</target>
+                    Whether your style is modern, vintage, classic or traditional, you are sure to find the one that
+                    will steal your heart!
+                </target>
             </trans-unit>
             <trans-unit id="app.viewmore">
                 <source>app.viewmore</source>
@@ -58,8 +62,10 @@
             </trans-unit>
             <trans-unit id="app.motto3-text">
                 <source>app.motto3-text</source>
-                <target>Bring richness and harmony to your life by complementing your home with the color and quality you prefer.
-                        There are no rules and no limitations.</target>
+                <target>Bring richness and harmony to your life by complementing your home with the color and quality
+                    you prefer.
+                    There are no rules and no limitations.
+                </target>
             </trans-unit>
             <trans-unit id="app.prodconf">
                 <source>app.prodconf</source>
@@ -92,47 +98,59 @@
             </trans-unit>
 
             <trans-unit id="app.aboutus-page">
-                     <source>app.aboutuspage</source>
-                     <target>
-                         Welcome to Our website!
+                <source>app.aboutuspage</source>
+                <target>
+                    Welcome to Our website!
 
-                         Artimex Sport GmbH is one of the most important manufacturers for gymnastic equipment, sport stadium and sport halls for 20 years.
+                    Artimex Sport GmbH is one of the most important manufacturers for gymnastic equipment, sport stadium
+                    and sport halls for 20 years.
 
-                         We manufacture gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball goals, rugby goal posts and other products for individual training and team sports.
+                    We manufacture gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball goals,
+                    rugby goal posts and other products for individual training and team sports.
 
-                         Our goal is to provide the highest level of customer service and support to complement our high quality line of products.
+                    Our goal is to provide the highest level of customer service and support to complement our high
+                    quality line of products.
 
-                         All of our Stall Bars are covered by a full 10 year warranty. The type of gymnastics Stall bars we produce are recommended to be used for rehabilitation or muscle tone maintenance exercises. You will find videos on our Products pages that illustrate the broad range of exercises that can be done on gymnastic Stall Bars.
+                    All of our Stall Bars are covered by a full 10 year warranty. The type of gymnastics Stall bars we
+                    produce are recommended to be used for rehabilitation or muscle tone maintenance exercises. You will
+                    find videos on our Products pages that illustrate the broad range of exercises that can be done on
+                    gymnastic Stall Bars.
 
-                         Prices
-                         Prices are subject to change at any time.
+                    Prices
+                    Prices are subject to change at any time.
 
-                         Payment
-                         Payment can be made: Pay-Pal, Electronic Bank Transfer or credit-cards.
+                    Payment
+                    Payment can be made: Pay-Pal, Electronic Bank Transfer or credit-cards.
 
-                         Shipping
-                         Deliver of your orders will be made via either UPS.
+                    Shipping
+                    Deliver of your orders will be made via either UPS.
 
-                         Return
-                         If you are not completely satisfied with your order, you may contact us for either an exchange or return for refund within 30 days! Please see details on our website.
+                    Return
+                    If you are not completely satisfied with your order, you may contact us for either an exchange or
+                    return for refund within 30 days! Please see details on our website.
 
-                         Privacy Policy
-                         Artimex Sport is committed to protecting your privacy. The confidential data you submit is protected using SSL encryption.
-                         All of the customer data we collect is protected against unauthorized access and is never sold, traded or rented for commercial purposes to other organizations.
+                    Privacy Policy
+                    Artimex Sport is committed to protecting your privacy. The confidential data you submit is protected
+                    using SSL encryption.
+                    All of the customer data we collect is protected against unauthorized access and is never sold,
+                    traded or rented for commercial purposes to other organizations.
 
 
-                         Sponsor
-                         Artimex Sport actively supports programs and activities to develop athletics and sports training for teams, individuals and children.
-                         We proudly support:
-                     </target>
-             </trans-unit>
+                    Sponsor
+                    Artimex Sport actively supports programs and activities to develop athletics and sports training for
+                    teams, individuals and children.
+                    We proudly support:
+                </target>
+            </trans-unit>
             <trans-unit id="app.paymentinfo-page">
                 <source>app.paymentinfo-page</source>
                 <target>
                     Artimex-Sport proposes various alternatives for the payment of your orders. Here they are:
 
                     Advance payment when placing the order (3% discount)
-                    Once the order is confirmed, you can transfer the amount due to the following account. Once we receive payment, goods will be dispatched immediately, subject to availability. The bank details are as follows:
+                    Once the order is confirmed, you can transfer the amount due to the following account. Once we
+                    receive payment, goods will be dispatched immediately, subject to availability. The bank details are
+                    as follows:
 
 
                     Artimex Sport GmbH
@@ -146,67 +164,139 @@
                     Deutsche Bank
 
 
-                    Collect on Delivery (C.O.D.):  If a shipper has selected our Collect on Delivery (C.O.D.) service, we'll collect payment at the time of delivery.
+                    Collect on Delivery (C.O.D.): If a shipper has selected our Collect on Delivery (C.O.D.) service,
+                    we'll collect payment at the time of delivery.
 
-                    Credit cards: We accept Visa and MasterCard. The transfer of your personal data is secured by a SSL encryption system. Your credit card will be automatically processed by our payment service provider. If your data are correct, we shall immediately proceed with processing your order.
+                    Credit cards: We accept Visa and MasterCard. The transfer of your personal data is secured by a SSL
+                    encryption system. Your credit card will be automatically processed by our payment service provider.
+                    If your data are correct, we shall immediately proceed with processing your order.
 
-                    PayPal: Online secured payment service, easy and fast. For further information about PayPal, please see www.paypal.com. If your data are correct, we shall immediately proceed with processing your order.
+                    PayPal: Online secured payment service, easy and fast. For further information about PayPal, please
+                    see www.paypal.com. If your data are correct, we shall immediately proceed with processing your
+                    order.
 
-                    Payment secured by SSL encryption: We are using the SSL security system (Secure Socket Layer) and also a 128 Bit encoding after the transfer of your personal data. This technology, which assures a very high security level, is also used by banks to protect data after online transactions.  A key or a padlock symbol indicates that the payment transaction is secure.
+                    Payment secured by SSL encryption: We are using the SSL security system (Secure Socket Layer) and
+                    also a 128 Bit encoding after the transfer of your personal data. This technology, which assures a
+                    very high security level, is also used by banks to protect data after online transactions. A key or
+                    a padlock symbol indicates that the payment transaction is secure.
                 </target>
             </trans-unit>
 
             <trans-unit id="app.terms-page">
                 <source>app.terms-page</source>
                 <target>
-                    ARTIMEX SPORT GmbH, 56068 Koblenz-Germany, shall implement your order on the basis of the following terms and conditions.
+                    ARTIMEX SPORT GmbH, 56068 Koblenz-Germany, shall implement your order on the basis of the following
+                    terms and conditions.
 
                     1. INFORMATION ABOUT US
-                    This site is operated by and the goods you purchase will be supplied by ARTIMEX SPORT GmbH ("we"). We are registered in the Koblenz Local Court in Germany under company number HRB 24408 and with our registered office at Markenbilchenweg 34, 56068 Koblenz, Germany which is our main trading address is.
+                    This site is operated by and the goods you purchase will be supplied by ARTIMEX SPORT GmbH ("we").
+                    We are registered in the Koblenz Local Court in Germany under company number HRB 24408 and with our
+                    registered office at Markenbilchenweg 34, 56068 Koblenz, Germany which is our main trading address
+                    is.
                     Our VAT number is DE 298422603.
-                    You can contact us by email at international@artimexsport.com , by telephone on + 49 1723 258 000  or write to us at our registered address given above.
+                    You can contact us by email at international@artimexsport.com , by telephone on + 49 1723 258 000 or
+                    write to us at our registered address given above.
 
                     2. YOUR PERSONAL INFORMATION
-                    We will use your personal information in accordance with our Privacy Policy which you could look up here.
+                    We will use your personal information in accordance with our Privacy Policy which you could look up
+                    here.
 
                     3. ORDERING
-                    You may place an order to purchase goods advertised for sale on this site by following the onscreen prompts after clicking on the item you wish to purchase. You will have an opportunity to check and correct any input errors in your order up until the point at which you place your order by clicking the "Order with obligation to pay" button on the checkout page. If you submit an order for goods via this site by clicking the 'Order with obligation to pay' button, your order is an offer to us to buy the goods you have ordered on this site.
-                    We will acknowledge receipt of your order by sending you an automatically generated e-mail accepting your order. With this e-mail the contract will be concluded.
-                    The contract will relate only to those specific goods which are referred to in our e-mail confirming our acceptance of your order. You should read and check the details in this e-mail to ensure that they are correct.
-                    If the details in the email confirming your order are not correct, or if you are not satisfied with the details in the email, please contact us at international@artimexsport.com.
+                    You may place an order to purchase goods advertised for sale on this site by following the onscreen
+                    prompts after clicking on the item you wish to purchase. You will have an opportunity to check and
+                    correct any input errors in your order up until the point at which you place your order by clicking
+                    the "Order with obligation to pay" button on the checkout page. If you submit an order for goods via
+                    this site by clicking the 'Order with obligation to pay' button, your order is an offer to us to buy
+                    the goods you have ordered on this site.
+                    We will acknowledge receipt of your order by sending you an automatically generated e-mail accepting
+                    your order. With this e-mail the contract will be concluded.
+                    The contract will relate only to those specific goods which are referred to in our e-mail confirming
+                    our acceptance of your order. You should read and check the details in this e-mail to ensure that
+                    they are correct.
+                    If the details in the email confirming your order are not correct, or if you are not satisfied with
+                    the details in the email, please contact us at international@artimexsport.com.
                     The contractual language is English.
-                    Where we accept your order, we have a legal duty to supply goods that are in conformity with these Terms and Conditions.
+                    Where we accept your order, we have a legal duty to supply goods that are in conformity with these
+                    Terms and Conditions.
 
                     4. PRICE AND DELIVERY COSTS
-                    Legal Value Added Tax is contained in the prices to the consumer. Prices are quoted in GBP (British Pound). Deliveries are possible only to addresses in UK and Ireland.
-                    In so far as no contract exists between you and us, the prices listed in the price list are subject to alteration and an interim sale of the product mentioned in the catalogue remains reserved. You will find information on the duration of the validity of each of our limited offers where they are offered in the Internet shop. The sales contract for the article selected by you becomes valid when we accept your order. This comes into effect through "Confirmation of Contract" in text form, the notification of the delivery or the handing over of goods. If the price supplied for the order no longer applies, e.g. as a result of interim changes to our price list and/or catalogue prices or should the product not be available for delivery anymore, we shall inform you after inputting the order, so that you can choose if you wish to continue with the order under the changed conditions or abandon the order altogether.
-                    Information displayed on this site relating to pricing is subject to change by us without notice, but those on the site at the time of any order placed will be the prices applicable to that order.
-                    Occasionally, an error may occur and goods may be incorrectly priced in which circumstances we will not be obliged to supply the goods at the incorrect price or at all. We will (at our discretion) either cancel your order and refund the price you have paid or use reasonable endeavours to contact you and ask you whether you wish to continue with the order at the correct price. If we are unable to contact you or you do not wish to continue with the order at the correct price, we will cancel your order and refund the price you have paid. However, where the correct price of the goods is less than our stated price, we may (at our discretion) continue with your order and charge the lower amount on dispatch.
+                    Legal Value Added Tax is contained in the prices to the consumer. Prices are quoted in GBP (British
+                    Pound). Deliveries are possible only to addresses in UK and Ireland.
+                    In so far as no contract exists between you and us, the prices listed in the price list are subject
+                    to alteration and an interim sale of the product mentioned in the catalogue remains reserved. You
+                    will find information on the duration of the validity of each of our limited offers where they are
+                    offered in the Internet shop. The sales contract for the article selected by you becomes valid when
+                    we accept your order. This comes into effect through "Confirmation of Contract" in text form, the
+                    notification of the delivery or the handing over of goods. If the price supplied for the order no
+                    longer applies, e.g. as a result of interim changes to our price list and/or catalogue prices or
+                    should the product not be available for delivery anymore, we shall inform you after inputting the
+                    order, so that you can choose if you wish to continue with the order under the changed conditions or
+                    abandon the order altogether.
+                    Information displayed on this site relating to pricing is subject to change by us without notice,
+                    but those on the site at the time of any order placed will be the prices applicable to that order.
+                    Occasionally, an error may occur and goods may be incorrectly priced in which circumstances we will
+                    not be obliged to supply the goods at the incorrect price or at all. We will (at our discretion)
+                    either cancel your order and refund the price you have paid or use reasonable endeavours to contact
+                    you and ask you whether you wish to continue with the order at the correct price. If we are unable
+                    to contact you or you do not wish to continue with the order at the correct price, we will cancel
+                    your order and refund the price you have paid. However, where the correct price of the goods is less
+                    than our stated price, we may (at our discretion) continue with your order and charge the lower
+                    amount on dispatch.
                     Unless stated otherwise, all prices include VAT (where applicable) and delivery costs.
-                    They will be notified to you separately before you submit your order and will be confirmed to you by e-mail.
+                    They will be notified to you separately before you submit your order and will be confirmed to you by
+                    e-mail.
 
                     5. AVAILABILITY AND DELIVERY
-                    Information displayed on this site relating to availability is subject to change by us without notice. We cannot guarantee permanent or continuous availability of all products on this site. All orders are subject to availability at all times.
-                    We deliver within the United Kingdom and Ireland only . We will deliver the goods ordered by you to the address you give us for delivery at the time you make your order on this site.
-                    Delivery will be made according to the information on the product pages after your order is accepted.
-                    We will use reasonable endeavours to deliver the goods on any specified date we agree, or if no date is specified, within 30 days after the day on which we accept your order. In the case of unforeseen circumstances beyond our reasonable control (for example, adverse weather conditions, unpredictable delays caused by traffic congestion, road works, diversions or mechanical breakdowns, in each case to the extent beyond our reasonable control) we may not be able to deliver the goods within these timescales and we will not be liable for any delay or failure to deliver the goods if the delay or failure is wholly or partly caused by such circumstances. In the event that a delivery does not take place, we and you will agree an alternative delivery date.
-                    We are also not responsible for any delay in delivery caused by the unavailability of someone to take delivery of the products. It is your responsibility to contact the post office or courier company as applicable to arrange the collection or delivery of products that could not be delivered because you were unavailable.
+                    Information displayed on this site relating to availability is subject to change by us without
+                    notice. We cannot guarantee permanent or continuous availability of all products on this site. All
+                    orders are subject to availability at all times.
+                    We deliver within the United Kingdom and Ireland only . We will deliver the goods ordered by you to
+                    the address you give us for delivery at the time you make your order on this site.
+                    Delivery will be made according to the information on the product pages after your order is
+                    accepted.
+                    We will use reasonable endeavours to deliver the goods on any specified date we agree, or if no date
+                    is specified, within 30 days after the day on which we accept your order. In the case of unforeseen
+                    circumstances beyond our reasonable control (for example, adverse weather conditions, unpredictable
+                    delays caused by traffic congestion, road works, diversions or mechanical breakdowns, in each case
+                    to the extent beyond our reasonable control) we may not be able to deliver the goods within these
+                    timescales and we will not be liable for any delay or failure to deliver the goods if the delay or
+                    failure is wholly or partly caused by such circumstances. In the event that a delivery does not take
+                    place, we and you will agree an alternative delivery date.
+                    We are also not responsible for any delay in delivery caused by the unavailability of someone to
+                    take delivery of the products. It is your responsibility to contact the post office or courier
+                    company as applicable to arrange the collection or delivery of products that could not be delivered
+                    because you were unavailable.
 
                     6. RETURN
-                    If you wish to return goods outside of the conditions of guarantee please contact us at: clientservice@artimexsport.com or telephone 0044 7459 667305.
-                    The right to cancel does not apply to the following kind of Contracts for the supply of goods that are made to the consumer’s specifications or are clearly personalised.
+                    If you wish to return goods outside of the conditions of guarantee please contact us at:
+                    clientservice@artimexsport.com or telephone 0044 7459 667305.
+                    The right to cancel does not apply to the following kind of Contracts for the supply of goods that
+                    are made to the consumer’s specifications or are clearly personalised.
 
                     Costs of Return by Commercial Organisations
-                    If you are a corporate body or if you acquire the goods for a purpose that can be considered to be part of your commercial or self-employed occupation, the standard costs of return must be paid by you unless the goods delivered are not in accordance with those ordered or there is a valid complaint about the goods.
+                    If you are a corporate body or if you acquire the goods for a purpose that can be considered to be
+                    part of your commercial or self-employed occupation, the standard costs of return must be paid by
+                    you unless the goods delivered are not in accordance with those ordered or there is a valid
+                    complaint about the goods.
 
                     7. DEFECTS AND GUARANTEES
-                    30 days money back guarantee. If despite comprehensive controls you receive goods with defects, our customer service team will help you.
-                    The guarantee does not effect your legal rights and is valid for the time from transfer of goods to the consumer to the end of the period of guarantee. In regard to the guarantee, the consumer can return the goods right up to the end of the validity of guarantee at our costs to ARTIMEX SPORT (the guarantor). The consumer shall receive repair or replacement of goods at our discretion. The guarantee is only valid for natural use and consumer damages. The guarantee also does not cover purchasing contracts where the purchaser is practising his/her commercial business or their self-employed occupation.
-                    There is no right to claim against us for damages or faults arising from incorrect operation or usage, or for use of force or natural wear and tear after transferral of risk.
-                    Small deviations in the shape and colour of models, especially in subsequent deliveries and arising from technical changes undertaken in the course of further development are not defects.
+                    30 days money back guarantee. If despite comprehensive controls you receive goods with defects, our
+                    customer service team will help you.
+                    The guarantee does not effect your legal rights and is valid for the time from transfer of goods to
+                    the consumer to the end of the period of guarantee. In regard to the guarantee, the consumer can
+                    return the goods right up to the end of the validity of guarantee at our costs to ARTIMEX SPORT (the
+                    guarantor). The consumer shall receive repair or replacement of goods at our discretion. The
+                    guarantee is only valid for natural use and consumer damages. The guarantee also does not cover
+                    purchasing contracts where the purchaser is practising his/her commercial business or their
+                    self-employed occupation.
+                    There is no right to claim against us for damages or faults arising from incorrect operation or
+                    usage, or for use of force or natural wear and tear after transferral of risk.
+                    Small deviations in the shape and colour of models, especially in subsequent deliveries and arising
+                    from technical changes undertaken in the course of further development are not defects.
 
                     8. OUR SERVICE IN CASES OF TRANSPORT DAMAGE
-                    ARTIMEX SPORT insures all deliveries. Please inform us of damage within 24 hours. Our customer service will be glad to help, telephone 0044 7459 667305.
+                    ARTIMEX SPORT insures all deliveries. Please inform us of damage within 24 hours. Our customer
+                    service will be glad to help, telephone 0044 7459 667305.
 
                     9. SHIPPING AND SHIPPING COSTS
                     Prices from our website including shipping cost within the UK and IRELAND.
@@ -214,25 +304,41 @@
 
                     10. PAYMENT
                     Payment methods:
-                    ·      Advance payment when placing the order (3% discount) - Wire Transfer
-                    ·      Collect on Delivery (C.O.D.)
-                    ·      Payment via PayPal
-                    ·      Credit Cards
+                    · Advance payment when placing the order (3% discount) - Wire Transfer
+                    · Collect on Delivery (C.O.D.)
+                    · Payment via PayPal
+                    · Credit Cards
 
                     11. RESERVATION OF TITLE
-                    The product remains our property until complete payment is received. The customer is not permitted to sell on the product in question until he/she has fully discharged their obligations arising from the purchase.
-                    If, under reservation of title, the customer is practising a commercial business or is self-employed and purchased the goods in the practising of their business, then he/she has the right to further sell the goods in accordance with normal sales practise. He/she transfers over existing claims onto us upon selling on the product in the amount of the value of the invoice. We hereby accept this transfer.
+                    The product remains our property until complete payment is received. The customer is not permitted
+                    to sell on the product in question until he/she has fully discharged their obligations arising from
+                    the purchase.
+                    If, under reservation of title, the customer is practising a commercial business or is self-employed
+                    and purchased the goods in the practising of their business, then he/she has the right to further
+                    sell the goods in accordance with normal sales practise. He/she transfers over existing claims onto
+                    us upon selling on the product in the amount of the value of the invoice. We hereby accept this
+                    transfer.
 
                     12. TRADEMARK RIGHTS
-                    We reserve the copyright, trademark, intellectual property and design rights for all products, illustrations and other documents delivered by us. Any reproduction by third parties requires our express permission.
+                    We reserve the copyright, trademark, intellectual property and design rights for all products,
+                    illustrations and other documents delivered by us. Any reproduction by third parties requires our
+                    express permission.
 
                     13. DATA PROTECTION/SYSTEM SAFETY/ELECTRONIC ORDERS
-                    a) We save and process your order and data only in so far as this information is necessary to conduct our business and do so in a manner permissible under data protection law. You will receive all contents of contracts, i.e. the content of your order and also the general terms and conditions that have become part of the contract, along with the information about the delivery. Should you lose the documentation about your order, please e-mail, telephone or fax us and we will be happy to send you a copy of the data on your order.
+                    a) We save and process your order and data only in so far as this information is necessary to
+                    conduct our business and do so in a manner permissible under data protection law. You will receive
+                    all contents of contracts, i.e. the content of your order and also the general terms and conditions
+                    that have become part of the contract, along with the information about the delivery. Should you
+                    lose the documentation about your order, please e-mail, telephone or fax us and we will be happy to
+                    send you a copy of the data on your order.
                     Our Online-Shop has encoding technology and a safe server (SSL) to protect the privacy of users.
 
                     14. OTHER TERMS AND CONDITIONS
-                    If one of the above trading conditions should be rendered invalid, all other conditions remain valid. All other agreements must be in written form. We hereby reject customer general terms and conditions.
-                    Place of jurisdiction is Koblenz, Germany if the customer is a businessperson, corporate entity under public law or a public separate estate.
+                    If one of the above trading conditions should be rendered invalid, all other conditions remain
+                    valid. All other agreements must be in written form. We hereby reject customer general terms and
+                    conditions.
+                    Place of jurisdiction is Koblenz, Germany if the customer is a businessperson, corporate entity
+                    under public law or a public separate estate.
 
                     ARTIMEX SPORT GmbH
                     56068 Koblenz
@@ -247,9 +353,11 @@
 
             <trans-unit id="app.descr">
                 <source>app.descr</source>
-                <target>Artimex Sport GmbH is one of the most important manufacturers for gymnastic equipment, sport stadium and sport halls for 20 years
+                <target>Artimex Sport GmbH is one of the most important manufacturers for gymnastic equipment, sport
+                    stadium and sport halls for 20 years
 
-                        We manufacture tables,  gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball goals, rugby goal posts and other products for individual training and team sports.
+                    We manufacture tables, gymnastics Stall bars and benches, gymnastic mats, soccer goals, handball
+                    goals, rugby goal posts and other products for individual training and team sports.
                 </target>
             </trans-unit>
             <trans-unit id="app.fb">
@@ -269,24 +377,24 @@
                 <target>https://www.instagram.com/artimex_sport/</target>
             </trans-unit>
             <trans-unit id="information">
-                     <source>app.information</source>
-                     <target>Information</target>
+                <source>app.information</source>
+                <target>Information</target>
             </trans-unit>
             <trans-unit id="paymentinfo">
-                     <source>app.paymentinfo</source>
-                     <target>Payment Information</target>
+                <source>app.paymentinfo</source>
+                <target>Payment Information</target>
             </trans-unit>
             <trans-unit id="shippinginfo">
-                        <source>app.shippinginfo</source>
-                        <target>Shipping information</target>
+                <source>app.shippinginfo</source>
+                <target>Shipping information</target>
             </trans-unit>
             <trans-unit id="terms">
-                        <source>app.terms</source>
-                        <target>Terms and conditions</target>
+                <source>app.terms</source>
+                <target>Terms and conditions</target>
             </trans-unit>
             <trans-unit id="contactlink">
-                        <source>app.contact</source>
-                        <target>Contact</target>
+                <source>app.contact</source>
+                <target>Contact</target>
             </trans-unit>
 
             <trans-unit id="contactdetails" xml:space="preserve">
@@ -304,8 +412,8 @@
                 <target>Accesories</target>
             </trans-unit>
             <trans-unit id="app.all.tables">
-            <source>app.all.tables</source>
-            <target>Tables</target>
+                <source>app.all.tables</source>
+                <target>Tables</target>
             </trans-unit>
             <trans-unit id="app.add.to.cart" xml:space="preserve">
                 <source>app.add.to.cart</source>
@@ -323,10 +431,6 @@
                 <source>app.tempering.material.defined</source>
                 <target>Material defined</target>
             </trans-unit>
-
-
-
-
 
 
             <trans-unit id="app.table.payment">
@@ -547,13 +651,6 @@
             </trans-unit>
 
 
-
-
-
-
-
-
-
             <trans-unit id="admin.samples">
                 <source>admin.samples</source>
                 <target>Required</target>
@@ -636,7 +733,7 @@
             </trans-unit>
             <trans-unit id="admin.scaling.point">
                 <source>admin.scaling.point</source>
-                <target>Square meters waypost (m²) </target>
+                <target>Square meters waypost (m²)</target>
             </trans-unit>
             <trans-unit id="admin.scaling.variance">
                 <source>admin.scaling.variance</source>
@@ -742,7 +839,9 @@
             </trans-unit>
             <trans-unit id="admin.table.images">
                 <source>admin.table.images</source>
-                <target>Images (If you do not add a primary image to a given material, that material will not be displayed)</target>
+                <target>Images (If you do not add a primary image to a given material, that material will not be
+                    displayed)
+                </target>
             </trans-unit>
             <trans-unit id="admin.translations">
                 <source>admin.translations</source>
@@ -822,17 +921,66 @@
             </trans-unit>
 
 
+            <trans-unit id="app.order.confirmation">
+                <source>app.order.confirmation</source>
+                <target>Confirmed</target>
+            </trans-unit>
 
 
-
-
-
-
-
-
-
-
-
+            <trans-unit id="app.order.mail.header">
+                <source>app.order.mail.header</source>
+                <target>
+                    Vielen Dank für Ihre Bestellung!
+                    Nachfolgend haben wir zur Kontrolle Ihre Bestellung noch einmal aufgelistet.
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%
+                    Bestellnr. %order_no%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.order.mail.repetitive.content">
+                <source>app.order.mail.repetitive.content</source>
+                <target>
+                    Artikel: %product_name%
+                    Einzelpreis: %product_cost%
+                    Anzahl: %product_quantity%
+                    Gesamt: %total_price_for_product_times_quantity%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.order.mail.static.content">
+                <source>app.order.mail.static.content</source>
+                <target>
+                    Gesamtsumme: %all_cart_price%
+                    DIE BEZAHLUNG ERFOLGT MIT: %payment_type%
+                    E-MAIL-ADRESSE: %client_email%
+                    RECHNUNGSADRESSE:
+                    %client_company%
+                    %client_first_name% %client_last_name%
+                    %country%
+                    %city%
+                    %state%
+                    %address_1%
+                    %address_2%
+                    Telefon: %client_phone%
+                    Impressum:
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: deutschland@artimexsport.com
+                    Handelsregister: Koblenz, HRB 24408
+                    Umsatzsteuer-Identifikationsnummer: DE 298422603
+                    Kleinunternehmer gemäß § 19 UStG
+                    Bankverbindung:
+                    Artimex Sport GmbH
+                    56068-Koblenz
+                    Deutsche Bank
+                    IBAN:
+                    DE 57700700240473794600
+                    BIC:
+                    DEUTDEDBMUC
+                </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
