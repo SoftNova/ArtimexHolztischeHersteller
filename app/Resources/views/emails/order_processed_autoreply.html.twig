@@ -17,7 +17,7 @@ trans ({
 {{ 'app.order.mail.static.content' |
 trans ({
     '%all_cart_price%' : order.cart.totalPrice ~ order.cart.cartCurrency,
-    '%payment_type%' : order.clientPaymentMethod.nonPersistPaymentMethodName,
+    '%payment_type%' : order.clientPaymentMethod,
     '%client_email%' : order.clientEmail,
     '%client_company%' : order.clientCompany,
     '%client_first_name%' : order.clientFirstName,
