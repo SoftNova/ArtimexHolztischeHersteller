@@ -127,6 +127,9 @@ class OrderAdmin extends Admin
         //ToDo find recepient country and send message accordingly to said country
         //ToDo transform country to iso2 and use translating template acordingly
         //ToDo order->setPaymentMethodName(getpaymentmethodnameforlocale)
+        
+        $clientLang = Utils::getIso2ByCountry($object->getClientCountry());
+        $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
         $object->setProcessedDate(new \DateTime());
         $appMailerUser =
             $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');

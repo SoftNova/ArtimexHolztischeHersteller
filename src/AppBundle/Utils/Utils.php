@@ -85,6 +85,20 @@ class Utils
 
     }
 
+    public static function getIso2ByCountry($country){
+        switch ($country){
+            case 'Germany':
+                return 'de';
+            case 'Romania':
+                return 'ro';
+            case 'France':
+                return 'fr';
+            case 'Great Britain':
+                return 'en';
+        }
+        return null;
+    }
+
     public static function getPaymentMethodChoices(){
         return array('1'=>'app.input.bank.transfer',
             '2'=>'app.input.on.delivery');

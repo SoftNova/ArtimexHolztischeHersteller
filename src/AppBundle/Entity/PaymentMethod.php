@@ -43,6 +43,26 @@ class PaymentMethod
      */
     protected $translations;
 
+    protected $nonPersistPaymentMethodName;
+
+    /**
+     * @return mixed
+     */
+    public function getNonPersistPaymentMethodName()
+    {
+        return $this->nonPersistPaymentMethodName;
+    }
+
+    /**
+     * @param mixed $nonPersistPaymentMethodName
+     */
+    public function setNonPersistPaymentMethodName($nonPersistPaymentMethodName)
+    {
+        $this->nonPersistPaymentMethodName = $nonPersistPaymentMethodName;
+    }
+
+    
+
 
     public function __construct()
     {
