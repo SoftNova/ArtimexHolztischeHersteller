@@ -952,14 +952,18 @@
                     DIE BEZAHLUNG ERFOLGT MIT: %payment_type%
                     E-MAIL-ADRESSE: %client_email%
                     RECHNUNGSADRESSE:
-                    %client_company%
-                    %client_first_name% %client_last_name%
-                    %country%
-                    %city%
-                    %state%
-                    %address_1%
-                    %address_2%
+                    Firmenname: %client_company%
+                    Kundenname Nachname: %client_first_name% %client_last_name%
+                    Land: %country%
+                    Stadt: %city%
+                    Grafschaft: %state%
+                    Adresse 1: %address_1%
+                    Adresse 2: %address_2%
+                    Postleitzahl: %postal_code%
                     Telefon: %client_phone%
+
+                    Komment: %comment%
+
                     Impressum:
                     Artimex Sport GmbH
                     Geschäftsführer: Tautu Florin
@@ -981,6 +985,120 @@
                     DEUTDEDBMUC
                 </target>
             </trans-unit>
+
+            <trans-unit id="app.sample.mail.header">
+                <source>app.sample.mail.header</source>
+                <target>
+                    Vielen Dank für Ihre Bestellung!
+                    Nachfolgende Material wurde für die Prüfung in Auftrag gegeben
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                    Material bestellen nr: %sample_no%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.mail.repetitive.content">
+                <source>app.sample.mail.repetitive.content</source>
+                <target>
+                    Material: %product_name%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.mail.static.content">
+                <source>app.sample.mail.static.content</source>
+                <target>
+                    Material wird in 7 Tagen an folgende Adresse geliefert werden:
+                    Firmenname: %client_company%
+                    Kundenname Nachname: %client_first_name% %client_last_name%
+                    E-mail-adresse: %client_email%
+                    Land: %country%
+                    Stadt: %city%
+                    Grafschaft: %state%
+                    Adresse 1: %address_1%
+                    Adresse 2: %address_2%
+                    Postleitzahl: %postal_code%
+                    Telefon: %client_phone%
+
+                    Komment: %comment%
+
+                    Impressum:
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: deutschland@artimexsport.com
+                    Handelsregister: Koblenz, HRB 24408
+                    Umsatzsteuer-Identifikationsnummer: DE 298422603
+                    Kleinunternehmer gemäß § 19 UStG
+                    Bankverbindung:
+                    Artimex Sport GmbH
+                    56068-Koblenz
+                    Deutsche Bank
+                    IBAN:
+                    DE 57700700240473794600
+                    BIC:
+                    DEUTDEDBMUC
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.configure">
+                <source>app.configure</source>
+                <target>
+                    Configure
+                </target>
+            </trans-unit>
+            <trans-unit id="app.show">
+                <source>app.show</source>
+                <target>
+                    Show
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.register.order.request">
+                <source>app.register.order.request</source>
+                <target>
+                    Order request registered
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.register.sample.request">
+                <source>app.register.sample.request</source>
+                <target>
+                    Sample request registered
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.confirmed.sample.request">
+                <source>app.confirmed.sample.request</source>
+                <target>
+                    Sample request confirmed
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.confirmed.order.request">
+                <source>app.confirmed.order.request</source>
+                <target>
+                    Order request confirmed
+                </target>
+            </trans-unit>
+
+
+            <trans-unit id="app.order.processed.mail.header">
+                <source>app.order.processed.mail.header</source>
+                <target>
+                    Die Bestellung nr. %order_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.processed.mail.header">
+                <source>app.sample.processed.mail.header</source>
+                <target>
+                    Die Bestellung nr. %sample_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

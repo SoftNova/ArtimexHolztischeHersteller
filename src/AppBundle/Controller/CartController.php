@@ -173,7 +173,7 @@ class CartController extends Controller
 
 
             $autoReply = \Swift_Message::newInstance()
-                ->setSubject('app.confirmation')
+                ->setSubject('app.register.order.request')
                 ->setFrom($this->getParameter('mailer_user'))
                 ->setTo($order->getClientEmail())
                 ->setBody(
@@ -184,8 +184,7 @@ class CartController extends Controller
                     'text/html'
                 );
             $this->get('mailer')->send($autoReply);
-            // ToDo decomment this line below
-            //$this->get('cart_service')->clearCart();
+            $this->get('cart_service')->clearCart();
             return $this->render(':client:success.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
                 'oCart' => $this->get('cart_service')->getCart(),
@@ -267,8 +266,30 @@ class CartController extends Controller
     {
         $request = $this->get('request');
         if ($request->isXmlHttpRequest()) {
-            $finalPrice = json_decode($this->get('configured_table_service')->calculatePrice()->getContent(), true)['success'];
-            $cart = $this->get('cart_service')->addItemToCartAjax($finalPrice);
+            $finalPrice = json_decode($this->get('configured_table_service')->calculateTablePrice()->getContent(), true)['success'];
+            $cart = $this->get('cart_service')->addTableToCartAjax($finalPrice);
+            $this->get('session')->set('cart', $cart);
+            return new JsonResponse(
+                [
+                    'success' => array(
+                        'price' => $cart->getTotalPrice(),
+                        'quantity' => $cart->getTotalQuantity()
+                    )
+                ]
+            );
+        }
+        return new JsonResponse('Invalid request!, 400');
+    }
+
+    /**
+     * @Route("/{_locale}/addArticleToCart/", name="_add_article_to_cart", options={"expose"=true})
+     */
+    public function addArticleToCart()
+    {
+        $request = $this->get('request');
+        if ($request->isXmlHttpRequest()) {
+            $finalPrice = json_decode($this->get('article_service')->calculateArticlePrice()->getContent(), true)['success'];
+            $cart = $this->get('cart_service')->addArticleToCartAjax($finalPrice);
             $this->get('session')->set('cart', $cart);
             return new JsonResponse(
                 [

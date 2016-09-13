@@ -65,7 +65,7 @@ class Utils
     
     public static function getDeliveryCountries($countries){
         $results=array();
-        foreach ($countries as $iso2){
+               foreach ($countries as $iso2){
             switch ($iso2){
                 case 'FR':
                     $results['France']='app.france';

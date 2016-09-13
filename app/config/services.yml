@@ -29,7 +29,7 @@ services:
 
     article_service:
       class: AppBundle\Service\ArticleService
-      arguments: ["@product_repository","@request_stack"]
+      arguments: ["@product_repository","@request_stack", '@translator.default']
       scope: request
 
 
@@ -119,6 +119,7 @@ services:
     cart_service:
         class: AppBundle\Service\CartService
         arguments:
+                - '@article_service'
                 - '@configured_table_service'
                 - '@cart_vo_factory'
                 - '@request_stack'

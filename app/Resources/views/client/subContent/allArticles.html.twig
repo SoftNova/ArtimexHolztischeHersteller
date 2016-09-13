@@ -1,16 +1,25 @@
 {% if aArticles %}
     {% for oItem in aArticles %}
-        <div class="col-md-3 col-sm-6">
-            <div class="single-shop-product">
-                <div class="product-upper">
-                    <p style="font-size: 25px; font-family: 'Arial Black'">{{ oItem.name }}</p>
-                    <img src="{{ oItem.primaryImage | imagine_filter('primaryImage')}}">
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{ path('_specificArticle', { 'name' : oItem.name, 'code' : oItem.code}) }}">Configure</a>
+        <div class="col-sm-6 col-lg-4 itemDisplay">
+            <div class="row col-sm-12">
+                <p class="itemDisplayName text-center aligncenter">{{ oItem.name }}</p>
+            <span>
+                <div class="single-product">
+                    <div class="product-f-image">
+                        <img class="center-block img-responsive" id="primaryImageDisplay"
+                             src="{{ oItem.primaryImage | imagine_filter('primaryImage') }}">
+                        <div class="product-hover">
+                        <a href="{{ path('_specificArticle', { 'name' : oItem.name, 'code' : oItem.code}) }}"
+                           class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>{{ 'app.show' | trans }}</a>
+                        </div>
                     </div>
                 </div>
-
+            </span>
             </div>
+            <div class="col-sm-12 row">
+                <hr>
+            </div>
+            {{ oItem.price }}
         </div>
     {% endfor %}
 {% endif %}

@@ -145,6 +145,7 @@ class SampleMaterialController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var Sample $sample */
             $sample = $form->getData();
+            $this->get('sample_service')->save($sample);
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Sample Request - From '. $sample->getClientFirstName() . ' ' . $sample->getClientLastName())
@@ -161,7 +162,7 @@ class SampleMaterialController extends Controller
 
 
             $autoReply = \Swift_Message::newInstance()
-                ->setSubject('Sample Request')
+                ->setSubject('app.register.sample.request')
                 ->setFrom($this->getParameter('mailer_user'))
                 ->setTo($sample->getClientEmail())
                 ->setBody(
@@ -173,7 +174,6 @@ class SampleMaterialController extends Controller
                 );
             $this->get('mailer')->send($autoReply);
             
-            $this->get('sample_service')->save($sample);
             return $this->render(':client:success.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
                 'oCart' => $cart,

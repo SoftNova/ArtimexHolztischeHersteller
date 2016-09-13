@@ -30,6 +30,7 @@ class ProductDAO extends EntityRepository
         $qb->join('p.translations', 'pt')
             ->where('pt.locale= :lang')
             ->andWhere('p.code= :code')
+            ->addSelect('pt')
             ->setParameter('code', $code)
             ->setParameter('lang', $lang);
 

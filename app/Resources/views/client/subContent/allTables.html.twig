@@ -10,7 +10,7 @@
                              src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage') }}">
                         <div class="product-hover">
                         <a href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}"
-                           class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Configure</a>
+                           class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>{{ 'app.configure' | trans }}</a>
                         </div>
                     </div>
                 </div>

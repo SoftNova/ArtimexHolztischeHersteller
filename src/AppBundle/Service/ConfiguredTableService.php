@@ -10,31 +10,14 @@ namespace AppBundle\Service;
 
 
 use AppBundle\Entity\Table;
-use AppBundle\Entity\TableHeight;
-use AppBundle\Entity\TableLegProfile;
 use AppBundle\Entity\TableMaterial;
-use AppBundle\Entity\TableMaterialTempering;
-use AppBundle\Entity\TablePrimaryMaterial;
-use AppBundle\Entity\TableTimberQuality;
-use AppBundle\Entity\TableTranslation;
-use AppBundle\Repository\TableDAO;
-use AppBundle\Repository\TableHeightDAO;
-use AppBundle\Repository\TableLegProfileDAO;
-use AppBundle\Repository\TableLengthDAO;
-use AppBundle\Repository\TableMaterialDAO;
-use AppBundle\Repository\TablePrimaryMaterialDAO;
-use AppBundle\Repository\TableTimberQualityDAO;
-use AppBundle\Repository\TableWidthDAO;
-use AppBundle\Repository\TimberTemperingDAO;
 use AppBundle\Utils\Utils;
 use AppBundle\Validator\SpecsValidator;
 use AppBundle\Validator\SupportValidator;
 use AppBundle\Validator\SurfaceValidator;
 use AppBundle\ValueObject\ConfiguredTablePriceVO;
-use AppBundle\ValueObject\WHatever;
 use Doctrine\Common\Collections\ArrayCollection;
 use Liip\ImagineBundle\Controller\ImagineController;
-use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -52,21 +35,21 @@ class ConfiguredTableService
     protected $translator;
 
     public function __construct(SurfaceService $surfaceService, TableSupportService $supportService,
-                     TimberSpecsService $timberService,
+                                TimberSpecsService $timberService,
                                 ImagineController $imgService,
                                 RequestStack $requestStack,
                                 TableService $tableService,
                                 ConfiguredPriceHandlerFactory $cphFactory,
                                 Translator $translator)
     {
-        $this->request=$requestStack->getCurrentRequest();
-        $this->surfaceService=$surfaceService;
-        $this->supportService=$supportService;
-        $this->timberService=$timberService;
-        $this->imgService=$imgService;
-        $this->tableService=$tableService;
-        $this->configuredPriceHandlerFactory= $cphFactory;
-        $this->translator=$translator;
+        $this->request = $requestStack->getCurrentRequest();
+        $this->surfaceService = $surfaceService;
+        $this->supportService = $supportService;
+        $this->timberService = $timberService;
+        $this->imgService = $imgService;
+        $this->tableService = $tableService;
+        $this->configuredPriceHandlerFactory = $cphFactory;
+        $this->translator = $translator;
     }
 
     public function getPrimaryMaterial()
@@ -80,17 +63,6 @@ class ConfiguredTableService
     {
         $lang = $this->request->getLocale();
         return $this->tableService->getAllByLang($lang, $categoryId);
-    }
-
-
-    /**
-     * @param $code
-     * @return Table
-     */
-    public function findTableByCode($code)
-    {
-        $lang = $this->request->getLocale();
-        return $this->tableService->findByCode($code,$lang);
     }
 
     public function getUniqueHeight()
@@ -131,15 +103,15 @@ class ConfiguredTableService
 
         $altPath = Utils::DEFAULT_IMAGE;
         foreach ($result as $material) {
-            /** @var  TableMaterial $material*/
+            /** @var  TableMaterial $material */
             $image = $this->imgService->filterAction(new Request(), (is_null($material->getImage()->getWebPath()) ? $altPath : $material->getImage()->getWebPath()), 'materialPopup')->getTargetUrl();
             $material->getImage()->setCachePath($image);
         }
         return $result;
     }
-    
-    
-    public function calculatePrice(){
+
+    public function calculateTablePrice()
+    {
         $tableConfigs = $this->configuredPriceHandlerFactory->create();
         $code = $this->request->get('code');
         $tableItem = $this->findTableByCode($code);
@@ -155,7 +127,7 @@ class ConfiguredTableService
 
         $finalPrice = $this->computePrice($tableConfigs, $tableItem);
 
-        if ($finalPrice===false){
+        if ($finalPrice === false) {
             $custom = $this->translator->trans('app.custom.order');
             return new JsonResponse(['failure' => $custom]);
         }
@@ -164,28 +136,14 @@ class ConfiguredTableService
 
     }
 
-    private function computePrice(ConfiguredTablePriceVO $tableConfigs, Table $tableItem)
+    /**
+     * @param $code
+     * @return Table
+     */
+    public function findTableByCode($code)
     {
-
-        $supportPrice = $this->supportService->calculateSupportPrice($tableConfigs, $tableItem);
-        $extensionPrice = $this->surfaceService->calculateExtensionSurface($tableConfigs);
-        $drawerPrice = $this->surfaceService->calculateDrawerSurface($tableConfigs, $tableItem);
-
-        $surfacePrice = $this->surfaceService->calculateSurface($tableConfigs);
-        if ($surfacePrice == false)  return false;
-        
-        $tablePrice = $surfacePrice + $supportPrice + $extensionPrice + $drawerPrice;
-        $tablePrice = $this->timberService->applyQualityVariance($tablePrice, $tableConfigs);
-        $tablePrice = $this->timberService->applyTemperingVariance($tablePrice, $tableConfigs);
-
-        /* final by state variance price */
-        /** @noinspection PhpUndefinedMethodInspection */
-        $tablePrice = round($tablePrice + ($tableItem->getByStateVariance() / 100 * $tablePrice));
-
-        $currency = $this->translator->trans('app.currency');
-        $stringPrice = $currency . strval($tablePrice) . ",00";
-
-        return $stringPrice;
+        $lang = $this->request->getLocale();
+        return $this->tableService->findByCode($code, $lang);
     }
 
     private function validateSurface(ConfiguredTablePriceVO $tableConfigs)
@@ -221,12 +179,38 @@ class ConfiguredTableService
         return $errors;
     }
 
-    public function getConfiguredTablePriceVO(){
+    private function computePrice(ConfiguredTablePriceVO $tableConfigs, Table $tableItem)
+    {
+
+        $supportPrice = $this->supportService->calculateSupportPrice($tableConfigs, $tableItem);
+        $extensionPrice = $this->surfaceService->calculateExtensionSurface($tableConfigs);
+        $drawerPrice = $this->surfaceService->calculateDrawerSurface($tableConfigs, $tableItem);
+
+        $surfacePrice = $this->surfaceService->calculateSurface($tableConfigs);
+        if ($surfacePrice == false) return false;
+
+        $tablePrice = $surfacePrice + $supportPrice + $extensionPrice + $drawerPrice;
+        $tablePrice = $this->timberService->applyQualityVariance($tablePrice, $tableConfigs);
+        $tablePrice = $this->timberService->applyTemperingVariance($tablePrice, $tableConfigs);
+
+        /* final by state variance price */
+        /** @noinspection PhpUndefinedMethodInspection */
+        $tablePrice = round($tablePrice + ($tableItem->getByStateVariance() / 100 * $tablePrice));
+
+        $currency = $this->translator->trans('app.currency');
+        $stringPrice = $currency . strval($tablePrice) . ",00";
+
+        return $stringPrice;
+    }
+
+    public function getConfiguredTablePriceVO()
+    {
         return $this->configuredPriceHandlerFactory->create();
     }
-    
+
     /** @return Table */
-    public function getTableObject(){
+    public function getTableObject()
+    {
         $code = $this->request->get('code');
         $tableItem = $this->findTableByCode($code);
         return $tableItem;

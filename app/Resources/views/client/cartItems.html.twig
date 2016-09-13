@@ -14,7 +14,7 @@
                                 <a href="#">{{ cartItem.itemName }}
                                     {% for spec in cartItem.itemSpecs %}
                                         <div class="cart-description">
-                                            <p>{{ spec }}</p>
+                                            <p>{{ spec | striptags }}</p>
                                         </div>
                                     {% endfor %}
                                 </a>

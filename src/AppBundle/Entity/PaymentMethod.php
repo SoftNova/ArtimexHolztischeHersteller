@@ -84,10 +84,14 @@ class PaymentMethod
 
     public function __toString()
     {
-        if($name = $this->getName()){
-            return $name;
-        }
-        return '';
+        return ($translation = $this->getCurrentTranslation()) ?
+            $translation->getName() : 'NO TRANSLATION';
     }
 
+    public function getTranslatedName($lang){
+        if($this->getTranslations()->containsKey($lang)){
+            return $this->getTranslations()->get($lang);
+        };
+        return null;
+    }
 }

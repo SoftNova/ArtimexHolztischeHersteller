@@ -9,6 +9,7 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Entity\Sample;
 use AppBundle\Utils\Utils;
 use Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType;
 use Sonata\AdminBundle\Admin\Admin;
@@ -107,9 +108,28 @@ class SampleAdmin extends Admin
 
     public function preUpdate($object)
     {
-        $object->setProcessedDate(new \DateTime());
-        // TODO maybe send "Order processed mail"?
+        $this->confirmOrder($object);
+    }
 
+    private function confirmOrder(Sample $object)
+    {
+        $object->setProcessedDate(new \DateTime());
+        $appMailerUser =
+            $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
+        $mailer=$this->getConfigurationPool()->getContainer()->get('mailer');
+        $twig = $this->getConfigurationPool()->getContainer()->get('twig');
+        $autoReply = \Swift_Message::newInstance()
+            ->setSubject('app.confirmed.order.request')
+            ->setFrom($appMailerUser)
+            ->setTo($object->getClientEmail())
+            ->setBody(
+                $twig->render(
+                    'emails/sample_processed_autoreply.html.twig',
+                    array('sample' => $object)
+                ),
+                'text/html'
+            );
+        $mailer->send($autoReply);
     }
 
 }

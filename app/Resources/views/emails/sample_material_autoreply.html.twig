@@ -1,3 +1,32 @@
+{{  'app.sample.mail.header' |
+trans ({
+    '%supplier_mail%':"not_impl@hh.de",
+    '%sample_no%' : sample.id
+})
+}}
+{% for item in sample.materialSamples %}
+    {{ 'app.sample.mail.repetitive.content' |
+    trans ({
+        '%product_name%' : item.name,
+    })
+    }}
+{% endfor %}
+{{ 'app.sample.mail.static.content' |
+trans ({
+    '%client_email%' : sample.clientEmail,
+    '%client_company%' : sample.clientCompany,
+    '%client_first_name%' : sample.clientFirstName,
+    '%client_last_name%' : sample.clientLastName,
+    '%country%' : sample.clientCountry,
+    '%city%' : sample.clientCity,
+    '%state%' : sample.clientStateOrProvidence,
+    '%address_1%' : sample.clientAddress1,
+    '%address_2%' : sample.clientAddress2,
+    '%postal_code%': sample.clientPostalCode,
+    '%client_phone%' : sample.clientPhone,
+    '%comment%' : sample.clientComment
+})
+}}
 
 
 

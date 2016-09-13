@@ -9,6 +9,7 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Entity\Order;
 use AppBundle\Utils\Utils;
 use Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType;
 use Sonata\AdminBundle\Admin\Admin;
@@ -111,14 +112,41 @@ class OrderAdmin extends Admin
             ->add('cart.totalQuantity', 'text', array('label'=>'admin.total.quantity'))
             ->add('cart.cartItems', null, array('label'=>'admin.item.configs',
                                                     'safe'=>false))
+            ->add('clientPaymentMethod','text',array('label'=>'app.paymentinfo'))
             ->end()
         ;
     }
 
     public function preUpdate($object)
     {
-        $object->setProcessedDate(new \DateTime());
-        // TODO maybe send "Order processed mail"?
-
+       $this->confirmOrder($object);
     }
+
+    private function confirmOrder(Order $object)
+    {
+        //ToDo find recepient country and send message accordingly to said country
+        //ToDo transform country to iso2 and use translating template acordingly
+        //ToDo order->setPaymentMethodName(getpaymentmethodnameforlocale)
+        $object->setProcessedDate(new \DateTime());
+        $appMailerUser =
+            $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
+        $mailer=$this->getConfigurationPool()->getContainer()->get('mailer');
+        $twig = $this->getConfigurationPool()->getContainer()->get('twig');
+        $autoReply = \Swift_Message::newInstance()
+            //ToDo translation below doesn't work yet
+            ->setSubject('app.confirmed.order.request')
+            ->setFrom($appMailerUser)
+            ->setTo($object->getClientEmail())
+            ->setBody(
+                $twig->render(
+                    'emails/order_processed_autoreply.html.twig',
+                    array('order' => $object)
+                ),
+                'text/html'
+            );
+        $mailer->send($autoReply);
+    }
+
+
+
 }

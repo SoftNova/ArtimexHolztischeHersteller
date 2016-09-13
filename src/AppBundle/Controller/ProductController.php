@@ -7,7 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
+/**
+ * Controller used for application wide sellable items
+ */
 class ProductController extends Controller
 {
 
@@ -114,18 +116,30 @@ class ProductController extends Controller
     }
 
     /**
+     * @Route("/{_locale}/article_price_ajax/", name="_calculateArticlePrice_ajax", options={"expose"=true})
+     */
+    public function calculateArticlePriceAjax()
+    {
+        $request = $this->get('request');
+        if ($request->isXmlHttpRequest()) {
+            return $finalPrice = $this->get('article_service')->calculateArticlePrice();
+        }
+        return new JsonResponse('Invalid request!, 400');
+    }
+
+    /**
      * @Route("/{_locale}/ajax/", name="_calculatePrice_ajax", options={"expose"=true})
      */
     public function calculatePriceAjax()
     {
         $request = $this->get('request');
         if ($request->isXmlHttpRequest()) {
-            return $finalPrice = $this->get('configured_table_service')->calculatePrice();
+            return $finalPrice = $this->get('configured_table_service')->calculateTablePrice();
         }
         return new JsonResponse('Invalid request!, 400');
     }
 
-    
+
 
     /** @Route("/{_locale}/ajaxI", name="_getPrimaryImageByMaterial", options={"expose"=true}) */
     public function getPrImageByMat()

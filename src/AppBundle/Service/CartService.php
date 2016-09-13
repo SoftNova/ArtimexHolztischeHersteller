@@ -12,6 +12,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Cart;
 use AppBundle\Entity\CartItem;
 use AppBundle\Entity\CartItemConfig;
+use AppBundle\Entity\Product;
 use AppBundle\Utils\Utils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,23 +20,32 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartService
 {
+    private $articleService;
     private $configuredTableService;
     private $cartItemFactory;
     private $request;
 
-    public function __construct(ConfiguredTableService $cft, CartVoFactory $cartVoFactory, RequestStack $requestStack)
+    public function __construct(ArticleService $articleService, ConfiguredTableService $cft, CartVoFactory $cartVoFactory, RequestStack $requestStack)
     {
+        $this->articleService=$articleService;
         $this->configuredTableService = $cft;
         $this->cartItemFactory = $cartVoFactory;
         $this->request = $requestStack->getCurrentRequest();
     }
 
-    public function calculatePrice()
+    public function calculateTablePrice()
     {
-        return $this->configuredTableService->calculatePrice();
+        return $this->configuredTableService->calculateTablePrice();
     }
 
-    public function addItemToCartAjax($finalPrice)
+    public function calculateArticlePrice()
+    {
+        return $this->articleService->calculateArticlePrice();
+    }
+    
+    
+    
+    public function addTableToCartAjax($finalPrice)
     {
         $cartVo = $this->cartItemFactory->create();
         $tableItem = $this->configuredTableService->getTableObject();
@@ -64,6 +74,51 @@ class CartService
             $configSpec = new CartItemConfig($spec);
             if ($spec!==null)
             $cartItem->addConfig($configSpec);
+        }
+
+        $cart = $this->getCart();
+        if (is_null($cart)) {
+            $cart = new Cart();
+        }
+        $cartItem->setCart($cart);
+        $cart->addItem($cartItem);
+        if ($cart->getCartCurrency()===null) {
+            $lang = $this->request->getLocale();
+            if ($lang=='de' || $lang='fr'){
+                $cart->setCartCurrency('€');
+            }
+            else if ($lang=='en'){
+                $cart->setCartCurrency('£');
+            }
+            else if ($lang=='ro'){
+                $cart->setCartCurrency('RON');
+            }
+        }
+        return $cart;
+
+    }
+
+    public function addArticleToCartAjax($finalPrice)
+    {
+        $cartVo = $this->cartItemFactory->create();
+        /** @var Product $articleItem */
+        $articleItem = $this->articleService->getArticleObject();
+
+        $specsArray = array();
+        if ($articleItem->getDescription() !== null ) $specsArray[] = $articleItem->getDescription();
+        $cartItem = new CartItem();
+        $cartItem->setUniqueItemCode(Utils::generateUniqueCartCode());
+        /** @noinspection PhpUndefinedMethodInspection */
+        $cartItem->setItemName($articleItem->getName());
+        $cartItem->setItemCode($articleItem->getCode());
+        $cartItem->setItemImg($articleItem->getPrimaryImage());
+        $cartItem->setItemPrice($finalPrice);
+        $cartItem->setItemSpecs($specsArray);
+        $cartItem->setItemQuantity(1);
+        foreach ($specsArray as $spec){
+            $configSpec = new CartItemConfig($spec);
+            if ($spec!==null)
+                $cartItem->addConfig($configSpec);
         }
 
         $cart = $this->getCart();
