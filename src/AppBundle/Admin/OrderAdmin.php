@@ -127,27 +127,35 @@ class OrderAdmin extends Admin
         //ToDo find recepient country and send message accordingly to said country
         //ToDo transform country to iso2 and use translating template acordingly
         //ToDo order->setPaymentMethodName(getpaymentmethodnameforlocale)
-        
-        $clientLang = Utils::getIso2ByCountry($object->getClientCountry());
-        $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
         $object->setProcessedDate(new \DateTime());
-        $appMailerUser =
-            $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
-        $mailer=$this->getConfigurationPool()->getContainer()->get('mailer');
-        $twig = $this->getConfigurationPool()->getContainer()->get('twig');
-        $autoReply = \Swift_Message::newInstance()
-            //ToDo translation below doesn't work yet
-            ->setSubject('app.confirmed.order.request')
-            ->setFrom($appMailerUser)
-            ->setTo($object->getClientEmail())
-            ->setBody(
-                $twig->render(
-                    'emails/order_processed_autoreply.html.twig',
-                    array('order' => $object)
-                ),
-                'text/html'
-            );
-        $mailer->send($autoReply);
+        if ($object->getProcessedStatus()) {
+            $clientLang = Utils::getIso2ByCountry($object->getClientCountry());
+            $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
+            $appMailerUser =
+                $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
+
+            $mailer = $this->getConfigurationPool()->getContainer()->get('mailer');
+            $twig = $this->getConfigurationPool()->getContainer()->get('twig');
+
+            $translator = $this->getConfigurationPool()->getContainer()->get('translator');
+            $translator->setLocale($clientLang);
+            $subject = $translator->trans('app.confirmed.order.request');
+
+            $autoReply = \Swift_Message::newInstance()
+                //ToDo translation below doesn't work yet
+                ->setSubject($subject)
+                ->setFrom($appMailerUser)
+                ->setTo($object->getClientEmail())
+                ->setBody(
+                    $twig->render(
+                        'emails/order_processed_autoreply.html.twig',
+                        array('order' => $object,
+                            'locale'=>$clientLang)
+                    ),
+                    'text/html'
+                );
+            $mailer->send($autoReply);
+        }
     }
 
 

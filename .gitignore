@@ -60,5 +60,6 @@ composer.lock
 
 # Composer PHAR
 /composer.phar
-/web/app/img/
-/web/app/
+/web/app/img/material_img
+/web/app/img/product_img
+/web/app/img/table_img

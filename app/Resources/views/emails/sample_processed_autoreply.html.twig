@@ -2,13 +2,17 @@
 trans ({
     '%supplier_mail%':"not_impl@hh.de",
     '%sample_no%' : sample.id
-})
+},
+"messages",
+locale)
 }}
 {% for item in sample.materialSamples %}
     {{ 'app.sample.mail.repetitive.content' |
     trans ({
-        '%product_name%' : item.name,
-    })
+        '%product_name%' : item.getTranslatedName(locale),
+    },
+    "messages",
+    locale)
     }}
 {% endfor %}
 {{ 'app.sample.mail.static.content' |
@@ -25,7 +29,9 @@ trans ({
     '%postal_code%': sample.clientPostalCode,
     '%client_phone%' : sample.clientPhone,
     '%comment%' : sample.clientComment
-})
+},
+"messages",
+locale)
 }}
 
 

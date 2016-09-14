@@ -160,9 +160,9 @@ class SampleMaterialController extends Controller
                 );
             $this->get('mailer')->send($message);
 
-
+            $subject = $this->get('translator')->trans('app.register.sample.request');
             $autoReply = \Swift_Message::newInstance()
-                ->setSubject('app.register.sample.request')
+                ->setSubject($subject)
                 ->setFrom($this->getParameter('mailer_user'))
                 ->setTo($sample->getClientEmail())
                 ->setBody(

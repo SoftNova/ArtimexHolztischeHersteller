@@ -1042,49 +1042,37 @@
 
             <trans-unit id="app.configure">
                 <source>app.configure</source>
-                <target>
-                    Configure
-                </target>
+                <target>Configure</target>
             </trans-unit>
             <trans-unit id="app.show">
                 <source>app.show</source>
-                <target>
-                    Show
-                </target>
+                <target>Show</target>
             </trans-unit>
 
             <trans-unit id="app.register.order.request">
                 <source>app.register.order.request</source>
-                <target>
-                    Order request registered
-                </target>
+                <target>Order request registered</target>
             </trans-unit>
 
             <trans-unit id="app.register.sample.request">
                 <source>app.register.sample.request</source>
-                <target>
-                    Sample request registered
-                </target>
+                <target>Sample request registered</target>
             </trans-unit>
 
             <trans-unit id="app.confirmed.sample.request">
                 <source>app.confirmed.sample.request</source>
-                <target>
-                    Sample request confirmed
-                </target>
+                <target>Sample request confirmed</target>
             </trans-unit>
 
             <trans-unit id="app.confirmed.order.request">
                 <source>app.confirmed.order.request</source>
-                <target>
-                    Order request confirmed
-                </target>
+                <target>Order request confirmed</target>
             </trans-unit>
 
 
             <trans-unit id="app.order.processed.mail.header">
                 <source>app.order.processed.mail.header</source>
-                <target>
+                <target>This is english
                     Die Bestellung nr. %order_no% wurde bestätigt.
                     Im Folgenden finden Sie Details Befehl ein:
                     Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
@@ -1097,6 +1085,12 @@
                     Im Folgenden finden Sie Details Befehl ein:
                     Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
                 </target>
+            </trans-unit>
+            <trans-unit id='app.operation.successful'>
+                <source>app.operation.successful</source>
+                <target>Thank you.
+                    Your request has been successfully registered.
+                A confirmation mail has been sent.</target>
             </trans-unit>
 
         </body>

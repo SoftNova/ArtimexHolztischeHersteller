@@ -584,6 +584,22 @@
 
 
 
+            <trans-unit id="app.order.processed.mail.header">
+                <source>app.order.processed.mail.header</source>
+                <target>This is german
+                    Die Bestellung nr. %order_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.processed.mail.header">
+                <source>app.sample.processed.mail.header</source>
+                <target>
+                    Die Bestellung nr. %sample_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
 
 
 

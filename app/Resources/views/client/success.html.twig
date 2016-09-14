@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>{% trans %}app.contact{% endtrans %}</h2>
+                        <h2>{% trans %}app.checkout{% endtrans %}</h2>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well well-sm">
-                   Operation was successful. You will receive a confirmation email shortly.
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img id="check" class="center-block"
+                                 src="{{ 'app/img/greencheck.png' | imagine_filter('thumbnail') }}"/>
+                            <hr/>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            {{ 'app.operation.successful' | trans | nl2br }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

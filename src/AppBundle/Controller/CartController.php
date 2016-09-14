@@ -171,9 +171,9 @@ class CartController extends Controller
                 );
             $this->get('mailer')->send($message);
 
-
+            $subject = $this->get('translator')->trans('app.register.order.request');
             $autoReply = \Swift_Message::newInstance()
-                ->setSubject('app.register.order.request')
+                ->setSubject($subject)
                 ->setFrom($this->getParameter('mailer_user'))
                 ->setTo($order->getClientEmail())
                 ->setBody(

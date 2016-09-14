@@ -201,6 +201,13 @@ class TableMaterial
         return '';
     }
 
+    public function getTranslatedName($lang){
+        if($this->getTranslations()->containsKey($lang)){
+            return $this->getTranslations()->get($lang)->getName();
+        };
+        return null;
+    }
+    
     public function getLocales(){
         $locales = implode("-",$this->getTranslations()->getKeys());
         $locales = (strpos($locales,"admin")!==false) ? substr($locales,6):$locales;

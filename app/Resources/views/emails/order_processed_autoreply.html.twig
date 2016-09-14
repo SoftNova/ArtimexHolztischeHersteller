@@ -1,9 +1,10 @@
-{{  'app.order.processed.mail.header' |
+{{ 'app.order.processed.mail.header' |
 trans ({
     '%supplier_mail%':"not_impl@hh.de",
     '%order_no%' : order.id
-})
-}}
+},
+"messages",
+locale) }}
 {% for item in order.cart.cartItems %}
     {{ 'app.order.mail.repetitive.content' |
     trans ({
@@ -11,8 +12,9 @@ trans ({
         '%product_cost%' : item.itemPrice,
         '%product_quantity%': item.itemQuantity,
         '%total_price_for_product_times_quantity%': order.cart.cartCurrency ~ item.totalPrice
-    })
-    }}
+    },
+    "messages",
+    locale) }}
 {% endfor %}
 {{ 'app.order.mail.static.content' |
 trans ({
@@ -30,6 +32,7 @@ trans ({
     '%postal_code%': order.clientPostalCode,
     '%client_phone%' : order.clientPhone,
     '%comment%' : order.clientComment
-})
-}}
+},
+"messages",
+locale) }}
 
