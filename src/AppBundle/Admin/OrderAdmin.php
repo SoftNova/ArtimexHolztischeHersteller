@@ -129,7 +129,7 @@ class OrderAdmin extends Admin
         //ToDo order->setPaymentMethodName(getpaymentmethodnameforlocale)
         
         $clientLang = Utils::getIso2ByCountry($object->getClientCountry());
-//        $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
+        $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
         $object->setProcessedDate(new \DateTime());
         $appMailerUser =
             $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');

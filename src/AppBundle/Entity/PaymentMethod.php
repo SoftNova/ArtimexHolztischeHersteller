@@ -61,7 +61,7 @@ class PaymentMethod
         $this->nonPersistPaymentMethodName = $nonPersistPaymentMethodName;
     }
 
-    
+
 
 
     public function __construct()
@@ -110,7 +110,7 @@ class PaymentMethod
 
     public function getTranslatedName($lang){
         if($this->getTranslations()->containsKey($lang)){
-            return $this->getTranslations()->get($lang);
+            return $this->getTranslations()->get($lang)->getName();
         };
         return null;
     }
