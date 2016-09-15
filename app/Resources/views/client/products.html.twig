@@ -4,24 +4,25 @@
     <!-- End of header area -->
 {% endblock %}
 {% block subnenu %}
-
-
     <!-- subnav here -->
     {% if aCategories is not null %}
-    <div class="navbar subnav" role="navigation">
-        <div class="navbar-inner">
+        <div class="navbar navbar-default opaque-navbar">
             <div class="container">
-                <ul class="pager subnav-pager">
-                    <div class="btn-group-wrap">
-                        <li><a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a></li>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navMain">
+                        <span class="glyphicon glyphicon-chevron-right" style="color:white;"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navMain">
+                    <ul class="nav navbar-nav pull-left">
+                        {#<li><a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a></li>#}
                         {% for oCategory in aCategories %}
-                        <li><a href="{{ path('_allCategoryItems', {'id': oCategory.id, 'name' : oCategory.name }) }}">{{ oCategory.name }}</a></li>
+                            <li><a href="{{ path('_allCategoryItems', {'id': oCategory.id, 'name' : oCategory.name }) }}">{{ oCategory.name }}</a></li>
                         {% endfor %}
-                    </div>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 
 

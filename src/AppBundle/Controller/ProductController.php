@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function indexAction()
     {
 
+        
         /** @var TablePrimaryMaterial $primaryMaterialItem */
         return $this->render('client/products.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
