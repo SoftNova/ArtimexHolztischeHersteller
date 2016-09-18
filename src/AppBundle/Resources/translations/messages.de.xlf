@@ -186,11 +186,15 @@
             </trans-unit>
             <trans-unit id="app.pin">
                 <source>app.pin</source>
-                <target>Information:</target>
+                <target>https://www.pinterest.com/ArtimexGmbH/</target>
+            </trans-unit>
+            <trans-unit id="app.ig">
+                <source>app.ig</source>
+                <target>https://www.instagram.com/artimex_sport/</target>
             </trans-unit>
             <trans-unit id="information">
                 <source>app.information</source>
-                <target>Informationen:</target>
+                <target>Informationen</target>
             </trans-unit>
             <trans-unit id="paymentinfo">
                 <source>app.paymentinfo</source>
@@ -452,12 +456,15 @@
             </trans-unit>
             <trans-unit id="admin.category">
                 <source>admin.category</source>
-                <target>Categories</target>
+                <target>Kategorien</target>
             </trans-unit>
 
 
 
-
+            <trans-unit id="app.sample.material">
+                <source>app.sample.material</source>
+                <target>Probenmaterial</target>
+            </trans-unit>
             <trans-unit id="app.table">
                 <source>app.table</source>
                 <target>Table</target>
@@ -474,53 +481,65 @@
                 <source>app.tempering</source>
                 <target>Tempering</target>
             </trans-unit>
+            <trans-unit id="app.tempering.material.defined">
+                <source>aapp.tempering.material.defined</source>
+                <target>Material Standard</target>
+            </trans-unit>
             <trans-unit id="app.timber.quality">
                 <source>app.timber.quality</source>
-                <target>Timber quality</target>
+                <target>Holzqualität:</target>
             </trans-unit>
             <trans-unit id="app.primary.material">
                 <source>app.primary.material</source>
-                <target>Primary Material</target>
+                <target>Vormaterial</target>
             </trans-unit>
             <trans-unit id="app.surface.width">
                 <source>app.surface.width</source>
-                <target>Width</target>
+                <target>Breite</target>
             </trans-unit>
             <trans-unit id="app.surface.length">
                 <source>app.surface.length</source>
-                <target>Length</target>
+                <target>Länge</target>
             </trans-unit>
             <trans-unit id="app.leg.height">
                 <source>app.leg.height</source>
-                <target>Height</target>
+                <target>Höhe</target>
             </trans-unit>
             <trans-unit id="app.product">
                 <source>app.product</source>
-                <target>Product</target>
+                <target>Produkt</target>
             </trans-unit>
             <trans-unit id="app.drawer.attribute">
                 <source>app.drawer.attribute</source>
-                <target>Drawers</target>
+                <target>Schubladen:</target>
             </trans-unit>
             <trans-unit id="app.leg.attribute">
                 <source>app.leg.attribute</source>
-                <target>Table legs</target>
+                <target>Tischbeine:</target>
+            </trans-unit>
+            <trans-unit id="app.leg.profiles">
+                <source>app.leg.profiles</source>
+                <target>Beinprofil:</target>
+            </trans-unit>
+            <trans-unit id="app.extensions">
+                <source>app.extensions</source>
+                <target>Erweiterungen:</target>
             </trans-unit>
             <trans-unit id="app.table.images">
                 <source>app.table.images</source>
-                <target>Images</target>
+                <target>Bilder</target>
             </trans-unit>
             <trans-unit id="app.product.images">
                 <source>app.product.images</source>
-                <target>Images</target>
+                <target>Bilder</target>
             </trans-unit>
             <trans-unit id="app.tables">
                 <source>app.tables</source>
-                <target>Tables</target>
+                <target>Tische</target>
             </trans-unit>
             <trans-unit id="app.accesories">
                 <source>app.accesories</source>
-                <target>Accesories</target>
+                <target>Zubehör</target>
             </trans-unit>
             <trans-unit id="app.tables.rules">
                 <source>app.tables.rules</source>
@@ -540,19 +559,19 @@
             </trans-unit>
             <trans-unit id="app.dimensions">
                 <source>app.dimensions</source>
-                <target>Dimensions(cm):</target>
+                <target>Maße(cm):</target>
             </trans-unit>
             <trans-unit id="app.quality">
                 <source>app.quality</source>
-                <target>Timber quality:</target>
+                <target>Holzqualität:</target>
             </trans-unit>
             <trans-unit id="app.plank">
                 <source>app.plank</source>
-                <target>Plank(cm):</target>
+                <target>Planke(cm):</target>
             </trans-unit>
             <trans-unit id="app.disk.thickness">
                 <source>app.disk.thickness</source>
-                <target>Disk thickness(cm):</target>
+                <target>Plattendicke(cm):</target>
             </trans-unit>
             <trans-unit id="app.wood.selection">
                 <source>app.wood.selection</source>
@@ -564,11 +583,11 @@
             </trans-unit>
             <trans-unit id="app.profile">
                 <source>app.profile</source>
-                <target>Leg Profile(cm):</target>
+                <target>Beinprofil(cm):</target>
             </trans-unit>
             <trans-unit id="app.table.category">
                 <source>app.table.category</source>
-                <target>Table Categories</target>
+                <target>Tisch Kategorien</target>
             </trans-unit>
             <trans-unit id="app.vat.included">
                 <source>app.vat.included</source>
@@ -601,6 +620,114 @@
                 </target>
             </trans-unit>
 
+
+
+            <trans-unit id="app.shopping.cart">
+                <source>app.shopping.cart</source>
+                <target>Warenkorb</target>
+            </trans-unit>
+            <trans-unit id="app.continue.shipping">
+                <source>app.continue.shipping</source>
+                <target>Weiter einkaufen</target>
+            </trans-unit>
+            <trans-unit id="app.order.summary">
+                <source>app.order.summary</source>
+                <target>Bestellübersicht:</target>
+            </trans-unit>
+            <trans-unit id="app.products.total">
+                <source>app.products.total</source>
+                <target>Produkte insgesamt:</target>
+            </trans-unit>
+            <trans-unit id="app.transport.cost">
+                <source>app.transport.cost</source>
+                <target>Transport Gesamt:</target>
+            </trans-unit>
+            <trans-unit id="app.grand.total">
+                <source>app.grand.total</source>
+                <target>Gesamtsumme:</target>
+            </trans-unit>
+            <trans-unit id="app.proceed.checkout">
+                <source>app.proceed.checkout</source>
+                <target>Checkout</target>
+            </trans-unit>
+
+
+            <trans-unit id="app.sample.materials">
+                <source>app.sample.materials</source>
+                <target>Probenmaterialien</target>
+            </trans-unit>
+            <trans-unit id="app.send.free.samples">
+                <source>app.send.free.samples</source>
+                <target>senden kostenlose Probe</target>
+            </trans-unit>
+
+
+            <trans-unit id="app.input.first.name">
+                <source>app.input.first.name</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="app.input.last.name">
+                <source>app.input.last.name</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="app.input.phone">
+                <source>app.input.phone</source>
+                <target>Telefon</target>
+            </trans-unit>
+            <trans-unit id="app.input.state">
+                <source>app.input.state</source>
+                <target>Region</target>
+            </trans-unit>
+            <trans-unit id="app.input.city">
+                <source>app.input.city</source>
+                <target>Stadt</target>
+            </trans-unit>
+            <trans-unit id="app.input.postal.code">
+                <source>app.input.postal.code</source>
+                <target>Postleitzahl</target>
+            </trans-unit>
+            <trans-unit id="app.input.address.one">
+                <source>app.input.address.one</source>
+                <target>Adresse 1</target>
+            </trans-unit>
+            <trans-unit id="app.input.address.two">
+                <source>app.input.address.two</source>
+                <target>Adresse 2</target>
+            </trans-unit>
+            <trans-unit id="app.input.company">
+                <source>app.input.company</source>
+                <target>Gesellschaft</target>
+            </trans-unit>
+            <trans-unit id="app.input.company.reg.code">
+                <source>app.input.company.reg.code</source>
+                <target>Registrierungscode</target>
+            </trans-unit>
+
+
+            <trans-unit id="app.delivery.information">
+                <source>app.delivery.information</source>
+                <target>Lieferinformationen</target>
+            </trans-unit>
+            <trans-unit id="app.person.of.contact">
+                <source>app.person.of.contact</source>
+                <target>Gesprächspartner</target>
+            </trans-unit>
+            <trans-unit id="app.delivery.address">
+                <source>app.delivery.address</source>
+                <target>Lieferadresse</target>
+            </trans-unit>
+            <trans-unit id="app.payment.method">
+                <source>app.payment.method</source>
+                <target>Bezahlverfahren</target>
+            </trans-unit>
+            <trans-unit id="app.delivery.additional.info">
+                <source>app.delivery.additional.info</source>
+                <target>Zusätzliche Information</target>
+            </trans-unit>
+            <trans-unit id="app.delivery.company.info">
+                <source>app.delivery.company.info</source>
+                <target>Unternehmen Informationen</target>
+            </trans-unit>
 
 
 
