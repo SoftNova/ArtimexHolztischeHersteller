@@ -8,6 +8,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\CartItem;
 use Doctrine\ORM\EntityRepository;
 
 
@@ -60,5 +61,23 @@ class TableDAO extends EntityRepository
             ->setParameter('code',$code);
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+
+    public function findAllByLangNoCategory($lang){
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('t')
+            ->from($this->_entityName, 't')
+            ->join('t.translations', 'tt' )
+            ->where('tt.locale= :lang')
+            ->andWhere('tt.visibility= :visibility')
+            ->andWhere('t.showInCatalog= :sic')
+            ->addSelect('tt')
+            ->setParameter('lang', $lang)
+            ->setParameter('visibility', 1)
+            ->setParameter('sic', 1)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
 
 }

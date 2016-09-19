@@ -1,8 +1,9 @@
 {{  'app.order.mail.header' |
     trans ({
-        '%supplier_mail%':"not_impl@hh.de",
+        '%supplier_mail%': supplierMail,
         '%order_no%' : order.id
     })
+
 }}
 {% for item in order.cart.cartItems %}
     {{ 'app.order.mail.repetitive.content' |

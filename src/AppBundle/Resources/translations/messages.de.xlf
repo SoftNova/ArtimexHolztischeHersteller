@@ -603,23 +603,6 @@
 
 
 
-            <trans-unit id="app.order.processed.mail.header">
-                <source>app.order.processed.mail.header</source>
-                <target>This is german
-                    Die Bestellung nr. %order_no% wurde bestätigt.
-                    Im Folgenden finden Sie Details Befehl ein:
-                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
-                </target>
-            </trans-unit>
-            <trans-unit id="app.sample.processed.mail.header">
-                <source>app.sample.processed.mail.header</source>
-                <target>
-                    Die Bestellung nr. %sample_no% wurde bestätigt.
-                    Im Folgenden finden Sie Details Befehl ein:
-                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
-                </target>
-            </trans-unit>
-
 
 
             <trans-unit id="app.shopping.cart">
@@ -728,9 +711,226 @@
                 <source>app.delivery.company.info</source>
                 <target>Unternehmen Informationen</target>
             </trans-unit>
+            <trans-unit id='app.operation.successful'>
+                <source>app.operation.successful</source>
+                <target>Vielen Dank.
+                    Ihre Anfrage wurde erfolgreich registriert.
+                    Eine Bestätigungsmail wurde abgeschickt.</target>
+            </trans-unit>
 
 
 
+            <trans-unit id="app.order.processed.mail.header">
+                <source>app.order.processed.mail.header</source>
+                <target>
+                    Die Bestellung nr. %order_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.processed.mail.header">
+                <source>app.sample.processed.mail.header</source>
+                <target>
+                    Die Bestellung nr. %sample_no% wurde bestätigt.
+                    Im Folgenden finden Sie Details Befehl ein:
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                </target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="app.order.mail.header">
+                <source>app.order.mail.header</source>
+                <target>
+                    Vielen Dank für Ihre Bestellung!
+                    Nachfolgend haben wir zur Kontrolle Ihre Bestellung noch einmal aufgelistet.
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%
+                    Bestellnr. %order_no%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.order.mail.repetitive.content">
+                <source>app.order.mail.repetitive.content</source>
+                <target>
+                    Artikel: %product_name%
+                    Einzelpreis: %product_cost%
+                    Anzahl: %product_quantity%
+                    Gesamt: %total_price_for_product_times_quantity%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.order.mail.static.content">
+                <source>app.order.mail.static.content</source>
+                <target>
+                    Gesamtsumme: %all_cart_price%
+                    DIE BEZAHLUNG ERFOLGT MIT: %payment_type%
+                    E-MAIL-ADRESSE: %client_email%
+                    RECHNUNGSADRESSE:
+                    Firmenname: %client_company%
+                    Kundenname Nachname: %client_first_name% %client_last_name%
+                    Land: %country%
+                    Stadt: %city%
+                    Grafschaft: %state%
+                    Adresse 1: %address_1%
+                    Adresse 2: %address_2%
+                    Postleitzahl: %postal_code%
+                    Telefon: %client_phone%
+
+                    Komment: %comment%
+
+                    Impressum:
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: deutschland@artimexsport.com
+                    Handelsregister: Koblenz, HRB 24408
+                    Umsatzsteuer-Identifikationsnummer: DE 298422603
+                    Kleinunternehmer gemäß § 19 UStG
+                    Bankverbindung:
+                    Artimex Sport GmbH
+                    56068-Koblenz
+                    Deutsche Bank
+                    IBAN:
+                    DE 57700700240473794600
+                    BIC:
+                    DEUTDEDBMUC
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.sample.mail.header">
+                <source>app.sample.mail.header</source>
+                <target>
+                    Vielen Dank für Ihre Bestellung!
+                    Nachfolgende Material wurde für die Prüfung in Auftrag gegeben
+                    Bei Fragen sind wir jederzeit für Sie da: Schreiben Sie einfach an %supplier_mail%!
+                    Material bestellen nr: %sample_no%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.mail.repetitive.content">
+                <source>app.sample.mail.repetitive.content</source>
+                <target>
+                    Material: %product_name%
+                </target>
+            </trans-unit>
+            <trans-unit id="app.sample.mail.static.content">
+                <source>app.sample.mail.static.content</source>
+                <target>
+                    Material wird in 7 Tagen an folgende Adresse geliefert werden:
+                    Firmenname: %client_company%
+                    Kundenname Nachname: %client_first_name% %client_last_name%
+                    E-mail-adresse: %client_email%
+                    Land: %country%
+                    Stadt: %city%
+                    Grafschaft: %state%
+                    Adresse 1: %address_1%
+                    Adresse 2: %address_2%
+                    Postleitzahl: %postal_code%
+                    Telefon: %client_phone%
+
+                    Komment: %comment%
+
+                    Impressum:
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: deutschland@artimexsport.com
+                    Handelsregister: Koblenz, HRB 24408
+                    Umsatzsteuer-Identifikationsnummer: DE 298422603
+                    Kleinunternehmer gemäß § 19 UStG
+                    Bankverbindung:
+                    Artimex Sport GmbH
+                    56068-Koblenz
+                    Deutsche Bank
+                    IBAN:
+                    DE 57700700240473794600
+                    BIC:
+                    DEUTDEDBMUC
+                </target>
+            </trans-unit>
+
+            <trans-unit id="app.configure">
+                <source>app.configure</source>
+                <target>Konfigurieren</target>
+            </trans-unit>
+            <trans-unit id="app.show">
+                <source>app.show</source>
+                <target>Anzeigen</target>
+            </trans-unit>
+
+            <trans-unit id="app.register.order.request">
+                <source>app.register.order.request</source>
+                <target>Bestellanfrage registriert</target>
+            </trans-unit>
+
+            <trans-unit id="app.register.sample.request">
+                <source>app.register.sample.request</source>
+                <target>Musterbestellung registriert</target>
+            </trans-unit>
+
+            <trans-unit id="app.confirmed.sample.request">
+                <source>app.confirmed.sample.request</source>
+                <target>Musterbestellung bestatigt</target>
+            </trans-unit>
+
+            <trans-unit id="app.confirmed.order.request">
+                <source>app.confirmed.order.request</source>
+                <target>Bestellanfrage bestatigt</target>
+            </trans-unit>
+
+            <trans-unit id="app.order.confirmation">
+                <source>app.order.confirmation</source>
+                <target>Bestätigt</target>
+            </trans-unit>
+
+            <trans-unit id="app.romania">
+                <source>app.romania</source>
+                <target>Rumänien</target>
+            </trans-unit>
+            <trans-unit id="app.germany">
+                <source>app.germany</source>
+                <target>Deutschland</target>
+            </trans-unit>
+            <trans-unit id="app.austria">
+                <source>app.austria</source>
+                <target>Österreich</target>
+            </trans-unit>
+            <trans-unit id="app.switzerland">
+                <source>app.switzerland</source>
+                <target>Schweiz</target>
+            </trans-unit>
+            <trans-unit id="app.france">
+                <source>app.france</source>
+                <target>Frankreich</target>
+            </trans-unit>
+            <trans-unit id="app.uk">
+                <source>app.uk</source>
+                <target>Großbritannien</target>
+            </trans-unit>
+
+            <trans-unit id="app.contact.us">
+                <source>app.contact.us</source>
+                <target>
+                    Liebe %first_name% %last_name%,
+                    Vielen Dank für Ihr Interesse.
+                    Unser Team wird in kürzester Zeit antworten.
+                    Grüße, Team Artimex
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: %supplier_mail%</target>
+            </trans-unit>
+            <trans-unit id="app.success">
+                <source>app.success</source>
+                <target>Erfolg</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

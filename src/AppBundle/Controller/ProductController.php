@@ -18,13 +18,17 @@ class ProductController extends Controller
      */
     public function indexAction()
     {
+        $configuredTableService = $this->get('configured_table_service');
+        $primaryMaterial = $configuredTableService->getPrimaryMaterial();
+        $aTables = $configuredTableService->findAllByLang(15);
 
-        
         /** @var TablePrimaryMaterial $primaryMaterialItem */
         return $this->render('client/products.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
             'aCategories' => $this->get('category_service')->findAllByLang(),
-            'oCart' => $this->get('cart_service')->getCart()
+            'oCart' => $this->get('cart_service')->getCart(),
+            'primaryMaterial' => $primaryMaterial,
+            'aTables' => $aTables
         ]);
     }
 

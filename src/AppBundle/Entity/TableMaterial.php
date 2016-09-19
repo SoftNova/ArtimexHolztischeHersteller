@@ -205,7 +205,7 @@ class TableMaterial
         if($this->getTranslations()->containsKey($lang)){
             return $this->getTranslations()->get($lang)->getName();
         };
-        return null;
+        return $this->getTranslations()->get('de')->getName();
     }
     
     public function getLocales(){

@@ -33,5 +33,8 @@ class TableService
     public function findPrimaryImageByMaterial($materialID,$code){
         return $this->tableDAO->findPrimaryImageByMaterial($materialID,$code);
     }
-
+    public function getAllByLangNoCategory($lang){
+        return $this->tableDAO->findAllByLangNoCategory($lang);
+    }
+    
 }

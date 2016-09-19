@@ -79,6 +79,12 @@ class Utils
                 case 'GB':
                     $results['Great Britain']='app.uk';
                     break;
+                case 'AT':
+                    $results['Austria']='app.austria';
+                    break;
+                case 'CH':
+                    $results['Switzerland']='app.switzerland';
+                    break;
             }
         }
         return $results;
@@ -88,6 +94,10 @@ class Utils
     public static function getIso2ByCountry($country){
         switch ($country){
             case 'Germany':
+                return 'de';
+            case 'Austria':
+                return 'de';
+            case 'Switzerland':
                 return 'de';
             case 'Romania':
                 return 'ro';

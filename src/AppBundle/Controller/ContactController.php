@@ -70,15 +70,18 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data=$form->getData();
+            $supplierMail = $this->getParameter('supplier_mail_de');
             $message = \Swift_Message::newInstance()
                 ->setSubject('Contact Us - From '. $data['clientFirstName'] . ' ' . $data['clientLastName'])
                 ->setFrom($data['clientEmail'])
-                ->setTo($this->getParameter('mailer_user'))
+                ->setTo($this->getParameter('contact_mail'))
                 ->setBody(
                     $this->renderView(
                     // app/Resources/views/Emails/registration.html.twig
                         'emails/contact.html.twig',
-                        array('comments' => $data['clientComment'])
+                        array('supplier_mail' => $supplierMail,
+                            'clientFirstName'=>$data['clientFirstName'],
+                            'clientLastName'=>$data['clientLastName'])
                     ),
                     'text/html'
                 );
@@ -86,14 +89,16 @@ class ContactController extends Controller
 
 
             $autoReply = \Swift_Message::newInstance()
-                ->setSubject('Inquiry')
+                ->setSubject('noreply')
                 ->setFrom($this->getParameter('mailer_user'))
                 ->setTo($data['clientEmail'])
                 ->setBody(
                     $this->renderView(
                     // app/Resources/views/Emails/registration.html.twig
                         'emails/contact_autoreply.html.twig',
-                        array('data' => $data)
+                        array('supplier_mail' => $supplierMail,
+                            'clientFirstName'=>$data['clientFirstName'],
+                            'clientLastName'=>$data['clientLastName'])
                     ),
                     'text/html'
                 );

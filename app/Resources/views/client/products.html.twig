@@ -17,7 +17,9 @@
                     <ul class="nav navbar-nav pull-left">
                         {#<li><a href="{{ path('_allArticles') }}">{% trans %}app.all.products{% endtrans %}</a></li>#}
                         {% for oCategory in aCategories %}
-                            <li><a href="{{ path('_allCategoryItems', {'id': oCategory.id, 'name' : oCategory.name }) }}">{{ oCategory.name }}</a></li>
+                            <li>
+                                <a href="{{ path('_allCategoryItems', {'id': oCategory.id, 'name' : oCategory.name }) }}">{{ oCategory.name }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -28,6 +30,39 @@
 
 {% endblock %}
 {% block content %}
+<ul class="list-inline">
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                {% if aTables %}
+                    {% for oItem in aTables %}
+                        <div class="col-sm-6 col-lg-4 itemDisplay">
+                            <div class="row col-sm-12">
+                                <p class="itemDisplayName text-center aligncenter">{{ oItem.name }}</p>
+                                <span>
+                                    <div class="single-product">
+                                        <div class="product-f-image">
+                                            <img class="center-block img-responsive" id="primaryImageDisplay"
+                                                 src="{{ oItem.primaryImage(primaryMaterial) | imagine_filter('primaryImage') }}">
+                                            <div class="product-hover">
+                                            <a href="{{ path('_specificTable', { 'name' : oItem.name, 'code' : oItem.code}) }}"
+                                               class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>{{ 'app.configure' | trans }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="col-sm-12 row">
+                                <hr>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</ul>
 
 {% endblock %}
 {% block footer %}

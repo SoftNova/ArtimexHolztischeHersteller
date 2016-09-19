@@ -1134,8 +1134,6 @@ hr.style-seven:before { /* Not really supposed to work, but does */
 
 .itemDisplay p, h3{
     width:100%;
-    overflow: hidden;
-    white-space: nowrap; /* Don't forget this one */
     text-overflow: ellipsis;
     font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 18px;
@@ -1335,4 +1333,5 @@ input[type=checkbox].with-font:focus ~ label
 ul.dropdown-menu {
     background-color: black;
 }
+
 

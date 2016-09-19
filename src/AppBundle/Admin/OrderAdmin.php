@@ -133,6 +133,8 @@ class OrderAdmin extends Admin
             $object->getClientPaymentMethod()->setNonPersistPaymentMethodName($object->getClientPaymentMethod()->getTranslatedName($clientLang));
             $appMailerUser =
                 $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
+            $supplierMail =
+                $this->getConfigurationPool()->getContainer()->getParameter('supplier_mail_de');
 
             $mailer = $this->getConfigurationPool()->getContainer()->get('mailer');
             $twig = $this->getConfigurationPool()->getContainer()->get('twig');
@@ -143,14 +145,15 @@ class OrderAdmin extends Admin
 
             $autoReply = \Swift_Message::newInstance()
                 //ToDo translation below doesn't work yet
-                ->setSubject($subject)
+                ->setSubject(htmlspecialchars($subject))
                 ->setFrom($appMailerUser)
                 ->setTo($object->getClientEmail())
                 ->setBody(
                     $twig->render(
                         'emails/order_processed_autoreply.html.twig',
                         array('order' => $object,
-                            'locale'=>$clientLang)
+                            'locale'=>$clientLang,
+                            'supplier_mail'=>$supplierMail)
                     ),
                     'text/html'
                 );

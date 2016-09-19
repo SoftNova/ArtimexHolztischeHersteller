@@ -37,6 +37,8 @@ class SampleAdmin extends Admin
                 $this->getConfigurationPool()->getContainer()->getParameter('mailer_user');
             $mailer = $this->getConfigurationPool()->getContainer()->get('mailer');
             $twig = $this->getConfigurationPool()->getContainer()->get('twig');
+            $supplierMail =
+                $this->getConfigurationPool()->getContainer()->getParameter('supplier_mail_de');
 
             $translator = $this->getConfigurationPool()->getContainer()->get('translator');
             $translator->setLocale($clientLang);
@@ -51,7 +53,8 @@ class SampleAdmin extends Admin
                     $twig->render(
                         'emails/sample_processed_autoreply.html.twig',
                         array('sample' => $object,
-                            'locale' => $clientLang)
+                            'locale' => $clientLang,
+                            'supplier_mail'=>$supplierMail)
                     ),
                     'text/html'
                 );

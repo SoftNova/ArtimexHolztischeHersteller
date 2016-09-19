@@ -227,4 +227,9 @@ class ConfiguredTableService
         return new JsonResponse($image);
 
     }
+    
+    public function findAllByLang(){
+        $lang = $this->request->getLocale();
+        return $this->tableService->getAllByLangNoCategory($lang);
+    }
 }

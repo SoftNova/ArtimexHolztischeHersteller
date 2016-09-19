@@ -625,6 +625,14 @@
                 <source>app.germany</source>
                 <target>Germany</target>
             </trans-unit>
+            <trans-unit id="app.austria">
+                <source>app.austria</source>
+                <target>Austria</target>
+            </trans-unit>
+            <trans-unit id="app.switzerland">
+                <source>app.switzerland</source>
+                <target>Elvetia</target>
+            </trans-unit>
             <trans-unit id="app.france">
                 <source>app.france</source>
                 <target>France</target>
@@ -1091,6 +1099,26 @@
                 <target>Thank you.
                     Your request has been successfully registered.
                 A confirmation mail has been sent.</target>
+            </trans-unit>
+
+            <trans-unit id="app.contact.us">
+                <source>app.contact.us</source>
+                <target>
+                    Liebe %first_name% %last_name%,
+                    Vielen Dank für Ihr Interesse.
+                    Unser Team wird in kürzester Zeit antworten.
+                    Grüße, Team Artimex
+                    Artimex Sport GmbH
+                    Geschäftsführer: Tautu Florin
+                    Markenbildchenweg 34
+                    56068-Koblenz
+                    Telefon: 01723258000
+                    Fax-Gebührenhinweise: 026139071430
+                    E-Mail: %supplier_mail%</target>
+            </trans-unit>
+            <trans-unit id="app.success">
+                <source>app.success</source>
+                <target>Success</target>
             </trans-unit>
 
         </body>

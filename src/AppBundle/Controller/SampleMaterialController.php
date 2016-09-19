@@ -19,6 +19,7 @@ use AppBundle\Utils\Utils;
 use libphonenumber\PhoneNumberFormat;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -80,7 +81,7 @@ class SampleMaterialController extends Controller
                 array(
                     'label' => 'app.input.country',
                     'required' => true,
-                    'choices' => Utils::getDeliveryCountries($countries)
+                    'choices'=>Utils::getDeliveryCountries($countries)
                 ))
             ->add('clientStateOrProvidence', TextType::class,
                 array(
@@ -143,6 +144,7 @@ class SampleMaterialController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $supplierMail = $this->getParameter('supplier_mail_de');
             /** @var Sample $sample */
             $sample = $form->getData();
             $this->get('sample_service')->save($sample);
@@ -150,11 +152,12 @@ class SampleMaterialController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('Sample Request - From '. $sample->getClientFirstName() . ' ' . $sample->getClientLastName())
                 ->setFrom($sample->getClientEmail())
-                ->setTo($this->getParameter('mailer_user'))
+                ->setTo($this->getParameter('samples_mail'))
                 ->setBody(
                     $this->renderView(
                         'emails/sample_material.html.twig',
-                        array('sample' => $sample)
+                        array('sample' => $sample,
+                            'supplier_mail'=>$supplierMail)
                     ),
                     'text/html'
                 );
@@ -168,12 +171,13 @@ class SampleMaterialController extends Controller
                 ->setBody(
                     $this->renderView(
                         'emails/sample_material_autoreply.html.twig',
-                        array('sample' => $sample)
+                        array('sample' => $sample,
+                            'supplier_mail'=>$supplierMail)
                     ),
                     'text/html'
                 );
             $this->get('mailer')->send($autoReply);
-            
+
             return $this->render(':client:success.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
                 'oCart' => $cart,
@@ -188,10 +192,5 @@ class SampleMaterialController extends Controller
         ]);
     }
 
-//    public function freeCheckout(Request $request){
-//$lang = $this->get('request')->getLocale();
-//return $this->render('client/sample_materials.html.twig', [
-//    'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
-//    'aMaterials'=>$this->get('surface_service')->getMaterialsForLang($lang)
-//]);
+
 }

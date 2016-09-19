@@ -155,17 +155,19 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $supplierMail = $this->getParameter('supplier_mail_de');
             /** @var Order $order */
             $order = $form->getData();
             $this->get('order_service')->save($order,$cart);
             $message = \Swift_Message::newInstance()
                 ->setSubject('New Order  - From '. $order->getClientFirstName() . ' ' . $order->getClientLastName())
                 ->setFrom($order->getClientEmail())
-                ->setTo($this->getParameter('mailer_user'))
+                ->setTo($this->getParameter('sales_mail'))
                 ->setBody(
                     $this->renderView(
                         'emails/order.html.twig',
-                        array('order' => $order)
+                        array('order' => $order,
+                            'supplierMail'=>$supplierMail)
                     ),
                     'text/html'
                 );
@@ -179,7 +181,8 @@ class CartController extends Controller
                 ->setBody(
                     $this->renderView(
                         'emails/order_autoreply.html.twig',
-                        array('order' => $order)
+                        array('order' => $order,
+                            'supplierMail'=>$supplierMail)
                     ),
                     'text/html'
                 );
